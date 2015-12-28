@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B53A4EBD-2718-444A-B6B1-E6EA5ADD0284}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MathObjects.Plugin.Integers.Tests</RootNamespace>
+    <AssemblyName>MathObjects.Plugin.Integers.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\MathObjects.Core.Plugin\MathObjects.Core.Plugin.csproj">
+      <Project>{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}</Project>
+      <Name>MathObjects.Core.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework\MathObjects.Framework.csproj">
+      <Project>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</Project>
+      <Name>MathObjects.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Plugin.Integers\MathObjects.Plugin.Integers.csproj">
+      <Project>{4AFB86A7-5672-48A6-94CA-DE42958C64A0}</Project>
+      <Name>MathObjects.Plugin.Integers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IntegerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

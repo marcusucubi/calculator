@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <widget-library name="../../MathObjects.UI.Widgets/bin/Debug/MathObjects.UI.Widgets.dll" />
+    <widget-library name="../../MathObjects.UI.Stack/bin/Debug/MathObjects.UI.Stack.dll" />
+    <widget-library name="../../MathObjects.UI.Mediator/bin/Debug/MathObjects.UI.Mediator.dll" />
+    <widget-library name="../bin/Debug/MathObjects.UI.exe" internal="true" />
+    <widget-library name="../../MathObjects.UI.Input/bin/Debug/MathObjects.UI.Input.dll" />
+  </import>
+  <widget class="Gtk.Window" id="MainWindow" design-size="411 304">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">MainWindow</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.VBox" id="vbox1">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="MathObjects.UI.Input.InputWidget" id="inputwidget1">
+            <property name="MemberName" />
+            <property name="Events">ButtonPressMask</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="MathObjects.UI.Stack.StackWidget2" id="stackwidget21">
+            <property name="MemberName" />
+            <property name="Events">ButtonPressMask</property>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="MathObjects.UI.Widgets.MathObjetsWidget" id="mathobjetswidget1">
+            <property name="MemberName" />
+            <property name="Events">ButtonPressMask</property>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="MathObjects.UI.Widgets.MathOperationsWidget" id="mathoperationswidget1">
+            <property name="MemberName" />
+            <property name="Events">ButtonPressMask</property>
+          </widget>
+          <packing>
+            <property name="Position">3</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>
