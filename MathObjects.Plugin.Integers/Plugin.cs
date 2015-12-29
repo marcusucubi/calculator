@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Core.Plugin;
 using MathObjects.Framework;
+using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {

@@ -2,6 +2,7 @@
 using Gtk;
 using MathObjects.Framework;
 using MathObjects.Core.Plugin;
+using MathObjects.Framework.Registry;
 
 namespace MathObjects.UI
 {

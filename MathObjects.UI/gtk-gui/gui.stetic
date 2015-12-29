@@ -22,7 +22,7 @@
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="MathObjects.UI.Input.InputWidget" id="inputwidget1">
+          <widget class="MathObjects.UI.FieldWidget" id="fieldwidget1">
             <property name="MemberName" />
             <property name="Events">ButtonPressMask</property>
           </widget>
@@ -34,17 +34,19 @@
           </packing>
         </child>
         <child>
-          <widget class="MathObjects.UI.Stack.StackWidget2" id="stackwidget21">
+          <widget class="MathObjects.UI.Input.InputWidget" id="inputwidget1">
             <property name="MemberName" />
             <property name="Events">ButtonPressMask</property>
           </widget>
           <packing>
             <property name="Position">1</property>
             <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
           </packing>
         </child>
         <child>
-          <widget class="MathObjects.UI.Widgets.MathObjetsWidget" id="mathobjetswidget1">
+          <widget class="MathObjects.UI.Stack.StackWidget2" id="stackwidget21">
             <property name="MemberName" />
             <property name="Events">ButtonPressMask</property>
           </widget>
@@ -54,7 +56,7 @@
           </packing>
         </child>
         <child>
-          <widget class="MathObjects.UI.Widgets.MathOperationsWidget" id="mathoperationswidget1">
+          <widget class="MathObjects.UI.Widgets.MathObjetsWidget" id="mathobjetswidget1">
             <property name="MemberName" />
             <property name="Events">ButtonPressMask</property>
           </widget>
@@ -62,6 +64,34 @@
             <property name="Position">3</property>
             <property name="AutoSize">True</property>
           </packing>
+        </child>
+        <child>
+          <widget class="MathObjects.UI.Widgets.MathOperationsWidget" id="mathoperationswidget1">
+            <property name="MemberName" />
+            <property name="Events">ButtonPressMask</property>
+          </widget>
+          <packing>
+            <property name="Position">4</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Bin" id="MathObjects.UI.FieldWidget" design-size="300 31">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.Alignment" id="alignment1">
+        <property name="MemberName" />
+        <child>
+          <widget class="Gtk.ComboBox" id="combobox1">
+            <property name="MemberName" />
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes">1
+2
+3</property>
+          </widget>
         </child>
       </widget>
     </child>

@@ -34,15 +34,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IMathObject.cs" />
     <Compile Include="IMathObjectFactory.cs" />
-    <Compile Include="FactoryRegistry.cs" />
     <Compile Include="IBinaryOperation.cs" />
     <Compile Include="IMathOperationFactory.cs" />
     <Compile Include="IMathOperation.cs" />
     <Compile Include="IMathOperationFactory2.cs" />
-    <Compile Include="IMathObjectMeta.cs" />
-    <Compile Include="IMathOperationMeta.cs" />
     <Compile Include="IHasValue.cs" />
-    <Compile Include="IHasInit.cs" />
     <Compile Include="IHasDisplayValue.cs" />
     <Compile Include="Tuple.cs" />
     <Compile Include="IHasTuple.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace MathObjects.Framework
+namespace MathObjects.Framework.Registry
 {
     public class FactoryRegistry
     {

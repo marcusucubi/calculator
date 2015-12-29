@@ -66,6 +66,8 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FieldWidget.cs" />
+    <Compile Include="gtk-gui\MathObjects.UI.FieldWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -100,6 +102,10 @@
     <ProjectReference Include="..\MathObjects.Plugin.Integers\MathObjects.Plugin.Integers.csproj">
       <Project>{4AFB86A7-5672-48A6-94CA-DE42958C64A0}</Project>
       <Name>MathObjects.Plugin.Integers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
+      <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
+      <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MathObjects.Framework;
+using MathObjects.Framework.Registry;
 
 namespace MathObjects.UI.Mediator
 {

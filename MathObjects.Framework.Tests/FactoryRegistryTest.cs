@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using MathObjects.Framework.Registry;
 
 namespace MathObjects.Framework.Tests
 {

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using MathObjects.Framework;
+using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Rational.Tests
 {

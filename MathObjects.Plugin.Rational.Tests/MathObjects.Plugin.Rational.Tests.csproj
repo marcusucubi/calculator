@@ -53,5 +53,9 @@
       <Project>{40690EE5-99DD-4119-9F51-F9F17ED747ED}</Project>
       <Name>MathObjects.Plugin.Rational</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
+      <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
+      <Name>MathObjects.Framework.Registry</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

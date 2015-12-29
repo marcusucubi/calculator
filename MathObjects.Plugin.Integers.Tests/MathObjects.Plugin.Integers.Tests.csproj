@@ -47,6 +47,10 @@
       <Project>{4AFB86A7-5672-48A6-94CA-DE42958C64A0}</Project>
       <Name>MathObjects.Plugin.Integers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
+      <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
+      <Name>MathObjects.Framework.Registry</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IntegerTest.cs" />

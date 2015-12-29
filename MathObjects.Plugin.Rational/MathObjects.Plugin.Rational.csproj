@@ -53,5 +53,9 @@
       <Project>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</Project>
       <Name>MathObjects.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
+      <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
+      <Name>MathObjects.Framework.Registry</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

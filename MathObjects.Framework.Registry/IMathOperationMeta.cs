@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathObjects.Framework
+namespace MathObjects.Framework.Registry
 {
     public interface IMathOperationMeta
     {

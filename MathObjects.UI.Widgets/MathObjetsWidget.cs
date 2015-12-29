@@ -2,6 +2,7 @@
 using MathObjects.Framework;
 using Gtk;
 using MathObjects.UI.Mediator;
+using MathObjects.Framework.Registry;
 
 namespace MathObjects.UI.Widgets
 {
@@ -27,6 +28,18 @@ namespace MathObjects.UI.Widgets
             this.mediator = mediator;
 
             SetupButtons();
+        }
+
+        public void Disconnect()
+        {
+            this.registry = null;
+            this.mediator = null;
+
+            foreach (var c in this.table1.Children)
+            {
+                c.Visible = false;
+                this.table1.Remove(c);
+            }
         }
 
         void SetupButtons()
