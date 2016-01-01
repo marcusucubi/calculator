@@ -4,23 +4,36 @@ using MathObjects.UI;
 using MathObjects.Framework;
 using MathObjects.Core.Plugin;
 using MathObjects.UI.Mediator;
+using MathObjects.Framework.Registry;
 
 public partial class MainWindow: Gtk.Window
 {
     public MainWindow () : base (Gtk.WindowType.Toplevel)
     {
-        Build ();
+        Build();
 
-        var registry = MainClass.FactoryRegistry;
+        this.fieldwidget1.Connect(MainClass.PluginRegistry);
 
+        this.fieldwidget1.MathPluginChanged += (sender, e) => 
+            {
+                var registry = MainClass.PluginRegistry.Plugins[e.Plugin];
+
+                Connect(registry);
+            };
+    }
+
+    void Connect(FactoryRegistry registry) 
+    {
         var mediator = MediatorFactory.Create(registry);
 
+        this.mathobjetswidget1.Disconnect();
         this.mathobjetswidget1.Connect(
             registry, mediator);
 
+        this.mathoperationswidget1.Disconnect();
         this.mathoperationswidget1.Connect(
             registry, mediator);
-        
+
         this.inputwidget1.Connect(mediator);
         this.stackwidget21.Connect(mediator);
     }

@@ -18,6 +18,11 @@ namespace MathObjects.Plugin.Integers
             get { return this.value; }
         }
 
+        public override string ToString()
+        {
+            return "" + value;
+        }
+
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
             public IMathObject Create(object param)

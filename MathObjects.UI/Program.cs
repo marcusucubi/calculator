@@ -8,7 +8,13 @@ namespace MathObjects.UI
 {
     class MainClass
     {
-        public static FactoryRegistry FactoryRegistry
+        //public static FactoryRegistry FactoryRegistry
+        //{
+        //    get;
+        //    protected set;
+        //}
+
+        public static PluginRegistry PluginRegistry
         {
             get;
             protected set;
@@ -18,7 +24,11 @@ namespace MathObjects.UI
         {
             Application.Init ();
 
-            MainClass.FactoryRegistry = Load();
+            //MainClass.FactoryRegistry = Load();
+            MainClass.PluginRegistry = new PluginRegistry();
+
+            MainClass.PluginRegistry.Load("MathObjects.Plugin.Rational.dll");
+            MainClass.PluginRegistry.Load("MathObjects.Plugin.Integers.dll");
 
             MainWindow win = new MainWindow ();
             win.Show ();

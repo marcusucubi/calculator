@@ -36,6 +36,7 @@
     <Compile Include="IHasInit.cs" />
     <Compile Include="IMathObjectMeta.cs" />
     <Compile Include="IMathOperationMeta.cs" />
+    <Compile Include="PluginRegistry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

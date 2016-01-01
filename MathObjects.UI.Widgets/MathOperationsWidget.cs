@@ -30,6 +30,18 @@ namespace MathObjects.UI.Widgets
             SetupButtons();
         }
 
+        public void Disconnect()
+        {
+            this.registry = null;
+            this.mediator = null;
+
+            foreach (var c in this.table1.Children)
+            {
+                c.Visible = false;
+                this.table1.Remove(c);
+            }
+        }
+
         void SetupButtons()
         {
             foreach (var key in this.registry.BinaryOperationDictionary.Keys)

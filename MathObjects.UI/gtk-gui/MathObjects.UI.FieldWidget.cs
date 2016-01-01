@@ -19,9 +19,6 @@ namespace MathObjects.UI
 			this.alignment1.Name = "alignment1";
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.combobox1 = global::Gtk.ComboBox.NewText ();
-			this.combobox1.AppendText (global::Mono.Unix.Catalog.GetString ("1"));
-			this.combobox1.AppendText (global::Mono.Unix.Catalog.GetString ("2"));
-			this.combobox1.AppendText (global::Mono.Unix.Catalog.GetString ("3"));
 			this.combobox1.Name = "combobox1";
 			this.alignment1.Add (this.combobox1);
 			this.Add (this.alignment1);
