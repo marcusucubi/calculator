@@ -43,6 +43,13 @@ namespace MathObjects.Framework.Registry
 
             foreach (var plugin in loader.Plugins)
             {
+                var name = path;
+                var hasName = plugin as IHasName;
+                if (hasName != null)
+                {
+                    name = hasName.Name;
+                }
+
                 var hasInit = plugin as IHasInit;
 
                 if (hasInit != null)
@@ -50,7 +57,7 @@ namespace MathObjects.Framework.Registry
                     hasInit.Init(registry);
 
                     this.plugins.Add(plugin, registry);
-                    this.names.Add(path, plugin);
+                    this.names.Add(name, plugin);
                 }
             }
         }

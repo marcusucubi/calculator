@@ -32,6 +32,8 @@ namespace MathObjects.UI.Widgets
 
         public void Disconnect()
         {
+            x = y = 0;
+
             this.registry = null;
             this.mediator = null;
 
@@ -40,10 +42,6 @@ namespace MathObjects.UI.Widgets
                 c.Visible = false;
                 this.table1.Remove(c);
             }
-
-            this.table1.Resize(3, 3);
-            //this.table1.NColumns = 1;
-            //this.table1.NRows = 1;
         }
 
         void SetupButtons()

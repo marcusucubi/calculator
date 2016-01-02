@@ -43,6 +43,7 @@
     <Compile Include="Tuple.cs" />
     <Compile Include="IHasTuple.cs" />
     <Compile Include="IHasOutput.cs" />
+    <Compile Include="IHasName.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

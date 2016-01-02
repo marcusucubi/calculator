@@ -5,27 +5,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework", "Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework.Tests", "MathObjects.Framework.Tests\MathObjects.Framework.Tests.csproj", "{8CA21855-4056-4609-B146-CCB081194C35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI", "MathObjects.UI\MathObjects.UI.csproj", "{1F6180CD-5C6F-4752-A806-A6453151C7CE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Widgets", "MathObjects.UI.Widgets\MathObjects.UI.Widgets.csproj", "{AC6DC7D6-5AA4-4AE0-9B64-82DF2B9E57BD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Plugin", "MathObjects.Core.Plugin\MathObjects.Core.Plugin.csproj", "{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Stack", "MathObjects.UI.Stack\MathObjects.UI.Stack.csproj", "{D9410118-5AF2-4027-907D-8845F2D2F6C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework.Registry", "MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj", "{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Mediator", "MathObjects.UI.Mediator\MathObjects.UI.Mediator.csproj", "{DBF1DFB8-00DA-4DA3-AC10-B2ED595BD298}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Input", "MathObjects.UI.Input\MathObjects.UI.Input.csproj", "{217CE7CC-8BDF-4732-90BC-A6D4876DA24C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Plugin.Rational", "MathObjects.Plugin.Rational\MathObjects.Plugin.Rational.csproj", "{40690EE5-99DD-4119-9F51-F9F17ED747ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Plugin.Rational.Tests", "MathObjects.Plugin.Rational.Tests\MathObjects.Plugin.Rational.Tests.csproj", "{F803B351-B368-4772-A2F4-0FA7E9FC1D12}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{295A1E02-D42E-406A-829E-1359F647F3CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Plugin.Integers", "MathObjects.Plugin.Integers\MathObjects.Plugin.Integers.csproj", "{4AFB86A7-5672-48A6-94CA-DE42958C64A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Plugin.Integers.Tests", "MathObjects.Plugin.Integers.Tests\MathObjects.Plugin.Integers.Tests.csproj", "{B53A4EBD-2718-444A-B6B1-E6EA5ADD0284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework.Registry", "MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj", "{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Plugin.Rational", "MathObjects.Plugin.Rational\MathObjects.Plugin.Rational.csproj", "{40690EE5-99DD-4119-9F51-F9F17ED747ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Plugin.Rational.Tests", "MathObjects.Plugin.Rational.Tests\MathObjects.Plugin.Rational.Tests.csproj", "{F803B351-B368-4772-A2F4-0FA7E9FC1D12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{20DDEC8F-C633-44AC-8333-A20BFADD614B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI", "MathObjects.UI\MathObjects.UI.csproj", "{1F6180CD-5C6F-4752-A806-A6453151C7CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Input", "MathObjects.UI.Input\MathObjects.UI.Input.csproj", "{217CE7CC-8BDF-4732-90BC-A6D4876DA24C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Mediator", "MathObjects.UI.Mediator\MathObjects.UI.Mediator.csproj", "{DBF1DFB8-00DA-4DA3-AC10-B2ED595BD298}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Stack", "MathObjects.UI.Stack\MathObjects.UI.Stack.csproj", "{D9410118-5AF2-4027-907D-8845F2D2F6C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.UI.Widgets", "MathObjects.UI.Widgets\MathObjects.UI.Widgets.csproj", "{AC6DC7D6-5AA4-4AE0-9B64-82DF2B9E57BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +89,17 @@ Global
 		{F803B351-B368-4772-A2F4-0FA7E9FC1D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F803B351-B368-4772-A2F4-0FA7E9FC1D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F803B351-B368-4772-A2F4-0FA7E9FC1D12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AFB86A7-5672-48A6-94CA-DE42958C64A0} = {295A1E02-D42E-406A-829E-1359F647F3CC}
+		{B53A4EBD-2718-444A-B6B1-E6EA5ADD0284} = {295A1E02-D42E-406A-829E-1359F647F3CC}
+		{40690EE5-99DD-4119-9F51-F9F17ED747ED} = {295A1E02-D42E-406A-829E-1359F647F3CC}
+		{F803B351-B368-4772-A2F4-0FA7E9FC1D12} = {295A1E02-D42E-406A-829E-1359F647F3CC}
+		{1F6180CD-5C6F-4752-A806-A6453151C7CE} = {20DDEC8F-C633-44AC-8333-A20BFADD614B}
+		{217CE7CC-8BDF-4732-90BC-A6D4876DA24C} = {20DDEC8F-C633-44AC-8333-A20BFADD614B}
+		{DBF1DFB8-00DA-4DA3-AC10-B2ED595BD298} = {20DDEC8F-C633-44AC-8333-A20BFADD614B}
+		{D9410118-5AF2-4027-907D-8845F2D2F6C4} = {20DDEC8F-C633-44AC-8333-A20BFADD614B}
+		{AC6DC7D6-5AA4-4AE0-9B64-82DF2B9E57BD} = {20DDEC8F-C633-44AC-8333-A20BFADD614B}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

@@ -6,8 +6,13 @@ using MathObjects.Framework.Registry;
 namespace MathObjects.Plugin.Rational
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit
+    public class Plugin : IPlugin, IHasInit, IHasName
     {
+        public string Name
+        {
+            get { return "Rational"; }
+        }
+            
         public void Startup(IPluginLoader loader)
         {
         }

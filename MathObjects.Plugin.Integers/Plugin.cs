@@ -6,8 +6,13 @@ using MathObjects.Framework.Registry;
 namespace MathObjects.Plugin.Integers
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit
+    public class Plugin : IPlugin, IHasInit, IHasName
     {
+        public string Name
+        {
+            get { return "Integers"; }
+        }
+
         public void Startup(IPluginLoader loader)
         {
         }

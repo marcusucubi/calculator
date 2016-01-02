@@ -35,6 +35,8 @@ namespace MathObjects.UI.Widgets
             this.registry = null;
             this.mediator = null;
 
+            this.x = this.y = 0;
+
             foreach (var c in this.table1.Children)
             {
                 c.Visible = false;
