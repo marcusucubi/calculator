@@ -20,6 +20,8 @@ public partial class MainWindow: Gtk.Window
 
                 Connect(registry);
             };
+
+        this.fieldwidget1.SelectFirst();
     }
 
     void Connect(FactoryRegistry registry) 

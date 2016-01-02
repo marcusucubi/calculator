@@ -52,6 +52,15 @@ namespace MathObjects.UI
                 };
         }
 
+        public void SelectFirst()
+        {
+            TreeIter tree;
+            //this.combobox1.GetActiveIter(out tree);
+            combobox1.Model.GetIterFirst(out tree);
+            //String selectedText = (String) combobox1.Model.GetValue(tree, 0);
+            this.combobox1.SetActiveIter(tree);
+        }
+
         public void Connect(PluginRegistry registry)
         {
             this.registry = registry;
