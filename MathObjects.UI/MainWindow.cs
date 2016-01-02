@@ -35,6 +35,8 @@ public partial class MainWindow: Gtk.Window
             registry, mediator);
 
         this.inputwidget1.Connect(mediator);
+
+        this.stackwidget21.Disconnect();
         this.stackwidget21.Connect(mediator);
     }
 

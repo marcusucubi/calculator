@@ -42,6 +42,11 @@ namespace MathObjects.UI.Stack
                 };
         }
 
+        public void Disconnect()
+        {
+            this.store.Clear();
+        }
+
         public void DisplayNumbers(IEnumerable<IMathObject> numbers)
         {
             store.Clear();
