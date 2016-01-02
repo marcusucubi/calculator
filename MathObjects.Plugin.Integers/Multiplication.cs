@@ -14,7 +14,7 @@ namespace MathObjects.Plugin.Integers
             return new MathObject((int)leftValue * (int)rightValue);
         }
 
-        public class Factory : IMathOperationFactory, IMathOperationMeta
+        public class Factory : IMathOperationFactory, IHasName
         {
             public string Name
             {

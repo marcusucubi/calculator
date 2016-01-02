@@ -30,6 +30,9 @@ namespace MathObjects.Plugin.Integers
             registry.RegisterOperationFactory(
                 FactoryRegistry.MULTIPLY, 
                 new Multiplication.Factory());
+            
+            registry.RegisterOperationFactory(
+                "GCD", new Gcd.Factory());
         }
     }
 }

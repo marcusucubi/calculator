@@ -50,7 +50,7 @@ namespace MathObjects.UI.Widgets
             {
                 var factory = this.registry.BinaryOperationDictionary[key];
 
-                var meta = factory as IMathOperationMeta;
+                var meta = factory as IHasName;
 
                 if (meta == null)
                 {
@@ -71,7 +71,7 @@ namespace MathObjects.UI.Widgets
             {
                 var factory = this.registry.OperationDictionary[key];
 
-                var meta = factory as IMathOperationMeta;
+                var meta = factory as IHasName;
 
                 if (meta == null)
                 {

@@ -34,7 +34,7 @@ namespace MathObjects.Plugin.Rational
             throw new Exception();
         }
 
-        public class Factory : IMathOperationFactory, IMathOperationMeta
+        public class Factory : IMathOperationFactory, IHasName
         {
             public string Name
             {
