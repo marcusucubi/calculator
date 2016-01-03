@@ -4,7 +4,7 @@ namespace MathObjects.Framework.Registry
 {
     public interface IMathObjectMeta
     {
-        object[] PossibleParameters { get; }
+        string[] PossibleParameters { get; }
     }
 }
 

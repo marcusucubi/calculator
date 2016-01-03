@@ -107,5 +107,13 @@
       <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
       <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Matrix\MathObjects.Core.Matrix.csproj">
+      <Project>{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9}</Project>
+      <Name>MathObjects.Core.Matrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Plugin.Symmetric\MathObjects.Plugin.Symmetric.csproj">
+      <Project>{1CE2F135-C483-44EF-B9B4-97C737B47CE9}</Project>
+      <Name>MathObjects.Plugin.Symmetric</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

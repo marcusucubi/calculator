@@ -21,7 +21,7 @@ namespace MathObjects.UI.Mediator
 
         readonly IMathOperationFactory2 inverseFactory2;
 
-        int currentNumber;
+        string currentNumber;
 
         public CalcMediator(FactoryRegistry registry)
         {
@@ -45,7 +45,7 @@ namespace MathObjects.UI.Mediator
             get { return this.registry; }
         }
 
-        public int CurrentNumber
+        public string CurrentNumber
         {
             get { return currentNumber; }
             set { currentNumber = value; }
@@ -58,18 +58,25 @@ namespace MathObjects.UI.Mediator
 
         public void InsertNumber(object digit)
         {
-            currentNumber *= 10;
+            //currentNumber *= 10;
+            //currentNumber += 10;
 
             var value = digit as IHasValue;
             if (value != null)
             {
-                currentNumber += (int)value.Value;
+                currentNumber += "" + value.Value;
             }
 
             var tuple = digit as IHasTuple;
             if (tuple != null)
             {
-                currentNumber += tuple.Tuple.Item1;
+                currentNumber += "" + tuple.Tuple.Item1;
+            }
+
+            var hasParse = digit as IHasParseValue;
+            if (hasParse != null)
+            {
+                currentNumber += hasParse.ParseValue;
             }
 
             FireCurrentNumberChanged();
@@ -80,7 +87,7 @@ namespace MathObjects.UI.Mediator
             var obj = this.objectFactory.Create(this.currentNumber);
             numbers.Push(obj);
 
-            this.currentNumber = 0;
+            this.currentNumber = "";
 
             FireCurrentNumberChanged();
             FireNumberStackChaned();
@@ -88,7 +95,7 @@ namespace MathObjects.UI.Mediator
 
         public void Clear()
         {
-            this.currentNumber = 0;
+            this.currentNumber = "";
 
             this.numbers.Clear();
 
@@ -116,7 +123,7 @@ namespace MathObjects.UI.Mediator
 
             numbers.Push(wrapper);
 
-            this.currentNumber = 0;
+            this.currentNumber = "";
 
             FireCurrentNumberChanged();
             FireNumberStackChaned();
@@ -134,7 +141,7 @@ namespace MathObjects.UI.Mediator
 
             numbers.Push(wrapper);
 
-            this.currentNumber = 0;
+            this.currentNumber = "";
 
             FireCurrentNumberChanged();
             FireNumberStackChaned();
@@ -156,7 +163,7 @@ namespace MathObjects.UI.Mediator
 
             numbers.Push(wrapper);
 
-            this.currentNumber = 0;
+            this.currentNumber = "";
 
             FireCurrentNumberChanged();
             FireNumberStackChaned();

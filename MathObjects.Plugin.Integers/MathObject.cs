@@ -8,9 +8,9 @@ namespace MathObjects.Plugin.Integers
     {
         readonly int value;
 
-        public MathObject(object param)
+        public MathObject(string param)
         {
-            value = (int)param;
+            value = int.Parse(param);
         }
 
         public int Value
@@ -25,14 +25,17 @@ namespace MathObjects.Plugin.Integers
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(object param)
+            public IMathObject Create(string param)
             {
                 return new MathObject(param);
             }
 
-            public object[] PossibleParameters 
+            public string[] PossibleParameters 
             { 
-                get { return new object[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}; } 
+                get 
+                { 
+                    return new string[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }; 
+                }
             }
         }
     }

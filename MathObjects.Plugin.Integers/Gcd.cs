@@ -22,9 +22,7 @@ namespace MathObjects.Plugin.Integers
             var leftValue = (int) (left as IHasValue).Value;
             var rightValue = (int) (right as IHasValue).Value;
 
-
-
-            return new MathObject(GCD(leftValue, rightValue));
+            return new MathObject("" + GCD(leftValue, rightValue));
         }
 
         public class Factory : IMathOperationFactory, IHasName

@@ -21,7 +21,7 @@ namespace MathObjects.UI.Mediator
 
         Stack<IMathObject> Numbers { get; }
 
-        int CurrentNumber { get; set; }
+        string CurrentNumber { get; set; }
 
         void InsertNumber(object digit);
 

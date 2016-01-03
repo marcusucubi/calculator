@@ -15,10 +15,10 @@ namespace MathObjects.UI.Input
 
             this.entry1.WidgetEvent += OnEventbox1WidgetEvent;
 
-            this.entry1.Changed += OnEntry1Changed;
+            //this.entry1.Changed += OnEntry1Changed;
 
-            this.entry1.AddEvents((int)
-                (EventMask.KeyPressMask));
+            //this.entry1.AddEvents((int)
+            //    (EventMask.KeyPressMask));
         }
 
         public void Connect(IMediator mediator)
@@ -28,7 +28,7 @@ namespace MathObjects.UI.Input
 
             this.mediator.CurrentNumberChaned += (sender, e) => 
                 { 
-                    if (this.mediator.CurrentNumber == 0)
+                    if (this.mediator.CurrentNumber == "")
                     {
                         this.entry1.Text = ""; 
                     }
@@ -64,7 +64,7 @@ namespace MathObjects.UI.Input
             int i;
             if (int.TryParse(s, out i))
             {
-                this.mediator.CurrentNumber = i;
+                this.mediator.CurrentNumber = "" + i;
             }
             else if (s.Length != 0)
             {

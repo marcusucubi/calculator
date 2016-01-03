@@ -11,7 +11,7 @@ namespace MathObjects.Plugin.Integers
             var leftValue = (left as IHasValue).Value;
             var rightValue = (right as IHasValue).Value;
 
-            return new MathObject((int)leftValue + (int)rightValue);
+            return new MathObject("" + ((int)leftValue + (int)rightValue));
         }
 
         public class Factory : IMathOperationFactory, IHasName
