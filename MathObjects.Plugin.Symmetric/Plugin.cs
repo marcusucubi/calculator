@@ -22,6 +22,10 @@ namespace MathObjects.Plugin.Symmetric
             registry.RegisterObjectFactory(
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
+            
+            registry.RegisterOperationFactory(
+                FactoryRegistry.ADD, 
+                new Compose.Factory());
         }
     }
 }

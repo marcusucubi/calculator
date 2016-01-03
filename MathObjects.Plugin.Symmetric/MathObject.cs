@@ -5,7 +5,9 @@ using MathObjects.Core.Matrix;
 
 namespace MathObjects.Plugin.Symmetric
 {
-    class MathObject : IMathObject, IHasMatrix, IHasDisplayValue, IHasParseValue
+    class MathObject : 
+        IMathObject, IHasMatrix, 
+        IHasDisplayValue, IHasParseValue
     {
         PermutationMatix value;
 

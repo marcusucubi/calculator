@@ -32,6 +32,11 @@ namespace MathObjects.Core.Matrix
 				return (this.Value == ((IntegerWithOperation)obj).Value);
 			}
 			
+            if (obj is int)
+            {
+                return (this.Value == (int)obj);
+            }
+
 			return false;
 		}
 		

@@ -35,6 +35,7 @@
     <Compile Include="MathObject.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PermutationMatix.cs" />
+    <Compile Include="Compose.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
