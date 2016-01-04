@@ -26,6 +26,9 @@ namespace MathObjects.Plugin.Symmetric
             registry.RegisterOperationFactory(
                 FactoryRegistry.ADD, 
                 new Compose.Factory());
+            
+            registry.RegisterOperationFactory2(
+                "Inverse", new Inverse.Factory());
         }
     }
 }

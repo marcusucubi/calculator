@@ -36,6 +36,10 @@
     <Compile Include="Plugin.cs" />
     <Compile Include="PermutationMatix.cs" />
     <Compile Include="Compose.cs" />
+    <Compile Include="Inverse.cs" />
+    <Compile Include="InverseObject.cs" />
+    <Compile Include="GenInverse.cs" />
+    <Compile Include="IntegerMatrixUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
