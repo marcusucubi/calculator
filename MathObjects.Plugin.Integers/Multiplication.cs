@@ -8,10 +8,28 @@ namespace MathObjects.Plugin.Integers
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
-            var leftValue = (left as IHasValue).Value;
-            var rightValue = (right as IHasValue).Value;
+            var leftValue = GetValue(left);
+            var rightValue = GetValue(right);
 
             return new MathObject("" + ((int)leftValue * (int)rightValue) );
+        }
+
+        int GetValue(IMathObject obj)
+        {
+            var hasValue = obj as IHasValue;
+            if (hasValue != null)
+            {
+                return hasValue.Value;
+            }
+
+            var hasOutput = obj as IHasOutput;
+            if (hasOutput != null)
+            {
+                var has2 = hasOutput.Output as IHasValue;
+                return has2.Value;
+            }
+
+            throw new Exception();
         }
 
         public class Factory : IMathOperationFactory, IHasName

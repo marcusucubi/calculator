@@ -36,7 +36,10 @@ namespace MathObjects.Plugin.Rational
 
                 if (param is string)
                 {
-                    tuple = new Tuple<int, int>(int.Parse(param), 1);
+                    int paramValue;
+                    int.TryParse(param, out paramValue);
+
+                    tuple = new Tuple<int, int>(paramValue, 1);
                 }
 
                 return new MathObject(tuple);
