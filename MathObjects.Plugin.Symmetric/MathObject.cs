@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Core.Matrix;
+using System.Collections.Generic;
 
 namespace MathObjects.Plugin.Symmetric
 {
@@ -11,9 +13,14 @@ namespace MathObjects.Plugin.Symmetric
     {
         PermutationMatix value;
 
-        public MathObject(PermutationMatix param)
+        public MathObject()
         {
-            value = param;
+            this.value = new PermutationMatix(3);
+        }
+
+        public MathObject(PermutationMatix value)
+        {
+            this.value = value;
         }
 
         public IntegerMatrix Matrix
@@ -29,40 +36,18 @@ namespace MathObjects.Plugin.Symmetric
         public string ParseValue
         {
             get { return DisplayValue; }
-            set
-            {
-                var del = new char[]{'(', ')', ' '};
-                string clean = value.Trim(del);
-                string[] parts = clean.Split(' ');
+            set { this.value = CycleNotationParser.Parse(value); }
+        }
 
-                var intArray = new int[parts.Length];
-                int index = 0;
-                foreach(var part in parts)
-                {
-                    int i = int.Parse(part);
-                    intArray[index] = i;
-                    index++;
-                }
-
-                this.value = PermutationMatix.Create(intArray);
-            }
+        static void Move(List<int> list, List<int> output, int from, int to)
+        {
+            int v1 = list[from - 1];
+            output[to - 1] = v1;
         }
 
         public string DisplayValue 
         {
-            get 
-            {
-                var switches = this.value.Switches;
-
-                string s = "(";
-                foreach(var pos in switches)
-                {
-                    s += " " + pos;
-                }
-                s += " )";
-
-                return s;
-            }
+            get { return CycleNotationGenerator.Generate(new PermutationMatix(this.Matrix)); }
         }
 
         public override string ToString()
@@ -74,7 +59,7 @@ namespace MathObjects.Plugin.Symmetric
         {
             public IMathObject Create(string param)
             {
-                var matrix = new MathObject(new PermutationMatix(3));
+                var matrix = new MathObject();
 
                 if (param is string)
                 {
@@ -90,7 +75,7 @@ namespace MathObjects.Plugin.Symmetric
                 { 
                     return new string[] 
                     {
-                        "(2 1 3)", "(1 3 2)", "(3 2 1)", "(2 3 1)", "(3 1 2)"
+                        "(2 1)", "(3 2)", "(3 1)", "(2 3 1)", "(3 1 2)"
                     }; 
                 } 
             }

@@ -31,6 +31,18 @@ namespace MathObjects.Plugin.Symmetric
                 rightValue = (temp as IHasMatrix).Matrix;
             }
 
+            if (leftValue.Height > rightValue.Height)
+            {
+                uint v = (uint)(leftValue.Height - rightValue.Height);
+                rightValue = rightValue.Expand(v);
+            }
+
+            if (rightValue.Height > leftValue.Height)
+            {
+                uint v = (uint)(rightValue.Height - leftValue.Height);
+                leftValue = leftValue.Expand(v);
+            }
+
             var result = leftValue.MultiplyBy(rightValue);
 
             return new MathObject(new PermutationMatix(result));
