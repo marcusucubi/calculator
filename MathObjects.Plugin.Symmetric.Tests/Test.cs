@@ -39,6 +39,22 @@ namespace MathObjects.Plugin.Symmetric.Tests
             var parseValue = trans.ParseValue;
             Assert.AreEqual(parseValue, "( 1 2 3 )");
         }
+
+        [Test]
+        public void TestCase3()
+        {
+            var reg = new FactoryRegistry();
+            var plugin = new Plugin();
+
+            plugin.Init(reg);
+
+            var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
+
+            var trans = factory.Create("( 3 2 1 )") as IHasParseValue;
+
+            var parseValue = trans.ParseValue;
+            Assert.AreEqual(parseValue, "( 1 3 2 )");
+        }
     }
 }
 

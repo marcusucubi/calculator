@@ -17,15 +17,15 @@ namespace Test
 
             var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
 
-            var trans = factory.Create("(2 3)") as IHasParseValue;
+            var trans = factory.Create("(3 2 1)") as IHasParseValue;
 
             var parseValue = trans.ParseValue;
 
-            Debug.Assert("( 2 3 )" == parseValue);
+            //Debug.Assert("( 1 3 2 )" == parseValue);
 
             Console.WriteLine("Success!");
 
-            Console.In.Read();
+//            Console.In.Read();
         }
     }
 }

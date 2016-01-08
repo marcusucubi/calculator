@@ -43,6 +43,13 @@
     <Compile Include="CycleNotationParser.cs" />
     <Compile Include="CycleNotationGenerator.cs" />
     <Compile Include="PermutationMatixEx.cs" />
+    <Compile Include="Move.cs" />
+    <Compile Include="ListEx.cs" />
+    <Compile Include="CycleList.cs" />
+    <Compile Include="CycleListBuilder.cs" />
+    <Compile Include="CycleListInit.cs" />
+    <Compile Include="CycleListBuilder2.cs" />
+    <Compile Include="Moves.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
