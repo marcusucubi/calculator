@@ -3,6 +3,7 @@ using MathObjects.Framework.Registry;
 using MathObjects.Plugin.Symmetric;
 using MathObjects.Framework;
 using System.Diagnostics;
+using MathObjects.Core.Matrix.Permutation;
 
 namespace Test
 {
@@ -10,22 +11,15 @@ namespace Test
     {
         public static void Main(string[] args)
         {
-            var reg = new FactoryRegistry();
-            var plugin = new Plugin();
+            var switches = new int[] { 1, 2, 3 };
+            var matrix = PermutationMatix.Create(switches);
 
-            plugin.Init(reg);
+            Debug.Assert(matrix.Height == 3);
 
-            var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
-
-            var trans = factory.Create("(3 2 1)") as IHasParseValue;
-
-            var parseValue = trans.ParseValue;
-
-            //Debug.Assert("( 1 3 2 )" == parseValue);
-
-            Console.WriteLine("Success!");
-
-//            Console.In.Read();
+            var row = matrix.Rows[0];
+            Debug.Assert(row[0].Value == 1);
+            Debug.Assert(row[1].Value == 0);
+            Debug.Assert(row[2].Value == 0);
         }
     }
 }
