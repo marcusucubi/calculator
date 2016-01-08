@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using MathObjects.Core.Matrix;
+using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric
 {

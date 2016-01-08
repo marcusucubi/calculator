@@ -3,13 +3,23 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace MathObjects.Plugin.Symmetric
+namespace MathObjects.Core.Matrix.Permutation
 {
     public class CycleList
     {
         readonly CycleListInit init;
 
-        public CycleList(CycleListInit init)
+        public static CycleList Create(string value)
+        {
+            return new CycleListBuilder().Build(value);
+        }
+
+        public static CycleList Create(PermutationMatix matrix)
+        {
+            return new CycleListBuilder2().Build(matrix);
+        }
+
+        internal CycleList(CycleListInit init)
         {
             this.init = new CycleListInit(init);
         }

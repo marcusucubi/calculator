@@ -115,5 +115,9 @@
       <Project>{1CE2F135-C483-44EF-B9B4-97C737B47CE9}</Project>
       <Name>MathObjects.Plugin.Symmetric</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Matrix.Permutation\MathObjects.Core.Matrix.Permutation.csproj">
+      <Project>{13457E87-8AB4-494B-BF43-51B262F954D8}</Project>
+      <Name>MathObjects.Core.Matrix.Permutation</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -45,12 +45,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Plugin", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Matrix.Tests", "MathObjects.Core.Matrix.Tests\MathObjects.Core.Matrix.Tests.csproj", "{9BEDCE07-4FB4-49AF-A2BE-D4F0F79F8141}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Matrix.Permutation", "MathObjects.Core.Matrix.Permutation\MathObjects.Core.Matrix.Permutation.csproj", "{13457E87-8AB4-494B-BF43-51B262F954D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Matrix.Permutation.Tests", "MathObjects.Core.Matrix.Permutation.Tests\MathObjects.Core.Matrix.Permutation.Tests.csproj", "{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13457E87-8AB4-494B-BF43-51B262F954D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13457E87-8AB4-494B-BF43-51B262F954D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13457E87-8AB4-494B-BF43-51B262F954D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13457E87-8AB4-494B-BF43-51B262F954D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CE2F135-C483-44EF-B9B4-97C737B47CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CE2F135-C483-44EF-B9B4-97C737B47CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CE2F135-C483-44EF-B9B4-97C737B47CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,6 +91,10 @@ Global
 		{9BEDCE07-4FB4-49AF-A2BE-D4F0F79F8141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BEDCE07-4FB4-49AF-A2BE-D4F0F79F8141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BEDCE07-4FB4-49AF-A2BE-D4F0F79F8141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC6DC7D6-5AA4-4AE0-9B64-82DF2B9E57BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC6DC7D6-5AA4-4AE0-9B64-82DF2B9E57BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6DC7D6-5AA4-4AE0-9B64-82DF2B9E57BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -145,6 +157,8 @@ Global
 		{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
 		{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
 		{9BEDCE07-4FB4-49AF-A2BE-D4F0F79F8141} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
+		{13457E87-8AB4-494B-BF43-51B262F954D8} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
+		{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

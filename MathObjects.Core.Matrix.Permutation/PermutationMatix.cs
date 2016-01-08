@@ -1,7 +1,7 @@
 ﻿using System;
 using MathObjects.Core.Matrix;
 
-namespace MathObjects.Plugin.Symmetric
+namespace MathObjects.Core.Matrix.Permutation
 {
     public class PermutationMatix : IntegerMatrix
     {

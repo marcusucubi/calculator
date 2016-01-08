@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace MathObjects.Plugin.Symmetric
+namespace MathObjects.Core.Matrix.Permutation
 {
     public class Moves
     {

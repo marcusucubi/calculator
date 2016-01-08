@@ -4,6 +4,7 @@ using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Core.Matrix;
 using System.Collections.Generic;
+using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric
 {
@@ -36,18 +37,12 @@ namespace MathObjects.Plugin.Symmetric
         public string ParseValue
         {
             get { return DisplayValue; }
-            set { this.value = CycleNotationParser.Parse(value); }
-        }
-
-        static void Move(List<int> list, List<int> output, int from, int to)
-        {
-            int v1 = list[from - 1];
-            output[to - 1] = v1;
+            set { this.value = GenerateCycleList(value); }
         }
 
         public string DisplayValue 
         {
-            get { return CycleNotationGenerator.Generate(new PermutationMatix(this.Matrix)); }
+            get { return GenerateCycleList(new PermutationMatix(this.Matrix)); }
         }
 
         public override string ToString()
@@ -79,6 +74,38 @@ namespace MathObjects.Plugin.Symmetric
                     }; 
                 } 
             }
+        }
+            
+        static void Move(List<int> list, List<int> output, int from, int to)
+        {
+            int v1 = list[from - 1];
+            output[to - 1] = v1;
+        }
+
+        static PermutationMatix GenerateCycleList(string value)
+        {
+            var cycle = CycleList.Create(value);
+
+            if (cycle.CycleSet.Count == 1)
+            {
+                return new PermutationMatix(PermutationMatix.GetIdentity(3));
+            }
+
+            return PermutationMatix.Create(cycle.PermutedList.ToArray());
+        }
+
+        static string GenerateCycleList(PermutationMatix matrix)
+        {
+            var cycle = CycleList.Create(matrix);
+
+            string s = "(";
+            foreach(var pos in cycle.CycleSet)
+            {
+                s += " " + pos;
+            }
+            s += " )";
+
+            return s;
         }
     }
 }

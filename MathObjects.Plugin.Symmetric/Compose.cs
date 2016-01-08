@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Core.Matrix;
+using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric
 {

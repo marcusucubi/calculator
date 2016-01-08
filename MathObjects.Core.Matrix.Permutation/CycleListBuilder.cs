@@ -3,9 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace MathObjects.Plugin.Symmetric
+namespace MathObjects.Core.Matrix.Permutation
 {
-    public class CycleListBuilder
+    class CycleListBuilder
     {
         public CycleList Build(string value)
         {
