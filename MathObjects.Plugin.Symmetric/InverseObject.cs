@@ -26,7 +26,7 @@ namespace MathObjects.Plugin.Symmetric
             {
                 var obj = new GenInverse();
 
-                var id = new PermutationMatix(3);
+                var id = new PermutationMatix(this.target.Matrix.Height);
 
                 obj.Generate(this.target.Matrix);
 

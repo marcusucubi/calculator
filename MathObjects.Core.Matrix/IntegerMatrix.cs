@@ -7,7 +7,7 @@ namespace MathObjects.Core.Matrix
 		public static IntegerMatrix GetIdentity(int size)
 		{
 			var factory = new IntegerWithOperationFactory();
-			var id = SquareMatrix<IntegerWithOperation>.GetIdentity(factory, 3);
+			var id = SquareMatrix<IntegerWithOperation>.GetIdentity(factory, size);
 			
 			return new IntegerMatrix(id);
 		}
