@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace MathObjects.Core.Matrix.Permutation
 {
-    public class CycleListInit
+    class CycleListInit
     {
-        readonly List<int> cycleList;
+        readonly List<List<int>> cycleList;
 
         readonly List<Move> moves;
 
@@ -13,19 +13,19 @@ namespace MathObjects.Core.Matrix.Permutation
 
         public CycleListInit()
         {
-            cycleList = new List<int>();
+            cycleList = new List<List<int>>();
             permutedList = new List<int>();
             moves = new List<Move>();
         }
 
         public CycleListInit(CycleListInit copy)
         {
-            cycleList = new List<int>(copy.CycleSet);
+            cycleList = new List<List<int>>(copy.CycleSet);
             permutedList = new List<int>(copy.PermutedList);
             moves = new List<Move>(copy.Moves);
         }
 
-        public List<int> CycleSet
+        public List<List<int>> CycleSet
         {
             get { return this.cycleList; }
         }

@@ -8,9 +8,12 @@ namespace MathObjects.Core.Matrix.Permutation
     {
         public CycleList Build(PermutationMatix matrix)
         {
-            var init = new CycleListInit();
+            return this.Build(matrix.Switches);
+        }
 
-            var switches = matrix.Switches;
+        public CycleList Build(int[] switches)
+        {
+            var init = new CycleListInit();
 
             init.PermutedList = new List<int>(switches);
 
@@ -33,17 +36,54 @@ namespace MathObjects.Core.Matrix.Permutation
                 return;
             }
 
+            var stack = new List<Move>();
+            foreach(var move in init.Moves)
+            {
+                stack.Add(move);
+            }
+
             var moves = new Moves(init.Moves);
 
-            var first = moves.First;
-            Move cursor = moves.GetNext(first);
+            var largeList = new List<int>();
 
-            init.CycleSet.Add(first.From);
-
-            while(cursor.From != first.From)
+            while (stack.Count > 0)
             {
-                init.CycleSet.Add(cursor.From);
-                cursor = moves.GetNext(cursor);
+                var smallList = new List<int>();
+
+                stack = new List<Move>(stack.OrderBy(x => x.From));
+
+                var first = stack.First();
+                stack.Remove(first);
+
+                //for (int temp = 1; temp < first.From; temp++)
+                //{
+                //    smallList.Add(temp);
+                //}
+
+                smallList.Add(first.From);
+                largeList.Add(first.From);
+
+                var cursor = moves.GetNext(first);
+
+                if (stack.Contains(cursor))
+                {
+                    stack.Remove(cursor);
+                }
+
+                while (cursor.From != first.From)
+                {
+                    smallList.Add(cursor.From);
+                    largeList.Add(cursor.From);
+
+                    cursor = moves.GetNext(cursor);
+
+                    if (stack.Contains(cursor))
+                    {
+                        stack.Remove(cursor);
+                    }
+                }
+
+                init.CycleSet.Add(smallList);
             }
         }
 

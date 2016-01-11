@@ -24,9 +24,20 @@ namespace MathObjects.Core.Matrix.Permutation
             this.init = new CycleListInit(init);
         }
 
-        public ReadOnlyCollection<int> CycleSet
+        public ReadOnlyCollection<ReadOnlyCollection<int>> CycleSet
         {
-            get { return new ReadOnlyCollection<int>(init.CycleSet); }
+            get 
+            { 
+                var result = new List<ReadOnlyCollection<int>>();
+
+                foreach (var child in init.CycleSet)
+                {
+                    var list = new ReadOnlyCollection<int>(child);
+                    result.Add(list);
+                }
+
+                return new ReadOnlyCollection<ReadOnlyCollection<int>>(result); 
+            }
         }
 
         public ReadOnlyCollection<int> PermutedList
@@ -37,6 +48,20 @@ namespace MathObjects.Core.Matrix.Permutation
         public ReadOnlyCollection<Move> Moves
         {
             get { return new ReadOnlyCollection<Move>(init.Moves); }
+        }
+
+        public override string ToString()
+        {
+            string s = "(";
+
+            foreach(var pos in this.CycleSet)
+            {
+                s += " " + pos;
+            }
+
+            s += " )";
+
+            return s;
         }
     }
 }

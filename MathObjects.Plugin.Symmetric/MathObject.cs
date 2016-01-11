@@ -70,7 +70,7 @@ namespace MathObjects.Plugin.Symmetric
                 { 
                     return new string[] 
                     {
-                        "(2 1)", "(3 2)", "(3 1)", "(1 2 3)", "(1 3 2)"
+                        "(1 2)", "(2 3)", "(1 3)", "(1 2 3)", "(1 3 2)", "(1 2 3 4)"
                     }; 
                 } 
             }
@@ -86,7 +86,7 @@ namespace MathObjects.Plugin.Symmetric
         {
             var cycle = CycleList.Create(value);
 
-            if (cycle.CycleSet.Count == 1)
+            if (cycle.CycleSet.Count == 0)
             {
                 return new PermutationMatix(PermutationMatix.GetIdentity(3));
             }
@@ -98,12 +98,21 @@ namespace MathObjects.Plugin.Symmetric
         {
             var cycle = CycleList.Create(matrix);
 
-            string s = "(";
-            foreach(var pos in cycle.CycleSet)
+            if (cycle.CycleSet.Count == 0)
             {
-                s += " " + pos;
+                return "( )";
             }
-            s += " )";
+
+            string s = "";
+            foreach(var big in cycle.CycleSet)
+            {
+                s += "(";
+                foreach(var pos in big)
+                {
+                    s += " " + pos;
+                }
+                s += " )";
+            }
 
             return s;
         }

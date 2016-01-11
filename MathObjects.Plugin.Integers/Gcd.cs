@@ -19,10 +19,28 @@ namespace MathObjects.Plugin.Integers
 
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
-            var leftValue = (int) (left as IHasValue).Value;
-            var rightValue = (int) (right as IHasValue).Value;
+            var leftValue = GetValue(left);
+            var rightValue = GetValue(right);
 
             return new MathObject("" + GCD(leftValue, rightValue));
+        }
+
+        int GetValue(IMathObject obj)
+        {
+            var hasValue = obj as IHasValue;
+            if (hasValue != null)
+            {
+                return hasValue.Value;
+            }
+
+            var hasOutput = obj as IHasOutput;
+            if (hasOutput != null)
+            {
+                var has2 = hasOutput.Output as IHasValue;
+                return has2.Value;
+            }
+
+            throw new Exception();
         }
 
         public class Factory : IMathOperationFactory, IHasName

@@ -24,46 +24,73 @@ namespace MathObjects.Core.Matrix.Permutation
 
         void BuildCycleList(CycleListInit init, string value)
         {
-            var del = new char[]{ '(', ')', ' ' };
-            string clean = value.Trim(del);
-            string[] dirtyParts = clean.Split(' ');
+            string[] bigParts = value.Split(')');
 
-            foreach (var part in dirtyParts)
+            foreach(var bigPart in bigParts)
             {
-                int i = int.Parse(part);
-                init.CycleSet.Add(i);
+                if (bigPart.Trim().Length == 0)
+                {
+                    continue;
+                }
+
+                var del = new char[]{ '(', ')', ' ' };
+                string clean = bigPart.Trim(del);
+                string[] dirtyParts = clean.Split(' ');
+
+                var list = new List<int>();
+
+                foreach (var part in dirtyParts)
+                {
+                    int i = int.Parse(part);
+                    list.Add(i);
+                }
+
+                init.CycleSet.Add(list);
             }
         }
 
         void BuildMoves(CycleListInit init)
         {
-            var lastTwo = new List<int>();
-            foreach (var part in init.CycleSet)
+            foreach (var bigList in init.CycleSet)
             {
-                lastTwo.Add(part);
-
-                if (lastTwo.Count >= 2)
+                var lastTwo = new List<int>();
+                foreach (var part in bigList)
                 {
-                    var move = new Move(lastTwo);
-                    init.Moves.Add(move);
+                    lastTwo.Add(part);
 
-                    lastTwo.RemoveAt(0);
+                    if (lastTwo.Count >= 2)
+                    {
+                        var move = new Move(lastTwo);
+                        init.Moves.Add(move);
+
+                        lastTwo.RemoveAt(0);
+                    }
                 }
-            }
 
-            {
-                int first = init.CycleSet.FirstOrDefault();
-                int last = init.CycleSet.LastOrDefault();
+                {
+                    int first = bigList.FirstOrDefault();
+                    int last = bigList.LastOrDefault();
 
-                var move = new Move(last, first);
+                    var move = new Move(last, first);
 
-                init.Moves.Add(move);
+                    init.Moves.Add(move);
+                }
             }
         }
 
         List<int> BuildSetOfCycle(CycleListInit init)
         {
-            int size = init.CycleSet.OrderBy(x => x).LastOrDefault();
+            int size = 0;
+
+            foreach(var list in init.CycleSet)
+            {
+                int temp = list.OrderBy(x => x).LastOrDefault();
+
+                if (temp > size)
+                {
+                    size = temp;
+                }
+            }
 
             return BuildSet(size);
         }

@@ -11,8 +11,8 @@ namespace MathObjects.Core.Matrix.Permutation.Tests
         {
             var cycle = CycleList.Create("(1 2)");
 
-            int n1 = cycle.CycleSet[0];
-            int n2 = cycle.CycleSet[1];
+            int n1 = cycle.CycleSet[0][0];
+            int n2 = cycle.CycleSet[0][1];
 
             Assert.AreEqual(1, n1);
             Assert.AreEqual(2, n2);
@@ -23,9 +23,9 @@ namespace MathObjects.Core.Matrix.Permutation.Tests
         {
             var cycle = CycleList.Create("(1 2 3)");
 
-            int n1 = cycle.CycleSet[0];
-            int n2 = cycle.CycleSet[1];
-            int n3 = cycle.CycleSet[2];
+            int n1 = cycle.CycleSet[0][0];
+            int n2 = cycle.CycleSet[0][1];
+            int n3 = cycle.CycleSet[0][2];
 
             Assert.AreEqual(1, n1);
             Assert.AreEqual(2, n2);
@@ -37,9 +37,9 @@ namespace MathObjects.Core.Matrix.Permutation.Tests
         {
             var cycle = CycleList.Create("(1 2 3)");
 
-            int n1 = cycle.CycleSet[0];
-            int n2 = cycle.CycleSet[1];
-            int n3 = cycle.CycleSet[2];
+            int n1 = cycle.CycleSet[0][0];
+            int n2 = cycle.CycleSet[0][1];
+            int n3 = cycle.CycleSet[0][2];
 
             Assert.AreEqual(1, n1);
             Assert.AreEqual(2, n2);
