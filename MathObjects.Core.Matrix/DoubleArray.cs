@@ -6,9 +6,9 @@ namespace MathObjects.Core.Matrix
     class DoubleArray<T>
     {
         readonly int width;
-		
+
         readonly int height;
-		
+
         readonly IDictionary<string, T> dictionary = 
             new Dictionary<string, T>();
 
@@ -16,7 +16,7 @@ namespace MathObjects.Core.Matrix
         {
             this.width = clone.width;
             this.height = clone.height;
-			
+
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
@@ -31,7 +31,7 @@ namespace MathObjects.Core.Matrix
         {
             this.width = width;
             this.height = height;
-			
+
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)

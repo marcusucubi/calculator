@@ -5,20 +5,20 @@ using System.Collections.ObjectModel;
 namespace MathObjects.Core.Matrix
 {
     public delegate void MatrixHandler<T>(int row,int col,T data,Matrix<T> matrix) where T : IHasOperation<T>;
-	
+
     public class Matrix<T> where T : IHasOperation<T>
     {
         readonly DoubleArray<T> doubleArray;
-		
+
         readonly int width;
-		
+
         readonly int height;
 
         public Matrix(Matrix<T> clone)
         {
             this.width = clone.Width;
             this.height = clone.Height;
-			
+
             doubleArray = new DoubleArray<T>(clone.doubleArray);
         }
 
@@ -26,7 +26,7 @@ namespace MathObjects.Core.Matrix
         {
             this.width = width;
             this.height = height;
-			
+
             doubleArray = new DoubleArray<T>(width, height);
         }
 
@@ -51,18 +51,18 @@ namespace MathObjects.Core.Matrix
             get
             {  
                 var result = new List<RowVector<T>>();
-				
+
                 for (int row = 0; row < Height; row++)
                 {
                     var rowVector = new RowVector<T>(Width);
                     result.Add(rowVector);
-					
+
                     for (int col = 0; col < Width; col++)
                     {
                         rowVector[col] = this[row, col];
                     }
                 }
-				
+
                 return result.AsReadOnly();
             }
         }
@@ -83,7 +83,7 @@ namespace MathObjects.Core.Matrix
         {
             var op = new MultipilcationOperation<T>(this, other);
             var result = op.Execute();
-			
+
             if (result.Width == 1)
             {
                 return new Vector<T>(result);
@@ -92,22 +92,22 @@ namespace MathObjects.Core.Matrix
             {
                 return new RowVector<T>(result);
             }
-			
+
             return result;
         }
 
         public override bool Equals(object obj)
         {
             var matrix = obj as Matrix<T>;
-			
+
             if (this.Width != matrix.Width ||
             this.Height != matrix.Height)
             {
                 return false;
             }
-			
+
             bool result = true;
-			
+
             for (int row = 0; row < matrix.Height; row++)
             {
                 for (int col = 0; col < matrix.Width; col++)
@@ -119,7 +119,7 @@ namespace MathObjects.Core.Matrix
                     }
                 }
             }
-			
+
             return result;
         }
 
@@ -131,12 +131,12 @@ namespace MathObjects.Core.Matrix
         public override string ToString()
         {
             string s = "[";
-			
+
             foreach (var row in Rows)
             {
                 s += " " + row + "";
             }
-			
+
             return s + "]";
         }
     }

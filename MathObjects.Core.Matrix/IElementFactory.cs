@@ -2,10 +2,10 @@
 
 namespace MathObjects.Core.Matrix
 {
-	public interface IElementFactory<T>
-	{
-		T GetMultiplicativeIdentity();
-		
-		T GetAdditiveIdentity();
-	}
+    public interface IElementFactory<T>
+    {
+        T GetMultiplicativeIdentity();
+
+        T GetAdditiveIdentity();
+    }
 }

@@ -7,13 +7,13 @@ namespace MathObjects.Core.Matrix
     public struct PlaceHolder<T> : IHasOperation<PlaceHolder<T>>
     {
         static public PlaceHolder<T> IDENTITY = new PlaceHolder<T>(true, false);
-		
+
         static public PlaceHolder<T> ZERO = new PlaceHolder<T>(false, true);
-		
+
         ReadOnlyCollection<T> subjectList;
-		
+
         bool isIdentity;
-		
+
         bool isNotZero;
 
         public PlaceHolder(T subject)
@@ -73,17 +73,17 @@ namespace MathObjects.Core.Matrix
             {
                 return this;
             }
-			
+
             if (this.IsIdentity)
             {
                 return other;
             }
-			
+
             if (other.IsZero || this.IsZero)
             {
                 return new PlaceHolder<T>();
             }
-			
+
             return new PlaceHolder<T>(this, other);
         }
 
@@ -93,12 +93,12 @@ namespace MathObjects.Core.Matrix
             {
                 return this;
             }
-			
+
             if (this.IsZero)
             {
                 return other;
             }
-			
+
             if (other.IsIdentity || this.IsIdentity)
             {
                 throw new Exception("Can not add IDENTITY");
