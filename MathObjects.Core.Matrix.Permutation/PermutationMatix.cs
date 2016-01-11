@@ -22,7 +22,7 @@ namespace MathObjects.Core.Matrix.Permutation
         public static PermutationMatix Create(int[] array)
         {
             var result = new PermutationMatix(array.Length);
-			
+
             for (int row = 0; row < result.Height; row++)
             {
                 int columnValue = array[row];
@@ -31,7 +31,7 @@ namespace MathObjects.Core.Matrix.Permutation
                     result[row, col] = (col + 1 == columnValue) ? 1 : 0;
                 }
             }
-			
+
             return result;
         }
 
@@ -41,15 +41,15 @@ namespace MathObjects.Core.Matrix.Permutation
             {
                 throw new ArgumentException();
             }
-			
+
             if (index2 >= this.Rows.Count)
             {
                 throw new ArgumentException();
             }
-			
+
             var row1 = this.Rows[index1] as RowVector<IntegerWithOperation>;
             var row2 = this.Rows[index2] as RowVector<IntegerWithOperation>;
-			
+
             SetRow(index2, row1);
             SetRow(index1, row2);
         }
@@ -78,10 +78,10 @@ namespace MathObjects.Core.Matrix.Permutation
                             break;
                         }
                     }
-					
+
                     index++;
                 }
-				
+
                 return result;
             }
         }
@@ -94,7 +94,7 @@ namespace MathObjects.Core.Matrix.Permutation
         public int FindIndex(int index)
         {
             int result = -1;
-			
+
             int rowIndex = 0;
             foreach (var row in this.Rows)
             {
@@ -105,19 +105,19 @@ namespace MathObjects.Core.Matrix.Permutation
                     {
                         break;
                     }
-					
+
                     count++;
                 }
-				
+
                 if (count == index)
                 {
                     result = rowIndex;
                     break;
                 }
-				
+
                 rowIndex++;
             }
-			
+
             return result;
         }
     }

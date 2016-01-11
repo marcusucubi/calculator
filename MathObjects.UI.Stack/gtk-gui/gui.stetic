@@ -16,6 +16,7 @@
       <widget class="Gtk.HBox" id="hbox1">
         <property name="MemberName" />
         <property name="Spacing">6</property>
+        <property name="BorderWidth">5</property>
         <child>
           <widget class="Gtk.Button" id="buttonPush">
             <property name="MemberName" />

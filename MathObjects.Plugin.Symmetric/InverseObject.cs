@@ -1,6 +1,6 @@
 ﻿using System;
-using MathObjects.Framework;
 using System.Diagnostics;
+using MathObjects.Framework;
 using MathObjects.Core.Matrix;
 using MathObjects.Core.Matrix.Permutation;
 
@@ -41,17 +41,9 @@ namespace MathObjects.Plugin.Symmetric
         public string DisplayValue 
         {
             get 
-            {
-                var switches = (this.Matrix as PermutationMatix).Switches;
-
-                string s = "(";
-                foreach(var pos in switches)
-                {
-                    s += " " + pos;
-                }
-                s += " )";
-
-                return s;
+            { 
+                return MathObject.GenerateCycleList(
+                    new PermutationMatix(this.Matrix)); 
             }
         }
 

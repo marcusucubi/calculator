@@ -50,6 +50,11 @@ namespace MathObjects.Core.Matrix.Permutation
             get { return new ReadOnlyCollection<Move>(init.Moves); }
         }
 
+        public PermutationMatix ToMatrix()
+        {
+            return PermutationMatix.Create(this.PermutedList.ToArray());
+        }
+
         public override string ToString()
         {
             string s = "(";

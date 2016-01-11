@@ -17,6 +17,7 @@ namespace MathObjects.UI.Widgets
 			this.table1.Name = "table1";
 			this.table1.RowSpacing = ((uint)(6));
 			this.table1.ColumnSpacing = ((uint)(6));
+			this.table1.BorderWidth = ((uint)(6));
 			this.Add (this.table1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

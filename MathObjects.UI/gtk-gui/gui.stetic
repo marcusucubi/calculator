@@ -78,12 +78,13 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="MathObjects.UI.FieldWidget" design-size="300 31">
+  <widget class="Gtk.Bin" id="MathObjects.UI.FieldWidget" design-size="300 33">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
       <widget class="Gtk.Alignment" id="alignment1">
         <property name="MemberName" />
+        <property name="BorderWidth">4</property>
         <child>
           <widget class="Gtk.ComboBox" id="combobox1">
             <property name="MemberName" />

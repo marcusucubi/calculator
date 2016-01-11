@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Diagnostics;
 
 namespace MathObjects.Core.Matrix.Permutation.Tests
 {
@@ -100,8 +101,26 @@ namespace MathObjects.Core.Matrix.Permutation.Tests
                 Assert.AreEqual(4, row[2]);
                 Assert.AreEqual(3, row[3]);
             }
+        }
 
+        [Test]
+        public void TestCase7()
+        {
+            var matrix = new PermutationMatix(4);
 
+            var rotate = PermutationMatix.Create(
+                new int[] { 4, 1, 2, 3 });
+
+            Debug.WriteLine(matrix);
+
+            for (int i = 0; i < 4; i++)
+            {
+                matrix = matrix.MultiplyBy(rotate);
+            }
+
+            var id = IntegerMatrix.GetIdentity(4);
+
+            Assert.AreEqual(id, matrix);
         }
     }
 }

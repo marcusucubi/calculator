@@ -61,6 +61,7 @@
         <property name="NColumns">3</property>
         <property name="RowSpacing">6</property>
         <property name="ColumnSpacing">6</property>
+        <property name="BorderWidth">6</property>
         <child>
           <placeholder />
         </child>

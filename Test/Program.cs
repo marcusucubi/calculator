@@ -4,6 +4,7 @@ using MathObjects.Plugin.Symmetric;
 using MathObjects.Framework;
 using System.Diagnostics;
 using MathObjects.Core.Matrix.Permutation;
+using MathObjects.Core.Matrix;
 
 namespace Test
 {
@@ -11,35 +12,18 @@ namespace Test
     {
         public static void Main(string[] args)
         {
-            var switches = new int[] { 2, 1, 3, 4 };
-            var matrix = PermutationMatix.Create(switches);
+            var cycle = CycleList.Create("(1 2 3 4)");
 
-            var switches2 = new int[] { 1, 2, 4, 3 };
-            var matrix2 = PermutationMatix.Create(switches2);
+            var matrix = new PermutationMatix(4);
 
-            Debug.Assert(matrix.Height == 4);
-
+            for (int i = 0; i < 4; i++)
             {
-                var row = matrix.Switches;
-                Debug.Assert(2 == row[0]);
-                Debug.Assert(1 == row[1]);
-                Debug.Assert(3 == row[2]);
-                Debug.Assert(4 == row[3]);
+                matrix = matrix.MultiplyBy(cycle.ToMatrix());
             }
 
-            var result = matrix.MultiplyBy(matrix2);
-            {
-                var row = result.Switches;
-                Debug.Assert(2 == row[0]);
-                Debug.Assert(1 == row[1]);
-                Debug.Assert(4 == row[2]);
-                Debug.Assert(3 == row[3]);
-            }
+            var id = IntegerMatrix.GetIdentity(4);
 
-            var cycle = CycleList.Create(result);
-            var s = cycle.ToString();
-
-            Console.Write(s);
+            Debug.Assert(id.Equals(matrix));
         }
     }
 }

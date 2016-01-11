@@ -83,7 +83,7 @@ namespace MathObjects.Plugin.Symmetric
             output[to - 1] = v1;
         }
 
-        static PermutationMatix GenerateCycleList(string value)
+        public static PermutationMatix GenerateCycleList(string value)
         {
             var cycle = CycleList.Create(value);
 
@@ -95,7 +95,7 @@ namespace MathObjects.Plugin.Symmetric
             return PermutationMatix.Create(cycle.PermutedList.ToArray());
         }
 
-        static string GenerateCycleList(PermutationMatix matrix)
+        public static string GenerateCycleList(PermutationMatix matrix)
         {
             var cycle = CycleList.Create(matrix);
 
