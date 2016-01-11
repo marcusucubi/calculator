@@ -6,7 +6,7 @@ using System.Reflection;
 namespace MathObjects.Core.Plugin
 {
     public delegate bool IsAttributeHandler(object obj);
-	
+
     public class PluginLoader : IPluginLoader
     {
         readonly IList<IPlugin> plugins = new List<IPlugin>();
