@@ -7,6 +7,23 @@ namespace MathObjects.Core.Matrix.Permutation
 {
     class CycleListBuilder
     {
+        public CycleList Build(int[] value)
+        {
+            var init = new CycleListInit();
+
+            init.CycleSet.Add(new List<int>(value));
+
+            //BuildCycleList(init, value);
+
+            BuildMoves(init);
+
+            var countingSet = BuildSetOfCycle(init);
+
+            init.PermutedList = countingSet.DoMoves(init.Moves);
+
+            return new CycleList(init);
+        }
+
         public CycleList Build(string value)
         {
             var init = new CycleListInit();

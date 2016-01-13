@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\MathObjects.Core.Parser\Lib\Antlr4.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -40,6 +43,11 @@
     <Compile Include="GenInverse.cs" />
     <Compile Include="IntegerMatrixUtils.cs" />
     <Compile Include="PermutationMatixEx.cs" />
+    <Compile Include="Parser\PermutationBaseListener.cs" />
+    <Compile Include="Parser\PermutationBuilder.cs" />
+    <Compile Include="Parser\PermutationLexer.cs" />
+    <Compile Include="Parser\PermutationListener.cs" />
+    <Compile Include="Parser\PermutationParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -63,5 +71,14 @@
       <Project>{13457E87-8AB4-494B-BF43-51B262F954D8}</Project>
       <Name>MathObjects.Core.Matrix.Permutation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parser\gen.sh" />
+    <None Include="Parser\Permutation.g4" />
+    <None Include="Parser\Permutation.tokens" />
+    <None Include="Parser\PermutationLexer.tokens" />
   </ItemGroup>
 </Project>

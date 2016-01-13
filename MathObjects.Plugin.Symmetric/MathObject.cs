@@ -5,6 +5,9 @@ using MathObjects.Framework.Registry;
 using MathObjects.Core.Matrix;
 using System.Collections.Generic;
 using MathObjects.Core.Matrix.Permutation;
+using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
+using MathObjects.Plugin.Symmetric.Parser;
 
 namespace MathObjects.Plugin.Symmetric
 {
@@ -58,7 +61,19 @@ namespace MathObjects.Plugin.Symmetric
 
                 if (param is string)
                 {
-                    matrix.ParseValue = param as string;
+                    var input = new AntlrInputStream(param);
+                    var lexer = new PermutationLexer(input);
+                    var tokens = new CommonTokenStream(lexer);
+                    var parser = new PermutationParser(tokens);
+
+                    var tree = parser.init(); 
+
+                    var walker = new ParseTreeWalker();
+                    var builder = new PermutationBuilder();
+
+                    walker.Walk(builder, tree);
+
+                    matrix = new MathObject(builder.PermutationMatix);
                 }
 
                 return matrix;
@@ -70,8 +85,8 @@ namespace MathObjects.Plugin.Symmetric
                 { 
                     return new string[] 
                     {
-                        "(1 2)", "(2 3)", "(1 3)", "(1 2 3)", "(1 3 2)", "(1 2 3 4)",
-                        "(3 4)", "(2 3 4)"
+                        "(1, 2)", "(2, 3)", "(1, 3)", "(1, 2, 3)", "(1, 3, 2)", "(1, 2, 3, 4)",
+                        "(3, 4)", "(2, 3, 4)"
                     }; 
                 } 
             }
@@ -110,6 +125,11 @@ namespace MathObjects.Plugin.Symmetric
                 s += "(";
                 foreach(var pos in big)
                 {
+                    if (s.Length > 1)
+                    {
+                        s += ",";
+                    }
+
                     s += " " + pos;
                 }
                 s += " )";
