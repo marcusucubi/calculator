@@ -85,12 +85,16 @@ namespace MathObjects.UI.Mediator
         public void Enter()
         {
             var obj = this.objectFactory.Create(this.currentNumber);
-            numbers.Push(obj);
+            if (obj != null)
+            {
+                numbers.Push(obj);
 
-            this.currentNumber = "";
+                this.currentNumber = "";
 
-            FireCurrentNumberChanged();
-            FireNumberStackChaned();
+                FireCurrentNumberChanged();
+                FireNumberStackChaned();
+                ErrorHandler.ResetError(this);
+            }
         }
 
         public void Clear()

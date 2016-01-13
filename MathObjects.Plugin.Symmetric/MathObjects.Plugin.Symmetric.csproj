@@ -48,6 +48,7 @@
     <Compile Include="Parser\PermutationLexer.cs" />
     <Compile Include="Parser\PermutationListener.cs" />
     <Compile Include="Parser\PermutationParser.cs" />
+    <Compile Include="ErrorListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
