@@ -61,19 +61,26 @@ namespace MathObjects.Plugin.Symmetric
 
                 if (param is string)
                 {
-                    var input = new AntlrInputStream(param);
-                    var lexer = new PermutationLexer(input);
-                    var tokens = new CommonTokenStream(lexer);
-                    var parser = new PermutationParser(tokens);
+                    try
+                    {
+                        var input = new AntlrInputStream(param);
+                        var lexer = new PermutationLexer(input);
+                        var tokens = new CommonTokenStream(lexer);
+                        var parser = new PermutationParser(tokens);
 
-                    var tree = parser.init(); 
+                        var tree = parser.init(); 
 
-                    var walker = new ParseTreeWalker();
-                    var builder = new PermutationBuilder();
+                        var walker = new ParseTreeWalker();
+                        var builder = new PermutationBuilder();
 
-                    walker.Walk(builder, tree);
+                        walker.Walk(builder, tree);
 
-                    matrix = new MathObject(builder.PermutationMatix);
+                        matrix = new MathObject(builder.PermutationMatix);
+                    }
+                    catch(Exception e)
+                    {
+                        ErrorHandler.SendError(this, e);
+                    }
                 }
 
                 return matrix;

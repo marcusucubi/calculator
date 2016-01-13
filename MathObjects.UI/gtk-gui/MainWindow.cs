@@ -9,6 +9,8 @@ public partial class MainWindow
 	
 	private global::MathObjects.UI.Input.InputWidget inputwidget1;
 	
+	private global::MathObjects.UI.ErrorWidget errorwidget1;
+	
 	private global::MathObjects.UI.Stack.StackWidget2 stackwidget21;
 	
 	private global::MathObjects.UI.Widgets.MathObjetsWidget mathobjetswidget1;
@@ -45,26 +47,34 @@ public partial class MainWindow
 		w2.Expand = false;
 		w2.Fill = false;
 		// Container child vbox1.Gtk.Box+BoxChild
+		this.errorwidget1 = new global::MathObjects.UI.ErrorWidget ();
+		this.errorwidget1.HeightRequest = 35;
+		this.errorwidget1.Events = ((global::Gdk.EventMask)(256));
+		this.errorwidget1.Name = "errorwidget1";
+		this.vbox1.Add (this.errorwidget1);
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.errorwidget1]));
+		w3.Position = 2;
+		// Container child vbox1.Gtk.Box+BoxChild
 		this.stackwidget21 = new global::MathObjects.UI.Stack.StackWidget2 ();
 		this.stackwidget21.Events = ((global::Gdk.EventMask)(256));
 		this.stackwidget21.Name = "stackwidget21";
 		this.vbox1.Add (this.stackwidget21);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.stackwidget21]));
-		w3.Position = 2;
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.stackwidget21]));
+		w4.Position = 3;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.mathobjetswidget1 = new global::MathObjects.UI.Widgets.MathObjetsWidget ();
 		this.mathobjetswidget1.Events = ((global::Gdk.EventMask)(256));
 		this.mathobjetswidget1.Name = "mathobjetswidget1";
 		this.vbox1.Add (this.mathobjetswidget1);
-		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.mathobjetswidget1]));
-		w4.Position = 3;
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.mathobjetswidget1]));
+		w5.Position = 4;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.mathoperationswidget1 = new global::MathObjects.UI.Widgets.MathOperationsWidget ();
 		this.mathoperationswidget1.Events = ((global::Gdk.EventMask)(256));
 		this.mathoperationswidget1.Name = "mathoperationswidget1";
 		this.vbox1.Add (this.mathoperationswidget1);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.mathoperationswidget1]));
-		w5.Position = 4;
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.mathoperationswidget1]));
+		w6.Position = 5;
 		this.Add (this.vbox1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();

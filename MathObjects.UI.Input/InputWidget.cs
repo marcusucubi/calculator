@@ -19,6 +19,11 @@ namespace MathObjects.UI.Input
             this.mediator = mediator;
             this.stackbuttonwidget1.Mediator = mediator;
 
+            this.entry1.Changed += (sender, e) => 
+                {
+                    this.mediator.CurrentNumber = this.entry1.Text;
+                };
+
             this.mediator.CurrentNumberChaned += (sender, e) => 
                 { 
                     if (this.mediator.CurrentNumber == "")
