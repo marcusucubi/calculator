@@ -70,27 +70,30 @@ namespace MathObjects.Core.Matrix.Permutation
         {
             foreach (var bigList in init.CycleSet)
             {
-                var lastTwo = new List<int>();
-                foreach (var part in bigList)
+                if (bigList.Count > 0)
                 {
-                    lastTwo.Add(part);
-
-                    if (lastTwo.Count >= 2)
+                    var lastTwo = new List<int>();
+                    foreach (var part in bigList)
                     {
-                        var move = new Move(lastTwo);
-                        init.Moves.Add(move);
+                        lastTwo.Add(part);
 
-                        lastTwo.RemoveAt(0);
+                        if (lastTwo.Count >= 2)
+                        {
+                            var move = new Move(lastTwo);
+                            init.Moves.Add(move);
+
+                            lastTwo.RemoveAt(0);
+                        }
                     }
-                }
 
-                {
-                    int first = bigList.FirstOrDefault();
-                    int last = bigList.LastOrDefault();
+                    {
+                        int first = bigList.FirstOrDefault();
+                        int last = bigList.LastOrDefault();
 
-                    var move = new Move(last, first);
+                        var move = new Move(last, first);
 
-                    init.Moves.Add(move);
+                        init.Moves.Add(move);
+                    }
                 }
             }
         }

@@ -8,7 +8,10 @@ options {
 @parser::namespace{MathObjects.Core.Parser}
 
 /** A rule called init that matches comma-separated values between {...}. */
-init    : '(' value (',' value)* ')' ; // must match at least one value
+init    : 
+        '(' value (',' value)* ')' 
+        | '(' ')' 
+        ;
 
 /** A value can be either a nested array/struct or a simple integer (INT) */
 value   : INT
