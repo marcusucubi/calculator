@@ -18,10 +18,10 @@ namespace MathObjects.Plugin.Symmetric.Tests
 
             var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
 
-            var trans = factory.Create("(2 3)") as IHasParseValue;
+            var trans = factory.Create("(2, 3)") as IHasParseValue;
 
             var parseValue = trans.ParseValue;
-            Assert.AreEqual("( 2 3 )", parseValue);
+            Assert.AreEqual("( 2, 3 )", parseValue);
         }
 
         [Test]
@@ -34,10 +34,10 @@ namespace MathObjects.Plugin.Symmetric.Tests
 
             var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
 
-            var trans = factory.Create("( 1 2 3 )") as IHasParseValue;
+            var trans = factory.Create("( 1, 2, 3 )") as IHasParseValue;
 
             var parseValue = trans.ParseValue;
-            Assert.AreEqual(parseValue, "( 1 2 3 )");
+            Assert.AreEqual(parseValue, "( 1, 2, 3 )");
         }
 
         [Test]
@@ -50,10 +50,10 @@ namespace MathObjects.Plugin.Symmetric.Tests
 
             var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
 
-            var trans = factory.Create("( 3 2 1 )") as IHasParseValue;
+            var trans = factory.Create("( 3, 2, 1 )") as IHasParseValue;
 
             var parseValue = trans.ParseValue;
-            Assert.AreEqual(parseValue, "( 1 3 2 )");
+            Assert.AreEqual(parseValue, "( 1, 3, 2 )");
         }
     }
 }
