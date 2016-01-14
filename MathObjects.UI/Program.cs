@@ -24,7 +24,7 @@ namespace MathObjects.UI
             MainClass.PluginRegistry.Load("MathObjects.Plugin.Integers.dll");
             MainClass.PluginRegistry.Load("MathObjects.Plugin.Symmetric.dll");
 
-            MainWindow win = new MainWindow();
+            var win = new MainWindow2();
             win.Show();
             Application.Run();
         }

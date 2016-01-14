@@ -73,6 +73,8 @@
     <Compile Include="gtk-gui\MathObjects.UI.FieldWidget.cs" />
     <Compile Include="ErrorWidget.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.ErrorWidget.cs" />
+    <Compile Include="MainWindow2.cs" />
+    <Compile Include="gtk-gui\MathObjects.UI.MainWindow2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
