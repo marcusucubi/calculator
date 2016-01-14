@@ -16,11 +16,10 @@
     <child>
       <widget class="Gtk.HBox" id="hbox1">
         <property name="MemberName" />
-        <property name="Spacing">6</property>
         <child>
           <widget class="Gtk.Alignment" id="alignment1">
             <property name="MemberName" />
-            <property name="BorderWidth">9</property>
+            <property name="BorderWidth">2</property>
             <child>
               <widget class="Gtk.Entry" id="entry1">
                 <property name="MemberName" />

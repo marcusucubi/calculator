@@ -21,8 +21,8 @@ namespace MathObjects.UI.Stack
 			// Container child MathObjects.UI.Stack.StackButtonWidget.Gtk.Container+ContainerChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
-			this.hbox1.Spacing = 6;
-			this.hbox1.BorderWidth = ((uint)(5));
+			this.hbox1.Spacing = 2;
+			this.hbox1.BorderWidth = ((uint)(2));
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.buttonPush = new global::Gtk.Button ();
 			this.buttonPush.CanFocus = true;

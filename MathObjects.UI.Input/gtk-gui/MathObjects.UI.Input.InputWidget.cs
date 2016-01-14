@@ -21,11 +21,10 @@ namespace MathObjects.UI.Input
 			// Container child MathObjects.UI.Input.InputWidget.Gtk.Container+ContainerChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
-			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.alignment1 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment1.Name = "alignment1";
-			this.alignment1.BorderWidth = ((uint)(9));
+			this.alignment1.BorderWidth = ((uint)(2));
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.entry1 = new global::Gtk.Entry ();
 			this.entry1.CanFocus = true;
