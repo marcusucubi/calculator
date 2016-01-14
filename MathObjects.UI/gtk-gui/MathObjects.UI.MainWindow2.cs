@@ -99,6 +99,7 @@ namespace MathObjects.UI
 			this.DefaultWidth = 498;
 			this.DefaultHeight = 413;
 			this.Show ();
+			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		}
 	}
 }

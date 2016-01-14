@@ -109,9 +109,12 @@ namespace MathObjects.UI.Mediator
 
         public void Pop()
         {
-            this.numbers.Pop();
+            if (this.numbers.Count > 0)
+            {
+                this.numbers.Pop();
 
-            FireNumberStackChaned();
+                FireNumberStackChaned();
+            }
         }
 
         public void Perform(IBinaryOperation op)

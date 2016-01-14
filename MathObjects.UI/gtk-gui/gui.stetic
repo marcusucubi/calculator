@@ -128,6 +128,7 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow2</property>
     <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.Table" id="table1">
         <property name="MemberName" />
