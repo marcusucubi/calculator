@@ -39,6 +39,16 @@ public interface IPermutationListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitInit([NotNull] PermutationParser.InitContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="PermutationParser.cycle"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCycle([NotNull] PermutationParser.CycleContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PermutationParser.cycle"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCycle([NotNull] PermutationParser.CycleContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="PermutationParser.value"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

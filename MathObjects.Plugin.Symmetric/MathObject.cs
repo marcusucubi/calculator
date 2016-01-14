@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using MathObjects.Framework;
-using MathObjects.Framework.Registry;
-using MathObjects.Core.Matrix;
 using System.Collections.Generic;
-using MathObjects.Core.Matrix.Permutation;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using MathObjects.Core.Matrix;
+using MathObjects.Core.Matrix.Permutation;
+using MathObjects.Framework;
+using MathObjects.Framework.Registry;
 using MathObjects.Plugin.Symmetric.Parser;
 
 namespace MathObjects.Plugin.Symmetric
@@ -130,15 +130,18 @@ namespace MathObjects.Plugin.Symmetric
             string s = "";
             foreach(var big in cycle.CycleSet)
             {
+                int count = 0;
+
                 s += "(";
                 foreach(var pos in big)
                 {
-                    if (s.Length > 1)
+                    if (count > 0)
                     {
                         s += ",";
                     }
 
                     s += " " + pos;
+                    count++;
                 }
                 s += " )";
             }

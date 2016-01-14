@@ -33,9 +33,9 @@ public partial class PermutationParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, INT=4, WS=5;
 	public const int
-		RULE_init = 0, RULE_value = 1;
+		RULE_init = 0, RULE_cycle = 1, RULE_value = 2;
 	public static readonly string[] ruleNames = {
-		"init", "value"
+		"init", "cycle", "value"
 	};
 
 	private static readonly string[] _LiteralNames = {
@@ -67,11 +67,11 @@ public partial class PermutationParser : Parser {
 		Interpreter = new ParserATNSimulator(this,_ATN);
 	}
 	public partial class InitContext : ParserRuleContext {
-		public ValueContext[] value() {
-			return GetRuleContexts<ValueContext>();
+		public CycleContext[] cycle() {
+			return GetRuleContexts<CycleContext>();
 		}
-		public ValueContext value(int i) {
-			return GetRuleContext<ValueContext>(i);
+		public CycleContext cycle(int i) {
+			return GetRuleContext<CycleContext>(i);
 		}
 		public InitContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -94,35 +94,91 @@ public partial class PermutationParser : Parser {
 		EnterRule(_localctx, 0, RULE_init);
 		int _la;
 		try {
-			State = 17;
-			switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 7;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.La(1);
+			do {
+				{
+				{
+				State = 6; cycle();
+				}
+				}
+				State = 9;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
+			} while ( _la==T__0 );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CycleContext : ParserRuleContext {
+		public ValueContext[] value() {
+			return GetRuleContexts<ValueContext>();
+		}
+		public ValueContext value(int i) {
+			return GetRuleContext<ValueContext>(i);
+		}
+		public CycleContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_cycle; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			IPermutationListener typedListener = listener as IPermutationListener;
+			if (typedListener != null) typedListener.EnterCycle(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			IPermutationListener typedListener = listener as IPermutationListener;
+			if (typedListener != null) typedListener.ExitCycle(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CycleContext cycle() {
+		CycleContext _localctx = new CycleContext(Context, State);
+		EnterRule(_localctx, 2, RULE_cycle);
+		int _la;
+		try {
+			State = 24;
+			switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 4; Match(T__0);
-				State = 5; value();
-				State = 10;
+				State = 11; Match(T__0);
+				State = 12; value();
+				State = 17;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 				while (_la==T__1) {
 					{
 					{
-					State = 6; Match(T__1);
-					State = 7; value();
+					State = 13; Match(T__1);
+					State = 14; value();
 					}
 					}
-					State = 12;
+					State = 19;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.La(1);
 				}
-				State = 13; Match(T__2);
+				State = 20; Match(T__2);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 15; Match(T__0);
-				State = 16; Match(T__2);
+				State = 22; Match(T__0);
+				State = 23; Match(T__2);
 				}
 				break;
 			}
@@ -158,11 +214,11 @@ public partial class PermutationParser : Parser {
 	[RuleVersion(0)]
 	public ValueContext value() {
 		ValueContext _localctx = new ValueContext(Context, State);
-		EnterRule(_localctx, 2, RULE_value);
+		EnterRule(_localctx, 4, RULE_value);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 19; Match(INT);
+			State = 26; Match(INT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -177,15 +233,18 @@ public partial class PermutationParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\a\x18\x4\x2\t\x2"+
-		"\x4\x3\t\x3\x3\x2\x3\x2\x3\x2\x3\x2\a\x2\v\n\x2\f\x2\xE\x2\xE\v\x2\x3"+
-		"\x2\x3\x2\x3\x2\x3\x2\x5\x2\x14\n\x2\x3\x3\x3\x3\x3\x3\x2\x2\x4\x2\x4"+
-		"\x2\x2\x17\x2\x13\x3\x2\x2\x2\x4\x15\x3\x2\x2\x2\x6\a\a\x3\x2\x2\a\f\x5"+
-		"\x4\x3\x2\b\t\a\x4\x2\x2\t\v\x5\x4\x3\x2\n\b\x3\x2\x2\x2\v\xE\x3\x2\x2"+
-		"\x2\f\n\x3\x2\x2\x2\f\r\x3\x2\x2\x2\r\xF\x3\x2\x2\x2\xE\f\x3\x2\x2\x2"+
-		"\xF\x10\a\x5\x2\x2\x10\x14\x3\x2\x2\x2\x11\x12\a\x3\x2\x2\x12\x14\a\x5"+
-		"\x2\x2\x13\x6\x3\x2\x2\x2\x13\x11\x3\x2\x2\x2\x14\x3\x3\x2\x2\x2\x15\x16"+
-		"\a\x6\x2\x2\x16\x5\x3\x2\x2\x2\x4\f\x13";
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\a\x1F\x4\x2\t\x2"+
+		"\x4\x3\t\x3\x4\x4\t\x4\x3\x2\x6\x2\n\n\x2\r\x2\xE\x2\v\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\a\x3\x12\n\x3\f\x3\xE\x3\x15\v\x3\x3\x3\x3\x3\x3\x3\x3\x3\x5"+
+		"\x3\x1B\n\x3\x3\x4\x3\x4\x3\x4\x2\x2\x5\x2\x4\x6\x2\x2\x1E\x2\t\x3\x2"+
+		"\x2\x2\x4\x1A\x3\x2\x2\x2\x6\x1C\x3\x2\x2\x2\b\n\x5\x4\x3\x2\t\b\x3\x2"+
+		"\x2\x2\n\v\x3\x2\x2\x2\v\t\x3\x2\x2\x2\v\f\x3\x2\x2\x2\f\x3\x3\x2\x2\x2"+
+		"\r\xE\a\x3\x2\x2\xE\x13\x5\x6\x4\x2\xF\x10\a\x4\x2\x2\x10\x12\x5\x6\x4"+
+		"\x2\x11\xF\x3\x2\x2\x2\x12\x15\x3\x2\x2\x2\x13\x11\x3\x2\x2\x2\x13\x14"+
+		"\x3\x2\x2\x2\x14\x16\x3\x2\x2\x2\x15\x13\x3\x2\x2\x2\x16\x17\a\x5\x2\x2"+
+		"\x17\x1B\x3\x2\x2\x2\x18\x19\a\x3\x2\x2\x19\x1B\a\x5\x2\x2\x1A\r\x3\x2"+
+		"\x2\x2\x1A\x18\x3\x2\x2\x2\x1B\x5\x3\x2\x2\x2\x1C\x1D\a\x6\x2\x2\x1D\a"+
+		"\x3\x2\x2\x2\x5\v\x13\x1A";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

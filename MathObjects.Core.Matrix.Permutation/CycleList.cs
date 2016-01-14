@@ -19,6 +19,11 @@ namespace MathObjects.Core.Matrix.Permutation
             return new CycleListBuilder().Build(value);
         }
 
+        public static CycleList Create(List<List<int>> value)
+        {
+            return new CycleListBuilder().Build(value);
+        }
+
         public static CycleList Create(PermutationMatix matrix)
         {
             return new CycleListBuilder2().Build(matrix);

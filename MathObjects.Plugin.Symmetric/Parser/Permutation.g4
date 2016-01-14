@@ -7,8 +7,12 @@ options {
 @lexer::namespace{MathObjects.Core.Parser}
 @parser::namespace{MathObjects.Core.Parser}
 
+init    :
+        cycle+
+        ;
+
 /** A rule called init that matches comma-separated values between {...}. */
-init    : 
+cycle   : 
         '(' value (',' value)* ')' 
         | '(' ')' 
         ;
