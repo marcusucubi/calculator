@@ -13,6 +13,8 @@ namespace MathObjects.Framework.Registry
 
         public static readonly string MULTIPLY = "multiply";
 
+        public static readonly string DIVIDE = "divide";
+
         public static readonly string INVERSE = "inverse";
 
         readonly Dictionary<string, IMathObjectFactory> objectMap = 

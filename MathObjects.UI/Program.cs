@@ -20,6 +20,7 @@ namespace MathObjects.UI
 
             MainClass.PluginRegistry = new PluginRegistry();
 
+            MainClass.PluginRegistry.Load("MathObjects.Plugin.FloatingPoint.dll");
             MainClass.PluginRegistry.Load("MathObjects.Plugin.Rational.dll");
             MainClass.PluginRegistry.Load("MathObjects.Plugin.Integers.dll");
             MainClass.PluginRegistry.Load("MathObjects.Plugin.Symmetric.dll");

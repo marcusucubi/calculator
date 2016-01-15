@@ -58,13 +58,16 @@ namespace MathObjects.UI.Mediator
 
         public void InsertNumber(object digit)
         {
-            //currentNumber *= 10;
-            //currentNumber += 10;
-
             var value = digit as IHasValue;
             if (value != null)
             {
                 currentNumber += "" + value.Value;
+            }
+
+            var doubeValue = digit as IHasDouble;
+            if (doubeValue != null)
+            {
+                currentNumber += "" + doubeValue.Double;
             }
 
             var tuple = digit as IHasTuple;

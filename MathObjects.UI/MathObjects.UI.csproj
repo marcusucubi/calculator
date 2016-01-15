@@ -126,5 +126,9 @@
       <Project>{13457E87-8AB4-494B-BF43-51B262F954D8}</Project>
       <Name>MathObjects.Core.Matrix.Permutation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Plugin.FloatingPoint\MathObjects.Plugin.FloatingPoint.csproj">
+      <Project>{BFFB8F5D-939D-41CD-B8F9-527241AAB31C}</Project>
+      <Name>MathObjects.Plugin.FloatingPoint</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
