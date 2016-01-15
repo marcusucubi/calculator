@@ -64,10 +64,10 @@ namespace MathObjects.UI.Mediator
                 currentNumber += "" + value.Value;
             }
 
-            var doubeValue = digit as IHasDouble;
-            if (doubeValue != null)
+            var output = digit as IHasOutput;
+            if (output != null)
             {
-                currentNumber += "" + doubeValue.Double;
+                currentNumber += "" + output;
             }
 
             var tuple = digit as IHasTuple;

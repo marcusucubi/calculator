@@ -1,8 +1,9 @@
 ﻿using System;
+using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class MultiplyObject
+    class MultiplyObject : IHasOutput
     {
         readonly double tuple1;
 
@@ -14,7 +15,7 @@ namespace MathObjects.Plugin.FloatingPoint
             this.tuple2 = tuple2;
         }
 
-        public double Output
+        public object Output
         {
             get { return (tuple1 * tuple2); }
         }

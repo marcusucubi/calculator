@@ -7,17 +7,17 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         public static double GetDouble(this IMathObject obj)
         {
-            var hasTuple = obj as IHasDouble;
-            if (hasTuple != null)
-            {
-                return hasTuple.Double;
-            }
-
             var hasOutput = obj as IHasOutput;
             if (hasOutput != null)
             {
-                var has2 = hasOutput.Output as IHasDouble;
-                return has2.Double;
+                var output = hasOutput.Output;
+                if (output is double)
+                {
+                    return (double)output;
+                }
+
+                var has2 = hasOutput.Output as IHasOutput;
+                return (double)has2.Output;
             }
 
             throw new Exception();

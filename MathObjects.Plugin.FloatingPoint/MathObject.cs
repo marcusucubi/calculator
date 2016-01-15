@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class MathObject : IMathObject, IHasDouble, IHasDisplayValue 
+    class MathObject : IMathObject, IHasOutput, IHasDisplayValue 
     {
         readonly double value;
 
@@ -13,7 +13,7 @@ namespace MathObjects.Plugin.FloatingPoint
             value = param;
         }
 
-        public double Double
+        public object Output
         {
             get { return this.value; }
         }

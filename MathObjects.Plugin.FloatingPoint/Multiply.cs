@@ -13,7 +13,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var op = new MultiplyObject(leftValue, rightValue);
 
-            return new MathObject(op.Output);
+            return new MathObject((double)op.Output);
         }
 
         public class Factory : IMathOperationFactory, IHasName

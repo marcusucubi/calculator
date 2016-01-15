@@ -47,7 +47,6 @@
     <Compile Include="IHasMatrix.cs" />
     <Compile Include="IHasParseValue.cs" />
     <Compile Include="ErrorHandler.cs" />
-    <Compile Include="IHasDouble.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

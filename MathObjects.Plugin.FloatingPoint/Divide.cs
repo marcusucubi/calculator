@@ -12,7 +12,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var op = new DivideObject(leftValue, rightValue);
 
-            return new MathObject(op.Output);
+            return new MathObject((double)op.Output);
         }
 
         public class Factory : IMathOperationFactory, IHasName
