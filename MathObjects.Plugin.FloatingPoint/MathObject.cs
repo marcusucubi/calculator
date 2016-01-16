@@ -1,6 +1,9 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using Antlr4.Runtime;
+using MathObjects.Plugin.FoatingPoint;
+using Antlr4.Runtime.Tree;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -42,6 +45,27 @@ namespace MathObjects.Plugin.FloatingPoint
                     {
                         tuple = temp;
                     }
+                }
+                if (param is string)
+                {
+                    var input = new AntlrInputStream(param);
+                    var lexer = new FloatingPointLexer(input);
+                    var tokens = new CommonTokenStream(lexer);
+                    var parser = new FloatingPointParser(tokens);
+
+                    var l = new ErrorListener();
+                    parser.AddErrorListener(l);
+
+                    var tree = parser.stat(); 
+
+                    if (l.HasError)
+                    {
+                        return null;
+                    }
+
+                    var eval = new EvalVisitor();
+
+                    tuple = eval.Visit(tree);
                 }
 
                 return new MathObject(tuple);

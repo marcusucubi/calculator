@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\MathObjects.Core.Parser\Lib\Antlr4.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -41,6 +44,12 @@
     <Compile Include="MultiplyObject.cs" />
     <Compile Include="Divide.cs" />
     <Compile Include="DivideObject.cs" />
+    <Compile Include="Parser\FloatingPointLexer.cs" />
+    <Compile Include="Parser\FloatingPointParser.cs" />
+    <Compile Include="ErrorListener.cs" />
+    <Compile Include="Parser\FloatingPointVisitor.cs" />
+    <Compile Include="Parser\EvalVisitor.cs" />
+    <Compile Include="Parser\FloatingPointBaseVisitor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -60,5 +69,17 @@
       <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
       <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Plugin.Symmetric\MathObjects.Plugin.Symmetric.csproj">
+      <Project>{1CE2F135-C483-44EF-B9B4-97C737B47CE9}</Project>
+      <Name>MathObjects.Plugin.Symmetric</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parser\FloatingPoint.g4" />
+    <None Include="Parser\FloatingPoint.tokens" />
+    <None Include="Parser\FloatingPointLexer.tokens" />
   </ItemGroup>
 </Project>
