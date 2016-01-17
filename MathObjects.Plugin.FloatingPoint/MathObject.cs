@@ -1,8 +1,8 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
-using Antlr4.Runtime;
 using MathObjects.Plugin.FoatingPoint;
+using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 
 namespace MathObjects.Plugin.FloatingPoint
@@ -37,15 +37,6 @@ namespace MathObjects.Plugin.FloatingPoint
             {
                 double tuple = 0;
 
-                if (param is string)
-                {
-                    double temp;
-
-                    if (double.TryParse(param, out temp))
-                    {
-                        tuple = temp;
-                    }
-                }
                 if (param is string)
                 {
                     var input = new AntlrInputStream(param);

@@ -29,7 +29,6 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
-[System.CLSCompliant(false)]
 public partial class FloatingPointBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IFloatingPointVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FloatingPointParser.printExpr"/>.

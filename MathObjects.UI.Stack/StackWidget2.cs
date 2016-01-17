@@ -1,13 +1,13 @@
 ﻿using System;
-using MathObjects.UI.Mediator;
-using Gtk;
 using System.Collections.Generic;
+using Gtk;
 using MathObjects.Framework;
+using MathObjects.UI.Mediator;
 
 namespace MathObjects.UI.Stack
 {
     [System.ComponentModel.ToolboxItem(true)]
-    public partial class StackWidget2 : Gtk.Bin
+    public partial class StackWidget2 : Gtk.Bin 
     {
         IMediator mediator;
 

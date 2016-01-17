@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class AddObject : IHasOutput
+    class AddObject : IHasOutput, IMathObject
     {
         readonly double tuple1;
 

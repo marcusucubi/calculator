@@ -78,7 +78,7 @@ namespace MathObjects.UI
 			w5.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.mathoperationswidget1 = new global::MathObjects.UI.Widgets.MathOperationsWidget ();
-			this.mathoperationswidget1.HeightRequest = 50;
+			this.mathoperationswidget1.HeightRequest = 100;
 			this.mathoperationswidget1.Events = ((global::Gdk.EventMask)(256));
 			this.mathoperationswidget1.Name = "mathoperationswidget1";
 			this.table1.Add (this.mathoperationswidget1);
@@ -101,7 +101,7 @@ namespace MathObjects.UI
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 498;
-			this.DefaultHeight = 413;
+			this.DefaultHeight = 433;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		}

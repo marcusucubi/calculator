@@ -27,7 +27,6 @@ using IToken = Antlr4.Runtime.IToken;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
-[System.CLSCompliant(false)]
 public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by the <c>printExpr</c>

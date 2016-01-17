@@ -5,12 +5,6 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     public class EvalVisitor : FloatingPointBaseVisitor<double>
     {
-        //Dictionary<String, int> memory = new Dictionary<String, int>();
-
-        public EvalVisitor()
-        {
-        }
-
         public override double VisitInt(FloatingPointParser.IntContext context)
         {
             int temp;

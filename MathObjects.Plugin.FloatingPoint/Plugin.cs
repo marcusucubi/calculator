@@ -19,6 +19,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public void Init(FactoryRegistry registry)
         {
+            registry.Parser = new Parser();
+
             registry.RegisterObjectFactory(
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
@@ -27,6 +29,10 @@ namespace MathObjects.Plugin.FloatingPoint
                 FactoryRegistry.ADD, 
                 new Add.Factory());
             
+            registry.RegisterOperationFactory(
+                FactoryRegistry.SUBTRACT, 
+                new Add.Factory());
+
             registry.RegisterOperationFactory(
                 FactoryRegistry.MULTIPLY, 
                 new Multiply.Factory());

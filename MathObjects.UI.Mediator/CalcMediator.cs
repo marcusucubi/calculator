@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.UI.Mediator
 {
@@ -85,18 +86,32 @@ namespace MathObjects.UI.Mediator
             FireCurrentNumberChanged();
         }
 
+        public void Enter(IMathObject obj)
+        {
+            numbers.Push(obj);
+
+            this.currentNumber = "";
+
+            FireCurrentNumberChanged();
+            FireNumberStackChaned();
+            ErrorHandler.ResetError(this);
+        }
+
         public void Enter()
         {
-            var obj = this.objectFactory.Create(this.currentNumber);
-            if (obj != null)
+            var parser = this.registry.Parser as IParser;
+
+            if (parser != null)
             {
-                numbers.Push(obj);
-
-                this.currentNumber = "";
-
-                FireCurrentNumberChanged();
-                FireNumberStackChaned();
-                ErrorHandler.ResetError(this);
+                parser.Parse(this.currentNumber, this, this.registry);
+            }
+            else
+            {
+                var obj = this.objectFactory.Create(this.currentNumber);
+                if (obj != null)
+                {
+                    Enter(obj);
+                }
             }
         }
 

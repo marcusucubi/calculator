@@ -50,6 +50,10 @@
     <Compile Include="Parser\FloatingPointVisitor.cs" />
     <Compile Include="Parser\EvalVisitor.cs" />
     <Compile Include="Parser\FloatingPointBaseVisitor.cs" />
+    <Compile Include="Parser\EvalVisitor2.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Subtract.cs" />
+    <Compile Include="SubtractObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -72,6 +76,10 @@
     <ProjectReference Include="..\MathObjects.Plugin.Symmetric\MathObjects.Plugin.Symmetric.csproj">
       <Project>{1CE2F135-C483-44EF-B9B4-97C737B47CE9}</Project>
       <Name>MathObjects.Plugin.Symmetric</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -130,5 +130,9 @@
       <Project>{BFFB8F5D-939D-41CD-B8F9-527241AAB31C}</Project>
       <Name>MathObjects.Plugin.FloatingPoint</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

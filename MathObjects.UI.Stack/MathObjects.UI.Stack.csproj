@@ -78,5 +78,9 @@
       <Project>{DBF1DFB8-00DA-4DA3-AC10-B2ED595BD298}</Project>
       <Name>MathObjects.UI.Mediator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

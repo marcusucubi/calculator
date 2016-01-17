@@ -11,6 +11,8 @@ namespace MathObjects.Framework.Registry
 
         public static readonly string ADD = "add";
 
+        public static readonly string SUBTRACT = "subtract";
+
         public static readonly string MULTIPLY = "multiply";
 
         public static readonly string DIVIDE = "divide";
@@ -25,6 +27,12 @@ namespace MathObjects.Framework.Registry
 
         readonly Dictionary<string, IMathOperationFactory2> operationMap2 = 
             new Dictionary<string, IMathOperationFactory2>();
+
+        public object Parser
+        {
+            get;
+            set;
+        }
         
         public ReadOnlyDictionary<string, IMathObjectFactory> ObjectDictionary
         {

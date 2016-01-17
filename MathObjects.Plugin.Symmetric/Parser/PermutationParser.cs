@@ -28,7 +28,6 @@ using Antlr4.Runtime.Tree;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
-[System.CLSCompliant(false)]
 public partial class PermutationParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, INT=4, WS=5;

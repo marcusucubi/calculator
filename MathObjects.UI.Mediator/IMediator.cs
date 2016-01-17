@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using System.Collections.Generic;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.UI.Mediator
 {
@@ -13,7 +14,7 @@ namespace MathObjects.UI.Mediator
         }
     }
 
-    public interface IMediator
+    public interface IMediator : IMathObjectStack 
     {
         event EventHandler<MediatorArgs> CurrentNumberChaned;
 
@@ -24,10 +25,6 @@ namespace MathObjects.UI.Mediator
         string CurrentNumber { get; set; }
 
         void InsertNumber(object digit);
-
-        void Perform(IBinaryOperation op);
-
-        void Perform(IMathOperation op);
 
         void Enter();
 

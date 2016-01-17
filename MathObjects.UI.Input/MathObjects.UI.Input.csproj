@@ -84,5 +84,9 @@
       <Project>{D9410118-5AF2-4027-907D-8845F2D2F6C4}</Project>
       <Name>MathObjects.UI.Stack</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

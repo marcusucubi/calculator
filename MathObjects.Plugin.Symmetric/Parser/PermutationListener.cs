@@ -26,7 +26,6 @@ using IToken = Antlr4.Runtime.IToken;
 /// <see cref="PermutationParser"/>.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
-[System.CLSCompliant(false)]
 public interface IPermutationListener : IParseTreeListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="PermutationParser.init"/>.

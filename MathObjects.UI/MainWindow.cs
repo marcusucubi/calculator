@@ -5,9 +5,12 @@ using MathObjects.Framework;
 using MathObjects.Core.Plugin;
 using MathObjects.UI.Mediator;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 public partial class MainWindow: Gtk.Window
 {
+    IMediator mediator;
+
     public MainWindow () : base (Gtk.WindowType.Toplevel)
     {
         Build();
@@ -26,7 +29,7 @@ public partial class MainWindow: Gtk.Window
 
     void Connect(FactoryRegistry registry) 
     {
-        var mediator = MediatorFactory.Create(registry);
+        this.mediator = MediatorFactory.Create(registry);
 
         this.mathobjetswidget1.Disconnect();
         this.mathobjetswidget1.Connect(

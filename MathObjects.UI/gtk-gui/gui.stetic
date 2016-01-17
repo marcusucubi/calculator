@@ -124,7 +124,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="MathObjects.UI.MainWindow2" design-size="498 413">
+  <widget class="Gtk.Window" id="MathObjects.UI.MainWindow2" design-size="498 433">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow2</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -219,7 +219,7 @@
         <child>
           <widget class="MathObjects.UI.Widgets.MathOperationsWidget" id="mathoperationswidget1">
             <property name="MemberName" />
-            <property name="HeightRequest">50</property>
+            <property name="HeightRequest">100</property>
             <property name="Events">ButtonPressMask</property>
           </widget>
           <packing>

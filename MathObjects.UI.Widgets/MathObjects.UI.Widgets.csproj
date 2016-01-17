@@ -86,5 +86,9 @@
       <Project>{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}</Project>
       <Name>MathObjects.Core.Plugin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
