@@ -33,7 +33,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(string param)
+            public IMathObject Create(object param)
             {
                 return new MathObject(0);
             }

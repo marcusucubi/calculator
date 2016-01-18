@@ -7,19 +7,23 @@ options {
 @lexer::namespace{MathObjects.Core.Parser}
 @parser::namespace{MathObjects.Core.Parser}
 
-stat    :
-        expr       # printExpr
-        ;
+stat     :
+         expr       # printExpr
+         ;
 
 /** A rule called init that matches comma-separated values between {...}. */
 expr     : 
-         expr op=('*'|'/') expr    # MulDiv
+         ID '(' exprList? ')'      # FuncCall
+         | expr op=('*'|'/') expr  # MulDiv
          | expr op=('+'|'-') expr  # AddSub
          | INT                     # Int
          | FLOAT                   # Float
          | PI                      # PI
          | TOP                     # TOP
          | '(' expr ')'            # Parens
+         ;
+
+exprList : expr (',' expr)* 
          ;
 
 /** A value can be either a nested array/struct or a simple integer (INT) */
@@ -32,14 +36,17 @@ INT      : [0-9]+ ;
 FLOAT    : DIGIT+ '.' DIGIT*
          | '.' DIGIT+
          ;
-        
-DIGIT    : [0-9] ;
 
+DIGIT    : [0-9] ;
+LETTER   : [a-zA-Z\u0080-\u00FF_] ;
+
+ID       : LETTER (LETTER|DIGIT)* ;
+
+PI       : 'pi' ;
+TOP      : 'top' ;
 MUL      : '*' ; // assigns token name to '*' used above in grammar
 DIV      : '/' ;
 ADD      : '+' ;
 SUB      : '-' ;
-PI       : 'pi' ;
-TOP      : 'top' ;
-WS       : [ \t\r\n]+ -> skip ;
 
+WS       : [ \t\r\n]+ -> skip ;

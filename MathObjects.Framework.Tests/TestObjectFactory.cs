@@ -4,7 +4,7 @@ namespace MathObjects.Framework.Tests
 {
     public class TestObjectFactory : IMathObjectFactory
     {
-        public IMathObject Create(string parm)
+        public IMathObject Create(object parm)
         {
             return new TestMathObject ();
         }

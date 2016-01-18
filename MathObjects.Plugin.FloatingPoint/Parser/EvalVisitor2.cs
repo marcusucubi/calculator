@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
@@ -23,16 +24,53 @@ namespace MathObjects.Plugin.FloatingPoint
             this.top = this.stack.Top;
         }
 
-        public override IMathObject VisitTOP(FloatingPointParser.TOPContext context)
+        public override IMathObject VisitTOP(
+            FloatingPointParser.TOPContext context)
         {
             stack.Enter(this.top);
             return this.top;
         }
 
-        public override IMathObject VisitPI(FloatingPointParser.PIContext context)
+        public override IMathObject VisitPI(
+            FloatingPointParser.PIContext context)
         {
             var result = new MathObject(Math.PI);
             stack.Enter(result);
+            return result;
+        }
+
+        public override IMathObject VisitExprList(
+            FloatingPointParser.ExprListContext context)
+        {
+            var list = new List<IMathObject>();
+
+            foreach (var e in context.expr())
+            {
+                var obj = Visit(e);
+                list.Add(obj);
+            }
+
+            return new ArrayObject(list.ToArray());
+        }
+
+        public override IMathObject VisitFuncCall(
+            FloatingPointParser.FuncCallContext context)
+        {
+            var obj = new ArrayObject(new IMathObject[] { } );
+
+            if (context.exprList() != null)
+            {
+                obj = VisitExprList(context.exprList()) as ArrayObject;
+            }
+
+            string name = context.ID().GetText();
+
+            var factory = this.registry.GetFunctionFactory(name);
+
+            var result = factory.Create(obj);
+
+            stack.Enter(result);
+
             return result;
         }
 

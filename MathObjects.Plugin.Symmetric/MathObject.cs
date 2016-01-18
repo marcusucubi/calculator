@@ -55,13 +55,13 @@ namespace MathObjects.Plugin.Symmetric
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(string param)
+            public IMathObject Create(object param)
             {
                 var matrix = new MathObject();
 
                 if (param is string)
                 {
-                    var input = new AntlrInputStream(param);
+                    var input = new AntlrInputStream(param as string);
                     var lexer = new PermutationLexer(input);
                     var tokens = new CommonTokenStream(lexer);
                     var parser = new PermutationParser(tokens);

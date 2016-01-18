@@ -25,9 +25,9 @@ namespace MathObjects.Plugin.Integers
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(string param)
+            public IMathObject Create(object param)
             {
-                return new MathObject(param);
+                return new MathObject(param as string);
             }
 
             public string[] PossibleParameters 

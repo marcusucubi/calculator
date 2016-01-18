@@ -40,6 +40,12 @@ namespace MathObjects.Plugin.FloatingPoint
             registry.RegisterOperationFactory(
                 FactoryRegistry.DIVIDE, 
                 new Divide.Factory());
+
+            registry.RegisterFunctionFactory(
+                "pi", new ConstantObjectFactory(Math.PI));
+            
+            registry.RegisterFunctionFactory(
+                "top", new ConstantObjectFactory(Math.PI));
         }
     }
 }

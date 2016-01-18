@@ -4,7 +4,7 @@ namespace MathObjects.Framework
 {
     public interface IMathObjectFactory
     {
-        IMathObject Create(string parm);
+        IMathObject Create(object parm);
     }
 }
 

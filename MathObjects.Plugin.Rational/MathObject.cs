@@ -30,14 +30,14 @@ namespace MathObjects.Plugin.Rational
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(string param)
+            public IMathObject Create(object param)
             {
                 Tuple<int, int> tuple = new Tuple<int, int>(1, 1);
 
                 if (param is string)
                 {
                     int paramValue;
-                    int.TryParse(param, out paramValue);
+                    int.TryParse(param as string, out paramValue);
 
                     tuple = new Tuple<int, int>(paramValue, 1);
                 }

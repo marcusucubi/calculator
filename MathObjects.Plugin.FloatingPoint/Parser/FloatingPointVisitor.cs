@@ -37,6 +37,13 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitPrintExpr([NotNull] FloatingPointParser.PrintExprContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>FuncCall</c>
+	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFuncCall([NotNull] FloatingPointParser.FuncCallContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>Float</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
 	/// </summary>
@@ -85,6 +92,12 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitInt([NotNull] FloatingPointParser.IntContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FloatingPointParser.exprList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprList([NotNull] FloatingPointParser.ExprListContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FloatingPointParser.value"/>.
 	/// </summary>
