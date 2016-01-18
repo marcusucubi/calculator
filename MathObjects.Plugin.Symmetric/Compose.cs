@@ -49,7 +49,7 @@ namespace MathObjects.Plugin.Symmetric
             return new MathObject(new PermutationMatix(result));
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathBinaryOperationFactory, IHasName
         {
             public string Name
             {

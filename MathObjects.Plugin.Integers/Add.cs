@@ -32,7 +32,7 @@ namespace MathObjects.Plugin.Integers
             throw new Exception();
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathBinaryOperationFactory, IHasName
         {
             public string Name
             {

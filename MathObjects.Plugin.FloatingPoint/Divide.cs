@@ -15,7 +15,7 @@ namespace MathObjects.Plugin.FloatingPoint
             return new MathObject((double)op.Output);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathBinaryOperationFactory, IHasName
         {
             public string Name
             {

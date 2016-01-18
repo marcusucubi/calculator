@@ -18,7 +18,7 @@ namespace MathObjects.UI.Mediator
 
         readonly IMathObjectFactory objectFactory;
 
-        readonly IMathOperationFactory multiplyFactory;
+        readonly IMathBinaryOperationFactory multiplyFactory;
 
         readonly IMathOperationFactory2 inverseFactory2;
 

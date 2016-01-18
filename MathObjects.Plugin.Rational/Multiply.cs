@@ -16,7 +16,7 @@ namespace MathObjects.Plugin.Rational
             return new MathObject(op.Output as Tuple<int, int>);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathBinaryOperationFactory, IHasName
         {
             public string Name
             {

@@ -22,8 +22,8 @@ namespace MathObjects.Framework.Registry
         readonly Dictionary<string, IMathObjectFactory> objectMap = 
             new Dictionary<string, IMathObjectFactory>();
 
-        readonly Dictionary<string, IMathOperationFactory> operationMap = 
-            new Dictionary<string, IMathOperationFactory>();
+        readonly Dictionary<string, IMathBinaryOperationFactory> operationMap = 
+            new Dictionary<string, IMathBinaryOperationFactory>();
 
         readonly Dictionary<string, IMathOperationFactory2> operationMap2 = 
             new Dictionary<string, IMathOperationFactory2>();
@@ -47,9 +47,10 @@ namespace MathObjects.Framework.Registry
             get { return new ReadOnlyDictionary<string, IMathObjectFactory>(this.functionMap); }
         }
 
-        public ReadOnlyDictionary<string, IMathOperationFactory> BinaryOperationDictionary
+        public ReadOnlyDictionary<string, IMathBinaryOperationFactory> BinaryOperationDictionary
         {
-            get { return new ReadOnlyDictionary<string, IMathOperationFactory>(this.operationMap); }
+            get { return new ReadOnlyDictionary<string, IMathBinaryOperationFactory>(
+                this.operationMap); }
         }
 
         public ReadOnlyDictionary<string, IMathOperationFactory2> OperationDictionary
@@ -57,7 +58,7 @@ namespace MathObjects.Framework.Registry
             get { return new ReadOnlyDictionary<string, IMathOperationFactory2>(this.operationMap2); }
         }
 
-        public void RegisterOperationFactory(string name, IMathOperationFactory factory)
+        public void RegisterOperationFactory(string name, IMathBinaryOperationFactory factory)
         {
             this.operationMap[name] = factory;
         }
@@ -77,7 +78,7 @@ namespace MathObjects.Framework.Registry
             this.functionMap[name] = factory;
         }
 
-        public IMathOperationFactory GetOperationFactory(string name)
+        public IMathBinaryOperationFactory GetOperationFactory(string name)
         {
             return this.operationMap[name];
         }

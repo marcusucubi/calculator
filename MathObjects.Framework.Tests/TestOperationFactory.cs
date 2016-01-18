@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework.Tests
 {
-    public class TestOperationFactory : IMathOperationFactory
+    public class TestOperationFactory : IMathBinaryOperationFactory
     {
         public IMathBinaryOperation Create(object parm)
         {

@@ -38,7 +38,6 @@
     <Compile Include="IMathOperation.cs" />
     <Compile Include="IMathOperationFactory2.cs" />
     <Compile Include="IHasDisplayValue.cs" />
-    <Compile Include="Tuple.cs" />
     <Compile Include="IHasOutput.cs" />
     <Compile Include="IHasName.cs" />
     <Compile Include="ErrorHandler.cs" />
