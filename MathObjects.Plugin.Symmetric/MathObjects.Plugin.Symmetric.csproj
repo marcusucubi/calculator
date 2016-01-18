@@ -51,6 +51,7 @@
     <Compile Include="Parser\PermutationParser.cs" />
     <Compile Include="ErrorListener.cs" />
     <Compile Include="IHasMatrix.cs" />
+    <Compile Include="IHasParseValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace MathObjects.Plugin.Symmetric
 {
     class MathObject : 
         IMathObject, IHasMatrix, 
-        IHasDisplayValue, IHasParseValue
+        IHasDisplayValue, IHasOutput
     {
         PermutationMatix value;
 
@@ -35,6 +35,11 @@ namespace MathObjects.Plugin.Symmetric
         public int[] Values
         {
             get { return value.Switches; }
+        }
+
+        public object Output
+        {
+            get { return DisplayValue; }
         }
 
         public string ParseValue

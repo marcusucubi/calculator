@@ -41,7 +41,6 @@
     <Compile Include="Tuple.cs" />
     <Compile Include="IHasOutput.cs" />
     <Compile Include="IHasName.cs" />
-    <Compile Include="IHasParseValue.cs" />
     <Compile Include="ErrorHandler.cs" />
     <Compile Include="IMathBinaryOperation.cs" />
   </ItemGroup>

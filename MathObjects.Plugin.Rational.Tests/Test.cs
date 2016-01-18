@@ -40,7 +40,7 @@ namespace MathObjects.Plugin.Rational.Tests
             Assert.NotNull (add);
 
             var result = add.Perform (i1, i1) as IHasOutput;
-            var tuple = result as Tuple<int, int>;
+            var tuple = result.Output as Tuple<int, int>;
             Assert.AreEqual (2, tuple.Item1);
         }
 
@@ -63,7 +63,7 @@ namespace MathObjects.Plugin.Rational.Tests
             Assert.NotNull (multiply);
 
             var result = multiply.Perform (i1, i1) as IHasOutput;
-            var tuple = result as Tuple<int, int>;
+            var tuple = result.Output as Tuple<int, int>;
             Assert.AreEqual (4, tuple.Item1);
         }
     }

@@ -78,12 +78,6 @@ namespace MathObjects.UI.Mediator
                 currentNumber += "" + output;
             }
 
-            var hasParse = digit as IHasParseValue;
-            if (hasParse != null)
-            {
-                currentNumber += hasParse.ParseValue;
-            }
-
             FireCurrentNumberChanged();
         }
 

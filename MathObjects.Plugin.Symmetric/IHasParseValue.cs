@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathObjects.Framework
+namespace MathObjects.Plugin.Symmetric
 {
     public interface IHasParseValue
     {
