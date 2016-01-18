@@ -44,10 +44,4 @@
     <Compile Include="IMathOperationFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\MathObjects.Core.Matrix\MathObjects.Core.Matrix.csproj">
-      <Project>{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9}</Project>
-      <Name>MathObjects.Core.Matrix</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
