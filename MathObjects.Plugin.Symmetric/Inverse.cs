@@ -23,7 +23,7 @@ namespace MathObjects.Plugin.Symmetric
             throw new Exception();
         }
 
-        public class Factory : IMathOperationFactory2, IHasName
+        public class Factory : IMathOperationFactory, IHasName
         {
             public string Name
             {

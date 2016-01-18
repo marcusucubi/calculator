@@ -109,7 +109,7 @@ namespace MathObjects.UI.Widgets
                 };
         }
 
-        void AddButton2(object key, IMathOperationFactory2 factory)
+        void AddButton2(object key, IMathOperationFactory factory)
         {
             var button1 = new Button();
             button1.CanFocus = true;

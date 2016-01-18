@@ -2,9 +2,9 @@
 
 namespace MathObjects.Framework
 {
-    public interface IMathBinaryOperationFactory
+    public interface IMathOperationFactory
     {
-        IMathBinaryOperation Create(object parm);
+        IMathOperation Create(object parm);
     }
 }
 

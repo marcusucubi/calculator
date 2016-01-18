@@ -20,7 +20,7 @@ namespace MathObjects.UI.Mediator
 
         readonly IMathBinaryOperationFactory multiplyFactory;
 
-        readonly IMathOperationFactory2 inverseFactory2;
+        readonly IMathOperationFactory inverseFactory2;
 
         string currentNumber;
 
