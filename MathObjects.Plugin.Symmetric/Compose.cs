@@ -5,7 +5,7 @@ using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric
 {
-    class Compose : IBinaryOperation
+    class Compose : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
@@ -56,7 +56,7 @@ namespace MathObjects.Plugin.Symmetric
                 get { return "Compose"; }
             }
 
-            public IBinaryOperation Create(object parm)
+            public IMathBinaryOperation Create(object parm)
             {
                 return new Compose();
             }

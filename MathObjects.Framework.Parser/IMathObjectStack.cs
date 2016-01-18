@@ -6,7 +6,7 @@ namespace MathObjects.Framework.Parser
     {
         void Enter(IMathObject mathObject);
 
-        void Perform(IBinaryOperation op);
+        void Perform(IMathBinaryOperation op);
 
         void Perform(IMathOperation op);
 

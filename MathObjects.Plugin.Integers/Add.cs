@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {
-    class Add : IBinaryOperation
+    class Add : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
@@ -39,7 +39,7 @@ namespace MathObjects.Plugin.Integers
                 get { return "Add"; }
             }
 
-            public IBinaryOperation Create(object parm)
+            public IMathBinaryOperation Create(object parm)
             {
                 return new Add();
             }

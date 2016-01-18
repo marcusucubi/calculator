@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class Add : IBinaryOperation
+    class Add : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
@@ -23,7 +23,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 get { return "Add"; }
             }
 
-            public IBinaryOperation Create(object parm)
+            public IMathBinaryOperation Create(object parm)
             {
                 return new Add();
             }

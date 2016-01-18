@@ -116,19 +116,21 @@ namespace MathObjects.Plugin.FloatingPoint
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
-            IBinaryOperation op = null;
+            IMathBinaryOperation op = null;
 
             IMathObject result;
 
             if (context.op.Type == FloatingPointParser.ADD)
             {
                 result = new AddObject(left.GetDouble(), right.GetDouble());
-                op = registry.BinaryOperationDictionary[FactoryRegistry.ADD].Create(null);
+                op = registry.BinaryOperationDictionary[
+                    FactoryRegistry.ADD].Create(null);
             }
             else
             {
                 result = new SubtractObject(left.GetDouble(), -right.GetDouble());
-                op = registry.BinaryOperationDictionary[FactoryRegistry.SUBTRACT].Create(null);
+                op = registry.BinaryOperationDictionary[
+                    FactoryRegistry.SUBTRACT].Create(null);
             }
 
             stack.Perform(op);
@@ -142,7 +144,7 @@ namespace MathObjects.Plugin.FloatingPoint
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
-            IBinaryOperation op = null;
+            IMathBinaryOperation op = null;
 
             IMathObject result;
 

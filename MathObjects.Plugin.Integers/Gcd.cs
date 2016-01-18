@@ -5,7 +5,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {
-    class Gcd : IBinaryOperation
+    class Gcd : IMathBinaryOperation
     {
         static public int GCD(int[] numbers)
         {
@@ -50,7 +50,7 @@ namespace MathObjects.Plugin.Integers
                 get { return "GCD"; }
             }
 
-            public IBinaryOperation Create(object parm)
+            public IMathBinaryOperation Create(object parm)
             {
                 return new Gcd();
             }

@@ -136,7 +136,7 @@ namespace MathObjects.UI.Mediator
             }
         }
 
-        public void Perform(IBinaryOperation op)
+        public void Perform(IMathBinaryOperation op)
         {
             if (this.numbers.Count < 2)
             {

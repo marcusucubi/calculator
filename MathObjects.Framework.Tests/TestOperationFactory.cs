@@ -4,7 +4,7 @@ namespace MathObjects.Framework.Tests
 {
     public class TestOperationFactory : IMathOperationFactory
     {
-        public IBinaryOperation Create(object parm)
+        public IMathBinaryOperation Create(object parm)
         {
             return new TestMathOperation ();
         }

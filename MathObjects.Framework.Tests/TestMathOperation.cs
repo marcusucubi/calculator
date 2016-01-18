@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework.Tests
 {
-    public class TestMathOperation : IBinaryOperation
+    public class TestMathOperation : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {

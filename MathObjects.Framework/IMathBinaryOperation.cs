@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework
 {
-    public interface IBinaryOperation
+    public interface IMathBinaryOperation
     {
         IMathObject Perform(IMathObject left, IMathObject right);
     }

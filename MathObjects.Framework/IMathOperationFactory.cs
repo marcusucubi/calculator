@@ -4,7 +4,7 @@ namespace MathObjects.Framework
 {
     public interface IMathOperationFactory
     {
-        IBinaryOperation Create(object parm);
+        IMathBinaryOperation Create(object parm);
     }
 }
 

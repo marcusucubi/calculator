@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Divide : IBinaryOperation
+    public class Divide : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
@@ -22,7 +22,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 get { return "Divide"; }
             }
 
-            public IBinaryOperation Create(object parm)
+            public IMathBinaryOperation Create(object parm)
             {
                 return new Divide();
             }

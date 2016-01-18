@@ -10,12 +10,12 @@ namespace MathObjects.UI.Mediator
 
         readonly IMathObject obj2;
 
-        readonly IBinaryOperation op;
+        readonly IMathBinaryOperation op;
 
         public OperationWrapper(
             IMathObject obj1, 
             IMathObject obj2, 
-            IBinaryOperation op)
+            IMathBinaryOperation op)
         {
             this.obj1 = obj1;
             this.obj2 = obj2;

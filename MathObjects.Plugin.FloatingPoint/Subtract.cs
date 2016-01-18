@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Subtract : IBinaryOperation
+    public class Subtract : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
@@ -22,7 +22,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 get { return "Subtract"; }
             }
 
-            public IBinaryOperation Create(object parm)
+            public IMathBinaryOperation Create(object parm)
             {
                 return new Subtract();
             }

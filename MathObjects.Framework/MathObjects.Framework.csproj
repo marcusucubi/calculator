@@ -34,7 +34,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IMathObject.cs" />
     <Compile Include="IMathObjectFactory.cs" />
-    <Compile Include="IBinaryOperation.cs" />
     <Compile Include="IMathOperationFactory.cs" />
     <Compile Include="IMathOperation.cs" />
     <Compile Include="IMathOperationFactory2.cs" />
@@ -44,6 +43,7 @@
     <Compile Include="IHasName.cs" />
     <Compile Include="IHasParseValue.cs" />
     <Compile Include="ErrorHandler.cs" />
+    <Compile Include="IMathBinaryOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

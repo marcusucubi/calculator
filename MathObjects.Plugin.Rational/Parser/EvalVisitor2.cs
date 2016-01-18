@@ -67,7 +67,7 @@ namespace MathObjects.Plugin.Rational
             var left = Visit(context.GetChild(0));
             var right = Visit(context.GetChild(2));
 
-            IBinaryOperation op = null;
+            IMathBinaryOperation op = null;
 
             IMathObject result;
 
@@ -93,14 +93,15 @@ namespace MathObjects.Plugin.Rational
             var left = Visit(context.GetChild(0));
             var right = Visit(context.GetChild(2));
 
-            IBinaryOperation op = null;
+            IMathBinaryOperation op = null;
 
             IMathObject result;
 
             if (context.op.Type == RationalParser.MUL)
             {
                 result = new MultiplyObject(left, right);
-                op = registry.BinaryOperationDictionary[FactoryRegistry.MULTIPLY].Create(null);
+                op = registry.BinaryOperationDictionary[
+                    FactoryRegistry.MULTIPLY].Create(null);
             }
             else
             {
