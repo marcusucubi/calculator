@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\MathObjects.Core.Parser\Lib\Antlr4.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -37,11 +40,19 @@
     <Compile Include="InverseObject.cs" />
     <Compile Include="MathObject.cs" />
     <Compile Include="Plugin.cs" />
-    <Compile Include="TupleAdd.cs" />
     <Compile Include="TupleReduce.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Multiply.cs" />
-    <Compile Include="TupleMultiply.cs" />
+    <Compile Include="MathObjectEx.cs" />
+    <Compile Include="MultiplyObject.cs" />
+    <Compile Include="AddObject.cs" />
+    <Compile Include="Parser\RationalBaseVisitor.cs" />
+    <Compile Include="Parser\RationalLexer.cs" />
+    <Compile Include="Parser\RationalParser.cs" />
+    <Compile Include="Parser\RationalVisitor.cs" />
+    <Compile Include="Parser\EvalVisitor2.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="ErrorListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -57,5 +68,17 @@
       <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
       <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parser\Rational.g4" />
+    <None Include="Parser\Rational.tokens" />
+    <None Include="Parser\RationalLexer.tokens" />
   </ItemGroup>
 </Project>

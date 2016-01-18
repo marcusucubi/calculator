@@ -4,32 +4,28 @@ using System.Diagnostics;
 
 namespace MathObjects.Plugin.Rational
 {
-    class InverseObject : IMathObject, IHasTuple, IHasDisplayValue
+    class InverseObject : IMathObject, IHasOutput, IHasDisplayValue
     {
-        readonly IHasTuple target;
+        readonly Tuple<int, int> target;
 
-        public InverseObject(IHasTuple value)
+        public InverseObject(Tuple<int, int> value)
         {
             if (value == null)
             {
                 throw new Exception();
             }
+
             this.target = value;
         }
 
-        public Tuple<int, int> Tuple
+        public object Output
         {
-            get 
-            { 
-                return new Tuple<int, int>(
-                    this.target.Tuple.Item2, 
-                    this.target.Tuple.Item1); 
-            }
+            get { return this.target; }
         }
 
         public string DisplayValue
         {
-            get { return Tuple.ToString(); }
+            get { return Output.ToString(); }
         }
 
         public override string ToString()

@@ -8,30 +8,12 @@ namespace MathObjects.Plugin.Rational
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
-            var leftValue = GetTuple(left);
-            var rightValue = GetTuple(right);
+            var leftValue = left.GetTuple();
+            var rightValue = right.GetTuple();
 
-            var op = new TupleMultiply(leftValue, rightValue);
+            var op = new MultiplyObject(leftValue, rightValue);
 
-            return new MathObject(op.Output);
-        }
-
-        Tuple<int, int> GetTuple(IMathObject obj)
-        {
-            var hasTuple = obj as IHasTuple;
-            if (hasTuple != null)
-            {
-                return hasTuple.Tuple;
-            }
-
-            var hasOutput = obj as IHasOutput;
-            if (hasOutput != null)
-            {
-                var has2 = hasOutput.Output as IHasTuple;
-                return has2.Tuple;
-            }
-
-            throw new Exception();
+            return new MathObject(op.Output as Tuple<int, int>);
         }
 
         public class Factory : IMathOperationFactory, IHasName

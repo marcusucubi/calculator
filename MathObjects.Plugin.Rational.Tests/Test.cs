@@ -39,8 +39,9 @@ namespace MathObjects.Plugin.Rational.Tests
             var add = addFactory.Create (null);
             Assert.NotNull (add);
 
-            var result = add.Perform (i1, i1) as IHasTuple;
-            Assert.AreEqual (2, result.Tuple.Item1);
+            var result = add.Perform (i1, i1) as IHasOutput;
+            var tuple = result as Tuple<int, int>;
+            Assert.AreEqual (2, tuple.Item1);
         }
 
         [Test]
@@ -61,8 +62,9 @@ namespace MathObjects.Plugin.Rational.Tests
             var multiply = multiplyFactory.Create (null);
             Assert.NotNull (multiply);
 
-            var result = multiply.Perform (i1, i1) as IHasTuple;
-            Assert.AreEqual (4, result.Tuple.Item1);
+            var result = multiply.Perform (i1, i1) as IHasOutput;
+            var tuple = result as Tuple<int, int>;
+            Assert.AreEqual (4, tuple.Item1);
         }
     }
 }

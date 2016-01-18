@@ -19,6 +19,8 @@ namespace MathObjects.Plugin.Rational
 
         public void Init(FactoryRegistry registry)
         {
+            registry.Parser = new Parser();
+
             registry.RegisterObjectFactory(
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());

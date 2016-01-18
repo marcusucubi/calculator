@@ -1,20 +1,21 @@
 ﻿using System;
+using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Rational
 {
-    public class TupleAdd
+    public class AddObject : IMathObject, IHasOutput 
     {
         readonly Tuple<int, int> tuple1;
 
         readonly Tuple<int, int> tuple2;
 
-        public TupleAdd(Tuple<int, int> tuple1, Tuple<int, int> tuple2)
+        public AddObject(Tuple<int, int> tuple1, Tuple<int, int> tuple2)
         {
             this.tuple1 = tuple1;
             this.tuple2 = tuple2;
         }
 
-        public Tuple<int, int> Output
+        public object Output
         {
             get
             {

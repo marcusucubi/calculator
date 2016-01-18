@@ -2,9 +2,9 @@
 
 namespace MathObjects.Framework
 {
-    public interface IHasTuple
-    {
-        Tuple<int, int> Tuple { get; }
-    }
+//    public interface IHasTuple
+//    {
+//        Tuple<int, int> Tuple { get; }
+//    }
 }
 

@@ -8,16 +8,10 @@ namespace MathObjects.Plugin.Rational
     {
         public IMathObject Perform(IMathObject target)
         {
-            var hasTuple = target as IHasTuple;
-            if (hasTuple != null)
+            var tuple = target.GetTuple();
+            if (tuple != null)
             {
-                return new InverseObject(hasTuple);
-            }
-
-            var hasOutput = target as IHasOutput;
-            if (hasOutput != null)
-            {
-                return new InverseObject(hasOutput.Output as IHasTuple);
+                return new InverseObject(tuple);
             }
 
             throw new Exception();

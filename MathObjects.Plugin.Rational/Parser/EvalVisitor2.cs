@@ -4,9 +4,9 @@ using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Plugin.Rational
 {
-    public class EvalVisitor2 : FloatingPointBaseVisitor<IMathObject>
+    public class EvalVisitor2 : RationalBaseVisitor<Tuple<int, int>>
     {
         readonly IMathObjectStack stack;
 
@@ -20,34 +20,36 @@ namespace MathObjects.Plugin.FloatingPoint
             this.stack = stack;
         }
 
-        public override IMathObject VisitInt(
-            FloatingPointParser.IntContext context)
+        public int VisitInt(string data)
         {
-            double temp;
-            double.TryParse(context.INT().GetText(), out temp);
-            var result = new MathObject(temp);
-            stack.Enter(result);
-            return result;
+            int temp;
+            int.TryParse(data, out temp);
+            return temp;
         }
 
-        public override IMathObject VisitValue(
-            FloatingPointParser.ValueContext context)
+        public override Tuple<int, int> VisitTuple(
+            RationalParser.TupleContext context)
         {
-            double temp;
-            double.TryParse(context.INT().GetText(), out temp);
-            var result = new MathObject(temp);
+            int item1 = VisitInt(context.GetChild(1).GetText());
+            int item2 = VisitInt(context.GetChild(3).GetText());
+
+            var tuple = new Tuple<int, int>(item1, item2);
+
+            var result = new MathObject(tuple);
+
             stack.Enter(result);
-            return result;
+
+            return tuple;
         }
 
-        public override IMathObject VisitParens(
-            FloatingPointParser.ParensContext context)
+        public override Tuple<int, int> VisitParens(
+            RationalParser.ParensContext context)
         {
             return Visit(context.expr()); 
         }
 
-        public override IMathObject VisitAddSub(
-            FloatingPointParser.AddSubContext context)
+        public override Tuple<int, int> VisitAddSub(
+            RationalParser.AddSubContext context)
         {
             var left = Visit(context.GetChild(0));
             var right = Visit(context.GetChild(2));
@@ -56,24 +58,24 @@ namespace MathObjects.Plugin.FloatingPoint
 
             IMathObject result;
 
-            if (context.op.Type == FloatingPointParser.ADD)
+            if (context.op.Type == RationalParser.ADD)
             {
-                result = new AddObject(left.GetDouble(), right.GetDouble());
+                result = new AddObject(left, right);
                 op = registry.BinaryOperationDictionary[FactoryRegistry.ADD].Create(null);
             }
             else
             {
-                result = new AddObject(left.GetDouble(), -right.GetDouble());
+                result = new AddObject(left, right.GetInverse());
                 op = registry.BinaryOperationDictionary[FactoryRegistry.SUBTRACT].Create(null);
             }
 
             stack.Perform(op);
 
-            return result;
+            return result.GetTuple();
         }
 
-        public override IMathObject VisitMulDiv(
-            FloatingPointParser.MulDivContext context)
+        public override Tuple<int, int> VisitMulDiv(
+            RationalParser.MulDivContext context)
         {
             var left = Visit(context.GetChild(0));
             var right = Visit(context.GetChild(2));
@@ -82,20 +84,20 @@ namespace MathObjects.Plugin.FloatingPoint
 
             IMathObject result;
 
-            if (context.op.Type == FloatingPointParser.MUL)
+            if (context.op.Type == RationalParser.MUL)
             {
-                result = new MultiplyObject(left.GetDouble(), right.GetDouble());
+                result = new MultiplyObject(left, right);
                 op = registry.BinaryOperationDictionary[FactoryRegistry.MULTIPLY].Create(null);
             }
             else
             {
-                result = new MultiplyObject(left.GetDouble(), 1 / right.GetDouble());
+                result = new MultiplyObject(left, right);
                 op = registry.BinaryOperationDictionary[FactoryRegistry.DIVIDE].Create(null);
             }
 
             stack.Perform(op);
 
-            return result;
+            return result.GetTuple();
         }
     }
 }

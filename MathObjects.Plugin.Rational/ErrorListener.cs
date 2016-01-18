@@ -6,7 +6,7 @@ using Antlr4.Runtime.Sharpen;
 using Antlr4.Runtime.Atn;
 using MathObjects.Framework;
 
-namespace MathObjects.Plugin.FoatingPoint
+namespace MathObjects.Plugin.Rational
 {
     public class ErrorListener : BaseErrorListener
     {
@@ -55,7 +55,7 @@ namespace MathObjects.Plugin.FoatingPoint
             string msg, 
             RecognitionException e)
         {
-            var s = "line " + line + " at " +
+            var s = "line "+line+":"+charPositionInLine+" at "+
                 offendingSymbol+": "+msg;
             ErrorHandler.SendError(this, s);
 

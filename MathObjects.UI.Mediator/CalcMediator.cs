@@ -71,12 +71,6 @@ namespace MathObjects.UI.Mediator
                 currentNumber += "" + output;
             }
 
-            var tuple = digit as IHasTuple;
-            if (tuple != null)
-            {
-                currentNumber += "" + tuple.Tuple.Item1;
-            }
-
             var hasParse = digit as IHasParseValue;
             if (hasParse != null)
             {
