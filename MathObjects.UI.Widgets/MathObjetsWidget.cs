@@ -3,6 +3,7 @@ using MathObjects.Framework;
 using Gtk;
 using MathObjects.UI.Mediator;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.UI.Widgets
 {
@@ -83,12 +84,20 @@ namespace MathObjects.UI.Widgets
 
             button1.Show();
 
-            button1.Clicked += (sender, e) => 
+            button1.Clicked += (sender, e) =>
+            {
+                if (this.registry.Parser != null)
+                {
+                    var parser = this.registry.Parser as IParser;
+                        parser.Parse(key, this.mediator, this.registry);
+                }
+                else 
                 {
                     var obj = factory.Create(key);
-
+                        
                     this.mediator.InsertNumber(obj);
-                };
+                }
+            };
         }
     }
 }

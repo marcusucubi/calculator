@@ -37,6 +37,8 @@ namespace MathObjects.UI.Input
 			w2.Position = 0;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.stackbuttonwidget1 = new global::MathObjects.UI.Stack.StackButtonWidget ();
+			this.stackbuttonwidget1.CanDefault = true;
+			this.stackbuttonwidget1.CanFocus = true;
 			this.stackbuttonwidget1.Events = ((global::Gdk.EventMask)(256));
 			this.stackbuttonwidget1.Name = "stackbuttonwidget1";
 			this.hbox1.Add (this.stackbuttonwidget1);

@@ -165,6 +165,15 @@ public partial class RationalParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class IntExpContext : ExprContext {
+		public ITerminalNode INT() { return GetToken(RationalParser.INT, 0); }
+		public IntExpContext(ExprContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IRationalVisitor<TResult> typedVisitor = visitor as IRationalVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIntExp(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class TupleExpContext : ExprContext {
 		public TupleContext tuple() {
 			return GetRuleContext<TupleContext>(0);
@@ -194,7 +203,7 @@ public partial class RationalParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 14;
+			State = 15;
 			switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
 			case 1:
 				{
@@ -207,17 +216,25 @@ public partial class RationalParser : Parser {
 				break;
 			case 2:
 				{
+				_localctx = new IntExpContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 10; Match(INT);
+				}
+				break;
+			case 3:
+				{
 				_localctx = new ParensContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 10; Match(T__0);
-				State = 11; expr(0);
-				State = 12; Match(T__1);
+				State = 11; Match(T__0);
+				State = 12; expr(0);
+				State = 13; Match(T__1);
 				}
 				break;
 			}
 			Context.Stop = TokenStream.Lt(-1);
-			State = 24;
+			State = 25;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -226,15 +243,15 @@ public partial class RationalParser : Parser {
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 22;
+					State = 23;
 					switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
 					case 1:
 						{
 						_localctx = new MulDivContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 16;
-						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
 						State = 17;
+						if (!(Precpred(Context, 5))) throw new FailedPredicateException(this, "Precpred(Context, 5)");
+						State = 18;
 						((MulDivContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==MUL || _la==DIV) ) {
@@ -243,16 +260,16 @@ public partial class RationalParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 18; expr(5);
+						State = 19; expr(6);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 19;
-						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
 						State = 20;
+						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
+						State = 21;
 						((AddSubContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==ADD || _la==SUB) ) {
@@ -261,13 +278,13 @@ public partial class RationalParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 21; expr(4);
+						State = 22; expr(5);
 						}
 						break;
 					}
 					} 
 				}
-				State = 26;
+				State = 27;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
 			}
@@ -308,11 +325,11 @@ public partial class RationalParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 27; Match(T__0);
-			State = 28; Match(INT);
-			State = 29; Match(T__2);
-			State = 30; Match(INT);
-			State = 31; Match(T__1);
+			State = 28; Match(T__0);
+			State = 29; Match(INT);
+			State = 30; Match(T__2);
+			State = 31; Match(INT);
+			State = 32; Match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -334,27 +351,27 @@ public partial class RationalParser : Parser {
 	}
 	private bool expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return Precpred(Context, 4);
-		case 1: return Precpred(Context, 3);
+		case 0: return Precpred(Context, 5);
+		case 1: return Precpred(Context, 4);
 		}
 		return true;
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\v$\x4\x2\t\x2\x4"+
-		"\x3\t\x3\x4\x4\t\x4\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x5"+
-		"\x3\x11\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3\x19\n\x3\f\x3\xE"+
-		"\x3\x1C\v\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x2\x3\x4\x5\x2"+
-		"\x4\x6\x2\x4\x3\x2\a\b\x3\x2\t\n#\x2\b\x3\x2\x2\x2\x4\x10\x3\x2\x2\x2"+
-		"\x6\x1D\x3\x2\x2\x2\b\t\x5\x4\x3\x2\t\x3\x3\x2\x2\x2\n\v\b\x3\x1\x2\v"+
-		"\x11\x5\x6\x4\x2\f\r\a\x3\x2\x2\r\xE\x5\x4\x3\x2\xE\xF\a\x4\x2\x2\xF\x11"+
-		"\x3\x2\x2\x2\x10\n\x3\x2\x2\x2\x10\f\x3\x2\x2\x2\x11\x1A\x3\x2\x2\x2\x12"+
-		"\x13\f\x6\x2\x2\x13\x14\t\x2\x2\x2\x14\x19\x5\x4\x3\a\x15\x16\f\x5\x2"+
-		"\x2\x16\x17\t\x3\x2\x2\x17\x19\x5\x4\x3\x6\x18\x12\x3\x2\x2\x2\x18\x15"+
-		"\x3\x2\x2\x2\x19\x1C\x3\x2\x2\x2\x1A\x18\x3\x2\x2\x2\x1A\x1B\x3\x2\x2"+
-		"\x2\x1B\x5\x3\x2\x2\x2\x1C\x1A\x3\x2\x2\x2\x1D\x1E\a\x3\x2\x2\x1E\x1F"+
-		"\a\x6\x2\x2\x1F \a\x5\x2\x2 !\a\x6\x2\x2!\"\a\x4\x2\x2\"\a\x3\x2\x2\x2"+
-		"\x5\x10\x18\x1A";
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\v%\x4\x2\t\x2\x4"+
+		"\x3\t\x3\x4\x4\t\x4\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x5\x3\x12\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3\x1A\n\x3\f"+
+		"\x3\xE\x3\x1D\v\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x2\x3\x4"+
+		"\x5\x2\x4\x6\x2\x4\x3\x2\a\b\x3\x2\t\n%\x2\b\x3\x2\x2\x2\x4\x11\x3\x2"+
+		"\x2\x2\x6\x1E\x3\x2\x2\x2\b\t\x5\x4\x3\x2\t\x3\x3\x2\x2\x2\n\v\b\x3\x1"+
+		"\x2\v\x12\x5\x6\x4\x2\f\x12\a\x6\x2\x2\r\xE\a\x3\x2\x2\xE\xF\x5\x4\x3"+
+		"\x2\xF\x10\a\x4\x2\x2\x10\x12\x3\x2\x2\x2\x11\n\x3\x2\x2\x2\x11\f\x3\x2"+
+		"\x2\x2\x11\r\x3\x2\x2\x2\x12\x1B\x3\x2\x2\x2\x13\x14\f\a\x2\x2\x14\x15"+
+		"\t\x2\x2\x2\x15\x1A\x5\x4\x3\b\x16\x17\f\x6\x2\x2\x17\x18\t\x3\x2\x2\x18"+
+		"\x1A\x5\x4\x3\a\x19\x13\x3\x2\x2\x2\x19\x16\x3\x2\x2\x2\x1A\x1D\x3\x2"+
+		"\x2\x2\x1B\x19\x3\x2\x2\x2\x1B\x1C\x3\x2\x2\x2\x1C\x5\x3\x2\x2\x2\x1D"+
+		"\x1B\x3\x2\x2\x2\x1E\x1F\a\x3\x2\x2\x1F \a\x6\x2\x2 !\a\x5\x2\x2!\"\a"+
+		"\x6\x2\x2\"#\a\x4\x2\x2#\a\x3\x2\x2\x2\x5\x11\x19\x1B";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

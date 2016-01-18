@@ -16,6 +16,7 @@ expr     :
          expr op=('*'|'/') expr    # MulDiv
          | expr op=('+'|'-') expr  # AddSub
          | tuple                   # TupleExp
+         | INT                     # IntExp
          | '(' expr ')'            # Parens
          ;
 

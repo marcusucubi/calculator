@@ -35,36 +35,19 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             public IMathObject Create(string param)
             {
-                double tuple = 0;
-
-                if (param is string)
-                {
-                    var input = new AntlrInputStream(param);
-                    var lexer = new FloatingPointLexer(input);
-                    var tokens = new CommonTokenStream(lexer);
-                    var parser = new FloatingPointParser(tokens);
-
-                    var l = new ErrorListener();
-                    parser.AddErrorListener(l);
-
-                    var tree = parser.stat(); 
-
-                    if (l.HasError)
-                    {
-                        return null;
-                    }
-
-                    var eval = new EvalVisitor();
-
-                    tuple = eval.Visit(tree);
-                }
-
-                return new MathObject(tuple);
+                return new MathObject(0);
             }
 
             public string[] PossibleParameters 
             { 
-                get { return new string[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}; } 
+                get 
+                { 
+                    return new string[] 
+                    {
+                        "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                        "top", "pi"
+                    }; 
+                } 
             }
         }
     }

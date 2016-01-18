@@ -58,6 +58,13 @@ public interface IRationalVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitParens([NotNull] RationalParser.ParensContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>IntExp</c>
+	/// labeled alternative in <see cref="RationalParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIntExp([NotNull] RationalParser.IntExpContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>TupleExp</c>
 	/// labeled alternative in <see cref="RationalParser.expr"/>.
 	/// </summary>

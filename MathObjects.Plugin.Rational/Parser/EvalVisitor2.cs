@@ -27,6 +27,19 @@ namespace MathObjects.Plugin.Rational
             return temp;
         }
 
+        public override Tuple<int, int> VisitIntExp(RationalParser.IntExpContext context)
+        {
+            int item1 = VisitInt(context.INT().GetText());
+
+            var tuple = new Tuple<int, int>(item1, 1);
+
+            var result = new MathObject(tuple);
+
+            stack.Enter(result);
+
+            return tuple;
+        }
+
         public override Tuple<int, int> VisitTuple(
             RationalParser.TupleContext context)
         {

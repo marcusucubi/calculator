@@ -25,6 +25,7 @@ namespace MathObjects.UI.Stack
 			this.hbox1.BorderWidth = ((uint)(2));
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.buttonPush = new global::Gtk.Button ();
+			this.buttonPush.CanDefault = true;
 			this.buttonPush.CanFocus = true;
 			this.buttonPush.Name = "buttonPush";
 			this.buttonPush.UseUnderline = true;

@@ -26,7 +26,7 @@ namespace MathObjects.UI
 			// Widget MathObjects.UI.MainWindow2
 			this.Name = "MathObjects.UI.MainWindow2";
 			this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow2");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child MathObjects.UI.MainWindow2.Gtk.Container+ContainerChild
 			this.table1 = new global::Gtk.Table (((uint)(6)), ((uint)(1)), false);
 			this.table1.Name = "table1";
@@ -101,7 +101,7 @@ namespace MathObjects.UI
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 498;
-			this.DefaultHeight = 433;
+			this.DefaultHeight = 552;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		}
