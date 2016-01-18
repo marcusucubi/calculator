@@ -9,6 +9,8 @@ namespace MathObjects.Framework.Parser
         void Perform(IBinaryOperation op);
 
         void Perform(IMathOperation op);
+
+        IMathObject Top { get; }
     }
 }
 

@@ -24,9 +24,9 @@ namespace MathObjects.Plugin.FloatingPoint
 
             public IBinaryOperation Create(object parm)
             {
-                return new Add();
+                return new Subtract();
             }
         }
     }
 }
-
+  

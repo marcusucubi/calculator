@@ -28,9 +28,11 @@ using Antlr4.Runtime.Tree;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
+[System.CLSCompliant(false)]
 public partial class FloatingPointParser : Parser {
 	public const int
-		T__0=1, T__1=2, INT=3, MUL=4, DIV=5, ADD=6, SUB=7, WS=8;
+		T__0=1, T__1=2, INT=3, FLOAT=4, DIGIT=5, MUL=6, DIV=7, ADD=8, SUB=9, PI=10, 
+		TOP=11, WS=12;
 	public const int
 		RULE_stat = 0, RULE_expr = 1, RULE_value = 2;
 	public static readonly string[] ruleNames = {
@@ -38,10 +40,12 @@ public partial class FloatingPointParser : Parser {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'('", "')'", null, "'*'", "'/'", "'+'", "'-'"
+		null, "'('", "')'", null, null, null, "'*'", "'/'", "'+'", "'-'", "'pi'", 
+		"'top'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, null, "INT", "MUL", "DIV", "ADD", "SUB", "WS"
+		null, null, null, "INT", "FLOAT", "DIGIT", "MUL", "DIV", "ADD", "SUB", 
+		"PI", "TOP", "WS"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -123,6 +127,24 @@ public partial class FloatingPointParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
+	public partial class FloatContext : ExprContext {
+		public ITerminalNode FLOAT() { return GetToken(FloatingPointParser.FLOAT, 0); }
+		public FloatContext(ExprContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IFloatingPointVisitor<TResult> typedVisitor = visitor as IFloatingPointVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFloat(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class TOPContext : ExprContext {
+		public ITerminalNode TOP() { return GetToken(FloatingPointParser.TOP, 0); }
+		public TOPContext(ExprContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IFloatingPointVisitor<TResult> typedVisitor = visitor as IFloatingPointVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTOP(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class MulDivContext : ExprContext {
 		public IToken op;
 		public ExprContext[] expr() {
@@ -164,6 +186,15 @@ public partial class FloatingPointParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class PIContext : ExprContext {
+		public ITerminalNode PI() { return GetToken(FloatingPointParser.PI, 0); }
+		public PIContext(ExprContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IFloatingPointVisitor<TResult> typedVisitor = visitor as IFloatingPointVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPI(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class IntContext : ExprContext {
 		public ITerminalNode INT() { return GetToken(FloatingPointParser.INT, 0); }
 		public IntContext(ExprContext context) { CopyFrom(context); }
@@ -191,7 +222,7 @@ public partial class FloatingPointParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 14;
+			State = 17;
 			switch (TokenStream.La(1)) {
 			case INT:
 				{
@@ -202,21 +233,45 @@ public partial class FloatingPointParser : Parser {
 				State = 9; Match(INT);
 				}
 				break;
+			case FLOAT:
+				{
+				_localctx = new FloatContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 10; Match(FLOAT);
+				}
+				break;
+			case PI:
+				{
+				_localctx = new PIContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 11; Match(PI);
+				}
+				break;
+			case TOP:
+				{
+				_localctx = new TOPContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 12; Match(TOP);
+				}
+				break;
 			case T__0:
 				{
 				_localctx = new ParensContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 10; Match(T__0);
-				State = 11; expr(0);
-				State = 12; Match(T__1);
+				State = 13; Match(T__0);
+				State = 14; expr(0);
+				State = 15; Match(T__1);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			Context.Stop = TokenStream.Lt(-1);
-			State = 24;
+			State = 27;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -225,15 +280,15 @@ public partial class FloatingPointParser : Parser {
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 22;
+					State = 25;
 					switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
 					case 1:
 						{
 						_localctx = new MulDivContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 16;
-						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 17;
+						State = 19;
+						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
+						State = 20;
 						((MulDivContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==MUL || _la==DIV) ) {
@@ -242,16 +297,16 @@ public partial class FloatingPointParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 18; expr(5);
+						State = 21; expr(8);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 19;
-						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 20;
+						State = 22;
+						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
+						State = 23;
 						((AddSubContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==ADD || _la==SUB) ) {
@@ -260,13 +315,13 @@ public partial class FloatingPointParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 21; expr(4);
+						State = 24; expr(7);
 						}
 						break;
 					}
 					} 
 				}
-				State = 26;
+				State = 29;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
 			}
@@ -304,7 +359,7 @@ public partial class FloatingPointParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 27; Match(INT);
+			State = 30; Match(INT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -326,25 +381,27 @@ public partial class FloatingPointParser : Parser {
 	}
 	private bool expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return Precpred(Context, 4);
-		case 1: return Precpred(Context, 3);
+		case 0: return Precpred(Context, 7);
+		case 1: return Precpred(Context, 6);
 		}
 		return true;
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\n \x4\x2\t\x2\x4"+
-		"\x3\t\x3\x4\x4\t\x4\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x5"+
-		"\x3\x11\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3\x19\n\x3\f\x3\xE"+
-		"\x3\x1C\v\x3\x3\x4\x3\x4\x3\x4\x2\x3\x4\x5\x2\x4\x6\x2\x4\x3\x2\x6\a\x3"+
-		"\x2\b\t\x1F\x2\b\x3\x2\x2\x2\x4\x10\x3\x2\x2\x2\x6\x1D\x3\x2\x2\x2\b\t"+
-		"\x5\x4\x3\x2\t\x3\x3\x2\x2\x2\n\v\b\x3\x1\x2\v\x11\a\x5\x2\x2\f\r\a\x3"+
-		"\x2\x2\r\xE\x5\x4\x3\x2\xE\xF\a\x4\x2\x2\xF\x11\x3\x2\x2\x2\x10\n\x3\x2"+
-		"\x2\x2\x10\f\x3\x2\x2\x2\x11\x1A\x3\x2\x2\x2\x12\x13\f\x6\x2\x2\x13\x14"+
-		"\t\x2\x2\x2\x14\x19\x5\x4\x3\a\x15\x16\f\x5\x2\x2\x16\x17\t\x3\x2\x2\x17"+
-		"\x19\x5\x4\x3\x6\x18\x12\x3\x2\x2\x2\x18\x15\x3\x2\x2\x2\x19\x1C\x3\x2"+
-		"\x2\x2\x1A\x18\x3\x2\x2\x2\x1A\x1B\x3\x2\x2\x2\x1B\x5\x3\x2\x2\x2\x1C"+
-		"\x1A\x3\x2\x2\x2\x1D\x1E\a\x5\x2\x2\x1E\a\x3\x2\x2\x2\x5\x10\x18\x1A";
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\xE#\x4\x2\t\x2\x4"+
+		"\x3\t\x3\x4\x4\t\x4\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x5\x3\x14\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3"+
+		"\x1C\n\x3\f\x3\xE\x3\x1F\v\x3\x3\x4\x3\x4\x3\x4\x2\x3\x4\x5\x2\x4\x6\x2"+
+		"\x4\x3\x2\b\t\x3\x2\n\v%\x2\b\x3\x2\x2\x2\x4\x13\x3\x2\x2\x2\x6 \x3\x2"+
+		"\x2\x2\b\t\x5\x4\x3\x2\t\x3\x3\x2\x2\x2\n\v\b\x3\x1\x2\v\x14\a\x5\x2\x2"+
+		"\f\x14\a\x6\x2\x2\r\x14\a\f\x2\x2\xE\x14\a\r\x2\x2\xF\x10\a\x3\x2\x2\x10"+
+		"\x11\x5\x4\x3\x2\x11\x12\a\x4\x2\x2\x12\x14\x3\x2\x2\x2\x13\n\x3\x2\x2"+
+		"\x2\x13\f\x3\x2\x2\x2\x13\r\x3\x2\x2\x2\x13\xE\x3\x2\x2\x2\x13\xF\x3\x2"+
+		"\x2\x2\x14\x1D\x3\x2\x2\x2\x15\x16\f\t\x2\x2\x16\x17\t\x2\x2\x2\x17\x1C"+
+		"\x5\x4\x3\n\x18\x19\f\b\x2\x2\x19\x1A\t\x3\x2\x2\x1A\x1C\x5\x4\x3\t\x1B"+
+		"\x15\x3\x2\x2\x2\x1B\x18\x3\x2\x2\x2\x1C\x1F\x3\x2\x2\x2\x1D\x1B\x3\x2"+
+		"\x2\x2\x1D\x1E\x3\x2\x2\x2\x1E\x5\x3\x2\x2\x2\x1F\x1D\x3\x2\x2\x2 !\a"+
+		"\x5\x2\x2!\a\x3\x2\x2\x2\x5\x13\x1B\x1D";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

@@ -31,7 +31,7 @@ namespace MathObjects.Plugin.FloatingPoint
             
             registry.RegisterOperationFactory(
                 FactoryRegistry.SUBTRACT, 
-                new Add.Factory());
+                new Subtract.Factory());
 
             registry.RegisterOperationFactory(
                 FactoryRegistry.MULTIPLY, 

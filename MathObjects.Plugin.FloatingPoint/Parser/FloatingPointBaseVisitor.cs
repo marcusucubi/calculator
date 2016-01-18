@@ -29,6 +29,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
+[System.CLSCompliant(false)]
 public partial class FloatingPointBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IFloatingPointVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FloatingPointParser.printExpr"/>.
@@ -40,6 +41,26 @@ public partial class FloatingPointBaseVisitor<Result> : AbstractParseTreeVisitor
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitPrintExpr([NotNull] FloatingPointParser.PrintExprContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FloatingPointParser.Float"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitFloat([NotNull] FloatingPointParser.FloatContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FloatingPointParser.TOP"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitTOP([NotNull] FloatingPointParser.TOPContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FloatingPointParser.MulDiv"/>.
 	/// <para>
@@ -70,6 +91,16 @@ public partial class FloatingPointBaseVisitor<Result> : AbstractParseTreeVisitor
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitParens([NotNull] FloatingPointParser.ParensContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="FloatingPointParser.PI"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitPI([NotNull] FloatingPointParser.PIContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="FloatingPointParser.Int"/>.
 	/// <para>

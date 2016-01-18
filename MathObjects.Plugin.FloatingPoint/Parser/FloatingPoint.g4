@@ -16,6 +16,9 @@ expr     :
          expr op=('*'|'/') expr    # MulDiv
          | expr op=('+'|'-') expr  # AddSub
          | INT                     # Int
+         | FLOAT                   # Float
+         | PI                      # PI
+         | TOP                     # TOP
          | '(' expr ')'            # Parens
          ;
 
@@ -25,9 +28,18 @@ value    : INT
 
 // parser rules start with lowercase letters, lexer rules with uppercase
 INT      : [0-9]+ ;
+
+FLOAT    : DIGIT+ '.' DIGIT*
+         | '.' DIGIT+
+         ;
+        
+DIGIT    : [0-9] ;
+
 MUL      : '*' ; // assigns token name to '*' used above in grammar
 DIV      : '/' ;
 ADD      : '+' ;
 SUB      : '-' ;
-WS      : [ \t\r\n]+ -> skip ;
+PI       : 'pi' ;
+TOP      : 'top' ;
+WS       : [ \t\r\n]+ -> skip ;
 

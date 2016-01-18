@@ -41,7 +41,6 @@
     <Compile Include="IHasValue.cs" />
     <Compile Include="IHasDisplayValue.cs" />
     <Compile Include="Tuple.cs" />
-    <Compile Include="IHasTuple.cs" />
     <Compile Include="IHasOutput.cs" />
     <Compile Include="IHasName.cs" />
     <Compile Include="IHasMatrix.cs" />

@@ -46,6 +46,19 @@ namespace MathObjects.UI.Mediator
             get { return this.registry; }
         }
 
+        public IMathObject Top
+        {
+            get 
+            { 
+                if (this.numbers.Count == 0)
+                {
+                    return new ErrorObject();
+                }
+
+                return this.numbers.Peek(); 
+            }
+        }
+
         public string CurrentNumber
         {
             get { return currentNumber; }

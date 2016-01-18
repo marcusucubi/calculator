@@ -27,6 +27,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
+[System.CLSCompliant(false)]
 public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by the <c>printExpr</c>
@@ -35,6 +36,20 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitPrintExpr([NotNull] FloatingPointParser.PrintExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Float</c>
+	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFloat([NotNull] FloatingPointParser.FloatContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>TOP</c>
+	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTOP([NotNull] FloatingPointParser.TOPContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>MulDiv</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
@@ -56,6 +71,13 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitParens([NotNull] FloatingPointParser.ParensContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>PI</c>
+	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPI([NotNull] FloatingPointParser.PIContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Int</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
