@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathObjects.Framework
+namespace MathObjects.Plugin.Integers
 {
     public interface IHasValue
     {

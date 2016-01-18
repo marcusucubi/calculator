@@ -37,6 +37,8 @@
     <Compile Include="Multiplication.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Gcd.cs" />
+    <Compile Include="IHasValue.cs" />
+    <Compile Include="MathObjectEx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

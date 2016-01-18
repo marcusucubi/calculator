@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {
-    class MathObject : IMathObject, IHasValue
+    class MathObject : IMathObject, IHasValue, IHasOutput
     {
         readonly int value;
 
@@ -14,6 +14,11 @@ namespace MathObjects.Plugin.Integers
         }
 
         public int Value
+        {
+            get { return this.value; }
+        }
+
+        public object Output
         {
             get { return this.value; }
         }

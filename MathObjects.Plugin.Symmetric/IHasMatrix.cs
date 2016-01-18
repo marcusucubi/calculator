@@ -1,7 +1,7 @@
 ﻿using System;
 using MathObjects.Core.Matrix;
 
-namespace MathObjects.Framework
+namespace MathObjects.Plugin.Symmetric
 {
     public interface IHasMatrix
     {

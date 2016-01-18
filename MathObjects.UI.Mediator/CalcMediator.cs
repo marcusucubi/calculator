@@ -72,12 +72,6 @@ namespace MathObjects.UI.Mediator
 
         public void InsertNumber(object digit)
         {
-            var value = digit as IHasValue;
-            if (value != null)
-            {
-                currentNumber += "" + value.Value;
-            }
-
             var output = digit as IHasOutput;
             if (output != null)
             {
@@ -230,7 +224,7 @@ namespace MathObjects.UI.Mediator
                     result += ", ";
                 }
 
-                var v = (i as IHasValue).Value;
+                var v = (i as IHasOutput).Output;
                 result += "" + v;
             }
 
