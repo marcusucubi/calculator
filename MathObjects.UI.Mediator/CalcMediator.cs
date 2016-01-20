@@ -37,12 +37,12 @@ namespace MathObjects.UI.Mediator
 
             if (registry.OperationDictionary.ContainsKey(FactoryRegistry.MULTIPLY))
             {
-                multiplyFactory = registry.GetOperationFactory(FactoryRegistry.MULTIPLY);
+                multiplyFactory = registry.GetBinaryOperationFactory(FactoryRegistry.MULTIPLY);
             }
 
             if (registry.OperationDictionary.ContainsKey(FactoryRegistry.INVERSE))
             {
-                inverseFactory2 = registry.GetOperationFactory2(FactoryRegistry.INVERSE);
+                inverseFactory2 = registry.GetOperationFactory(FactoryRegistry.INVERSE);
             }
         }
 
@@ -86,7 +86,7 @@ namespace MathObjects.UI.Mediator
             FireCurrentNumberChanged();
         }
 
-        public void Enter(IMathObject obj)
+        public void Push(IMathObject obj)
         {
             numbers.Push(obj);
 
@@ -110,7 +110,7 @@ namespace MathObjects.UI.Mediator
                 var obj = this.objectFactory.Create(this.currentNumber);
                 if (obj != null)
                 {
-                    Enter(obj);
+                    Push(obj);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace MathObjects.UI.Mediator
             }
         }
 
-        public void Perform(IMathBinaryOperation op)
+        public void Push(IMathBinaryOperation op)
         {
             if (this.numbers.Count < 2)
             {
@@ -154,7 +154,7 @@ namespace MathObjects.UI.Mediator
             FireNumberStackChaned();
         }
 
-        public void Perform(IMathOperation op)
+        public void Push(IMathOperation op)
         {
             if (this.numbers.Count < 1)
             {

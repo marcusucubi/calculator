@@ -45,7 +45,7 @@ namespace MathObjects.Plugin.Symmetric.Parser
 
             var obj = new MathObject(cycle.ToMatrix());
 
-            this.stack.Enter(obj);
+            this.stack.Push(obj);
 
             return obj;
         }
@@ -61,7 +61,7 @@ namespace MathObjects.Plugin.Symmetric.Parser
 
                 if (index > 0)
                 {
-                    stack.Perform(new Compose());
+                    stack.Push(new Compose());
                 }
 
                 index++;

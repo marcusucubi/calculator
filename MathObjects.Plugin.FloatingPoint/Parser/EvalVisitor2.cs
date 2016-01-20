@@ -27,7 +27,7 @@ namespace MathObjects.Plugin.FloatingPoint
         public override IMathObject VisitTOP(
             FloatingPointParser.TOPContext context)
         {
-            stack.Enter(this.top);
+            stack.Push(this.top);
             return this.top;
         }
 
@@ -35,7 +35,7 @@ namespace MathObjects.Plugin.FloatingPoint
             FloatingPointParser.PIContext context)
         {
             var result = new MathObject(Math.PI);
-            stack.Enter(result);
+            stack.Push(result);
             return result;
         }
 
@@ -69,7 +69,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var result = factory.Create(obj);
 
-            stack.Enter(result);
+            stack.Push(result);
 
             return result;
         }
@@ -80,7 +80,7 @@ namespace MathObjects.Plugin.FloatingPoint
             double temp;
             double.TryParse(context.FLOAT().GetText(), out temp);
             var result = new MathObject(temp);
-            stack.Enter(result);
+            stack.Push(result);
             return result;
         }
 
@@ -90,7 +90,7 @@ namespace MathObjects.Plugin.FloatingPoint
             double temp;
             double.TryParse(context.INT().GetText(), out temp);
             var result = new MathObject(temp);
-            stack.Enter(result);
+            stack.Push(result);
             return result;
         }
 
@@ -100,7 +100,7 @@ namespace MathObjects.Plugin.FloatingPoint
             double temp;
             double.TryParse(context.INT().GetText(), out temp);
             var result = new MathObject(temp);
-            stack.Enter(result);
+            stack.Push(result);
             return result;
         }
 
@@ -133,7 +133,7 @@ namespace MathObjects.Plugin.FloatingPoint
                     FactoryRegistry.SUBTRACT].Create(null);
             }
 
-            stack.Perform(op);
+            stack.Push(op);
 
             return result;
         }
@@ -159,7 +159,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 op = registry.BinaryOperationDictionary[FactoryRegistry.DIVIDE].Create(null);
             }
 
-            stack.Perform(op);
+            stack.Push(op);
 
             return result;
         }

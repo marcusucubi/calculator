@@ -4,11 +4,11 @@ namespace MathObjects.Framework.Parser
 {
     public interface IMathObjectStack
     {
-        void Enter(IMathObject mathObject);
+        void Push(IMathObject mathObject);
 
-        void Perform(IMathBinaryOperation op);
+        void Push(IMathBinaryOperation op);
 
-        void Perform(IMathOperation op);
+        void Push(IMathOperation op);
 
         IMathObject Top { get; }
     }

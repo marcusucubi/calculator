@@ -30,7 +30,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var addFactory = registry.GetOperationFactory (FactoryRegistry.ADD);
+            var addFactory = registry.GetBinaryOperationFactory (FactoryRegistry.ADD);
             Assert.NotNull(addFactory);
 
             var i1 = factory.Create("1");
@@ -53,7 +53,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var multiplyFactory = registry.GetOperationFactory (FactoryRegistry.MULTIPLY);
+            var multiplyFactory = registry.GetBinaryOperationFactory (FactoryRegistry.MULTIPLY);
             Assert.NotNull(multiplyFactory);
 
             var i1 = factory.Create("2");

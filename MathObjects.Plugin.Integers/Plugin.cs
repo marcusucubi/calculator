@@ -23,15 +23,15 @@ namespace MathObjects.Plugin.Integers
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
 
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.ADD, 
                 new Add.Factory());
 
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.MULTIPLY, 
                 new Multiplication.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 "GCD", new Gcd.Factory());
         }
     }

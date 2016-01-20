@@ -34,7 +34,7 @@ namespace MathObjects.Plugin.Symmetric
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.ADD, 
                 new Compose.Factory());
             

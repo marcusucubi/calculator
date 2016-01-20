@@ -105,7 +105,7 @@ namespace MathObjects.UI.Widgets
                 {
                     var op = factory.Create(null);
 
-                    this.mediator.Perform(op);
+                    this.mediator.Push(op);
                 };
         }
 
@@ -125,7 +125,7 @@ namespace MathObjects.UI.Widgets
                 {
                     var op = factory.Create(null);
 
-                    this.mediator.Perform(op);
+                    this.mediator.Push(op);
                 };
         }
     }

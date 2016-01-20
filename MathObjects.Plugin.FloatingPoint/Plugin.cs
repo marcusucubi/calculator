@@ -33,19 +33,19 @@ namespace MathObjects.Plugin.FloatingPoint
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.ADD, 
                 new Add.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.SUBTRACT, 
                 new Subtract.Factory());
 
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.MULTIPLY, 
                 new Multiply.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.DIVIDE, 
                 new Divide.Factory());
 

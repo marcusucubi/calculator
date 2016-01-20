@@ -35,7 +35,7 @@ namespace MathObjects.Plugin.Rational
 
             var result = new MathObject(tuple);
 
-            stack.Enter(result);
+            stack.Push(result);
 
             return tuple;
         }
@@ -50,7 +50,7 @@ namespace MathObjects.Plugin.Rational
 
             var result = new MathObject(tuple);
 
-            stack.Enter(result);
+            stack.Push(result);
 
             return tuple;
         }
@@ -82,7 +82,7 @@ namespace MathObjects.Plugin.Rational
                 op = registry.BinaryOperationDictionary[FactoryRegistry.SUBTRACT].Create(null);
             }
 
-            stack.Perform(op);
+            stack.Push(op);
 
             return result.GetTuple();
         }
@@ -109,7 +109,7 @@ namespace MathObjects.Plugin.Rational
                 op = registry.BinaryOperationDictionary[FactoryRegistry.DIVIDE].Create(null);
             }
 
-            stack.Perform(op);
+            stack.Push(op);
 
             return result.GetTuple();
         }

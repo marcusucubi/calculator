@@ -33,11 +33,11 @@ namespace MathObjects.Plugin.Rational
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.ADD, 
                 new Add.Factory());
             
-            registry.RegisterOperationFactory(
+            registry.RegisterBinaryOperationFactory(
                 FactoryRegistry.MULTIPLY, 
                 new Multiply.Factory());
 
