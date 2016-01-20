@@ -61,5 +61,17 @@
       <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
       <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Parser\MathObjects.Core.Parser.csproj">
+      <Project>{F7F1F412-02F8-438E-A3AB-C5C347B2CCEF}</Project>
+      <Name>MathObjects.Core.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Matrix.Permutation\MathObjects.Core.Matrix.Permutation.csproj">
+      <Project>{13457E87-8AB4-494B-BF43-51B262F954D8}</Project>
+      <Name>MathObjects.Core.Matrix.Permutation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

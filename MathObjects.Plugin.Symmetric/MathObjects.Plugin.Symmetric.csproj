@@ -52,6 +52,10 @@
     <Compile Include="ErrorListener.cs" />
     <Compile Include="IHasMatrix.cs" />
     <Compile Include="IHasParseValue.cs" />
+    <Compile Include="Parser\PermutationBaseVisitor.cs" />
+    <Compile Include="Parser\PermutationVisitor.cs" />
+    <Compile Include="Parser\EvalVisitor2.cs" />
+    <Compile Include="Parser\Parser2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -74,6 +78,10 @@
     <ProjectReference Include="..\MathObjects.Core.Matrix.Permutation\MathObjects.Core.Matrix.Permutation.csproj">
       <Project>{13457E87-8AB4-494B-BF43-51B262F954D8}</Project>
       <Name>MathObjects.Core.Matrix.Permutation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,6 @@ using MathObjects.Core.Matrix;
 using MathObjects.Core.Matrix.Permutation;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
-using MathObjects.Plugin.Symmetric.Parser;
 
 namespace MathObjects.Plugin.Symmetric
 {
@@ -66,6 +65,7 @@ namespace MathObjects.Plugin.Symmetric
 
                 if (param is string)
                 {
+                    /*
                     var input = new AntlrInputStream(param as string);
                     var lexer = new PermutationLexer(input);
                     var tokens = new CommonTokenStream(lexer);
@@ -87,6 +87,7 @@ namespace MathObjects.Plugin.Symmetric
                     walker.Walk(builder, tree);
 
                     matrix = new MathObject(builder.PermutationMatix);
+                    */
                 }
 
                 return matrix;
@@ -98,8 +99,10 @@ namespace MathObjects.Plugin.Symmetric
                 { 
                     return new string[] 
                     {
-                        "(1, 2)", "(2, 3)", "(1, 3)", "(1, 2, 3)", "(1, 3, 2)", "(1, 2, 3, 4)",
-                        "(3, 4)", "(2, 3, 4)"
+                        "(1, 2)", "(2, 3)", "(1, 3)", 
+                        "(1, 2, 3)", "(1, 3, 2)", 
+                        "(1, 2, 3, 4)", "(3, 4)", 
+                        "(2, 3, 4)"
                     }; 
                 } 
             }

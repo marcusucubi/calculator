@@ -14,6 +14,8 @@ namespace MathObjects.UI.Mediator
 
         readonly FactoryRegistry registry;
 
+        readonly IParser parser;
+
         readonly Stack<IMathObject> numbers = new Stack<IMathObject>();
 
         readonly IMathObjectFactory objectFactory;
@@ -24,9 +26,12 @@ namespace MathObjects.UI.Mediator
 
         string currentNumber;
 
-        public CalcMediator(FactoryRegistry registry)
+        public CalcMediator(
+            FactoryRegistry registry,
+            IParser parser)
         {
             this.registry = registry;
+            this.parser = parser;
 
             objectFactory = registry.GetObjectFactory(FactoryRegistry.OBJECT);
 
@@ -94,11 +99,11 @@ namespace MathObjects.UI.Mediator
 
         public void Enter()
         {
-            var parser = this.registry.Parser as IParser;
+            //var parser = this.registry.Parser as IParser;
 
             if (parser != null)
             {
-                parser.Parse(this.currentNumber, this, this.registry);
+                parser.Parse(this.currentNumber, this);
             }
             else
             {

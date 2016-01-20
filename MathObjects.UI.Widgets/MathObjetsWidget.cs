@@ -18,15 +18,21 @@ namespace MathObjects.UI.Widgets
 
         IMediator mediator;
 
+        IParser parser;
+
         public MathObjetsWidget()
         {
             this.Build();
         }
 
-        public void Connect(FactoryRegistry registry, IMediator mediator)
+        public void Connect(
+            FactoryRegistry registry, 
+            IMediator mediator,
+            IParser parser)
         {
             this.registry = registry;
             this.mediator = mediator;
+            this.parser = parser;
 
             SetupButtons();
         }
@@ -37,6 +43,7 @@ namespace MathObjects.UI.Widgets
 
             this.registry = null;
             this.mediator = null;
+            this.parser = null;
 
             foreach (var c in this.table1.Children)
             {
@@ -86,10 +93,9 @@ namespace MathObjects.UI.Widgets
 
             button1.Clicked += (sender, e) =>
             {
-                if (this.registry.Parser != null)
+                if (this.parser != null)
                 {
-                    var parser = this.registry.Parser as IParser;
-                        parser.Parse(key, this.mediator, this.registry);
+                    parser.Parse(key, this.mediator);
                 }
                 else 
                 {

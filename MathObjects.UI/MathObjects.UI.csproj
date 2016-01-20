@@ -75,6 +75,7 @@
     <Compile Include="gtk-gui\MathObjects.UI.ErrorWidget.cs" />
     <Compile Include="MainWindow2.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.MainWindow2.cs" />
+    <Compile Include="PluginEx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

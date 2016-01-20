@@ -7,9 +7,11 @@ namespace MathObjects.UI.Mediator
 {
     public static class MediatorFactory
     {
-        public static IMediator Create(FactoryRegistry registry)
+        public static IMediator Create(
+            FactoryRegistry registry,
+            IParser parser)
         {
-            return new CalcMediator(registry);
+            return new CalcMediator(registry, parser);
         }
     }
 }

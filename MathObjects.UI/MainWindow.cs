@@ -21,19 +21,30 @@ public partial class MainWindow: Gtk.Window
             {
                 var registry = MainClass.PluginRegistry.Plugins[e.Plugin];
 
-                Connect(registry);
+                var hasParser = e.Plugin as IHasParser;
+
+                if (hasParser != null)
+                {
+                    Connect(registry, hasParser.Parser);
+                }
+                else
+                {
+                    Connect(registry, null);
+                }
             };
 
         this.fieldwidget1.SelectFirst();
     }
 
-    void Connect(FactoryRegistry registry) 
+    void Connect(
+        FactoryRegistry registry,
+        IParser parser) 
     {
-        this.mediator = MediatorFactory.Create(registry);
+        this.mediator = MediatorFactory.Create(registry, parser);
 
         this.mathobjetswidget1.Disconnect();
         this.mathobjetswidget1.Connect(
-            registry, mediator);
+            registry, mediator, parser);
 
         this.mathoperationswidget1.Disconnect();
         this.mathoperationswidget1.Connect(

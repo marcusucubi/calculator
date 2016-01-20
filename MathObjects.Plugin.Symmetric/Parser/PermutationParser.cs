@@ -28,6 +28,7 @@ using Antlr4.Runtime.Tree;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
+[System.CLSCompliant(false)]
 public partial class PermutationParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, INT=4, WS=5;
@@ -77,13 +78,10 @@ public partial class PermutationParser : Parser {
 		{
 		}
 		public override int RuleIndex { get { return RULE_init; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			IPermutationListener typedListener = listener as IPermutationListener;
-			if (typedListener != null) typedListener.EnterInit(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IPermutationListener typedListener = listener as IPermutationListener;
-			if (typedListener != null) typedListener.ExitInit(this);
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IPermutationVisitor<TResult> typedVisitor = visitor as IPermutationVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitInit(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -133,13 +131,10 @@ public partial class PermutationParser : Parser {
 		{
 		}
 		public override int RuleIndex { get { return RULE_cycle; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			IPermutationListener typedListener = listener as IPermutationListener;
-			if (typedListener != null) typedListener.EnterCycle(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IPermutationListener typedListener = listener as IPermutationListener;
-			if (typedListener != null) typedListener.ExitCycle(this);
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IPermutationVisitor<TResult> typedVisitor = visitor as IPermutationVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCycle(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 
@@ -200,13 +195,10 @@ public partial class PermutationParser : Parser {
 		{
 		}
 		public override int RuleIndex { get { return RULE_value; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			IPermutationListener typedListener = listener as IPermutationListener;
-			if (typedListener != null) typedListener.EnterValue(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IPermutationListener typedListener = listener as IPermutationListener;
-			if (typedListener != null) typedListener.ExitValue(this);
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IPermutationVisitor<TResult> typedVisitor = visitor as IPermutationVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitValue(this);
+			else return visitor.VisitChildren(this);
 		}
 	}
 

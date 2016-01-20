@@ -2,14 +2,21 @@
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.Framework.Registry;
-using Antlr4.Runtime;
 using MathObjects.Plugin.FoatingPoint;
+using Antlr4.Runtime;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
     public class Parser : IParser
     {
-        public void Parse(string data, IMathObjectStack stack, FactoryRegistry registry)
+        readonly FactoryRegistry registry;
+
+        public Parser(FactoryRegistry registry)
+        {
+            this.registry = registry;
+        }
+
+        public void Parse(string data, IMathObjectStack stack)
         {
             var input = new AntlrInputStream(data);
             var lexer = new FloatingPointLexer(input);

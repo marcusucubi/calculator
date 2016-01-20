@@ -1,16 +1,17 @@
 ﻿using System;
-using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.Framework.Registry;
 using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
+using MathObjects.Plugin.Symmetric.Parser;
 
-namespace MathObjects.Plugin.Rational
+namespace MathObjects.Plugin.Symmetric.Parser
 {
-    public class Parser : IParser
+    public class Parser2 : IParser
     {
         readonly FactoryRegistry registry;
 
-        public Parser(FactoryRegistry registry)
+        public Parser2(FactoryRegistry registry)
         {
             this.registry = registry;
         }
@@ -18,22 +19,23 @@ namespace MathObjects.Plugin.Rational
         public void Parse(string data, IMathObjectStack stack)
         {
             var input = new AntlrInputStream(data);
-            var lexer = new RationalLexer(input);
+            var lexer = new PermutationLexer(input);
             var tokens = new CommonTokenStream(lexer);
-            var parser = new RationalParser(tokens);
+            var parser = new PermutationParser(tokens);
 
             var l = new ErrorListener();
             parser.AddErrorListener(l);
 
-            var tree = parser.stat(); 
+            var tree = parser.init(); 
 
             if (!l.HasError)
             {
                 var eval = new EvalVisitor2(registry, stack);
-                
+
                 eval.Visit(tree);
             }
-       }
+
+        }
     }
 }
 

@@ -31,11 +31,11 @@ namespace MathObjects.Framework.Registry
         readonly Dictionary<string, IMathObjectFactory> functionMap = 
             new Dictionary<string, IMathObjectFactory>();
 
-        public object Parser
-        {
-            get;
-            set;
-        }
+        //public object Parser
+        //{
+        //    get;
+        //    set;
+        //}
         
         public ReadOnlyDictionary<string, IMathObjectFactory> ObjectDictionary
         {

@@ -2,6 +2,7 @@
 using Gtk;
 using MathObjects.Framework.Registry;
 using MathObjects.UI.Mediator;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.UI
 {
@@ -16,21 +17,22 @@ namespace MathObjects.UI
 
             this.fieldwidget1.MathPluginChanged += (sender, e) => 
                 {
-                    var registry = MainClass.PluginRegistry.Plugins[e.Plugin];
+                    var registry = e.Plugin.GetRegistry();
+                    var parser = e.Plugin.GetParser();
 
-                    Connect(registry);
+                    Connect(registry, parser);
                 };
 
             this.fieldwidget1.SelectFirst();
         }
 
-        void Connect(FactoryRegistry registry) 
+        void Connect(FactoryRegistry registry, IParser parser) 
         {
-            var mediator = MediatorFactory.Create(registry);
+            var mediator = MediatorFactory.Create(registry, parser);
 
             this.mathobjetswidget2.Disconnect();
             this.mathobjetswidget2.Connect(
-                registry, mediator);
+                registry, mediator, parser);
 
             this.mathoperationswidget1.Disconnect();
             this.mathoperationswidget1.Connect(

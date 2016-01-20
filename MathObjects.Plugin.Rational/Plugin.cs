@@ -2,24 +2,32 @@
 using MathObjects.Core.Plugin;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Rational
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit, IHasName
+    public class Plugin : IPlugin, IHasInit, IHasName, IHasParser
     {
+        IParser parser;
+
         public string Name
         {
             get { return "Rational"; }
         }
             
+        public IParser Parser 
+        { 
+            get { return parser; }
+        }
+
         public void Startup(IPluginLoader loader)
         {
         }
 
         public void Init(FactoryRegistry registry)
         {
-            registry.Parser = new Parser();
+            this.parser = new Parser(registry);
 
             registry.RegisterObjectFactory(
                 FactoryRegistry.OBJECT, 
