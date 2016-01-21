@@ -1,18 +1,16 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
     class TopFunction : FunctionObject
     {
-        public TopFunction(ArrayObject arrayObject)
-            : base(arrayObject)
+        protected override IMathObject InternalGetResult(IMathFunctionContext context)
         {
-        }
+            var stack = (context as IHasMathObjectStack).Stack;
 
-        protected override IMathObject GetResult(ArrayObject arrayObject)
-        {
-            return new ConstantObject(Math.PI);
+            return stack.Top;
         }
     }
 }

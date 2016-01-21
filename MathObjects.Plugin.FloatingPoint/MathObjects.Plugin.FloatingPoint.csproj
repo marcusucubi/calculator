@@ -56,10 +56,11 @@
     <Compile Include="Subtract.cs" />
     <Compile Include="SubtractObject.cs" />
     <Compile Include="FunctionObject.cs" />
-    <Compile Include="ArrayObject.cs" />
     <Compile Include="ConstantObject.cs" />
     <Compile Include="ConstantObjectFactory.cs" />
     <Compile Include="TopFunction.cs" />
+    <Compile Include="Parser\FunctionContext.cs" />
+    <Compile Include="FunctionFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

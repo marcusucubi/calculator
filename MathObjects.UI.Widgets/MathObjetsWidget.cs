@@ -99,7 +99,9 @@ namespace MathObjects.UI.Widgets
                 }
                 else 
                 {
-                    var obj = factory.Create(key);
+                    var context = new FactoryContext();
+                    context.InitObject = key;
+                    var obj = factory.Create(context);
                         
                     this.mediator.InsertNumber(obj);
                 }

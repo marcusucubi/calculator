@@ -59,11 +59,11 @@ namespace MathObjects.Plugin.Symmetric
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(object param)
+            public IMathObject Create(IMathObjectFactoryContext context)
             {
                 var matrix = new MathObject();
 
-                if (param is string)
+                if (context.InitObject is string)
                 {
                     /*
                     var input = new AntlrInputStream(param as string);

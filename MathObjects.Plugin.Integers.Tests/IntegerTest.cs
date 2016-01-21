@@ -17,7 +17,9 @@ namespace MathObjects.Plugin.Integers.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var i = factory.Create("1");
+            var context = new FactoryContext();
+            context.InitObject = "1";
+            var i = factory.Create(context);
             Assert.NotNull (i);
         }
 
@@ -33,7 +35,9 @@ namespace MathObjects.Plugin.Integers.Tests
             var addFactory = registry.GetBinaryOperationFactory (FactoryRegistry.ADD);
             Assert.NotNull(addFactory);
 
-            var i1 = factory.Create("1");
+            var context = new FactoryContext();
+            context.InitObject = "1";
+            var i1 = factory.Create(context);
             Assert.NotNull (i1);
 
             var add = addFactory.Create (null);
@@ -55,7 +59,9 @@ namespace MathObjects.Plugin.Integers.Tests
             var multiplyFactory = registry.GetBinaryOperationFactory (FactoryRegistry.MULTIPLY);
             Assert.NotNull(multiplyFactory);
 
-            var i1 = factory.Create("2");
+            var context = new FactoryContext();
+            context.InitObject = "2";
+            var i1 = factory.Create(context);
             Assert.NotNull (i1);
 
             var multiply = multiplyFactory.Create (null);

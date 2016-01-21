@@ -53,7 +53,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 "pi", new ConstantObjectFactory(Math.PI));
             
             registry.RegisterFunctionFactory(
-                "top", new ConstantObjectFactory(Math.PI));
+                "top", new FunctionFactory(typeof(TopFunction)));
         }
     }
 }

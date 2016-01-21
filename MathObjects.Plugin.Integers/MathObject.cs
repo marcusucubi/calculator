@@ -30,9 +30,9 @@ namespace MathObjects.Plugin.Integers
 
         public class Factory : IMathObjectFactory, IMathObjectMeta
         {
-            public IMathObject Create(object param)
+            public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new MathObject(param as string);
+                return new MathObject(context.InitObject as string);
             }
 
             public string[] PossibleParameters 

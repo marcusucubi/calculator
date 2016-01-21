@@ -12,7 +12,7 @@ namespace MathObjects.Plugin.FloatingPoint
             this.value = value;
         }
 
-        public IMathObject Create(object parm)
+        public IMathObject Create(IMathObjectFactoryContext context)
         {
             return new ConstantObject(value);
         }

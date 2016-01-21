@@ -56,18 +56,21 @@ namespace MathObjects.Plugin.FloatingPoint
         public override IMathObject VisitFuncCall(
             FloatingPointParser.FuncCallContext context)
         {
-            var obj = new ArrayObject(new IMathObject[] { } );
+            var factoryContext = new FactoryContext();
 
             if (context.exprList() != null)
             {
-                obj = VisitExprList(context.exprList()) as ArrayObject;
+                factoryContext.Parameters = VisitExprList(
+                    context.exprList()) as ArrayObject;
             }
 
             string name = context.ID().GetText();
 
             var factory = this.registry.GetFunctionFactory(name);
 
-            var result = factory.Create(obj);
+            var result = factory.Create(factoryContext) as IMathFunction;
+
+            result.Perform(new FunctionContext(this.stack));
 
             stack.Push(result);
 

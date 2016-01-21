@@ -36,6 +36,7 @@
     <Compile Include="IMathObjectStack.cs" />
     <Compile Include="ErrorObject.cs" />
     <Compile Include="IHasParser.cs" />
+    <Compile Include="IHasMathObjectStack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

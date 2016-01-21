@@ -99,15 +99,15 @@ namespace MathObjects.UI.Mediator
 
         public void Enter()
         {
-            //var parser = this.registry.Parser as IParser;
-
             if (parser != null)
             {
                 parser.Parse(this.currentNumber, this);
             }
             else
             {
-                var obj = this.objectFactory.Create(this.currentNumber);
+                var context = new FactoryContext();
+                context.InitObject = this.currentNumber;
+                var obj = this.objectFactory.Create(context);
                 if (obj != null)
                 {
                     Push(obj);

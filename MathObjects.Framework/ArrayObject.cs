@@ -3,15 +3,25 @@ using System.Linq;
 using System.Collections.Generic;
 using MathObjects.Framework;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework
 {
-    class ArrayObject : IHasOutput, IMathObject, IHasDisplayValue 
+    public class ArrayObject : IHasOutput, IMathObject, IHasDisplayValue 
     {
         readonly List<IMathObject> list = new List<IMathObject>();
+
+        public ArrayObject()
+        {
+        }
 
         public ArrayObject(IMathObject[] data)
         {
             this.list = data.ToList();
+        }
+
+        public IMathObject this[int i]
+        {
+            get { return list[i]; }
+            set { list[i] = value; }
         }
 
         public object Output
