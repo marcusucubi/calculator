@@ -10,6 +10,8 @@ namespace MathObjects.Framework.Parser
 
         void Push(IMathOperation op);
 
+        IMathObject Pop();
+
         IMathObject Top { get; }
     }
 }

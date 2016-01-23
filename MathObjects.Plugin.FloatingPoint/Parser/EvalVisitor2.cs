@@ -60,17 +60,16 @@ namespace MathObjects.Plugin.FloatingPoint
         public override IMathObject VisitFuncCall(
             FloatingPointParser.FuncCallContext context)
         {
-            var factoryContext = new FactoryContext();
+            var f = this.init.Map[context];
+
+            var functionContext = new FunctionContext(this.stack);
 
             if (context.exprList() != null)
             {
-                factoryContext.Parameters = VisitExprList(
-                    context.exprList()) as ArrayObject;
+                VisitExprList(context.exprList());
             }
 
-            var f = this.init.Map[context];
-
-            f.Perform(new FunctionContext(this.stack));
+            f.Perform(functionContext);
 
             var result = ((f as IHasOutput).Output) as IMathObject;
 

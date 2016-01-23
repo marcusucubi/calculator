@@ -125,14 +125,18 @@ namespace MathObjects.UI.Mediator
             FireNumberStackChaned();
         }
 
-        public void Pop()
+        public IMathObject Pop()
         {
+            IMathObject result = null;
+
             if (this.numbers.Count > 0)
             {
-                this.numbers.Pop();
+                result = this.numbers.Pop();
 
                 FireNumberStackChaned();
             }
+
+            return result;
         }
 
         public void Push(IMathBinaryOperation op)

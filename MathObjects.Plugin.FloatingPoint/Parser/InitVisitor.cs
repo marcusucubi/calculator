@@ -31,6 +31,11 @@ namespace MathObjects.Plugin.FloatingPoint
         public override bool VisitFuncCall(
             FloatingPointParser.FuncCallContext context)
         {
+            if (context.exprList() != null)
+            {
+                VisitExprList(context.exprList());
+            }
+
             var factoryContext = new FactoryContext();
              
             string name = context.ID().GetText();

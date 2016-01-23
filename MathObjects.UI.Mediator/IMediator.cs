@@ -29,8 +29,6 @@ namespace MathObjects.UI.Mediator
         void Enter();
 
         void Clear();
-
-        void Pop();
     }
 }
 

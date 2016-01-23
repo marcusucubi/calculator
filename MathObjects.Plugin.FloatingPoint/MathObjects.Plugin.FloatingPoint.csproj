@@ -62,6 +62,7 @@
     <Compile Include="Parser\FunctionContext.cs" />
     <Compile Include="FunctionFactory.cs" />
     <Compile Include="Parser\InitVisitor.cs" />
+    <Compile Include="Cosine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

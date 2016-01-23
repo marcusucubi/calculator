@@ -54,6 +54,9 @@ namespace MathObjects.Plugin.FloatingPoint
             
             registry.RegisterFunctionFactory(
                 "top", new FunctionFactory(typeof(TopFunction)));
+            
+            registry.RegisterFunctionFactory(
+                "cos", new FunctionFactory(typeof(CosineFunction)));
         }
     }
 }

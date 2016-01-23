@@ -14,7 +14,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public object Output
         {
-            get { return this; }
+            get { return new MathObject(value); }
         }
 
         public string DisplayValue 
