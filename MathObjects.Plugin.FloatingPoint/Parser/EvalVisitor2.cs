@@ -69,9 +69,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 VisitExprList(context.exprList());
             }
 
-            f.Perform(functionContext);
-
-            var result = ((f as IHasOutput).Output) as IMathObject;
+            var result = f.Perform(functionContext);
 
             stack.Push(result);
 

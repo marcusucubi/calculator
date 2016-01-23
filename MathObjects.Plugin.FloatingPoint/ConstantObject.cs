@@ -3,7 +3,8 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class ConstantObject : IHasOutput, IMathFunction, IHasDisplayValue
+    class ConstantObject : 
+        IHasOutput, IMathFunction, IHasDisplayValue
     {
         readonly double value;
 
@@ -26,8 +27,9 @@ namespace MathObjects.Plugin.FloatingPoint
         {
         }
 
-        public void Perform(IMathFunctionContext context)
+        public IMathObject Perform(IMathFunctionContext context)
         {
+            return new MathObject(value);
         }
     }
 }

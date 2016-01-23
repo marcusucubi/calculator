@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework
 {
-    public interface IMathOperation
+    public interface IMathOperation : IMathObject
     {
         IMathObject Perform(IMathObject target);
     }

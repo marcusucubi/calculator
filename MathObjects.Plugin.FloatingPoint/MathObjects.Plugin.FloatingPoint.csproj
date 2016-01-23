@@ -49,7 +49,6 @@
     <Compile Include="Parser\FloatingPointParser.cs" />
     <Compile Include="ErrorListener.cs" />
     <Compile Include="Parser\FloatingPointVisitor.cs" />
-    <Compile Include="Parser\EvalVisitor.cs" />
     <Compile Include="Parser\FloatingPointBaseVisitor.cs" />
     <Compile Include="Parser\EvalVisitor2.cs" />
     <Compile Include="Parser.cs" />
@@ -62,7 +61,10 @@
     <Compile Include="Parser\FunctionContext.cs" />
     <Compile Include="FunctionFactory.cs" />
     <Compile Include="Parser\InitVisitor.cs" />
-    <Compile Include="Cosine.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="CosineOperation.cs" />
+    <Compile Include="CosineFunction.cs" />
+    <Compile Include="CosineObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -4,16 +4,16 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class TopFunction : FunctionObject
+    class TopFunction : IMathFunction
     {
         IMathObject top;
 
-        public override void Init(IMathFunctionContext context)
+        public void Init(IMathFunctionContext context)
         {
             top = (context as IHasMathObjectStack).Stack.Top;
         }
 
-        protected override IMathObject InternalGetResult(IMathFunctionContext context)
+        public IMathObject Perform(IMathFunctionContext context)
         {
             return top;
         }

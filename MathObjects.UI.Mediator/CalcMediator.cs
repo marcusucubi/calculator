@@ -88,6 +88,18 @@ namespace MathObjects.UI.Mediator
 
         public void Push(IMathObject obj)
         {
+            if (obj is IMathOperation)
+            {
+                Push((IMathOperation) obj);
+                return;
+            }
+
+            if (obj is IMathBinaryOperation)
+            {
+                Push((IMathBinaryOperation) obj);
+                return;
+            }
+
             numbers.Push(obj);
 
             this.currentNumber = "";
