@@ -13,15 +13,19 @@ namespace MathObjects.Plugin.FloatingPoint
 
         readonly FactoryRegistry registry;
 
+        readonly InitVisitor init;
+
         readonly IMathObject top;
 
         public EvalVisitor2(
             FactoryRegistry registry, 
-            IMathObjectStack stack)
+            IMathObjectStack stack,
+            InitVisitor init)
         {
             this.registry = registry;
             this.stack = stack;
-            this.top = this.stack.Top;
+            this.init = init;
+            this.top = stack.Top;
         }
 
         public override IMathObject VisitTOP(
@@ -64,13 +68,11 @@ namespace MathObjects.Plugin.FloatingPoint
                     context.exprList()) as ArrayObject;
             }
 
-            string name = context.ID().GetText();
+            var f = this.init.Map[context];
 
-            var factory = this.registry.GetFunctionFactory(name);
+            f.Perform(new FunctionContext(this.stack));
 
-            var result = factory.Create(factoryContext) as IMathFunction;
-
-            result.Perform(new FunctionContext(this.stack));
+            var result = ((f as IHasOutput).Output) as IMathObject;
 
             stack.Push(result);
 

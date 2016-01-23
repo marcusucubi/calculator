@@ -3,13 +3,18 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    abstract class FunctionObject : IHasOutput, IMathFunction, IHasDisplayValue 
+    abstract class FunctionObject : 
+        IHasOutput, IMathFunction, IHasDisplayValue 
     {
         IMathObject result;
 
         public object Output
         {
             get { return result; }
+        }
+
+        public virtual void Init(IMathFunctionContext context)
+        {
         }
 
         public string DisplayValue

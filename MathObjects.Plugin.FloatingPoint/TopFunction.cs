@@ -6,11 +6,16 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     class TopFunction : FunctionObject
     {
+        IMathObject top;
+
+        public override void Init(IMathFunctionContext context)
+        {
+            top = (context as IHasMathObjectStack).Stack.Top;
+        }
+
         protected override IMathObject InternalGetResult(IMathFunctionContext context)
         {
-            var stack = (context as IHasMathObjectStack).Stack;
-
-            return stack.Top;
+            return top;
         }
     }
 }

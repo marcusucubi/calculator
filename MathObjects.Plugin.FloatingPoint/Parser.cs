@@ -30,8 +30,12 @@ namespace MathObjects.Plugin.FloatingPoint
 
             if (!l.HasError)
             {
-                var eval = new EvalVisitor2(registry, stack);
-                
+                var init = new InitVisitor(registry, stack);
+
+                init.Visit(tree);
+
+                var eval = new EvalVisitor2(registry, stack, init);
+
                 eval.Visit(tree);
             }
        }

@@ -14,12 +14,16 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public object Output
         {
-            get { return value; }
+            get { return this; }
         }
 
         public string DisplayValue 
         { 
             get { return "" + this.value; } 
+        }
+
+        public void Init(IMathFunctionContext context)
+        {
         }
 
         public void Perform(IMathFunctionContext context)
