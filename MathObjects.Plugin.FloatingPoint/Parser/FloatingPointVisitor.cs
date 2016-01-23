@@ -51,6 +51,13 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFloat([NotNull] FloatingPointParser.FloatContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>Negative</c>
+	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNegative([NotNull] FloatingPointParser.NegativeContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>TOP</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
 	/// </summary>

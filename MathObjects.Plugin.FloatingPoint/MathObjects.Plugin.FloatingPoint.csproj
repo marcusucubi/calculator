@@ -65,6 +65,8 @@
     <Compile Include="CosineOperation.cs" />
     <Compile Include="CosineFunction.cs" />
     <Compile Include="CosineObject.cs" />
+    <Compile Include="NegativeObject.cs" />
+    <Compile Include="Negative.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

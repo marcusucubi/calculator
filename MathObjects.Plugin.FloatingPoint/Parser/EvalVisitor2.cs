@@ -43,6 +43,18 @@ namespace MathObjects.Plugin.FloatingPoint
             return result;
         }
 
+        public override IMathObject VisitNegative(
+            FloatingPointParser.NegativeContext context)
+        {
+            Visit(context.expr());
+
+            var result = new Negative();
+
+            stack.Push(result);
+
+            return result;
+        }
+
         public override IMathObject VisitExprList(
             FloatingPointParser.ExprListContext context)
         {

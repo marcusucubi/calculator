@@ -148,6 +148,17 @@ public partial class FloatingPointParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class NegativeContext : ExprContext {
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public NegativeContext(ExprContext context) { CopyFrom(context); }
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IFloatingPointVisitor<TResult> typedVisitor = visitor as IFloatingPointVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitNegative(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 	public partial class TOPContext : ExprContext {
 		public ITerminalNode TOP() { return GetToken(FloatingPointParser.TOP, 0); }
 		public TOPContext(ExprContext context) { CopyFrom(context); }
@@ -234,25 +245,34 @@ public partial class FloatingPointParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 25;
+			State = 27;
 			switch (TokenStream.La(1)) {
+			case SUB:
+				{
+				_localctx = new NegativeContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+
+				State = 11; Match(SUB);
+				State = 12; expr(8);
+				}
+				break;
 			case ID:
 				{
 				_localctx = new FuncCallContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-
-				State = 11; Match(ID);
-				State = 12; Match(T__0);
-				State = 14;
+				State = 13; Match(ID);
+				State = 14; Match(T__0);
+				State = 16;
 				_la = TokenStream.La(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << INT) | (1L << FLOAT) | (1L << ID) | (1L << PI) | (1L << TOP))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << INT) | (1L << FLOAT) | (1L << ID) | (1L << PI) | (1L << TOP) | (1L << SUB))) != 0)) {
 					{
-					State = 13; exprList();
+					State = 15; exprList();
 					}
 				}
 
-				State = 16; Match(T__1);
+				State = 18; Match(T__1);
 				}
 				break;
 			case INT:
@@ -260,7 +280,7 @@ public partial class FloatingPointParser : Parser {
 				_localctx = new IntContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 17; Match(INT);
+				State = 19; Match(INT);
 				}
 				break;
 			case FLOAT:
@@ -268,7 +288,7 @@ public partial class FloatingPointParser : Parser {
 				_localctx = new FloatContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 18; Match(FLOAT);
+				State = 20; Match(FLOAT);
 				}
 				break;
 			case PI:
@@ -276,7 +296,7 @@ public partial class FloatingPointParser : Parser {
 				_localctx = new PIContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 19; Match(PI);
+				State = 21; Match(PI);
 				}
 				break;
 			case TOP:
@@ -284,7 +304,7 @@ public partial class FloatingPointParser : Parser {
 				_localctx = new TOPContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 20; Match(TOP);
+				State = 22; Match(TOP);
 				}
 				break;
 			case T__0:
@@ -292,16 +312,16 @@ public partial class FloatingPointParser : Parser {
 				_localctx = new ParensContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 21; Match(T__0);
-				State = 22; expr(0);
-				State = 23; Match(T__1);
+				State = 23; Match(T__0);
+				State = 24; expr(0);
+				State = 25; Match(T__1);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			Context.Stop = TokenStream.Lt(-1);
-			State = 35;
+			State = 37;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,3,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
@@ -310,15 +330,15 @@ public partial class FloatingPointParser : Parser {
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 33;
+					State = 35;
 					switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
 					case 1:
 						{
 						_localctx = new MulDivContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 27;
+						State = 29;
 						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
-						State = 28;
+						State = 30;
 						((MulDivContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==MUL || _la==DIV) ) {
@@ -327,16 +347,16 @@ public partial class FloatingPointParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 29; expr(8);
+						State = 31; expr(8);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 30;
+						State = 32;
 						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
-						State = 31;
+						State = 33;
 						((AddSubContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==ADD || _la==SUB) ) {
@@ -345,13 +365,13 @@ public partial class FloatingPointParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 32; expr(7);
+						State = 34; expr(7);
 						}
 						break;
 					}
 					} 
 				}
-				State = 37;
+				State = 39;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,3,Context);
 			}
@@ -395,18 +415,18 @@ public partial class FloatingPointParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 38; expr(0);
-			State = 43;
+			State = 40; expr(0);
+			State = 45;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
 			while (_la==T__2) {
 				{
 				{
-				State = 39; Match(T__2);
-				State = 40; expr(0);
+				State = 41; Match(T__2);
+				State = 42; expr(0);
 				}
 				}
-				State = 45;
+				State = 47;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
@@ -444,7 +464,7 @@ public partial class FloatingPointParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 46; Match(INT);
+			State = 48; Match(INT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -473,25 +493,26 @@ public partial class FloatingPointParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x11\x33\x4\x2\t"+
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x11\x35\x4\x2\t"+
 		"\x2\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3"+
-		"\x3\x5\x3\x11\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
-		"\x3\x5\x3\x1C\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3$\n\x3\f\x3"+
-		"\xE\x3\'\v\x3\x3\x4\x3\x4\x3\x4\a\x4,\n\x4\f\x4\xE\x4/\v\x4\x3\x5\x3\x5"+
-		"\x3\x5\x2\x3\x4\x6\x2\x4\x6\b\x2\x4\x3\x2\r\xE\x3\x2\xF\x10\x37\x2\n\x3"+
-		"\x2\x2\x2\x4\x1B\x3\x2\x2\x2\x6(\x3\x2\x2\x2\b\x30\x3\x2\x2\x2\n\v\x5"+
-		"\x4\x3\x2\v\x3\x3\x2\x2\x2\f\r\b\x3\x1\x2\r\xE\a\n\x2\x2\xE\x10\a\x3\x2"+
-		"\x2\xF\x11\x5\x6\x4\x2\x10\xF\x3\x2\x2\x2\x10\x11\x3\x2\x2\x2\x11\x12"+
-		"\x3\x2\x2\x2\x12\x1C\a\x4\x2\x2\x13\x1C\a\x6\x2\x2\x14\x1C\a\a\x2\x2\x15"+
-		"\x1C\a\v\x2\x2\x16\x1C\a\f\x2\x2\x17\x18\a\x3\x2\x2\x18\x19\x5\x4\x3\x2"+
-		"\x19\x1A\a\x4\x2\x2\x1A\x1C\x3\x2\x2\x2\x1B\f\x3\x2\x2\x2\x1B\x13\x3\x2"+
-		"\x2\x2\x1B\x14\x3\x2\x2\x2\x1B\x15\x3\x2\x2\x2\x1B\x16\x3\x2\x2\x2\x1B"+
-		"\x17\x3\x2\x2\x2\x1C%\x3\x2\x2\x2\x1D\x1E\f\t\x2\x2\x1E\x1F\t\x2\x2\x2"+
-		"\x1F$\x5\x4\x3\n !\f\b\x2\x2!\"\t\x3\x2\x2\"$\x5\x4\x3\t#\x1D\x3\x2\x2"+
-		"\x2# \x3\x2\x2\x2$\'\x3\x2\x2\x2%#\x3\x2\x2\x2%&\x3\x2\x2\x2&\x5\x3\x2"+
-		"\x2\x2\'%\x3\x2\x2\x2(-\x5\x4\x3\x2)*\a\x5\x2\x2*,\x5\x4\x3\x2+)\x3\x2"+
-		"\x2\x2,/\x3\x2\x2\x2-+\x3\x2\x2\x2-.\x3\x2\x2\x2.\a\x3\x2\x2\x2/-\x3\x2"+
-		"\x2\x2\x30\x31\a\x6\x2\x2\x31\t\x3\x2\x2\x2\a\x10\x1B#%-";
+		"\x3\x3\x3\x3\x3\x5\x3\x13\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x5\x3\x1E\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3"+
+		"&\n\x3\f\x3\xE\x3)\v\x3\x3\x4\x3\x4\x3\x4\a\x4.\n\x4\f\x4\xE\x4\x31\v"+
+		"\x4\x3\x5\x3\x5\x3\x5\x2\x3\x4\x6\x2\x4\x6\b\x2\x4\x3\x2\r\xE\x3\x2\xF"+
+		"\x10:\x2\n\x3\x2\x2\x2\x4\x1D\x3\x2\x2\x2\x6*\x3\x2\x2\x2\b\x32\x3\x2"+
+		"\x2\x2\n\v\x5\x4\x3\x2\v\x3\x3\x2\x2\x2\f\r\b\x3\x1\x2\r\xE\a\x10\x2\x2"+
+		"\xE\x1E\x5\x4\x3\n\xF\x10\a\n\x2\x2\x10\x12\a\x3\x2\x2\x11\x13\x5\x6\x4"+
+		"\x2\x12\x11\x3\x2\x2\x2\x12\x13\x3\x2\x2\x2\x13\x14\x3\x2\x2\x2\x14\x1E"+
+		"\a\x4\x2\x2\x15\x1E\a\x6\x2\x2\x16\x1E\a\a\x2\x2\x17\x1E\a\v\x2\x2\x18"+
+		"\x1E\a\f\x2\x2\x19\x1A\a\x3\x2\x2\x1A\x1B\x5\x4\x3\x2\x1B\x1C\a\x4\x2"+
+		"\x2\x1C\x1E\x3\x2\x2\x2\x1D\f\x3\x2\x2\x2\x1D\xF\x3\x2\x2\x2\x1D\x15\x3"+
+		"\x2\x2\x2\x1D\x16\x3\x2\x2\x2\x1D\x17\x3\x2\x2\x2\x1D\x18\x3\x2\x2\x2"+
+		"\x1D\x19\x3\x2\x2\x2\x1E\'\x3\x2\x2\x2\x1F \f\t\x2\x2 !\t\x2\x2\x2!&\x5"+
+		"\x4\x3\n\"#\f\b\x2\x2#$\t\x3\x2\x2$&\x5\x4\x3\t%\x1F\x3\x2\x2\x2%\"\x3"+
+		"\x2\x2\x2&)\x3\x2\x2\x2\'%\x3\x2\x2\x2\'(\x3\x2\x2\x2(\x5\x3\x2\x2\x2"+
+		")\'\x3\x2\x2\x2*/\x5\x4\x3\x2+,\a\x5\x2\x2,.\x5\x4\x3\x2-+\x3\x2\x2\x2"+
+		".\x31\x3\x2\x2\x2/-\x3\x2\x2\x2/\x30\x3\x2\x2\x2\x30\a\x3\x2\x2\x2\x31"+
+		"/\x3\x2\x2\x2\x32\x33\a\x6\x2\x2\x33\t\x3\x2\x2\x2\a\x12\x1D%\'/";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

@@ -9,11 +9,6 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public CosineObject(double value)
         {
-            if (value == null)
-            {
-                throw new Exception();
-            }
-
             this.target = Math.Cos(value);
         }
 
