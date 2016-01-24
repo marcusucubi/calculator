@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -7,7 +8,7 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         readonly IMathObject top;
 
-        public TopOperation(IMathObject top)
+        public TopOperation(IMathObjectStack stack, IMathObject top)
         {
             this.top = top;
         }

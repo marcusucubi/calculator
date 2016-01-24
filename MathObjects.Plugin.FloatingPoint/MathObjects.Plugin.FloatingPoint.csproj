@@ -69,6 +69,8 @@
     <Compile Include="Negative.cs" />
     <Compile Include="TopObject.cs" />
     <Compile Include="TopOperation.cs" />
+    <Compile Include="ExponentObject.cs" />
+    <Compile Include="ExponentOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

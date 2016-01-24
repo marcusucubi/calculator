@@ -13,15 +13,16 @@ stat     :
 
 /** A rule called init that matches comma-separated values between {...}. */
 expr     : 
-         ID '(' exprList? ')'      # FuncCall
-         | '-' expr                # Negative
-         | expr op=('*'|'/') expr  # MulDiv
-         | expr op=('+'|'-') expr  # AddSub
-         | INT                     # Int
-         | FLOAT                   # Float
-         | PI                      # PI
-         | TOP                     # TOP
-         | '(' expr ')'            # Parens
+         ID '(' exprList? ')'         # FuncCall
+         |<assoc=right> expr '^' INT  # Exponent
+         | '-' expr                   # Negative
+         | expr op=('*'|'/') expr     # MulDiv
+         | expr op=('+'|'-') expr     # AddSub
+         | INT                        # Int
+         | FLOAT                      # Float
+         | PI                         # PI
+         | TOP                        # TOP
+         | '(' expr ')'               # Parens
          ;
 
 exprList : expr (',' expr)* 

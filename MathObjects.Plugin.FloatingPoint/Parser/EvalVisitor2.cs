@@ -53,6 +53,20 @@ namespace MathObjects.Plugin.FloatingPoint
             return new NegativeObject(this.stack.Top.GetDouble());
         }
 
+        public override IMathObject VisitExponent(
+            FloatingPointParser.ExponentContext context)
+        {
+            var left = Visit(context.expr());
+
+            double right;
+            double.TryParse(context.INT().GetText(), out right);
+            stack.Push(new MathObject(right));
+
+            stack.Push(new ExponentOperation());
+
+            return new ExponentObject(left.GetDouble(), right);
+        }
+
         public override IMathObject VisitExprList(
             FloatingPointParser.ExprListContext context)
         {

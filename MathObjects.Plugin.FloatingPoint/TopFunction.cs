@@ -8,14 +8,17 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         IMathObject top;
 
+        IMathObjectStack stack;
+
         public void Init(IMathFunctionContext context)
         {
-            top = (context as IHasMathObjectStack).Stack.Top;
+            stack = (context as IHasMathObjectStack).Stack;
+            top = stack.Top;
         }
 
         public IMathOperation Perform(IMathFunctionContext context)
         {
-            return new TopOperation(top);
+            return new TopOperation(stack, top);
         }
     }
 }

@@ -65,6 +65,13 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTOP([NotNull] FloatingPointParser.TOPContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>Exponent</c>
+	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExponent([NotNull] FloatingPointParser.ExponentContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>MulDiv</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
 	/// </summary>
