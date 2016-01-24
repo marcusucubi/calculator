@@ -4,7 +4,7 @@ using MathObjects.Framework;
 namespace MathObjects.Plugin.FloatingPoint
 {
     class ConstantObject : 
-        IHasOutput, IMathFunction, IHasDisplayValue
+        IHasOutput, IMathObject, IHasDisplayValue
     {
         readonly double value;
 
@@ -21,15 +21,6 @@ namespace MathObjects.Plugin.FloatingPoint
         public string DisplayValue 
         { 
             get { return "" + this.value; } 
-        }
-
-        public void Init(IMathFunctionContext context)
-        {
-        }
-
-        public IMathObject Perform(IMathFunctionContext context)
-        {
-            return new MathObject(value);
         }
     }
 }

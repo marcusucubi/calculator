@@ -6,7 +6,7 @@ namespace MathObjects.Framework
     {
         void Init(IMathFunctionContext context);
 
-        IMathObject Perform(IMathFunctionContext context);
+        IMathOperation Perform(IMathFunctionContext context);
     }
 }
 

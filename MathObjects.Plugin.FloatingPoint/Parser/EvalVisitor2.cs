@@ -48,11 +48,9 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             Visit(context.expr());
 
-            var result = new Negative();
+            stack.Push(new Negative());
 
-            stack.Push(result);
-
-            return result;
+            return new NegativeObject(this.stack.Top.GetDouble());
         }
 
         public override IMathObject VisitExprList(
@@ -81,9 +79,11 @@ namespace MathObjects.Plugin.FloatingPoint
                 VisitExprList(context.exprList());
             }
 
-            var result = f.Perform(functionContext);
+            var operation = f.Perform(functionContext);
 
-            stack.Push(result);
+            stack.Push(operation);
+            
+            var result = operation.Perform(stack.Top);
 
             return result;
         }

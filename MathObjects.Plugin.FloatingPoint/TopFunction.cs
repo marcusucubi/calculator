@@ -13,9 +13,9 @@ namespace MathObjects.Plugin.FloatingPoint
             top = (context as IHasMathObjectStack).Stack.Top;
         }
 
-        public IMathObject Perform(IMathFunctionContext context)
+        public IMathOperation Perform(IMathFunctionContext context)
         {
-            return top;
+            return new TopOperation(top);
         }
     }
 }

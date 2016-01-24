@@ -11,7 +11,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
         }
 
-        public IMathObject Perform(
+        public IMathOperation Perform(
             IMathFunctionContext context)
         {
             return new CosineOperation();

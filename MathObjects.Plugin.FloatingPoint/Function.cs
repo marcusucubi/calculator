@@ -9,12 +9,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
         }
 
-        public abstract IMathObject Perform(IMathFunctionContext context);
-        //{
-        //    return new FunctionObject(InternalGetResult(context));
-       // }
-
-        protected abstract IMathObject InternalGetResult(IMathFunctionContext context);
+        public abstract IMathOperation Perform(IMathFunctionContext context);
     }
 }
 
