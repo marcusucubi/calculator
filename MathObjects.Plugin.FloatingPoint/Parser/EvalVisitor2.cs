@@ -56,15 +56,12 @@ namespace MathObjects.Plugin.FloatingPoint
         public override IMathObject VisitExponent(
             FloatingPointParser.ExponentContext context)
         {
-            var left = Visit(context.expr());
-
-            double right;
-            double.TryParse(context.INT().GetText(), out right);
-            stack.Push(new MathObject(right));
+            var left = Visit(context.GetChild(2));
+            var right = Visit(context.GetChild(0));
 
             stack.Push(new ExponentOperation());
 
-            return new ExponentObject(left.GetDouble(), right);
+            return new ExponentObject(left.GetDouble(), right.GetDouble());
         }
 
         public override IMathObject VisitExprList(

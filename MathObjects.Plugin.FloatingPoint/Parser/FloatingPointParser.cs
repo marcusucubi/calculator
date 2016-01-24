@@ -169,10 +169,12 @@ public partial class FloatingPointParser : Parser {
 		}
 	}
 	public partial class ExponentContext : ExprContext {
-		public ExprContext expr() {
-			return GetRuleContext<ExprContext>(0);
+		public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
 		}
-		public ITerminalNode INT() { return GetToken(FloatingPointParser.INT, 0); }
+		public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
+		}
 		public ExponentContext(ExprContext context) { CopyFrom(context); }
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IFloatingPointVisitor<TResult> typedVisitor = visitor as IFloatingPointVisitor<TResult>;
@@ -346,11 +348,21 @@ public partial class FloatingPointParser : Parser {
 					switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
 					case 1:
 						{
-						_localctx = new MulDivContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new ExponentContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
 						State = 29;
+						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
+						State = 30; Match(T__2);
+						State = 31; expr(9);
+						}
+						break;
+					case 2:
+						{
+						_localctx = new MulDivContext(new ExprContext(_parentctx, _parentState));
+						PushNewRecursionContext(_localctx, _startState, RULE_expr);
+						State = 32;
 						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
-						State = 30;
+						State = 33;
 						((MulDivContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==MUL || _la==DIV) ) {
@@ -359,16 +371,16 @@ public partial class FloatingPointParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 31; expr(8);
+						State = 34; expr(8);
 						}
 						break;
-					case 2:
+					case 3:
 						{
 						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 32;
+						State = 35;
 						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
-						State = 33;
+						State = 36;
 						((AddSubContext)_localctx).op = TokenStream.Lt(1);
 						_la = TokenStream.La(1);
 						if ( !(_la==ADD || _la==SUB) ) {
@@ -377,17 +389,7 @@ public partial class FloatingPointParser : Parser {
 						else {
 						    Consume();
 						}
-						State = 34; expr(7);
-						}
-						break;
-					case 3:
-						{
-						_localctx = new ExponentContext(new ExprContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_expr);
-						State = 35;
-						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
-						State = 36; Match(T__2);
-						State = 37; Match(INT);
+						State = 37; expr(7);
 						}
 						break;
 					}
@@ -508,9 +510,9 @@ public partial class FloatingPointParser : Parser {
 	}
 	private bool expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return Precpred(Context, 7);
-		case 1: return Precpred(Context, 6);
-		case 2: return Precpred(Context, 9);
+		case 0: return Precpred(Context, 9);
+		case 1: return Precpred(Context, 7);
+		case 2: return Precpred(Context, 6);
 		}
 		return true;
 	}
@@ -531,8 +533,8 @@ public partial class FloatingPointParser : Parser {
 		"\x5\x4\x3\x2\x1B\x1C\a\x4\x2\x2\x1C\x1E\x3\x2\x2\x2\x1D\f\x3\x2\x2\x2"+
 		"\x1D\xF\x3\x2\x2\x2\x1D\x15\x3\x2\x2\x2\x1D\x16\x3\x2\x2\x2\x1D\x17\x3"+
 		"\x2\x2\x2\x1D\x18\x3\x2\x2\x2\x1D\x19\x3\x2\x2\x2\x1E*\x3\x2\x2\x2\x1F"+
-		" \f\t\x2\x2 !\t\x2\x2\x2!)\x5\x4\x3\n\"#\f\b\x2\x2#$\t\x3\x2\x2$)\x5\x4"+
-		"\x3\t%&\f\v\x2\x2&\'\a\x5\x2\x2\')\a\a\x2\x2(\x1F\x3\x2\x2\x2(\"\x3\x2"+
+		" \f\v\x2\x2 !\a\x5\x2\x2!)\x5\x4\x3\v\"#\f\t\x2\x2#$\t\x2\x2\x2$)\x5\x4"+
+		"\x3\n%&\f\b\x2\x2&\'\t\x3\x2\x2\')\x5\x4\x3\t(\x1F\x3\x2\x2\x2(\"\x3\x2"+
 		"\x2\x2(%\x3\x2\x2\x2),\x3\x2\x2\x2*(\x3\x2\x2\x2*+\x3\x2\x2\x2+\x5\x3"+
 		"\x2\x2\x2,*\x3\x2\x2\x2-\x32\x5\x4\x3\x2./\a\x6\x2\x2/\x31\x5\x4\x3\x2"+
 		"\x30.\x3\x2\x2\x2\x31\x34\x3\x2\x2\x2\x32\x30\x3\x2\x2\x2\x32\x33\x3\x2"+
