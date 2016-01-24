@@ -6,6 +6,8 @@ namespace MathObjects.Plugin.Rational
 {
     class Inverse : IMathOperation
     {
+        public int NumberOfParameters { get { return 1; } }
+
         public IMathObject Perform(IMathObject target)
         {
             var tuple = target.GetTuple();

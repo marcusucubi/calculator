@@ -172,15 +172,22 @@ namespace MathObjects.UI.Mediator
 
         public void Push(IMathOperation op)
         {
-            if (this.numbers.Count < 1)
+            if (this.numbers.Count < op.NumberOfParameters)
             {
                 return;
             }
 
-            var wrapper = new OperationWrapper2(
-                this.numbers.Pop(), op);
+            IMathObject result = null;
+            if (op.NumberOfParameters == 1)
+            {
+                result = new OperationWrapper2(this.numbers.Pop(), op);
+            }
+            else
+            {
+                result = op.Perform(null);
+            }
 
-            numbers.Push(wrapper);
+            numbers.Push(result);
 
             this.currentNumber = "";
 

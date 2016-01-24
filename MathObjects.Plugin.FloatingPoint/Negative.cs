@@ -5,6 +5,8 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     public class Negative : IMathOperation
     {
+        public int NumberOfParameters { get { return 1; } }
+
         public IMathObject Perform(IMathObject left)
         {
             var leftValue = left.GetDouble();

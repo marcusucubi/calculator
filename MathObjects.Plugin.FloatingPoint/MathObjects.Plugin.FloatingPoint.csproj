@@ -71,6 +71,8 @@
     <Compile Include="TopOperation.cs" />
     <Compile Include="ExponentObject.cs" />
     <Compile Include="ExponentOperation.cs" />
+    <Compile Include="ConstantFunction.cs" />
+    <Compile Include="ConstantOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

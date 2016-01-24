@@ -6,6 +6,8 @@ namespace MathObjects.Plugin.Symmetric
 {
     class Inverse : IMathOperation
     {
+        public int NumberOfParameters { get { return 1; } }
+
         public IMathObject Perform(IMathObject target)
         {
             var hasMatrix = target as IHasMatrix;

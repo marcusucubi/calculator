@@ -1,23 +1,22 @@
 ﻿using System;
 using MathObjects.Framework;
-using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class TopOperation : IMathOperation
+    class ConstantOperation : IMathOperation
     {
-        readonly IMathObject top;
+        readonly double value;
 
         public int NumberOfParameters { get { return 0; } }
 
-        public TopOperation(IMathObjectStack stack, IMathObject top)
+        public ConstantOperation(double value)
         {
-            this.top = top;
+            this.value = value;
         }
 
         public IMathObject Perform(IMathObject target)
         {
-            return new TopObject(top);
+            return new MathObject(value);
         }
     }
 }

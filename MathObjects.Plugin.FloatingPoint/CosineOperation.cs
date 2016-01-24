@@ -5,6 +5,8 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     class CosineOperation : IMathOperation
     {
+        public int NumberOfParameters { get { return 1; } }
+
         public IMathObject Perform(IMathObject target)
         {
             return new CosineObject(target.GetDouble());
