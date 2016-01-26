@@ -18,12 +18,13 @@ namespace MathObjects.UI
         {
             Application.Init();
 
-            MainClass.PluginRegistry = new PluginRegistry();
+            var reg = new PluginRegistry();
+            MainClass.PluginRegistry = reg;
 
-            MainClass.PluginRegistry.Load("MathObjects.Plugin.FloatingPoint.dll");
-            MainClass.PluginRegistry.Load("MathObjects.Plugin.Rational.dll");
-            MainClass.PluginRegistry.Load("MathObjects.Plugin.Integers.dll");
-            MainClass.PluginRegistry.Load("MathObjects.Plugin.Symmetric.dll");
+            reg.Load("MathObjects.Plugin.FloatingPoint.dll");
+            reg.Load("MathObjects.Plugin.Rational.dll");
+            reg.Load("MathObjects.Plugin.Integers.dll");
+            reg.Load("MathObjects.Plugin.Symmetric.dll");
 
             var win = new MainWindow2();
             win.Show();

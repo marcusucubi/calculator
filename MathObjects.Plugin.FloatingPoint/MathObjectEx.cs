@@ -17,7 +17,12 @@ namespace MathObjects.Plugin.FloatingPoint
                 }
 
                 var has2 = hasOutput.Output as IHasOutput;
-                return (double)has2.Output;
+                if (has2.Output is double)
+                {
+                    return (double)has2.Output;
+                }
+
+                return GetDouble((IMathObject)has2.Output);
             }
 
             throw new Exception();

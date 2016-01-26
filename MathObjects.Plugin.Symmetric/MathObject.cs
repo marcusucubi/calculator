@@ -61,36 +61,7 @@ namespace MathObjects.Plugin.Symmetric
         {
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                var matrix = new MathObject();
-
-                if (context.InitObject is string)
-                {
-                    /*
-                    var input = new AntlrInputStream(param as string);
-                    var lexer = new PermutationLexer(input);
-                    var tokens = new CommonTokenStream(lexer);
-                    var parser = new PermutationParser(tokens);
-
-                    var l = new ErrorListener();
-                    parser.AddErrorListener(l);
-
-                    var tree = parser.init(); 
-
-                    if (l.HasError)
-                    {
-                        return null;
-                    }
-
-                    var walker = new ParseTreeWalker();
-                    var builder = new PermutationBuilder();
-
-                    walker.Walk(builder, tree);
-
-                    matrix = new MathObject(builder.PermutationMatix);
-                    */
-                }
-
-                return matrix;
+                return new MathObject();
             }
 
             public string[] PossibleParameters 

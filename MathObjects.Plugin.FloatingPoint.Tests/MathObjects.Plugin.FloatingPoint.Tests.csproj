@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BFF2F1EE-9188-41A1-B447-84154FDC216E}</ProjectGuid>
+    <ProjectGuid>{5C02F33B-D09D-4A41-8A8C-D2207ED77A7D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MathObjects.Plugin.Symmetric.Tests</RootNamespace>
-    <AssemblyName>MathObjects.Plugin.Symmetric.Tests</AssemblyName>
+    <RootNamespace>MathObjects.Plugin.FloatingPoint.Tests</RootNamespace>
+    <AssemblyName>MathObjects.Plugin.FloatingPoint.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,17 +33,14 @@
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Test.cs" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MathObjects.Core.Matrix\MathObjects.Core.Matrix.csproj">
-      <Project>{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9}</Project>
-      <Name>MathObjects.Core.Matrix</Name>
+    <ProjectReference Include="..\MathObjects.Core.Parser\MathObjects.Core.Parser.csproj">
+      <Project>{F7F1F412-02F8-438E-A3AB-C5C347B2CCEF}</Project>
+      <Name>MathObjects.Core.Parser</Name>
     </ProjectReference>
     <ProjectReference Include="..\MathObjects.Core.Plugin\MathObjects.Core.Plugin.csproj">
       <Project>{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}</Project>
@@ -53,25 +50,20 @@
       <Project>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</Project>
       <Name>MathObjects.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
-      <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
-      <Name>MathObjects.Framework.Registry</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathObjects.Core.Parser\MathObjects.Core.Parser.csproj">
-      <Project>{F7F1F412-02F8-438E-A3AB-C5C347B2CCEF}</Project>
-      <Name>MathObjects.Core.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathObjects.Core.Matrix.Permutation\MathObjects.Core.Matrix.Permutation.csproj">
-      <Project>{13457E87-8AB4-494B-BF43-51B262F954D8}</Project>
-      <Name>MathObjects.Core.Matrix.Permutation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
       <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
       <Name>MathObjects.Framework.Parser</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MathObjects.Plugin.Symmetric\MathObjects.Plugin.Symmetric.csproj">
-      <Project>{1CE2F135-C483-44EF-B9B4-97C737B47CE9}</Project>
-      <Name>MathObjects.Plugin.Symmetric</Name>
+    <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
+      <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
+      <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Plugin.FloatingPoint\MathObjects.Plugin.FloatingPoint.csproj">
+      <Project>{BFFB8F5D-939D-41CD-B8F9-527241AAB31C}</Project>
+      <Name>MathObjects.Plugin.FloatingPoint</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ParserTest.cs" />
   </ItemGroup>
 </Project>

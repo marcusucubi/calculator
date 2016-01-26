@@ -65,6 +65,17 @@ namespace MathObjects.Core.Matrix.Permutation
             return PermutationMatix.Create(this.PermutedList.ToArray());
         }
 
+        public override bool Equals(object obj)
+        {
+            var other = obj as CycleList;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return (other.ToString() == this.ToString());
+        }
+
         public override string ToString()
         {
             string s = "(";

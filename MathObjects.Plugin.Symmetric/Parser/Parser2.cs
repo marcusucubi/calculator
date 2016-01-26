@@ -16,6 +16,11 @@ namespace MathObjects.Plugin.Symmetric.Parser
             this.registry = registry;
         }
 
+        public bool HasError
+        {
+            get { return false; }
+        }
+
         public void Parse(string data, IMathObjectStack stack)
         {
             var input = new AntlrInputStream(data);

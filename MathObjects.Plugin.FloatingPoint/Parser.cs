@@ -11,9 +11,17 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         readonly FactoryRegistry registry;
 
+        bool hasError;
+
         public Parser(FactoryRegistry registry)
         {
             this.registry = registry;
+        }
+
+        public bool HasError
+        { 
+            get { return hasError; } 
+            set { hasError = value; }
         }
 
         public void Parse(string data, IMathObjectStack stack)
@@ -27,6 +35,7 @@ namespace MathObjects.Plugin.FloatingPoint
             parser.AddErrorListener(l);
 
             var tree = parser.stat(); 
+            this.hasError = l.HasError;
 
             if (!l.HasError)
             {

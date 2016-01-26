@@ -2,64 +2,59 @@
 using System;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
+using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric.Tests
 {
     [TestFixture]
     public class Test
     {
+        FactoryRegistry reg = new FactoryRegistry();
+
+        Plugin plugin = new Plugin();
+
+        IParser parser;
+
+        [SetUp]
+        public void Setup()
+        {
+            plugin.Init(reg);
+
+            parser = (plugin as IHasParser).Parser;
+        }
+
         [Test]
         public void TestCase()
         {
-            var reg = new FactoryRegistry();
-            var plugin = new Plugin();
+            var stack = new MathObjectStack();
 
-            plugin.Init(reg);
+            parser.Parse("(1,2,3,4)", stack);
 
-            var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
-
-            var context = new FactoryContext();
-            context.InitObject = "(2, 3)";
-            var trans = factory.Create(context) as IHasOutput;
-
-            var parseValue = trans.Output;
-            Assert.AreEqual("( 2, 3 )", parseValue);
+            var cycle = CycleList.Create(new int[] {1,2,3,4});
+            Assert.AreEqual(cycle, stack.Top.GetCycleList());
         }
 
         [Test]
         public void TestCase2()
         {
-            var reg = new FactoryRegistry();
-            var plugin = new Plugin();
+            var stack = new MathObjectStack();
 
-            plugin.Init(reg);
+            parser.Parse("(1,2,3)(1,2,3)(1,2,3)", stack);
 
-            var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
-
-            var context = new FactoryContext();
-            context.InitObject = "( 1, 2, 3 )";
-            var trans = factory.Create(context) as IHasOutput;
-
-            var parseValue = trans.Output;
-            Assert.AreEqual(parseValue, "( 1, 2, 3 )");
+            var cycle = CycleList.Create(new int[] {});
+            Assert.AreEqual(cycle, stack.Top.GetCycleList());
         }
 
         [Test]
         public void TestCase3()
         {
-            var reg = new FactoryRegistry();
-            var plugin = new Plugin();
+            var stack = new MathObjectStack();
 
-            plugin.Init(reg);
+            parser.Parse("(1,2)(1,2)", stack);
 
-            var factory = reg.GetObjectFactory(FactoryRegistry.OBJECT);
-
-            var context = new FactoryContext();
-            context.InitObject = "( 3, 2, 1 )";
-            var trans = factory.Create(context) as IHasOutput;
-
-            var parseValue = trans.Output;
-            Assert.AreEqual(parseValue, "( 1, 3, 2 )");
+            var cycle = CycleList.Create(new int[] {});
+            Assert.AreEqual(cycle, stack.Top.GetCycleList());
         }
     }
 }

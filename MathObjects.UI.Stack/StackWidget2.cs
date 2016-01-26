@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Gtk;
 using MathObjects.Framework;
 using MathObjects.UI.Mediator;
+using Pango;
 
 namespace MathObjects.UI.Stack
 {
@@ -30,6 +31,8 @@ namespace MathObjects.UI.Stack
             store = new Gtk.TreeStore (typeof (string));
 
             this.treeview2.Model = store;
+
+            this.treeview2.ModifyFont(FontDescription.FromString("Courier 16"));
         }
 
         public void Connect(IMediator mediator)

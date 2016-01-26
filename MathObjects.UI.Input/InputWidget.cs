@@ -1,6 +1,7 @@
 ﻿using System;
 using Gdk;
 using MathObjects.UI.Mediator;
+using Pango;
 
 namespace MathObjects.UI.Input
 {
@@ -12,6 +13,8 @@ namespace MathObjects.UI.Input
         public InputWidget()
         {
             this.Build();
+
+            this.entry1.ModifyFont(FontDescription.FromString("Courier 16"));
         }
 
         public void Connect(IMediator mediator)
