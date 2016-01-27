@@ -1,15 +1,15 @@
 ﻿using System;
 using MathObjects.Framework;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class CosineObject : IMathObject, IHasOutput, IHasDisplayValue
+    class MathObject : IMathObject, IHasOutput, IHasDisplayValue
     {
         readonly double target;
 
-        public CosineObject(double value)
+        public MathObject(double value)
         {
-            this.target = Math.Cos(value);
+            this.target = value;
         }
 
         public object Output

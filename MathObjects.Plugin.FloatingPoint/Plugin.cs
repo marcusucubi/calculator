@@ -3,6 +3,8 @@ using MathObjects.Core.Plugin;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.Plugin.FloatingPoint.MathFunc;
+using MathObjects.Plugin.FloatingPoint.Func;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -54,9 +56,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
             registry.RegisterFunctionFactory(
                 "top", new FunctionFactory(typeof(TopFunction)));
-            
-            registry.RegisterFunctionFactory(
-                "cos", new FunctionFactory(typeof(CosineFunction)));
+
+            MathFuncObject.Init(registry);
         }
     }
 }

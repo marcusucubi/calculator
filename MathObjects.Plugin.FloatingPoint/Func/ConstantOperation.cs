@@ -1,7 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Plugin.FloatingPoint.Func
 {
     class ConstantOperation : IMathOperation
     {

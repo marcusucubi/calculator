@@ -76,6 +76,11 @@ namespace MathObjects.Core.Matrix.Permutation
             return (other.ToString() == this.ToString());
         }
 
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
+        }
+
         public override string ToString()
         {
             string s = "(";

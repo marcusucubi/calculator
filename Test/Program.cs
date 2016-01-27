@@ -1,9 +1,4 @@
 ﻿using System;
-using Antlr4.Runtime;
-using Antlr4.Runtime.Misc;
-using Antlr4.Runtime.Atn;
-using Antlr4.Runtime.Dfa;
-using Antlr4.Runtime.Tree;
 using System.IO;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
@@ -27,7 +22,9 @@ namespace Test
         
             var stack = new MathObjectStack();
 
-            parser.Parse("1+2", stack);
+            parser.Parse("(1*2)+(3*4)", stack);
+
+            Console.WriteLine(stack.Print());
 
             var top = stack.Top;
         }

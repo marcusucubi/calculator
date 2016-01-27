@@ -55,24 +55,25 @@
     <Compile Include="Subtract.cs" />
     <Compile Include="SubtractObject.cs" />
     <Compile Include="FunctionObject.cs" />
-    <Compile Include="ConstantObject.cs" />
-    <Compile Include="ConstantObjectFactory.cs" />
-    <Compile Include="TopFunction.cs" />
     <Compile Include="Parser\FunctionContext.cs" />
     <Compile Include="FunctionFactory.cs" />
     <Compile Include="Parser\InitVisitor.cs" />
     <Compile Include="Function.cs" />
-    <Compile Include="CosineOperation.cs" />
-    <Compile Include="CosineFunction.cs" />
-    <Compile Include="CosineObject.cs" />
     <Compile Include="NegativeObject.cs" />
     <Compile Include="Negative.cs" />
-    <Compile Include="TopObject.cs" />
-    <Compile Include="TopOperation.cs" />
     <Compile Include="ExponentObject.cs" />
     <Compile Include="ExponentOperation.cs" />
-    <Compile Include="ConstantFunction.cs" />
-    <Compile Include="ConstantOperation.cs" />
+    <Compile Include="Func\TopFunction.cs" />
+    <Compile Include="Func\TopObject.cs" />
+    <Compile Include="Func\TopOperation.cs" />
+    <Compile Include="Func\ConstantFunction.cs" />
+    <Compile Include="Func\ConstantObject.cs" />
+    <Compile Include="Func\ConstantObjectFactory.cs" />
+    <Compile Include="Func\ConstantOperation.cs" />
+    <Compile Include="MathFunc\MathFunction.cs" />
+    <Compile Include="MathFunc\MathObject.cs" />
+    <Compile Include="MathFunc\MathOperation.cs" />
+    <Compile Include="MathFunc\MathFuncObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -103,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Parser\" />
+    <Folder Include="Func\" />
+    <Folder Include="MathFunc\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Parser\FloatingPoint.g4" />
