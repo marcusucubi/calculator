@@ -20,7 +20,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             public string Name
             {
-                get { return "Add"; }
+                get { return "+"; }
             }
 
             public IMathBinaryOperation Create(object parm)

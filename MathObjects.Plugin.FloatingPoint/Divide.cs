@@ -19,7 +19,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             public string Name
             {
-                get { return "Divide"; }
+                get { return "/"; }
             }
 
             public IMathBinaryOperation Create(object parm)

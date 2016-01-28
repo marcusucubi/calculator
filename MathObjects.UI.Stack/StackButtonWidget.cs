@@ -36,6 +36,7 @@ namespace MathObjects.UI.Stack
         protected void OnButtonPushClicked (object sender, EventArgs e)
         {
             this.Mediator.Enter(InputWidget.CalcDisplay);
+            this.InputWidget.CalcDisplay = "";
         }
     }
 }
