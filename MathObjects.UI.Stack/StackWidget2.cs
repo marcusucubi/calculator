@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Gtk;
-using MathObjects.Framework;
-using MathObjects.UI.Mediator;
 using Pango;
+using MathObjects.Framework;
+using MathObjects.Framework.Parser;
+using MathObjects.UI.Mediator;
 
 namespace MathObjects.UI.Stack
 {
@@ -39,9 +40,9 @@ namespace MathObjects.UI.Stack
         {
             this.mediator = mediator;
 
-            this.mediator.NumberStackChaned += (sender, e) => 
+            this.mediator.StackChanged += (sender, e) => 
                 {
-                    DisplayNumbers(this.mediator.Numbers);
+                    DisplayNumbers(this.mediator.ObjectStack);
                 };
         }
 

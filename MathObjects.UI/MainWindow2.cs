@@ -32,11 +32,11 @@ namespace MathObjects.UI
 
             this.mathobjetswidget2.Disconnect();
             this.mathobjetswidget2.Connect(
-                registry, mediator, parser);
+                registry, this.inputwidget1);
 
             this.mathoperationswidget1.Disconnect();
             this.mathoperationswidget1.Connect(
-                registry, mediator);
+                registry, this.inputwidget1);
 
             this.inputwidget1.Connect(mediator);
 

@@ -81,6 +81,13 @@ namespace MathObjects.Plugin.FloatingPoint
         public override IMathObject VisitFuncCall(
             FloatingPointParser.FuncCallContext context)
         {
+            if (!this.init.Map.ContainsKey(context))
+            {
+                var error = new ErrorObject("function not found: " + context.ID().GetText());
+                stack.Push(error);
+                return error;
+            }
+            
             var f = this.init.Map[context];
 
             var functionContext = new FunctionContext(this.stack);

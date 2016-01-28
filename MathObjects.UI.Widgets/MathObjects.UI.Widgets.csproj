@@ -74,10 +74,6 @@
       <Project>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</Project>
       <Name>MathObjects.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MathObjects.UI.Mediator\MathObjects.UI.Mediator.csproj">
-      <Project>{DBF1DFB8-00DA-4DA3-AC10-B2ED595BD298}</Project>
-      <Name>MathObjects.UI.Mediator</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MathObjects.Framework.Registry\MathObjects.Framework.Registry.csproj">
       <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
       <Name>MathObjects.Framework.Registry</Name>
@@ -89,6 +85,10 @@
     <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
       <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
       <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.UI.Stack\MathObjects.UI.Stack.csproj">
+      <Project>{D9410118-5AF2-4027-907D-8845F2D2F6C4}</Project>
+      <Name>MathObjects.UI.Stack</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

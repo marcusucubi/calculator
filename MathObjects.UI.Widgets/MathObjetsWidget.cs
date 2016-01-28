@@ -1,9 +1,9 @@
 ﻿using System;
 using MathObjects.Framework;
 using Gtk;
-using MathObjects.UI.Mediator;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.UI.Stack;
 
 namespace MathObjects.UI.Widgets
 {
@@ -16,9 +16,7 @@ namespace MathObjects.UI.Widgets
 
         FactoryRegistry registry;
 
-        IMediator mediator;
-
-        IParser parser;
+        InputWidget inputWidget;
 
         public MathObjetsWidget()
         {
@@ -27,12 +25,10 @@ namespace MathObjects.UI.Widgets
 
         public void Connect(
             FactoryRegistry registry, 
-            IMediator mediator,
-            IParser parser)
+            InputWidget inputWidget)
         {
             this.registry = registry;
-            this.mediator = mediator;
-            this.parser = parser;
+            this.inputWidget = inputWidget;
 
             SetupButtons();
         }
@@ -42,8 +38,7 @@ namespace MathObjects.UI.Widgets
             x = y = 0;
 
             this.registry = null;
-            this.mediator = null;
-            this.parser = null;
+            this.inputWidget = null;
 
             foreach (var c in this.table1.Children)
             {
@@ -93,6 +88,8 @@ namespace MathObjects.UI.Widgets
 
             button1.Clicked += (sender, e) =>
             {
+                inputWidget.CalcDisplayAdd(key);
+                /*
                 if (this.parser != null)
                 {
                     parser.Parse(key, this.mediator);
@@ -105,6 +102,7 @@ namespace MathObjects.UI.Widgets
                         
                     this.mediator.InsertNumber(obj);
                 }
+                */
             };
         }
     }

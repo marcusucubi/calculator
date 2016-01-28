@@ -1,8 +1,8 @@
 ﻿using System;
 using MathObjects.Framework;
 using Gtk;
-using MathObjects.UI.Mediator;
 using MathObjects.Framework.Registry;
+using MathObjects.UI.Stack;
 
 namespace MathObjects.UI.Widgets
 {
@@ -15,17 +15,19 @@ namespace MathObjects.UI.Widgets
 
         FactoryRegistry registry;
 
-        IMediator mediator;
+        InputWidget inputWidget;
 
         public MathOperationsWidget()
         {
             this.Build();
         }
 
-        public void Connect(FactoryRegistry registry, IMediator mediator)
+        public void Connect(
+            FactoryRegistry registry, 
+            InputWidget inputWidget)
         {
             this.registry = registry;
-            this.mediator = mediator;
+            this.inputWidget = inputWidget;
 
             SetupButtons();
         }
@@ -33,7 +35,7 @@ namespace MathObjects.UI.Widgets
         public void Disconnect()
         {
             this.registry = null;
-            this.mediator = null;
+            this.inputWidget = null;
 
             this.x = this.y = 0;
 
@@ -103,9 +105,7 @@ namespace MathObjects.UI.Widgets
 
             button1.Clicked += (sender, e) => 
                 {
-                    var op = factory.Create(null);
-
-                    this.mediator.Push(op);
+                    this.inputWidget.CalcDisplayAdd(key.ToString());
                 };
         }
 
@@ -123,9 +123,7 @@ namespace MathObjects.UI.Widgets
 
             button1.Clicked += (sender, e) => 
                 {
-                    var op = factory.Create(null);
-
-                    this.mediator.Push(op);
+                    this.inputWidget.CalcDisplayAdd(key.ToString());
                 };
         }
     }

@@ -42,6 +42,11 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var factory = this.registry.GetFunctionFactory(name);
 
+            if (factory == null)
+            {
+                return false;
+            }
+
             var f = factory.Create(factoryContext) as IMathFunction;
 
             f.Init(new FunctionContext(this.stack));

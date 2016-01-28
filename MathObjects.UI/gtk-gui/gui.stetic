@@ -10,85 +10,7 @@
     <widget-library name="../../MathObjects.UI.Stack/bin/Debug/MathObjects.UI.Stack.dll" />
     <widget-library name="../../MathObjects.UI.Mediator/bin/Debug/MathObjects.UI.Mediator.dll" />
     <widget-library name="../bin/Debug/MathObjects.UI.exe" internal="true" />
-    <widget-library name="../../MathObjects.UI.Input/bin/Debug/MathObjects.UI.Input.dll" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="411 433">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">MainWindow</property>
-    <property name="WindowPosition">Center</property>
-    <signal name="DeleteEvent" handler="OnDeleteEvent" />
-    <child>
-      <widget class="Gtk.VBox" id="vbox1">
-        <property name="MemberName" />
-        <property name="Spacing">6</property>
-        <child>
-          <widget class="MathObjects.UI.FieldWidget" id="fieldwidget1">
-            <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">0</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="MathObjects.UI.Input.InputWidget" id="inputwidget1">
-            <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">1</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="MathObjects.UI.ErrorWidget" id="errorwidget1">
-            <property name="MemberName" />
-            <property name="HeightRequest">35</property>
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">2</property>
-            <property name="AutoSize">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="MathObjects.UI.Stack.StackWidget2" id="stackwidget21">
-            <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">3</property>
-            <property name="AutoSize">True</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="MathObjects.UI.Widgets.MathObjetsWidget" id="mathobjetswidget1">
-            <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">4</property>
-            <property name="AutoSize">True</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="MathObjects.UI.Widgets.MathOperationsWidget" id="mathoperationswidget1">
-            <property name="MemberName" />
-            <property name="Events">ButtonPressMask</property>
-          </widget>
-          <packing>
-            <property name="Position">5</property>
-            <property name="AutoSize">True</property>
-          </packing>
-        </child>
-      </widget>
-    </child>
-  </widget>
   <widget class="Gtk.Bin" id="MathObjects.UI.FieldWidget" design-size="300 33">
     <property name="MemberName" />
     <property name="Visible">False</property>
@@ -141,7 +63,7 @@
             <child>
               <widget class="MathObjects.UI.ErrorWidget" id="errorwidget1">
                 <property name="MemberName" />
-                <property name="HeightRequest">15</property>
+                <property name="HeightRequest">20</property>
                 <property name="Events">ButtonPressMask</property>
               </widget>
             </child>
@@ -166,29 +88,28 @@
             <property name="Events">ButtonPressMask</property>
           </widget>
           <packing>
-            <property name="AutoSize">False</property>
-            <property name="YOptions">0</property>
-            <property name="XExpand">True</property>
+            <property name="AutoSize">True</property>
+            <property name="XOptions">Fill</property>
+            <property name="YOptions">Fill</property>
+            <property name="XExpand">False</property>
             <property name="XFill">True</property>
             <property name="XShrink">False</property>
             <property name="YExpand">False</property>
-            <property name="YFill">False</property>
+            <property name="YFill">True</property>
             <property name="YShrink">False</property>
           </packing>
         </child>
         <child>
-          <widget class="MathObjects.UI.Input.InputWidget" id="inputwidget1">
+          <widget class="MathObjects.UI.Stack.InputWidget" id="inputwidget1">
             <property name="MemberName" />
-            <property name="HeightRequest">30</property>
             <property name="Events">ButtonPressMask</property>
           </widget>
           <packing>
             <property name="TopAttach">2</property>
             <property name="BottomAttach">3</property>
-            <property name="AutoSize">True</property>
-            <property name="XOptions">Fill</property>
+            <property name="AutoSize">False</property>
             <property name="YOptions">Fill</property>
-            <property name="XExpand">False</property>
+            <property name="XExpand">True</property>
             <property name="XFill">True</property>
             <property name="XShrink">False</property>
             <property name="YExpand">False</property>

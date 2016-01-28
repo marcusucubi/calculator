@@ -17,6 +17,12 @@ namespace MathObjects.UI.Stack
             set;
         }
 
+        public InputWidget InputWidget
+        {
+            get;
+            set;
+        }
+
         protected void OnButtonPopClicked (object sender, EventArgs e)
         {
             this.Mediator.Pop();
@@ -29,7 +35,7 @@ namespace MathObjects.UI.Stack
 
         protected void OnButtonPushClicked (object sender, EventArgs e)
         {
-            this.Mediator.Enter();
+            this.Mediator.Enter(InputWidget.CalcDisplay);
         }
     }
 }

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</ProjectGuid>
+    <ProjectGuid>{CA93AE18-4319-49D0-961B-1696F95A333E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MathObjects.Framework</RootNamespace>
-    <AssemblyName>MathObjects.Framework</AssemblyName>
+    <RootNamespace>MathObjects.UI.Mediator.Tests</RootNamespace>
+    <AssemblyName>MathObjects.UI.Mediator.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,25 +29,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IMathObject.cs" />
-    <Compile Include="IMathObjectFactory.cs" />
-    <Compile Include="IMathOperation.cs" />
-    <Compile Include="IHasDisplayValue.cs" />
-    <Compile Include="IHasOutput.cs" />
-    <Compile Include="IHasName.cs" />
-    <Compile Include="ErrorHandler.cs" />
-    <Compile Include="IMathBinaryOperation.cs" />
-    <Compile Include="IMathBinaryOperationFactory.cs" />
-    <Compile Include="IMathOperationFactory.cs" />
-    <Compile Include="IMathObjectFactoryContext.cs" />
-    <Compile Include="ArrayObject.cs" />
-    <Compile Include="FactoryContext.cs" />
-    <Compile Include="IMathFunction.cs" />
-    <Compile Include="IMathFunctionContext.cs" />
-    <Compile Include="IMathObjectEx.cs" />
+    <Compile Include="Test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

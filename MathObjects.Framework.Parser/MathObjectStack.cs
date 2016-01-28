@@ -9,10 +9,6 @@ namespace MathObjects.Framework.Parser
 
         readonly Stack<IMathObject> objectStack = new Stack<IMathObject>();
 
-        public MathObjectStack()
-        {
-        }
-
         public IMathObject Top
         {
             get 
@@ -24,6 +20,11 @@ namespace MathObjects.Framework.Parser
 
                 return this.objectStack.Peek(); 
             }
+        }
+
+        public Stack<IMathObject> ObjectStack
+        {
+            get { return this.objectStack; }
         }
 
         public void Push(IMathObject obj)
@@ -44,27 +45,6 @@ namespace MathObjects.Framework.Parser
 
             FireStackChanged();
             ErrorHandler.ResetError(this);
-        }
-
-        public void Clear()
-        {
-            this.objectStack.Clear();
-
-            FireStackChanged();
-        }
-
-        public IMathObject Pop()
-        {
-            IMathObject result = null;
-
-            if (this.objectStack.Count > 0)
-            {
-                result = this.objectStack.Pop();
-
-                FireStackChanged();
-            }
-
-            return result;
         }
 
         public void Push(IMathBinaryOperation op)
@@ -104,6 +84,27 @@ namespace MathObjects.Framework.Parser
             objectStack.Push(result);
 
             FireStackChanged();
+        }
+
+        public void Clear()
+        {
+            this.objectStack.Clear();
+
+            FireStackChanged();
+        }
+
+        public IMathObject Pop()
+        {
+            IMathObject result = null;
+
+            if (this.objectStack.Count > 0)
+            {
+                result = this.objectStack.Pop();
+
+                FireStackChanged();
+            }
+
+            return result;
         }
 
         void FireStackChanged()

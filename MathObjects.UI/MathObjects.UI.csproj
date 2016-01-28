@@ -65,8 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
-    <Compile Include="MainWindow.cs" />
-    <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FieldWidget.cs" />
@@ -98,10 +96,6 @@
     <ProjectReference Include="..\MathObjects.UI.Mediator\MathObjects.UI.Mediator.csproj">
       <Project>{DBF1DFB8-00DA-4DA3-AC10-B2ED595BD298}</Project>
       <Name>MathObjects.UI.Mediator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathObjects.UI.Input\MathObjects.UI.Input.csproj">
-      <Project>{217CE7CC-8BDF-4732-90BC-A6D4876DA24C}</Project>
-      <Name>MathObjects.UI.Input</Name>
     </ProjectReference>
     <ProjectReference Include="..\MathObjects.Plugin.Rational\MathObjects.Plugin.Rational.csproj">
       <Project>{40690EE5-99DD-4119-9F51-F9F17ED747ED}</Project>

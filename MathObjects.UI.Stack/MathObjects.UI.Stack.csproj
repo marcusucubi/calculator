@@ -67,6 +67,8 @@
     <Compile Include="gtk-gui\MathObjects.UI.Stack.StackButtonWidget.cs" />
     <Compile Include="StackWidget2.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.Stack.StackWidget2.cs" />
+    <Compile Include="InputWidget.cs" />
+    <Compile Include="gtk-gui\MathObjects.UI.Stack.InputWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

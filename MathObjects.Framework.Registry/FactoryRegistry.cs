@@ -9,13 +9,13 @@ namespace MathObjects.Framework.Registry
     {
         public static readonly string OBJECT = "object";
 
-        public static readonly string ADD = "add";
+        public static readonly string ADD = "+";
 
-        public static readonly string SUBTRACT = "subtract";
+        public static readonly string SUBTRACT = "-";
 
-        public static readonly string MULTIPLY = "multiply";
+        public static readonly string MULTIPLY = "*";
 
-        public static readonly string DIVIDE = "divide";
+        public static readonly string DIVIDE = "/";
 
         public static readonly string INVERSE = "inverse";
 
@@ -110,6 +110,11 @@ namespace MathObjects.Framework.Registry
 
         public IMathObjectFactory GetFunctionFactory(string name)
         {
+            if (!this.functionMap.ContainsKey(name))
+            {
+                return null;
+            }
+
             return this.functionMap[name];
         }
     }

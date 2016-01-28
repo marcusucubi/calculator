@@ -12,7 +12,7 @@ namespace MathObjects.UI
 		
 		private global::MathObjects.UI.FieldWidget fieldwidget1;
 		
-		private global::MathObjects.UI.Input.InputWidget inputwidget1;
+		private global::MathObjects.UI.Stack.InputWidget inputwidget1;
 		
 		private global::MathObjects.UI.Widgets.MathObjetsWidget mathobjetswidget2;
 		
@@ -37,7 +37,7 @@ namespace MathObjects.UI
 			this.alignment2.Name = "alignment2";
 			// Container child alignment2.Gtk.Container+ContainerChild
 			this.errorwidget1 = new global::MathObjects.UI.ErrorWidget ();
-			this.errorwidget1.HeightRequest = 15;
+			this.errorwidget1.HeightRequest = 20;
 			this.errorwidget1.Events = ((global::Gdk.EventMask)(256));
 			this.errorwidget1.Name = "errorwidget1";
 			this.alignment2.Add (this.errorwidget1);
@@ -53,17 +53,16 @@ namespace MathObjects.UI
 			this.fieldwidget1.Name = "fieldwidget1";
 			this.table1.Add (this.fieldwidget1);
 			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table1 [this.fieldwidget1]));
-			w3.YOptions = ((global::Gtk.AttachOptions)(0));
+			w3.XOptions = ((global::Gtk.AttachOptions)(4));
+			w3.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
-			this.inputwidget1 = new global::MathObjects.UI.Input.InputWidget ();
-			this.inputwidget1.HeightRequest = 30;
+			this.inputwidget1 = new global::MathObjects.UI.Stack.InputWidget ();
 			this.inputwidget1.Events = ((global::Gdk.EventMask)(256));
 			this.inputwidget1.Name = "inputwidget1";
 			this.table1.Add (this.inputwidget1);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.inputwidget1]));
 			w4.TopAttach = ((uint)(2));
 			w4.BottomAttach = ((uint)(3));
-			w4.XOptions = ((global::Gtk.AttachOptions)(4));
 			w4.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.mathobjetswidget2 = new global::MathObjects.UI.Widgets.MathObjetsWidget ();
