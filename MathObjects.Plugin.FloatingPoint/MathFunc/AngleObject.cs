@@ -3,23 +3,72 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
+    public enum AngleType
+    {
+        Radians, Degrees
+    }
+
     class AngleObject : IMathObject, IHasOutput, IHasDisplayValue
     {
-        readonly double target;
+        readonly double angleValue;
 
-        public AngleObject(double value)
+        readonly AngleType angleType;
+
+        public AngleObject(double value, AngleType angleType)
         {
-            this.target = value;
+            this.angleValue = value;
+            this.angleType = angleType;
         }
 
-        public object Output
+        public AngleObject(AngleObject obj)
         {
-            get { return Convert.RadiansToAngle(this.target); }
+            this.angleValue = obj.angleValue;
+            this.angleType = obj.angleType;
         }
+
+        public AngleType AngleType
+        {
+            get { return this.angleType; }
+        }
+
+        public double AngleValue
+        {
+            get { return this.angleValue; }
+        }
+
+        public object Output { get { return this.angleValue; } }
 
         public string DisplayValue
         {
-            get { return Output.ToString(); }
+            get 
+            {
+                return Output.ToString() + 
+                    ((this.angleType==AngleType.Degrees) ? " degrees" : " radians"); 
+            }
+        }
+
+        public AngleObject ConvertToDegrees()
+        {
+            double result = this.angleValue;
+
+            if (this.angleType == AngleType.Radians)
+            {
+                result = Convert.RadiansToDegrees(this.angleValue);
+            }
+
+            return new AngleObject(result, AngleType.Degrees);
+        }
+
+        public AngleObject ConvertToRadians()
+        {
+            double result = this.angleValue;
+
+            if (this.angleType == AngleType.Degrees)
+            {
+                result = Convert.DegreesToRadians(this.angleValue);
+            }
+
+            return new AngleObject(result, AngleType.Radians);
         }
 
         public override string ToString()

@@ -68,7 +68,6 @@
     <Compile Include="Func\TopOperation.cs" />
     <Compile Include="Func\ConstantFunction.cs" />
     <Compile Include="Func\ConstantObject.cs" />
-    <Compile Include="Func\ConstantObjectFactory.cs" />
     <Compile Include="Func\ConstantOperation.cs" />
     <Compile Include="MathFunc\MathFunction.cs" />
     <Compile Include="MathFunc\MathObject.cs" />
@@ -78,6 +77,13 @@
     <Compile Include="MathFunc\AngleObject.cs" />
     <Compile Include="MathFunc\AngleOperation.cs" />
     <Compile Include="MathFunc\Convert.cs" />
+    <Compile Include="MathFunc\InverseAngleFunction.cs" />
+    <Compile Include="MathFunc\InverseAngleObject.cs" />
+    <Compile Include="MathFunc\InverseAngleOperation.cs" />
+    <Compile Include="MathFunc\DegreesFunction.cs" />
+    <Compile Include="MathFunc\DegreesOperation.cs" />
+    <Compile Include="MathFunc\RadiansFunction.cs" />
+    <Compile Include="MathFunc\RadiansOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

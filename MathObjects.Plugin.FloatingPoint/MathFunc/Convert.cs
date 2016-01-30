@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
     public static class Convert
     {
-        public static double RadiansToAngle(double radians)
+        public static double RadiansToDegrees(double radians)
         {
             return (radians / Math.PI) * 180;
         }
 
-        public static double AngleToRadians(double angle)
+        public static double DegreesToRadians(double angle)
         {
             return (angle / 180) * Math.PI;
         }

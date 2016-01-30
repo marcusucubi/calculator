@@ -3,27 +3,22 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class AngleOperation : IMathOperation
+    class InverseAngleOperation : IMathOperation
     {
         readonly MathHandler handler;
 
         public int NumberOfParameters { get { return 1; } }
 
-        public AngleOperation(MathHandler handler)
+        public InverseAngleOperation(MathHandler handler)
         {
             this.handler = handler;
         }
 
         public IMathObject Perform(IMathObject target)
         {
-            var angle = target.GetValue<AngleObject>();
+            double value = target.GetDouble();
 
-            if (angle == null)
-            {
-                angle = new AngleObject(target.GetDouble(), AngleType.Degrees);
-            }
-
-            return new MathObject(handler(angle.ConvertToRadians().AngleValue));
+            return new AngleObject(handler(value), AngleType.Radians);
         }
 
         public class Factory : IMathOperationFactory, IHasName
@@ -45,7 +40,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
             public IMathOperation Create(object param)
             {
-                return new AngleOperation(handler);
+                return new InverseAngleOperation(handler);
             }
         }
     }

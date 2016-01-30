@@ -57,6 +57,12 @@ namespace MathObjects.Plugin.FloatingPoint
             registry.RegisterFunctionFactory(
                 "top", new FunctionFactory(typeof(TopFunction)));
 
+            registry.RegisterFunctionFactory(
+                "degrees", new FunctionFactory(typeof(DegreesFunction)));
+            
+            registry.RegisterFunctionFactory(
+                "radians", new FunctionFactory(typeof(RadiansFunction)));
+
             MathFuncObject.Init(registry);
         }
     }

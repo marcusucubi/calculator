@@ -47,7 +47,7 @@ namespace MathObjects.Plugin.Integers
         {
             public string Name
             {
-                get { return "GCD"; }
+                get { return "gcd"; }
             }
 
             public IMathBinaryOperation Create(object parm)

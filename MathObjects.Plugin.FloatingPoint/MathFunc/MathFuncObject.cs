@@ -17,13 +17,13 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 "tan", new AngleFunction.Factory(x => Math.Tan(x)));
             
             registry.RegisterFunctionFactory(
-                "acos", new AngleFunction.Factory(x => Math.Acos(x)));
+                "acos", new InverseAngleFunction.Factory(x => Math.Acos(x)));
+            
+            registry.RegisterFunctionFactory(
+                "asin", new InverseAngleFunction.Factory(x => Math.Asin(x)));
 
             registry.RegisterFunctionFactory(
-                "asin", new AngleFunction.Factory(x => Math.Asin(x)));
-
-            registry.RegisterFunctionFactory(
-                "atan", new AngleFunction.Factory(x => Math.Atan(x)));
+                "atan", new InverseAngleFunction.Factory(x => Math.Atan(x)));
 
             registry.RegisterFunctionFactory(
                 "abs", new MathFunction.Factory(x => System.Math.Abs(x)));

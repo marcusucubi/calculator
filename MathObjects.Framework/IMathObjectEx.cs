@@ -16,15 +16,18 @@ namespace MathObjects.Framework
                 }
 
                 var has2 = hasOutput.Output as IHasOutput;
-                if (has2.Output is T)
+                if (has2 != null)
                 {
-                    return (T)has2.Output;
-                }
+                    if (has2.Output is T)
+                    {
+                        return (T)has2.Output;
+                    }
 
-                return GetValue<T>((IMathObject)has2.Output);
+                    return GetValue<T>(has2.Output as IMathObject);
+                }
             }
 
-            throw new Exception();
+            return default(T);
         }
     }
 }

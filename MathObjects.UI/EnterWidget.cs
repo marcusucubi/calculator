@@ -17,9 +17,12 @@ namespace MathObjects.UI
 
             this.button2.Clicked += (sender, e) =>
                 {
-                    if (this.mediator.Enter(this.input.CalcDisplay))
+                    if (this.input.CalcDisplay.Length > 0)
                     {
-                        this.input.CalcDisplay = "";
+                        if (this.mediator.Enter(this.input.CalcDisplay))
+                        {
+                            this.input.CalcDisplay = "";
+                        }
                     }
                 };
         }
