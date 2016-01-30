@@ -4,9 +4,7 @@ namespace MathObjects.UI.Stack
 {
 	public partial class StackButtonWidget
 	{
-		private global::Gtk.HBox hbox1;
-		
-		private global::Gtk.Button buttonPush;
+		private global::Gtk.VBox vbox2;
 		
 		private global::Gtk.Button buttonPop;
 		
@@ -19,50 +17,37 @@ namespace MathObjects.UI.Stack
 			global::Stetic.BinContainer.Attach (this);
 			this.Name = "MathObjects.UI.Stack.StackButtonWidget";
 			// Container child MathObjects.UI.Stack.StackButtonWidget.Gtk.Container+ContainerChild
-			this.hbox1 = new global::Gtk.HBox ();
-			this.hbox1.Name = "hbox1";
-			this.hbox1.Spacing = 2;
-			this.hbox1.BorderWidth = ((uint)(2));
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.buttonPush = new global::Gtk.Button ();
-			this.buttonPush.CanDefault = true;
-			this.buttonPush.CanFocus = true;
-			this.buttonPush.Name = "buttonPush";
-			this.buttonPush.UseUnderline = true;
-			this.buttonPush.Label = global::Mono.Unix.Catalog.GetString ("Push");
-			this.hbox1.Add (this.buttonPush);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.buttonPush]));
-			w1.Position = 0;
-			w1.Expand = false;
-			w1.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
+			this.vbox2 = new global::Gtk.VBox ();
+			this.vbox2.Name = "vbox2";
+			this.vbox2.Spacing = 6;
+			this.vbox2.BorderWidth = ((uint)(5));
+			// Container child vbox2.Gtk.Box+BoxChild
 			this.buttonPop = new global::Gtk.Button ();
 			this.buttonPop.CanFocus = true;
 			this.buttonPop.Name = "buttonPop";
 			this.buttonPop.UseUnderline = true;
 			this.buttonPop.Label = global::Mono.Unix.Catalog.GetString ("Pop");
-			this.hbox1.Add (this.buttonPop);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.buttonPop]));
-			w2.Position = 1;
-			w2.Expand = false;
-			w2.Fill = false;
-			// Container child hbox1.Gtk.Box+BoxChild
+			this.vbox2.Add (this.buttonPop);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.buttonPop]));
+			w1.Position = 0;
+			w1.Expand = false;
+			w1.Fill = false;
+			// Container child vbox2.Gtk.Box+BoxChild
 			this.buttonClear = new global::Gtk.Button ();
 			this.buttonClear.CanFocus = true;
 			this.buttonClear.Name = "buttonClear";
 			this.buttonClear.UseUnderline = true;
 			this.buttonClear.Label = global::Mono.Unix.Catalog.GetString ("Clear");
-			this.hbox1.Add (this.buttonClear);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.buttonClear]));
-			w3.Position = 2;
-			w3.Expand = false;
-			w3.Fill = false;
-			this.Add (this.hbox1);
+			this.vbox2.Add (this.buttonClear);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.buttonClear]));
+			w2.Position = 1;
+			w2.Expand = false;
+			w2.Fill = false;
+			this.Add (this.vbox2);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
-			this.buttonPush.Clicked += new global::System.EventHandler (this.OnButtonPushClicked);
 			this.buttonPop.Clicked += new global::System.EventHandler (this.OnButtonPopClicked);
 			this.buttonClear.Clicked += new global::System.EventHandler (this.OnButtonClearClicked);
 		}

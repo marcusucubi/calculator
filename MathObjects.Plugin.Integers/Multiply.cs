@@ -4,14 +4,14 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {
-    class Add : IMathBinaryOperation
+    public class Multiply : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
             var leftValue = left.GetInteger();
             var rightValue = right.GetInteger();
 
-            var op = new AddObject(leftValue, rightValue);
+            var op = new MultiplyObject(leftValue, rightValue);
 
             return new MathObject((int)op.Output);
         }
@@ -20,12 +20,12 @@ namespace MathObjects.Plugin.Integers
         {
             public string Name
             {
-                get { return "+"; }
+                get { return "*"; }
             }
 
             public IMathBinaryOperation Create(object parm)
             {
-                return new Add();
+                return new Multiply();
             }
         }
     }

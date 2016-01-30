@@ -6,7 +6,7 @@ namespace MathObjects.UI
 	{
 		private global::Gtk.Table table1;
 		
-		private global::Gtk.Alignment alignment2;
+		private global::MathObjects.UI.EnterWidget enterwidget1;
 		
 		private global::MathObjects.UI.ErrorWidget errorwidget1;
 		
@@ -15,8 +15,6 @@ namespace MathObjects.UI
 		private global::MathObjects.UI.Stack.InputWidget inputwidget1;
 		
 		private global::MathObjects.UI.Widgets.MathObjetsWidget mathobjetswidget2;
-		
-		private global::MathObjects.UI.Widgets.MathOperationsWidget mathoperationswidget1;
 		
 		private global::MathObjects.UI.Stack.StackWidget2 stackwidget21;
 
@@ -33,20 +31,27 @@ namespace MathObjects.UI
 			this.table1.RowSpacing = ((uint)(6));
 			this.table1.ColumnSpacing = ((uint)(6));
 			// Container child table1.Gtk.Table+TableChild
-			this.alignment2 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment2.Name = "alignment2";
-			// Container child alignment2.Gtk.Container+ContainerChild
+			this.enterwidget1 = new global::MathObjects.UI.EnterWidget ();
+			this.enterwidget1.HeightRequest = 50;
+			this.enterwidget1.Events = ((global::Gdk.EventMask)(256));
+			this.enterwidget1.Name = "enterwidget1";
+			this.table1.Add (this.enterwidget1);
+			global::Gtk.Table.TableChild w1 = ((global::Gtk.Table.TableChild)(this.table1 [this.enterwidget1]));
+			w1.TopAttach = ((uint)(5));
+			w1.BottomAttach = ((uint)(6));
+			w1.XOptions = ((global::Gtk.AttachOptions)(4));
+			w1.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table1.Gtk.Table+TableChild
 			this.errorwidget1 = new global::MathObjects.UI.ErrorWidget ();
 			this.errorwidget1.HeightRequest = 20;
 			this.errorwidget1.Events = ((global::Gdk.EventMask)(256));
 			this.errorwidget1.Name = "errorwidget1";
-			this.alignment2.Add (this.errorwidget1);
-			this.table1.Add (this.alignment2);
-			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1 [this.alignment2]));
-			w2.TopAttach = ((uint)(1));
-			w2.BottomAttach = ((uint)(2));
+			this.table1.Add (this.errorwidget1);
+			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1 [this.errorwidget1]));
+			w2.TopAttach = ((uint)(2));
+			w2.BottomAttach = ((uint)(3));
 			w2.XOptions = ((global::Gtk.AttachOptions)(4));
-			w2.YOptions = ((global::Gtk.AttachOptions)(0));
+			w2.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.fieldwidget1 = new global::MathObjects.UI.FieldWidget ();
 			this.fieldwidget1.Events = ((global::Gdk.EventMask)(256));
@@ -61,12 +66,12 @@ namespace MathObjects.UI
 			this.inputwidget1.Name = "inputwidget1";
 			this.table1.Add (this.inputwidget1);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.inputwidget1]));
-			w4.TopAttach = ((uint)(2));
-			w4.BottomAttach = ((uint)(3));
+			w4.TopAttach = ((uint)(1));
+			w4.BottomAttach = ((uint)(2));
 			w4.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.mathobjetswidget2 = new global::MathObjects.UI.Widgets.MathObjetsWidget ();
-			this.mathobjetswidget2.HeightRequest = 150;
+			this.mathobjetswidget2.HeightRequest = 300;
 			this.mathobjetswidget2.Events = ((global::Gdk.EventMask)(256));
 			this.mathobjetswidget2.Name = "mathobjetswidget2";
 			this.table1.Add (this.mathobjetswidget2);
@@ -76,31 +81,20 @@ namespace MathObjects.UI
 			w5.XOptions = ((global::Gtk.AttachOptions)(4));
 			w5.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
-			this.mathoperationswidget1 = new global::MathObjects.UI.Widgets.MathOperationsWidget ();
-			this.mathoperationswidget1.HeightRequest = 100;
-			this.mathoperationswidget1.Events = ((global::Gdk.EventMask)(256));
-			this.mathoperationswidget1.Name = "mathoperationswidget1";
-			this.table1.Add (this.mathoperationswidget1);
-			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table1 [this.mathoperationswidget1]));
-			w6.TopAttach = ((uint)(5));
-			w6.BottomAttach = ((uint)(6));
-			w6.XOptions = ((global::Gtk.AttachOptions)(4));
-			w6.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table1.Gtk.Table+TableChild
 			this.stackwidget21 = new global::MathObjects.UI.Stack.StackWidget2 ();
 			this.stackwidget21.Events = ((global::Gdk.EventMask)(256));
 			this.stackwidget21.Name = "stackwidget21";
 			this.table1.Add (this.stackwidget21);
-			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table1 [this.stackwidget21]));
-			w7.TopAttach = ((uint)(3));
-			w7.BottomAttach = ((uint)(4));
-			w7.XOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table1 [this.stackwidget21]));
+			w6.TopAttach = ((uint)(3));
+			w6.BottomAttach = ((uint)(4));
+			w6.XOptions = ((global::Gtk.AttachOptions)(4));
 			this.Add (this.table1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 498;
-			this.DefaultHeight = 552;
+			this.DefaultHeight = 568;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		}

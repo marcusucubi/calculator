@@ -29,11 +29,15 @@ namespace MathObjects.UI.Mediator
             get { return this.registry; }
         }
 
-        public void Enter(string input)
+        public bool Enter(string input)
         {
+            bool result = true;
+
             if (parser != null)
             {
                 parser.Parse(input, this);
+
+                result = !parser.HasError;
             }
             else
             {
@@ -45,6 +49,8 @@ namespace MathObjects.UI.Mediator
                     Push(obj);
                 }
             }
+
+            return result;
         }
     }
 }

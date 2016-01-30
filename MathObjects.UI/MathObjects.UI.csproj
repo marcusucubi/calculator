@@ -74,6 +74,8 @@
     <Compile Include="MainWindow2.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.MainWindow2.cs" />
     <Compile Include="PluginEx.cs" />
+    <Compile Include="EnterWidget.cs" />
+    <Compile Include="gtk-gui\MathObjects.UI.EnterWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

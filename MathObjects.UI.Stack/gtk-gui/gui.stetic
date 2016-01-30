@@ -9,31 +9,14 @@
     <widget-library name="../../MathObjects.UI.Mediator/bin/Debug/MathObjects.UI.Mediator.dll" />
     <widget-library name="../bin/Debug/MathObjects.UI.Stack.dll" internal="true" />
   </import>
-  <widget class="Gtk.Bin" id="MathObjects.UI.Stack.StackButtonWidget" design-size="300 38">
+  <widget class="Gtk.Bin" id="MathObjects.UI.Stack.StackButtonWidget" design-size="194 78">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
-      <widget class="Gtk.HBox" id="hbox1">
+      <widget class="Gtk.VBox" id="vbox2">
         <property name="MemberName" />
-        <property name="Spacing">2</property>
-        <property name="BorderWidth">2</property>
-        <child>
-          <widget class="Gtk.Button" id="buttonPush">
-            <property name="MemberName" />
-            <property name="CanDefault">True</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Push</property>
-            <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnButtonPushClicked" />
-          </widget>
-          <packing>
-            <property name="Position">0</property>
-            <property name="AutoSize">True</property>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
+        <property name="Spacing">6</property>
+        <property name="BorderWidth">5</property>
         <child>
           <widget class="Gtk.Button" id="buttonPop">
             <property name="MemberName" />
@@ -44,7 +27,7 @@
             <signal name="Clicked" handler="OnButtonPopClicked" />
           </widget>
           <packing>
-            <property name="Position">1</property>
+            <property name="Position">0</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -60,11 +43,14 @@
             <signal name="Clicked" handler="OnButtonClearClicked" />
           </widget>
           <packing>
-            <property name="Position">2</property>
+            <property name="Position">1</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>
+        </child>
+        <child>
+          <placeholder />
         </child>
       </widget>
     </child>
@@ -73,32 +59,20 @@
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
-      <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
-        <property name="MemberName" />
-        <property name="ShadowType">In</property>
-        <child>
-          <widget class="Gtk.TreeView" id="treeview2">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="ShowScrollbars">True</property>
-          </widget>
-        </child>
-      </widget>
-    </child>
-  </widget>
-  <widget class="Gtk.Bin" id="MathObjects.UI.Stack.InputWidget" design-size="330 38">
-    <property name="MemberName" />
-    <property name="Visible">False</property>
-    <child>
       <widget class="Gtk.HBox" id="hbox1">
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.Entry" id="entry1">
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
             <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="treeview2">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+              </widget>
+            </child>
           </widget>
           <packing>
             <property name="Position">0</property>
@@ -115,6 +89,30 @@
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Bin" id="MathObjects.UI.Stack.InputWidget" design-size="330 50">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.VBox" id="vbox1">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <property name="BorderWidth">5</property>
+        <child>
+          <widget class="Gtk.TextView" id="textview1">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Text" translatable="yes" />
+            <property name="WrapMode">Word</property>
+            <property name="LeftMargin">3</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
           </packing>
         </child>
       </widget>

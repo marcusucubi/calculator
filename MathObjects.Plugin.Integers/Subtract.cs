@@ -1,17 +1,16 @@
 ﻿using System;
 using MathObjects.Framework;
-using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {
-    class Add : IMathBinaryOperation
+    public class Subtract : IMathBinaryOperation
     {
         public IMathObject Perform(IMathObject left, IMathObject right)
         {
             var leftValue = left.GetInteger();
             var rightValue = right.GetInteger();
 
-            var op = new AddObject(leftValue, rightValue);
+            var op = new SubtractObject(leftValue, rightValue);
 
             return new MathObject((int)op.Output);
         }
@@ -20,14 +19,14 @@ namespace MathObjects.Plugin.Integers
         {
             public string Name
             {
-                get { return "+"; }
+                get { return "-"; }
             }
 
             public IMathBinaryOperation Create(object parm)
             {
-                return new Add();
+                return new Subtract();
             }
         }
     }
 }
-
+  

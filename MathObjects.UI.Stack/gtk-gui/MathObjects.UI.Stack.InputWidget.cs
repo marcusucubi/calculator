@@ -4,11 +4,9 @@ namespace MathObjects.UI.Stack
 {
 	public partial class InputWidget
 	{
-		private global::Gtk.HBox hbox1;
+		private global::Gtk.VBox vbox1;
 		
-		private global::Gtk.Entry entry1;
-		
-		private global::MathObjects.UI.Stack.StackButtonWidget stackbuttonwidget1;
+		private global::Gtk.TextView textview1;
 
 		protected virtual void Build ()
 		{
@@ -17,28 +15,20 @@ namespace MathObjects.UI.Stack
 			global::Stetic.BinContainer.Attach (this);
 			this.Name = "MathObjects.UI.Stack.InputWidget";
 			// Container child MathObjects.UI.Stack.InputWidget.Gtk.Container+ContainerChild
-			this.hbox1 = new global::Gtk.HBox ();
-			this.hbox1.Name = "hbox1";
-			this.hbox1.Spacing = 6;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.entry1 = new global::Gtk.Entry ();
-			this.entry1.CanFocus = true;
-			this.entry1.Name = "entry1";
-			this.entry1.IsEditable = true;
-			this.entry1.InvisibleChar = '•';
-			this.hbox1.Add (this.entry1);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.entry1]));
+			this.vbox1 = new global::Gtk.VBox ();
+			this.vbox1.Name = "vbox1";
+			this.vbox1.Spacing = 6;
+			this.vbox1.BorderWidth = ((uint)(5));
+			// Container child vbox1.Gtk.Box+BoxChild
+			this.textview1 = new global::Gtk.TextView ();
+			this.textview1.CanFocus = true;
+			this.textview1.Name = "textview1";
+			this.textview1.WrapMode = ((global::Gtk.WrapMode)(2));
+			this.textview1.LeftMargin = 3;
+			this.vbox1.Add (this.textview1);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.textview1]));
 			w1.Position = 0;
-			// Container child hbox1.Gtk.Box+BoxChild
-			this.stackbuttonwidget1 = new global::MathObjects.UI.Stack.StackButtonWidget ();
-			this.stackbuttonwidget1.Events = ((global::Gdk.EventMask)(256));
-			this.stackbuttonwidget1.Name = "stackbuttonwidget1";
-			this.hbox1.Add (this.stackbuttonwidget1);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.stackbuttonwidget1]));
-			w2.Position = 1;
-			w2.Expand = false;
-			w2.Fill = false;
-			this.Add (this.hbox1);
+			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

@@ -18,6 +18,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <NoWarn>3021</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -29,6 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\MathObjects.Framework.Parser\Lib\Antlr4.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -39,6 +43,25 @@
     <Compile Include="Gcd.cs" />
     <Compile Include="IHasValue.cs" />
     <Compile Include="MathObjectEx.cs" />
+    <Compile Include="Parser\IntegersBaseVisitor.cs" />
+    <Compile Include="Parser\IntegersVisitor.cs" />
+    <Compile Include="Parser\IntegersLexer.cs" />
+    <Compile Include="Parser\IntegersParser.cs" />
+    <Compile Include="Parser\FloatingPointLexer.cs" />
+    <Compile Include="Parser\EvalVisitor2.cs" />
+    <Compile Include="Parser\InitVisitor.cs" />
+    <Compile Include="Negative.cs" />
+    <Compile Include="NegativeObject.cs" />
+    <Compile Include="ExponentObject.cs" />
+    <Compile Include="ExponentOperation.cs" />
+    <Compile Include="AddObject.cs" />
+    <Compile Include="Subtract.cs" />
+    <Compile Include="SubtractObject.cs" />
+    <Compile Include="Multiply.cs" />
+    <Compile Include="MultiplyObject.cs" />
+    <Compile Include="FunctionContext.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="ErrorListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -54,5 +77,19 @@
       <Project>{F0D702FD-2C0C-4F45-82CE-B52B87F8737D}</Project>
       <Name>MathObjects.Framework.Registry</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Parser\MathObjects.Framework.Parser.csproj">
+      <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
+      <Name>MathObjects.Framework.Parser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parser\Integers.g4" />
+    <None Include="Parser\gen.sh" />
+    <None Include="Parser\Integers.tokens" />
+    <None Include="Parser\IntegersLexer.tokens" />
+    <None Include="Parser\FloatingPointLexer.tokens" />
   </ItemGroup>
 </Project>

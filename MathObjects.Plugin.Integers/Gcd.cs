@@ -22,7 +22,7 @@ namespace MathObjects.Plugin.Integers
             var leftValue = GetValue(left);
             var rightValue = GetValue(right);
 
-            return new MathObject("" + GCD(leftValue, rightValue));
+            return new MathObject(GCD(leftValue, rightValue));
         }
 
         int GetValue(IMathObject obj)

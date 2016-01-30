@@ -4,9 +4,13 @@ namespace MathObjects.UI.Stack
 {
 	public partial class StackWidget2
 	{
+		private global::Gtk.HBox hbox1;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		
 		private global::Gtk.TreeView treeview2;
+		
+		private global::MathObjects.UI.Stack.StackButtonWidget stackbuttonwidget1;
 
 		protected virtual void Build ()
 		{
@@ -15,6 +19,10 @@ namespace MathObjects.UI.Stack
 			global::Stetic.BinContainer.Attach (this);
 			this.Name = "MathObjects.UI.Stack.StackWidget2";
 			// Container child MathObjects.UI.Stack.StackWidget2.Gtk.Container+ContainerChild
+			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1.Name = "hbox1";
+			this.hbox1.Spacing = 6;
+			// Container child hbox1.Gtk.Box+BoxChild
 			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
@@ -23,7 +31,19 @@ namespace MathObjects.UI.Stack
 			this.treeview2.CanFocus = true;
 			this.treeview2.Name = "treeview2";
 			this.GtkScrolledWindow.Add (this.treeview2);
-			this.Add (this.GtkScrolledWindow);
+			this.hbox1.Add (this.GtkScrolledWindow);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow]));
+			w2.Position = 0;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.stackbuttonwidget1 = new global::MathObjects.UI.Stack.StackButtonWidget ();
+			this.stackbuttonwidget1.Events = ((global::Gdk.EventMask)(256));
+			this.stackbuttonwidget1.Name = "stackbuttonwidget1";
+			this.hbox1.Add (this.stackbuttonwidget1);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.stackbuttonwidget1]));
+			w3.Position = 1;
+			w3.Expand = false;
+			w3.Fill = false;
+			this.Add (this.hbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

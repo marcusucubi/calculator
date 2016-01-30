@@ -11,24 +11,23 @@ namespace MathObjects.UI.Stack
         {
             this.Build();
 
-            this.entry1.ModifyFont(FontDescription.FromString("Courier 16"));
-        }
-
-        public void Connect(IMediator mediator)
-        {
-            this.stackbuttonwidget1.Mediator = mediator;
-            this.stackbuttonwidget1.InputWidget = this;
+            this.textview1.ModifyFont(FontDescription.FromString("Courier 16"));
         }
 
         public void CalcDisplayAdd(string input)
         {
-            this.entry1.Text += input;
+            this.textview1.Buffer.InsertAtCursor(input);
+            this.textview1.HasFocus = true;
         }
 
         public string CalcDisplay
         {
-            get { return this.entry1.Text; }
-            set { this.entry1.Text = value; }
+            get { return this.textview1.Buffer.Text; }
+            set 
+            { 
+                this.textview1.Buffer.Clear(); 
+                this.textview1.Buffer.InsertAtCursor(value);
+            }
         }
     }
 }

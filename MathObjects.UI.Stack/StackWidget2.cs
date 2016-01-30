@@ -36,7 +36,9 @@ namespace MathObjects.UI.Stack
             this.treeview2.ModifyFont(FontDescription.FromString("Courier 16"));
         }
 
-        public void Connect(IMediator mediator)
+        public void Connect(
+            IMediator mediator,
+            InputWidget input)
         {
             this.mediator = mediator;
 
@@ -44,6 +46,9 @@ namespace MathObjects.UI.Stack
                 {
                     DisplayNumbers(this.mediator.ObjectStack);
                 };
+
+            this.stackbuttonwidget1.Mediator = this.mediator;
+            this.stackbuttonwidget1.InputWidget = input;
         }
 
         public void Disconnect()

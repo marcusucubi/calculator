@@ -11,7 +11,7 @@ namespace MathObjects.Plugin.Integers
             var leftValue = GetValue(left);
             var rightValue = GetValue(right);
 
-            return new MathObject("" + ((int)leftValue * (int)rightValue) );
+            return new MathObject(((int)leftValue * (int)rightValue) );
         }
 
         int GetValue(IMathObject obj)

@@ -34,14 +34,10 @@ namespace MathObjects.UI
             this.mathobjetswidget2.Connect(
                 registry, this.inputwidget1);
 
-            this.mathoperationswidget1.Disconnect();
-            this.mathoperationswidget1.Connect(
-                registry, this.inputwidget1);
-
-            this.inputwidget1.Connect(mediator);
-
             this.stackwidget21.Disconnect();
-            this.stackwidget21.Connect(mediator);
+            this.stackwidget21.Connect(mediator, this.inputwidget1);
+
+            this.enterwidget1.Connect(mediator, this.inputwidget1);
         }
 
         protected void OnDeleteEvent (object sender, DeleteEventArgs a)

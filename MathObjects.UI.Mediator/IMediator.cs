@@ -9,7 +9,7 @@ namespace MathObjects.UI.Mediator
     {
         Stack<IMathObject> ObjectStack { get; }
 
-        void Enter(string input);
+        bool Enter(string input);
     }
 }
 

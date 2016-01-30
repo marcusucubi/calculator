@@ -89,20 +89,6 @@ namespace MathObjects.UI.Widgets
             button1.Clicked += (sender, e) =>
             {
                 inputWidget.CalcDisplayAdd(key);
-                /*
-                if (this.parser != null)
-                {
-                    parser.Parse(key, this.mediator);
-                }
-                else 
-                {
-                    var context = new FactoryContext();
-                    context.InitObject = key;
-                    var obj = factory.Create(context);
-                        
-                    this.mediator.InsertNumber(obj);
-                }
-                */
             };
         }
     }
