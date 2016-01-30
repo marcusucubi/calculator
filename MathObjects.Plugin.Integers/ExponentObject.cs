@@ -17,7 +17,7 @@ namespace MathObjects.Plugin.Integers
 
         public object Output
         {
-            get { return (Math.Pow(tuple1, tuple2)); }
+            get { return (int)(Math.Pow(tuple1, tuple2)); }
         }
     }
 }

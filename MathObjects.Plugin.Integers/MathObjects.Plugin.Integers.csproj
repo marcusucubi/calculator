@@ -62,6 +62,12 @@
     <Compile Include="FunctionContext.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="ErrorListener.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="FunctionFactory.cs" />
+    <Compile Include="FunctionObject.cs" />
+    <Compile Include="Func\TopFunction.cs" />
+    <Compile Include="Func\TopObject.cs" />
+    <Compile Include="Func\TopOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -84,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Parser\" />
+    <Folder Include="Func\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Parser\Integers.g4" />

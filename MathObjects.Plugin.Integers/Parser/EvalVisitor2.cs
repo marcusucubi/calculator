@@ -13,8 +13,6 @@ namespace MathObjects.Plugin.Integers
 
         readonly InitVisitor init;
 
-        readonly IMathObject top;
-
         public EvalVisitor2(
             FactoryRegistry registry, 
             IMathObjectStack stack,
@@ -22,7 +20,6 @@ namespace MathObjects.Plugin.Integers
         {
             this.stack = stack;
             this.init = init;
-            this.top = stack.Top;
         }
 
         public override IMathObject VisitNegative(

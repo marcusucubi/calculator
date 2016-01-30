@@ -3,6 +3,7 @@ using MathObjects.Core.Plugin;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.Plugin.Integers.Func;
 
 namespace MathObjects.Plugin.Integers
 {
@@ -42,7 +43,10 @@ namespace MathObjects.Plugin.Integers
                 new Multiplication.Factory());
             
             registry.RegisterBinaryOperationFactory(
-                "GCD", new Gcd.Factory());
+                "gcd", new Gcd.Factory());
+            
+            registry.RegisterFunctionFactory(
+                "top", new FunctionFactory(typeof(TopFunction)));
         }
     }
 }
