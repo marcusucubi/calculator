@@ -74,6 +74,10 @@
     <Compile Include="MathFunc\MathObject.cs" />
     <Compile Include="MathFunc\MathOperation.cs" />
     <Compile Include="MathFunc\MathFuncObject.cs" />
+    <Compile Include="MathFunc\AngleFunction.cs" />
+    <Compile Include="MathFunc\AngleObject.cs" />
+    <Compile Include="MathFunc\AngleOperation.cs" />
+    <Compile Include="MathFunc\Convert.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

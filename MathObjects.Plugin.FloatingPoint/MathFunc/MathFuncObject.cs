@@ -8,22 +8,22 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         public static void Init(FactoryRegistry registry)
         {
             registry.RegisterFunctionFactory(
-                "cos", new MathFunction.Factory(x => Math.Cos(x)));
+                "cos", new AngleFunction.Factory(x => Math.Cos(x)));
             
             registry.RegisterFunctionFactory(
-                "sin", new MathFunction.Factory(x => Math.Sin(x)));
+                "sin", new AngleFunction.Factory(x => Math.Sin(x)));
             
             registry.RegisterFunctionFactory(
-                "tan", new MathFunction.Factory(x => Math.Tan(x)));
+                "tan", new AngleFunction.Factory(x => Math.Tan(x)));
             
             registry.RegisterFunctionFactory(
-                "acos", new MathFunction.Factory(x => Math.Acos(x)));
+                "acos", new AngleFunction.Factory(x => Math.Acos(x)));
 
             registry.RegisterFunctionFactory(
-                "asin", new MathFunction.Factory(x => Math.Asin(x)));
+                "asin", new AngleFunction.Factory(x => Math.Asin(x)));
 
             registry.RegisterFunctionFactory(
-                "atan", new MathFunction.Factory(x => Math.Atan(x)));
+                "atan", new AngleFunction.Factory(x => Math.Atan(x)));
 
             registry.RegisterFunctionFactory(
                 "abs", new MathFunction.Factory(x => System.Math.Abs(x)));

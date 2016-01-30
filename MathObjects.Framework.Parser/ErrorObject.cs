@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework.Parser
 {
-    public class ErrorObject : IMathObject, IHasDisplayValue 
+    public class ErrorObject : IMathObject, IHasDisplayValue, IIsError
     {
         readonly string error;
 
@@ -17,6 +17,8 @@ namespace MathObjects.Framework.Parser
         }
 
         public string DisplayValue { get { return this.error; } }
+
+        public string Description { get { return this.error; } }
     }
 }
 
