@@ -92,6 +92,16 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
 
             Assert.AreEqual(-1, stack.Top.GetDouble());
         }
+
+        [Test]
+        public void TestCase8()
+        {
+            var stack = new MathObjectStack();
+
+            parser.Parse("degrees(acos(cos(degrees(60))))", stack);
+
+            Assert.AreEqual(60, stack.Top.GetDouble());
+        }
     }
 }
 
