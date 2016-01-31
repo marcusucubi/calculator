@@ -6,26 +6,26 @@ namespace MathObjects.Framework.Parser
     public class OperationWrapper : 
         IMathObject, IHasChildren, IHasOutput
     {
-        readonly IMathObject obj;
+        readonly IMathObject[] objs;
 
         readonly IMathOperation op;
 
         public OperationWrapper(
-            IMathObject obj, 
+            IMathObject[] objs, 
             IMathOperation op)
         {
-            this.obj = obj;
+            this.objs = objs;
             this.op = op;
         }
 
         public IMathObject[] Children
         {
-            get { return new IMathObject[] { this.obj }; }
+            get { return this.objs; }
         }
 
         public object Output
         {
-            get { return op.Perform(obj); }
+            get { return op.Perform(Children); }
         }
     }
 }

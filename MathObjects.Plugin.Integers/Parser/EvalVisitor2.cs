@@ -78,11 +78,22 @@ namespace MathObjects.Plugin.Integers
 
             var operation = f.Perform(functionContext);
 
-            stack.Push(operation);
-            
-            var result = operation.Perform(stack.Top);
+            if (stack.Size < operation.NumberOfParameters)
+            {
+                var error = new ErrorObject("not enough parameters");
+                stack.Push(error);
+                return error;
+            }
+                
+            var paramList = new List<IMathObject>();
+            for (int i = 0; i < operation.NumberOfParameters; i++)
+            {
+                paramList.Add(stack.Pop());
+            }
 
-            return result;
+            stack.Push(operation);
+
+            return operation.Perform(paramList.ToArray());
         }
 
         public override IMathObject VisitInt(
@@ -137,7 +148,7 @@ namespace MathObjects.Plugin.Integers
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
-            IMathBinaryOperation op = null;
+            IMathOperation op = null;
 
             IMathObject result;
 

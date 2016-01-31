@@ -2,12 +2,14 @@
 
 namespace MathObjects.Framework.Parser.Tests
 {
-    public class TestBinaryOperation : IMathBinaryOperation
+    public class TestBinaryOperation : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
+        public int NumberOfParameters { get { return 2; } }
+
+        public IMathObject Perform(IMathObject[] objs)
         {
             return new TestObject(
-                left.GetValue<string>() + " " + right.GetValue<string>()
+                objs[0].GetValue<string>() + " " + objs[1].GetValue<string>()
             );
         }
     }

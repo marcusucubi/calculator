@@ -2,9 +2,11 @@
 
 namespace MathObjects.Framework.Tests
 {
-    public class TestMathOperation : IMathBinaryOperation
+    public class TestMathOperation : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
+        public int NumberOfParameters { get { return 0; } }
+
+        public IMathObject Perform(IMathObject[] objs)
         {
             return new TestMathObject ();
         }

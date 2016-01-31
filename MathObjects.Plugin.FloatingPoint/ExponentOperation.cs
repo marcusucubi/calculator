@@ -3,13 +3,15 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class ExponentOperation : IMathBinaryOperation
+    public class ExponentOperation : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
-        {
-            var leftValue = left.GetDouble();
+        public int NumberOfParameters { get { return 2; } }
 
-            var rightValue = right.GetDouble();
+        public IMathObject Perform(IMathObject[] objs)
+        {
+            var leftValue = objs[0].GetDouble();
+
+            var rightValue = objs[1].GetDouble();
 
             var op = new ExponentObject(leftValue, rightValue);
 

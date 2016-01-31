@@ -5,30 +5,32 @@ using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric
 {
-    class Compose : IMathBinaryOperation
+    class Compose : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
+        public int NumberOfParameters { get { return 2; } }
+
+        public IMathObject Perform(IMathObject[] objs)
         {
             IntegerMatrix leftValue = null;
             IntegerMatrix rightValue = null;
 
-            if (left is IHasMatrix)
+            if (objs[0] is IHasMatrix)
             {
-                leftValue = (left as IHasMatrix).Matrix;
+                leftValue = (objs[0] as IHasMatrix).Matrix;
             }
-            else if (left is IHasOutput)
+            else if (objs[0] is IHasOutput)
             {
-                var temp = (left as IHasOutput).Output;
+                var temp = (objs[0] as IHasOutput).Output;
                 leftValue = (temp as IHasMatrix).Matrix;
             }
 
-            if (right is IHasMatrix)
+            if (objs[1] is IHasMatrix)
             {
-                rightValue = (right as IHasMatrix).Matrix;
+                rightValue = (objs[1] as IHasMatrix).Matrix;
             }
-            else if (right is IHasOutput)
+            else if (objs[1] is IHasOutput)
             {
-                var temp = (right as IHasOutput).Output;
+                var temp = (objs[1] as IHasOutput).Output;
                 rightValue = (temp as IHasMatrix).Matrix;
             }
 
@@ -49,14 +51,14 @@ namespace MathObjects.Plugin.Symmetric
             return new MathObject(new PermutationMatix(result));
         }
 
-        public class Factory : IMathBinaryOperationFactory, IHasName
+        public class Factory : IMathOperationFactory, IHasName
         {
             public string Name
             {
                 get { return "Compose"; }
             }
 
-            public IMathBinaryOperation Create(object parm)
+            public IMathOperation Create(object parm)
             {
                 return new Compose();
             }

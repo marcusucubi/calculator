@@ -22,9 +22,6 @@ namespace MathObjects.Framework.Registry
         readonly Dictionary<string, IMathObjectFactory> objectMap = 
             new Dictionary<string, IMathObjectFactory>();
 
-        readonly Dictionary<string, IMathBinaryOperationFactory> binaryOperationMap = 
-            new Dictionary<string, IMathBinaryOperationFactory>();
-
         readonly Dictionary<string, IMathOperationFactory> operationMap = 
             new Dictionary<string, IMathOperationFactory>();
 
@@ -47,15 +44,6 @@ namespace MathObjects.Framework.Registry
             }
         }
 
-        public ReadOnlyDictionary<string, IMathBinaryOperationFactory> BinaryOperationDictionary
-        {
-            get 
-            { 
-                return new ReadOnlyDictionary<string, IMathBinaryOperationFactory>(
-                    this.binaryOperationMap); 
-            }
-        }
-
         public ReadOnlyDictionary<string, IMathOperationFactory> OperationDictionary
         {
             get 
@@ -63,13 +51,6 @@ namespace MathObjects.Framework.Registry
                 return new ReadOnlyDictionary<string, IMathOperationFactory>(
                     this.operationMap); 
             }
-        }
-
-        public void RegisterBinaryOperationFactory(
-            string name, 
-            IMathBinaryOperationFactory factory)
-        {
-            this.binaryOperationMap[name] = factory;
         }
 
         public void RegisterOperationFactory2(
@@ -91,11 +72,6 @@ namespace MathObjects.Framework.Registry
             IMathObjectFactory factory)
         {
             this.functionMap[name] = factory;
-        }
-
-        public IMathBinaryOperationFactory GetBinaryOperationFactory(string name)
-        {
-            return this.binaryOperationMap[name];
         }
 
         public IMathOperationFactory GetOperationFactory(string name)

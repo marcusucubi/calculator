@@ -14,9 +14,9 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.handler = handler;
         }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
-            double value = target.GetDouble();
+            double value = target[0].GetDouble();
 
             return new AngleObject(handler(value), AngleType.Radians);
         }

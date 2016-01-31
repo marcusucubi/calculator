@@ -8,15 +8,15 @@ namespace MathObjects.Plugin.Symmetric
     {
         public int NumberOfParameters { get { return 1; } }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
-            var hasMatrix = target as IHasMatrix;
+            var hasMatrix = target[0] as IHasMatrix;
             if (hasMatrix != null)
             {
                 return new InverseObject(hasMatrix);
             }
 
-            var hasOutput = target as IHasOutput;
+            var hasOutput = target[0] as IHasOutput;
             if (hasOutput != null)
             {
                 return new InverseObject(hasOutput.Output as IHasMatrix);

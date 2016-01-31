@@ -8,15 +8,17 @@ namespace MathObjects.Framework.Parser
 
         void Push(IMathObject mathObject);
 
-        void Push(IMathBinaryOperation op);
-
         void Push(IMathOperation op);
 
         IMathObject Pop();
 
         void Clear();
 
+        IMathObject[] Peek(int size);
+
         IMathObject Top { get; }
+
+        int Size { get; }
     }
 }
 

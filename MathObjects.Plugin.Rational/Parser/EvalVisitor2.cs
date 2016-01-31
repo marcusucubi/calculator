@@ -67,19 +67,19 @@ namespace MathObjects.Plugin.Rational
             var left = Visit(context.GetChild(0));
             var right = Visit(context.GetChild(2));
 
-            IMathBinaryOperation op = null;
+            IMathOperation op = null;
 
             IMathObject result;
 
             if (context.op.Type == RationalParser.ADD)
             {
                 result = new AddObject(left, right);
-                op = registry.BinaryOperationDictionary[FactoryRegistry.ADD].Create(null);
+                op = registry.OperationDictionary[FactoryRegistry.ADD].Create(null);
             }
             else
             {
                 result = new AddObject(left, right.GetInverse());
-                op = registry.BinaryOperationDictionary[FactoryRegistry.SUBTRACT].Create(null);
+                op = registry.OperationDictionary[FactoryRegistry.SUBTRACT].Create(null);
             }
 
             stack.Push(op);
@@ -93,20 +93,20 @@ namespace MathObjects.Plugin.Rational
             var left = Visit(context.GetChild(0));
             var right = Visit(context.GetChild(2));
 
-            IMathBinaryOperation op = null;
+            IMathOperation op = null;
 
             IMathObject result;
 
             if (context.op.Type == RationalParser.MUL)
             {
                 result = new MultiplyObject(left, right);
-                op = registry.BinaryOperationDictionary[
+                op = registry.OperationDictionary[
                     FactoryRegistry.MULTIPLY].Create(null);
             }
             else
             {
                 result = new MultiplyObject(left, right);
-                op = registry.BinaryOperationDictionary[FactoryRegistry.DIVIDE].Create(null);
+                op = registry.OperationDictionary[FactoryRegistry.DIVIDE].Create(null);
             }
 
             stack.Push(op);

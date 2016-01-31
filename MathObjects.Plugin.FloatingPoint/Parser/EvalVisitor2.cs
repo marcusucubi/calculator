@@ -99,11 +99,18 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var operation = f.Perform(functionContext);
 
-            stack.Push(operation);
-            
-            var result = operation.Perform(stack.Top);
+            if (stack.Size < operation.NumberOfParameters)
+            {
+                var error = new ErrorObject("not enough parameters");
+                stack.Push(error);
+                return error;
+            }
 
-            return result;
+            var paramList = stack.Peek(operation.NumberOfParameters);
+
+            stack.Push(operation);
+
+            return operation.Perform(paramList.ToArray());
         }
 
         public override IMathObject VisitFloat(
@@ -148,20 +155,20 @@ namespace MathObjects.Plugin.FloatingPoint
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
-            IMathBinaryOperation op = null;
+            IMathOperation op = null;
 
             IMathObject result;
 
             if (context.op.Type == FloatingPointParser.ADD)
             {
                 result = new AddObject(left.GetDouble(), right.GetDouble());
-                op = registry.BinaryOperationDictionary[
+                op = registry.OperationDictionary[
                     FactoryRegistry.ADD].Create(null);
             }
             else
             {
                 result = new SubtractObject(left.GetDouble(), -right.GetDouble());
-                op = registry.BinaryOperationDictionary[
+                op = registry.OperationDictionary[
                     FactoryRegistry.SUBTRACT].Create(null);
             }
 
@@ -176,19 +183,19 @@ namespace MathObjects.Plugin.FloatingPoint
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
-            IMathBinaryOperation op = null;
+            IMathOperation op = null;
 
             IMathObject result;
 
             if (context.op.Type == FloatingPointParser.MUL)
             {
                 result = new MultiplyObject(left.GetDouble(), right.GetDouble());
-                op = registry.BinaryOperationDictionary[FactoryRegistry.MULTIPLY].Create(null);
+                op = registry.OperationDictionary[FactoryRegistry.MULTIPLY].Create(null);
             }
             else
             {
                 result = new MultiplyObject(left.GetDouble(), 1 / right.GetDouble());
-                op = registry.BinaryOperationDictionary[FactoryRegistry.DIVIDE].Create(null);
+                op = registry.OperationDictionary[FactoryRegistry.DIVIDE].Create(null);
             }
 
             stack.Push(op);

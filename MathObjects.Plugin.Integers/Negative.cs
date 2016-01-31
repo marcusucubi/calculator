@@ -7,9 +7,9 @@ namespace MathObjects.Plugin.Integers
     {
         public int NumberOfParameters { get { return 1; } }
 
-        public IMathObject Perform(IMathObject left)
+        public IMathObject Perform(IMathObject[] left)
         {
-            var leftValue = left.GetInteger();
+            var leftValue = left[0].GetInteger();
 
             var op = new NegativeObject(leftValue);
 

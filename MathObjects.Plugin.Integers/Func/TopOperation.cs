@@ -15,7 +15,7 @@ namespace MathObjects.Plugin.Integers.Func
             this.top = top;
         }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
             return new TopObject(top);
         }

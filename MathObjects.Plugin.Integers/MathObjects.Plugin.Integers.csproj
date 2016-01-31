@@ -40,7 +40,6 @@
     <Compile Include="MathObject.cs" />
     <Compile Include="Multiplication.cs" />
     <Compile Include="Plugin.cs" />
-    <Compile Include="Gcd.cs" />
     <Compile Include="IHasValue.cs" />
     <Compile Include="MathObjectEx.cs" />
     <Compile Include="Parser\IntegersBaseVisitor.cs" />
@@ -68,6 +67,8 @@
     <Compile Include="Func\TopFunction.cs" />
     <Compile Include="Func\TopObject.cs" />
     <Compile Include="Func\TopOperation.cs" />
+    <Compile Include="Func\GcdFunction.cs" />
+    <Compile Include="Func\GcdOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

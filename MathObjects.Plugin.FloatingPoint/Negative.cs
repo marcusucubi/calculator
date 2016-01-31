@@ -7,9 +7,9 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         public int NumberOfParameters { get { return 1; } }
 
-        public IMathObject Perform(IMathObject left)
+        public IMathObject Perform(IMathObject[] left)
         {
-            var leftValue = left.GetDouble();
+            var leftValue = left[0].GetDouble();
 
             var op = new NegativeObject(leftValue);
 

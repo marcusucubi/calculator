@@ -32,7 +32,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var addFactory = registry.GetBinaryOperationFactory (FactoryRegistry.ADD);
+            var addFactory = registry.GetOperationFactory (FactoryRegistry.ADD);
             Assert.NotNull(addFactory);
 
             var context = new FactoryContext();
@@ -43,7 +43,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var add = addFactory.Create (null);
             Assert.NotNull (add);
 
-            var result = add.Perform (i1, i1) as IHasOutput;
+            var result = add.Perform (new IMathObject[]{i1, i1}) as IHasOutput;
             var tuple = result.Output as Tuple<int, int>;
             Assert.AreEqual (2, tuple.Item1);
         }
@@ -57,7 +57,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var multiplyFactory = registry.GetBinaryOperationFactory (FactoryRegistry.MULTIPLY);
+            var multiplyFactory = registry.GetOperationFactory (FactoryRegistry.MULTIPLY);
             Assert.NotNull(multiplyFactory);
 
             var context = new FactoryContext();
@@ -68,7 +68,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var multiply = multiplyFactory.Create (null);
             Assert.NotNull (multiply);
 
-            var result = multiply.Perform (i1, i1) as IHasOutput;
+            var result = multiply.Perform (new IMathObject[]{i1, i1}) as IHasOutput;
             var tuple = result.Output as Tuple<int, int>;
             Assert.AreEqual (4, tuple.Item1);
         }

@@ -9,6 +9,11 @@ namespace MathObjects.Framework.Parser
 
         readonly Stack<IMathObject> objectStack = new Stack<IMathObject>();
 
+        public int Size
+        {
+            get { return objectStack.Count; }
+        }
+
         public IMathObject Top
         {
             get 
@@ -27,6 +32,30 @@ namespace MathObjects.Framework.Parser
             get { return this.objectStack; }
         }
 
+        public IMathObject[] Peek(int size)
+        {
+            var list = new List<IMathObject>();
+
+            for (int i = 0; i < size; i++)
+            {
+                list.Add(this.objectStack.ToArray()[i]);
+            }
+
+            return list.ToArray();
+        }
+
+        public IMathObject[] Pop(int size)
+        {
+            var list = new List<IMathObject>();
+
+            for (int i = 0; i < size; i++)
+            {
+                list.Add(this.objectStack.Pop());
+            }
+
+            return list.ToArray();
+        }
+
         public void Push(IMathObject obj)
         {
             if (obj is IMathOperation)
@@ -35,32 +64,10 @@ namespace MathObjects.Framework.Parser
                 return;
             }
 
-            if (obj is IMathBinaryOperation)
-            {
-                Push((IMathBinaryOperation) obj);
-                return;
-            }
-
             objectStack.Push(obj);
 
             FireStackChanged();
             ErrorHandler.ResetError(this);
-        }
-
-        public void Push(IMathBinaryOperation op)
-        {
-            if (this.objectStack.Count < 2)
-            {
-                return;
-            }
-
-            var wrapper = new BinaryOperationWrapper(
-                this.objectStack.Pop(), 
-                this.objectStack.Pop(), op);
-
-            objectStack.Push(wrapper);
-
-            FireStackChanged();
         }
 
         public void Push(IMathOperation op)
@@ -71,10 +78,10 @@ namespace MathObjects.Framework.Parser
             }
 
             IMathObject result = null;
-            if (op.NumberOfParameters == 1)
+            if (op.NumberOfParameters >= 1)
             {
                 result = new OperationWrapper(
-                    this.objectStack.Pop(), op);
+                    Pop(op.NumberOfParameters), op);
             }
             else
             {

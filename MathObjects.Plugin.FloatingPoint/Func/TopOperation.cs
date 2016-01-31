@@ -15,7 +15,7 @@ namespace MathObjects.Plugin.FloatingPoint.Func
             this.top = top;
         }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
             if (top is IIsError)
             {

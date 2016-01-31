@@ -14,13 +14,13 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.handler = handler;
         }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
-            var angle = target.GetValue<AngleObject>();
+            var angle = target[0].GetValue<AngleObject>();
 
             if (angle == null)
             {
-                angle = new AngleObject(target.GetDouble(), AngleType.Degrees);
+                angle = new AngleObject(target[0].GetDouble(), AngleType.Degrees);
             }
 
             return new MathObject(handler(angle.ConvertToRadians().AngleValue));

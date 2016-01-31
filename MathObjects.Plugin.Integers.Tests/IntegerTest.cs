@@ -32,7 +32,7 @@ namespace MathObjects.Plugin.Integers.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var addFactory = registry.GetBinaryOperationFactory (FactoryRegistry.ADD);
+            var addFactory = registry.GetOperationFactory (FactoryRegistry.ADD);
             Assert.NotNull(addFactory);
 
             var context = new FactoryContext();
@@ -43,7 +43,7 @@ namespace MathObjects.Plugin.Integers.Tests
             var add = addFactory.Create (null);
             Assert.NotNull (add);
 
-            var result = add.Perform (i1, i1) as IHasValue;
+            var result = add.Perform (new IMathObject[] {i1, i1} ) as IHasValue;
             Assert.AreEqual (2, result.Value);
         }
 
@@ -56,7 +56,7 @@ namespace MathObjects.Plugin.Integers.Tests
             var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
             Assert.NotNull(factory);
 
-            var multiplyFactory = registry.GetBinaryOperationFactory (FactoryRegistry.MULTIPLY);
+            var multiplyFactory = registry.GetOperationFactory (FactoryRegistry.MULTIPLY);
             Assert.NotNull(multiplyFactory);
 
             var context = new FactoryContext();
@@ -67,7 +67,7 @@ namespace MathObjects.Plugin.Integers.Tests
             var multiply = multiplyFactory.Create (null);
             Assert.NotNull (multiply);
 
-            var result = multiply.Perform (i1, i1) as IHasValue;
+            var result = multiply.Perform (new IMathObject[]{i1, i1}) as IHasValue;
             Assert.AreEqual (4, result.Value);
         }
     }

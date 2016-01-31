@@ -41,7 +41,6 @@
     <Compile Include="IHasParser.cs" />
     <Compile Include="IHasMathObjectStack.cs" />
     <Compile Include="IHasChildren.cs" />
-    <Compile Include="BinaryOperationWrapper.cs" />
     <Compile Include="OperationWrapper.cs" />
     <Compile Include="MathObjectStack.cs" />
     <Compile Include="MathObjectStackArgs.cs" />

@@ -16,9 +16,9 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.handler = handler;
         }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
-            return new MathObject(handler(target.GetDouble()));
+            return new MathObject(handler(target[0].GetDouble()));
         }
 
         public class Factory : IMathOperationFactory, IHasName

@@ -34,16 +34,16 @@ namespace MathObjects.Plugin.Integers
                 FactoryRegistry.OBJECT, 
                 new MathObject.Factory());
 
-            registry.RegisterBinaryOperationFactory(
+            registry.RegisterOperationFactory2(
                 FactoryRegistry.ADD, 
                 new Add.Factory());
 
-            registry.RegisterBinaryOperationFactory(
+            registry.RegisterOperationFactory2(
                 FactoryRegistry.MULTIPLY, 
                 new Multiplication.Factory());
             
-            registry.RegisterBinaryOperationFactory(
-                "gcd", new Gcd.Factory());
+            registry.RegisterFunctionFactory(
+                "gcd", new FunctionFactory(typeof(GcdFunction)));
             
             registry.RegisterFunctionFactory(
                 "top", new FunctionFactory(typeof(TopFunction)));

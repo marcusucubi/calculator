@@ -4,42 +4,26 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Integers
 {
-    class Multiplication : IMathBinaryOperation
+    class Multiplication : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
-        {
-            var leftValue = GetValue(left);
-            var rightValue = GetValue(right);
+        public int NumberOfParameters { get { return 2; } }
 
-            return new MathObject(((int)leftValue * (int)rightValue) );
+        public IMathObject Perform(IMathObject[] objs)
+        {
+            var leftValue = objs[0].GetInteger();
+            var rightValue = objs[1].GetInteger();
+
+            return new MathObject(leftValue * rightValue);
         }
 
-        int GetValue(IMathObject obj)
-        {
-            var hasValue = obj as IHasValue;
-            if (hasValue != null)
-            {
-                return hasValue.Value;
-            }
-
-            var hasOutput = obj as IHasOutput;
-            if (hasOutput != null)
-            {
-                var has2 = hasOutput.Output as IHasValue;
-                return has2.Value;
-            }
-
-            throw new Exception();
-        }
-
-        public class Factory : IMathBinaryOperationFactory, IHasName
+        public class Factory : IMathOperationFactory, IHasName
         {
             public string Name
             {
                 get { return "Multiply"; }
             }
 
-            public IMathBinaryOperation Create(object parm)
+            public IMathOperation Create(object parm)
             {
                 return new Multiplication();
             }

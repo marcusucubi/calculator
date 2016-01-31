@@ -39,8 +39,6 @@
     <Compile Include="IHasOutput.cs" />
     <Compile Include="IHasName.cs" />
     <Compile Include="ErrorHandler.cs" />
-    <Compile Include="IMathBinaryOperation.cs" />
-    <Compile Include="IMathBinaryOperationFactory.cs" />
     <Compile Include="IMathOperationFactory.cs" />
     <Compile Include="IMathObjectFactoryContext.cs" />
     <Compile Include="ArrayObject.cs" />

@@ -48,9 +48,9 @@ namespace MathObjects.UI.Widgets
 
         void SetupButtons()
         {
-            foreach (var key in this.registry.BinaryOperationDictionary.Keys)
+            foreach (var key in this.registry.OperationDictionary.Keys)
             {
-                var factory = this.registry.BinaryOperationDictionary[key];
+                var factory = this.registry.OperationDictionary[key];
 
                 var meta = factory as IHasName;
 
@@ -91,7 +91,7 @@ namespace MathObjects.UI.Widgets
             }
         }
 
-        void AddButton(object key, IMathBinaryOperationFactory factory)
+        void AddButton(object key, IMathOperationFactory factory)
         {
             var button1 = new Button();
             button1.CanFocus = true;

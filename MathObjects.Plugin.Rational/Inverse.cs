@@ -8,9 +8,9 @@ namespace MathObjects.Plugin.Rational
     {
         public int NumberOfParameters { get { return 1; } }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
-            var tuple = target.GetTuple();
+            var tuple = target[0].GetTuple();
             if (tuple != null)
             {
                 return new InverseObject(tuple);

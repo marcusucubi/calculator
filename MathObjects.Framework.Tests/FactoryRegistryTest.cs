@@ -24,9 +24,9 @@ namespace MathObjects.Framework.Tests
         {
             var factory = new TestOperationFactory ();
             var registry = new FactoryRegistry ();
-            registry.RegisterBinaryOperationFactory ("test", factory);
+            registry.RegisterOperationFactory2 ("test", factory);
 
-            var test = registry.GetBinaryOperationFactory ("test");
+            var test = registry.GetOperationFactory ("test");
 
             Assert.AreSame (factory, test);
         }

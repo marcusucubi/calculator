@@ -3,13 +3,15 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Integers
 {
-    public class ExponentOperation : IMathBinaryOperation
+    public class ExponentOperation : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
-        {
-            var leftValue = left.GetInteger();
+        public int NumberOfParameters { get { return 2; } }
 
-            var rightValue = right.GetInteger();
+        public IMathObject Perform(IMathObject[] objs)
+        {
+            var leftValue = objs[0].GetInteger();
+
+            var rightValue = objs[1].GetInteger();
 
             var op = new ExponentObject(leftValue, rightValue);
 

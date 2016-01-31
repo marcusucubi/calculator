@@ -4,26 +4,28 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Rational
 {
-    class Add : IMathBinaryOperation
+    class Add : IMathOperation
     {
-        public IMathObject Perform(IMathObject left, IMathObject right)
+        public int NumberOfParameters { get { return 2; } }
+
+        public IMathObject Perform(IMathObject[] objs)
         {
-            var leftValue = left.GetTuple();
-            var rightValue = right.GetTuple();
+            var leftValue = objs[0].GetTuple();
+            var rightValue = objs[1].GetTuple();
 
             var op = new AddObject(leftValue, rightValue);
 
             return new MathObject(op.Output as Tuple<int, int>);
         }
 
-        public class Factory : IMathBinaryOperationFactory, IHasName
+        public class Factory : IMathOperationFactory, IHasName
         {
             public string Name
             {
                 get { return "Add"; }
             }
 
-            public IMathBinaryOperation Create(object parm)
+            public IMathOperation Create(object parm)
             {
                 return new Add();
             }

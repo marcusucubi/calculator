@@ -2,9 +2,9 @@
 
 namespace MathObjects.Framework.Tests
 {
-    public class TestOperationFactory : IMathBinaryOperationFactory
+    public class TestOperationFactory : IMathOperationFactory
     {
-        public IMathBinaryOperation Create(object parm)
+        public IMathOperation Create(object parm)
         {
             return new TestMathOperation ();
         }

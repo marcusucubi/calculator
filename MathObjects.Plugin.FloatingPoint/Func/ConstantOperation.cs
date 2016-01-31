@@ -14,7 +14,7 @@ namespace MathObjects.Plugin.FloatingPoint.Func
             this.value = value;
         }
 
-        public IMathObject Perform(IMathObject target)
+        public IMathObject Perform(IMathObject[] target)
         {
             return new MathObject(value);
         }
