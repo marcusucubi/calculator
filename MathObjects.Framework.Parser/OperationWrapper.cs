@@ -4,11 +4,13 @@ using MathObjects.Framework;
 namespace MathObjects.Framework.Parser
 {
     public class OperationWrapper : 
-        IMathObject, IHasChildren, IHasOutput
+        IMathObject, IHasChildren, IHasOutput, IHasName
     {
         readonly IMathObject[] objs;
 
         readonly IMathOperation op;
+
+        readonly string name;
 
         public OperationWrapper(
             IMathObject[] objs, 
@@ -16,6 +18,21 @@ namespace MathObjects.Framework.Parser
         {
             this.objs = objs;
             this.op = op;
+
+            var hasName = op as IHasName;
+            if (hasName != null)
+            {
+                name = hasName.Name;
+            }
+            else
+            {
+                name = "";
+            }
+        }
+
+        public string Name
+        {
+            get { return this.name; }
         }
 
         public IMathObject[] Children

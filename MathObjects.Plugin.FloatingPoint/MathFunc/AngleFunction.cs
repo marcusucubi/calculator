@@ -7,9 +7,12 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
-        public AngleFunction(MathHandler handler)
+        readonly string name;
+
+        public AngleFunction(MathHandler handler, string name)
         {
             this.handler = handler;
+            this.name = name;
         }
 
         public void Init(IMathFunctionContext context)
@@ -18,21 +21,24 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         public IMathOperation Perform(IMathFunctionContext context)
         {
-            return new AngleOperation(this.handler);
+            return new AngleOperation(this.handler, name);
         }
 
         public class Factory : IMathObjectFactory
         {
             readonly MathHandler handler;
 
-            public Factory(MathHandler handler)
+            readonly string name;
+
+            public Factory(MathHandler handler, string name)
             {
                 this.handler = handler;
+                this.name = name;
             }
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new AngleFunction(handler);
+                return new AngleFunction(handler, name);
             }
         }
     }

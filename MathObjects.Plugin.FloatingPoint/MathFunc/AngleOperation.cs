@@ -7,11 +7,19 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
+        readonly string name;
+
         public int NumberOfParameters { get { return 1; } }
 
-        public AngleOperation(MathHandler handler)
+        public AngleOperation(MathHandler handler, string name)
         {
             this.handler = handler;
+            this.name = name;
+        }
+
+        public string Name
+        {
+            get { return this.name; }
         }
 
         public IMathObject Perform(IMathObject[] target)
@@ -23,10 +31,12 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 angle = new AngleObject(target[0].GetDouble(), AngleType.Degrees);
             }
 
-            return new MathObject(handler(angle.ConvertToRadians().AngleValue));
+            double value = handler(angle.ConvertToRadians().AngleValue);
+
+            return new MathObjectWithName(value, this.name);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
             readonly string name;
 
@@ -38,14 +48,9 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 this.handler = handler;
             }
 
-            public string Name
-            {
-                get { return name; }
-            }
-
             public IMathOperation Create(object param)
             {
-                return new AngleOperation(handler);
+                return new AngleOperation(handler, name);
             }
         }
     }

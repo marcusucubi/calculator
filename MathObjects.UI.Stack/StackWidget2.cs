@@ -19,17 +19,28 @@ namespace MathObjects.UI.Stack
         {
             this.Build();
 
-            var column = new Gtk.TreeViewColumn ();
-            column.Title = "Value";
+            {
+                var column = new Gtk.TreeViewColumn ();
+                column.Title = "Value";
+                
+                var cell = new CellRendererText();
+                column.PackStart(cell, true);
+                column.AddAttribute(cell, "text", 0);
+                this.treeview2.AppendColumn(column);
+            }
+            {
+                var column = new Gtk.TreeViewColumn ();
+                column.Title = "Source";
 
-            var cell = new CellRendererText();
+                var cell = new CellRendererText();
+                column.PackStart(cell, true);
+                column.AddAttribute(cell, "text", 1);
+                this.treeview2.AppendColumn(column);
+            }
 
-            column.PackStart (cell, true);
-            column.AddAttribute (cell, "text", 0);
-            this.treeview2.AppendColumn (column);
-            this.treeview2.HeadersVisible = false;
+            this.treeview2.HeadersVisible = true;
 
-            store = new Gtk.TreeStore (typeof (string));
+            store = new Gtk.TreeStore (typeof(string), typeof(string));
 
             this.treeview2.Model = store;
 
@@ -69,9 +80,16 @@ namespace MathObjects.UI.Stack
         {
             foreach(var i in numbers)
             {
-                var hasDisplay = i as IHasDisplayValue;
-
                 string s = "";
+                string s2 = "";
+
+                var hasSource2 = i as IHasName;
+                if (hasSource2 != null)
+                {
+                    s2 = hasSource2.Name;
+                }
+
+                var hasDisplay = i as IHasDisplayValue;
                 if (hasDisplay != null)
                 {
                     s = hasDisplay.DisplayValue;
@@ -83,6 +101,12 @@ namespace MathObjects.UI.Stack
                     if (hasOutput != null)
                     {
                         s = "" + hasOutput.Output;
+
+                        var hasSource = hasOutput.Output as IHasName;
+                        if (hasSource != null)
+                        {
+                            s2 = hasSource.Name;
+                        }
                     }
                     else
                     {
@@ -94,11 +118,11 @@ namespace MathObjects.UI.Stack
 
                 if (parent != null)
                 {
-                    iter = store.AppendValues(parent.Value, s);
+                    iter = store.AppendValues(parent.Value, s, s2);
                 }
                 else
                 {
-                    iter = store.AppendValues(s);
+                    iter = store.AppendValues(s, s2);
                 }
 
                 var children = i as IHasChildren;

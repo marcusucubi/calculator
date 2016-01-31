@@ -52,7 +52,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 new Divide.Factory());
 
             registry.RegisterFunctionFactory(
-                "pi", new ConstantFunction.Factory(Math.PI));
+                "pi", new ConstantFunction.Factory(Math.PI, "pi"));
 
             registry.RegisterFunctionFactory(
                 "top", new FunctionFactory(typeof(TopFunction)));

@@ -84,6 +84,7 @@
     <Compile Include="MathFunc\DegreesOperation.cs" />
     <Compile Include="MathFunc\RadiansFunction.cs" />
     <Compile Include="MathFunc\RadiansOperation.cs" />
+    <Compile Include="MathObjectWithName.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

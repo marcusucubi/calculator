@@ -4,9 +4,14 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class Add : IMathOperation
+    class Add : IMathOperation, IHasName
     {
         public int NumberOfParameters { get { return 2; } }
+
+        public string Name
+        {
+            get { return "+"; }
+        }
 
         public IMathObject Perform(IMathObject[] objs)
         {
