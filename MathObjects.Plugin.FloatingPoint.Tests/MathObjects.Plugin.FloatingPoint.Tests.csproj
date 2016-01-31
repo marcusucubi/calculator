@@ -36,10 +36,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MathObjects.Core.Parser\MathObjects.Core.Parser.csproj">
-      <Project>{F7F1F412-02F8-438E-A3AB-C5C347B2CCEF}</Project>
-      <Name>MathObjects.Core.Parser</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MathObjects.Core.Plugin\MathObjects.Core.Plugin.csproj">
       <Project>{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}</Project>
       <Name>MathObjects.Core.Plugin</Name>

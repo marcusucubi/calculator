@@ -31,7 +31,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Antlr4.Runtime">
-      <HintPath>..\MathObjects.Core.Parser\Lib\Antlr4.Runtime.dll</HintPath>
+      <HintPath>..\MathObjects.Framework.Parser\Lib\Antlr4.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -90,10 +90,6 @@
     <ProjectReference Include="..\MathObjects.Core.Plugin\MathObjects.Core.Plugin.csproj">
       <Project>{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}</Project>
       <Name>MathObjects.Core.Plugin</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathObjects.Core.Parser\MathObjects.Core.Parser.csproj">
-      <Project>{F7F1F412-02F8-438E-A3AB-C5C347B2CCEF}</Project>
-      <Name>MathObjects.Core.Parser</Name>
     </ProjectReference>
     <ProjectReference Include="..\MathObjects.Framework\MathObjects.Framework.csproj">
       <Project>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</Project>

@@ -55,7 +55,7 @@
     </Reference>
     <Reference Include="Mono.Posix" />
     <Reference Include="Antlr4.Runtime">
-      <HintPath>..\MathObjects.Core.Parser\Lib\Antlr4.Runtime.dll</HintPath>
+      <HintPath>..\MathObjects.Framework.Parser\Lib\Antlr4.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
