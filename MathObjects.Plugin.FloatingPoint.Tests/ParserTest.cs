@@ -78,7 +78,7 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         {
             var stack = new MathObjectStack();
 
-            parser.Parse("cos(pi())", stack);
+            parser.Parse("cos(radians(pi()))", stack);
 
             Assert.AreEqual(-1, stack.Top.GetDouble());
         }
@@ -88,7 +88,7 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         {
             var stack = new MathObjectStack();
 
-            parser.Parse("cos(pi())", stack);
+            parser.Parse("cos(degrees(180))", stack);
 
             Assert.AreEqual(-1, stack.Top.GetDouble());
         }

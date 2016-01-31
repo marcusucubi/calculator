@@ -18,7 +18,7 @@ namespace MathObjects.Plugin.Integers.Tests
             Assert.NotNull(factory);
 
             var context = new FactoryContext();
-            context.InitObject = "1";
+            context.InitObject = 1;
             var i = factory.Create(context);
             Assert.NotNull (i);
         }
@@ -36,7 +36,7 @@ namespace MathObjects.Plugin.Integers.Tests
             Assert.NotNull(addFactory);
 
             var context = new FactoryContext();
-            context.InitObject = "1";
+            context.InitObject = 1;
             var i1 = factory.Create(context);
             Assert.NotNull (i1);
 
@@ -60,7 +60,7 @@ namespace MathObjects.Plugin.Integers.Tests
             Assert.NotNull(multiplyFactory);
 
             var context = new FactoryContext();
-            context.InitObject = "2";
+            context.InitObject = 2;
             var i1 = factory.Create(context);
             Assert.NotNull (i1);
 
