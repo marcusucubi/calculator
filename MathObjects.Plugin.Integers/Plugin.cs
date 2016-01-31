@@ -46,6 +46,9 @@ namespace MathObjects.Plugin.Integers
                 "gcd", new FunctionFactory(typeof(GcdFunction)));
             
             registry.RegisterFunctionFactory(
+                "factors", new FunctionFactory(typeof(FactorsFunction)));
+
+            registry.RegisterFunctionFactory(
                 "top", new FunctionFactory(typeof(TopFunction)));
         }
     }

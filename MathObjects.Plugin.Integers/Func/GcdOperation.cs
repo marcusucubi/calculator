@@ -6,7 +6,7 @@ namespace MathObjects.Plugin.Integers.Func
 {
     class GcdOperation : IMathOperation 
     {
-        public int NumberOfParameters { get { return 1; } }
+        public int NumberOfParameters { get { return 2; } }
 
         static public int GCD(int[] numbers)
         {

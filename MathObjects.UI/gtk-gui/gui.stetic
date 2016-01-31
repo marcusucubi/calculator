@@ -48,9 +48,11 @@
   </widget>
   <widget class="Gtk.Window" id="MathObjects.UI.MainWindow2" design-size="498 568">
     <property name="MemberName" />
+    <property name="Events">KeyPressMask</property>
     <property name="Title" translatable="yes">MainWindow2</property>
     <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <signal name="KeyPressEvent" handler="OnKeyPressEvent" />
     <child>
       <widget class="Gtk.Table" id="table1">
         <property name="MemberName" />

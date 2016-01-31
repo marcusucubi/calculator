@@ -8,6 +8,8 @@ namespace MathObjects.UI
 {
     public partial class MainWindow2 : Gtk.Window
     {
+        IMediator mediator;
+
         public MainWindow2()
             : base(Gtk.WindowType.Toplevel)
         {
@@ -28,7 +30,7 @@ namespace MathObjects.UI
 
         void Connect(FactoryRegistry registry, IParser parser) 
         {
-            var mediator = MediatorFactory.Create(registry, parser);
+            this.mediator = MediatorFactory.Create(registry, parser);
 
             this.mathobjetswidget2.Disconnect();
             this.mathobjetswidget2.Connect(
@@ -44,6 +46,20 @@ namespace MathObjects.UI
         {
             Application.Quit ();
             a.RetVal = true;
+        }
+
+        protected void OnKeyPressEvent (object sender, KeyPressEventArgs a)
+        {
+            if (a.Event.Key == Gdk.Key.Control_L)
+            {
+                if (this.inputwidget1.CalcDisplay.Length > 0)
+                {
+                    if (this.mediator.Enter(this.inputwidget1.CalcDisplay))
+                    {
+                        this.inputwidget1.CalcDisplay = "";
+                    }
+                }
+            }
         }
     }
 }

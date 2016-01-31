@@ -85,11 +85,7 @@ namespace MathObjects.Plugin.Integers
                 return error;
             }
                 
-            var paramList = new List<IMathObject>();
-            for (int i = 0; i < operation.NumberOfParameters; i++)
-            {
-                paramList.Add(stack.Pop());
-            }
+            var paramList = stack.Peek(operation.NumberOfParameters);
 
             stack.Push(operation);
 

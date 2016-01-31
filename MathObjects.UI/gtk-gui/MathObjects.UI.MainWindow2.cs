@@ -22,6 +22,7 @@ namespace MathObjects.UI
 		{
 			global::Stetic.Gui.Initialize (this);
 			// Widget MathObjects.UI.MainWindow2
+			this.Events = ((global::Gdk.EventMask)(1024));
 			this.Name = "MathObjects.UI.MainWindow2";
 			this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow2");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
@@ -97,6 +98,7 @@ namespace MathObjects.UI
 			this.DefaultHeight = 568;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+			this.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnKeyPressEvent);
 		}
 	}
 }
