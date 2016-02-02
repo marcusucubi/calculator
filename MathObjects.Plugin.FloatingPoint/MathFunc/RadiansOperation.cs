@@ -20,7 +20,8 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 return angle.ConvertToRadians();
             }
 
-            return new AngleObject(target[0].GetDouble(), AngleType.Radians);
+            return new AngleObject(
+                target[0].GetDouble(), AngleType.Radians, this.Name);
         }
     }
 }

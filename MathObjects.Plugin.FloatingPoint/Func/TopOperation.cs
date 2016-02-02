@@ -4,11 +4,19 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class TopOperation : IMathOperation
+    class TopOperation : IMathOperation, IHasName, ICanSetName
     {
         readonly IMathObject top;
 
+        string name;
+
         public int NumberOfParameters { get { return 0; } }
+
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
 
         public TopOperation(IMathObjectStack stack, IMathObject top)
         {
@@ -22,7 +30,7 @@ namespace MathObjects.Plugin.FloatingPoint.Func
                 return top;
             }
 
-            return new TopObject(top);
+            return new TopObject(top, this.name);
         }
     }
 }

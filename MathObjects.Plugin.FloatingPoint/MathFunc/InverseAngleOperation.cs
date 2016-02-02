@@ -3,11 +3,13 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class InverseAngleOperation : IMathOperation
+    class InverseAngleOperation : IMathOperation, IHasName, ICanSetName 
     {
         readonly MathHandler handler;
 
         public int NumberOfParameters { get { return 1; } }
+
+        public string Name { get; set; }
 
         public InverseAngleOperation(MathHandler handler)
         {
@@ -18,7 +20,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         {
             double value = target[0].GetDouble();
 
-            return new AngleObject(handler(value), AngleType.Radians);
+            return new AngleObject(handler(value), AngleType.Radians, this.Name);
         }
 
         public class Factory : IMathOperationFactory, IHasName

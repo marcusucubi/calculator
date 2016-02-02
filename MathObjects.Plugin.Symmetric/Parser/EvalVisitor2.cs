@@ -12,19 +12,13 @@ namespace MathObjects.Plugin.Symmetric.Parser
     {
         readonly IMathObjectStack stack;
 
-//        readonly FactoryRegistry registry;
-
-//        readonly IMathObject top;
-
         List<CycleList> cycleList = new List<CycleList>();
 
         public EvalVisitor2(
             FactoryRegistry registry, 
             IMathObjectStack stack)
         {
-//            this.registry = registry;
             this.stack = stack;
-//            this.top = this.stack.Top;
         }
 
         public override IMathObject VisitCycle(

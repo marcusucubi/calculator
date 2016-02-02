@@ -1,9 +1,11 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class AddObject : IHasOutput, IMathObject
+    [Description(typeof(IHasName), "+")]
+    class AddObject : IHasOutput, IMathObject, IHasDisplayValue
     {
         readonly double tuple1;
 
@@ -18,6 +20,16 @@ namespace MathObjects.Plugin.FloatingPoint
         public object Output
         {
             get { return (tuple1 + tuple2); }
+        }
+
+        public string DisplayValue 
+        { 
+            get { return this.Output.ToString(); }
+        }
+
+        public override string ToString()
+        {
+            return DisplayValue;
         }
     }
 }

@@ -103,12 +103,28 @@
         <property name="Spacing">6</property>
         <property name="BorderWidth">5</property>
         <child>
-          <widget class="Gtk.TextView" id="textview1">
+          <widget class="Gtk.Frame" id="frame1">
             <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Text" translatable="yes" />
-            <property name="WrapMode">Word</property>
-            <property name="LeftMargin">3</property>
+            <property name="LabelYalign">0</property>
+            <child>
+              <widget class="Gtk.Alignment" id="GtkAlignment">
+                <property name="MemberName" />
+                <property name="Xalign">0</property>
+                <property name="Yalign">0</property>
+                <child>
+                  <widget class="Gtk.TextView" id="textview1">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Text" translatable="yes" />
+                    <property name="WrapMode">Word</property>
+                    <property name="PixelsAboveLines">2</property>
+                    <property name="PixelsBelowLines">2</property>
+                    <property name="LeftMargin">3</property>
+                    <property name="Indent">3</property>
+                  </widget>
+                </child>
+              </widget>
+            </child>
           </widget>
           <packing>
             <property name="Position">0</property>

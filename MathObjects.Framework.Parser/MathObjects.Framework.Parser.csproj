@@ -53,6 +53,10 @@
       <Project>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</Project>
       <Name>MathObjects.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.DecoratableObject\MathObjects.Core.DecoratableObject.csproj">
+      <Project>{0179E565-7148-4545-B192-012CCFA83166}</Project>
+      <Name>MathObjects.Core.DecoratableObject</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\" />

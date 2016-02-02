@@ -21,7 +21,8 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 return angle.ConvertToDegrees();
             }
 
-            return new AngleObject(target[0].GetDouble(), AngleType.Degrees);
+            return new AngleObject(
+                target[0].GetDouble(), AngleType.Degrees, this.Name);
         }
     }
 }

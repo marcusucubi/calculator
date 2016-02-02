@@ -6,6 +6,10 @@ namespace MathObjects.UI.Stack
 	{
 		private global::Gtk.VBox vbox1;
 		
+		private global::Gtk.Frame frame1;
+		
+		private global::Gtk.Alignment GtkAlignment;
+		
 		private global::Gtk.TextView textview1;
 
 		protected virtual void Build ()
@@ -20,14 +24,26 @@ namespace MathObjects.UI.Stack
 			this.vbox1.Spacing = 6;
 			this.vbox1.BorderWidth = ((uint)(5));
 			// Container child vbox1.Gtk.Box+BoxChild
+			this.frame1 = new global::Gtk.Frame ();
+			this.frame1.Name = "frame1";
+			this.frame1.LabelYalign = 0F;
+			// Container child frame1.Gtk.Container+ContainerChild
+			this.GtkAlignment = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment.Name = "GtkAlignment";
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			this.textview1 = new global::Gtk.TextView ();
 			this.textview1.CanFocus = true;
 			this.textview1.Name = "textview1";
 			this.textview1.WrapMode = ((global::Gtk.WrapMode)(2));
+			this.textview1.PixelsAboveLines = 2;
+			this.textview1.PixelsBelowLines = 2;
 			this.textview1.LeftMargin = 3;
-			this.vbox1.Add (this.textview1);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.textview1]));
-			w1.Position = 0;
+			this.textview1.Indent = 3;
+			this.GtkAlignment.Add (this.textview1);
+			this.frame1.Add (this.GtkAlignment);
+			this.vbox1.Add (this.frame1);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.frame1]));
+			w3.Position = 0;
 			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

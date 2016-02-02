@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -99,6 +100,19 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var operation = f.Perform(functionContext);
 
+            var desc = operation as DecoratableObject;
+            if (desc != null)
+            {
+                desc.ReadAttributes();
+            }
+
+            var canDecorate = operation as ICanDecorate;
+            if (canDecorate != null)
+            {
+                canDecorate.DecorationMap[typeof(IHasName)] = 
+                    context.ID().GetText();
+            }
+
             if (stack.Size < operation.NumberOfParameters)
             {
                 var error = new ErrorObject("not enough parameters");
@@ -162,14 +176,12 @@ namespace MathObjects.Plugin.FloatingPoint
             if (context.op.Type == FloatingPointParser.ADD)
             {
                 result = new AddObject(left.GetDouble(), right.GetDouble());
-                op = registry.OperationDictionary[
-                    FactoryRegistry.ADD].Create(null);
+                op = new Add();
             }
             else
             {
                 result = new SubtractObject(left.GetDouble(), -right.GetDouble());
-                op = registry.OperationDictionary[
-                    FactoryRegistry.SUBTRACT].Create(null);
+                op = new Subtract();
             }
 
             stack.Push(op);

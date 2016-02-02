@@ -1,16 +1,14 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class ExponentOperation : IMathOperation
+    [Description(typeof(IHasName), "^")]
+    public class ExponentOperation : DecoratableObject,
+        IMathOperation
     {
         public int NumberOfParameters { get { return 2; } }
-
-        public string Name
-        {
-            get { return "^"; }
-        }
 
         public IMathObject Perform(IMathObject[] objs)
         {
@@ -18,9 +16,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var rightValue = objs[1].GetDouble();
 
-            var op = new ExponentObject(leftValue, rightValue);
-
-            return new MathObject((double)op.Output);
+            return new ExponentObject(leftValue, rightValue);
         }
     }
 }

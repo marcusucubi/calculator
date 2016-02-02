@@ -137,7 +137,7 @@
         <child>
           <widget class="MathObjects.UI.Widgets.MathObjetsWidget" id="mathobjetswidget2">
             <property name="MemberName" />
-            <property name="HeightRequest">300</property>
+            <property name="HeightRequest">200</property>
             <property name="Events">ButtonPressMask</property>
           </widget>
           <packing>

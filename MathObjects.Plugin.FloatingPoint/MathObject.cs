@@ -1,9 +1,9 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
-using MathObjects.Plugin.FoatingPoint;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {

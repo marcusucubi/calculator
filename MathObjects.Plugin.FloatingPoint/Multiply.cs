@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Multiply : IMathOperation
+    public class Multiply : IMathOperation, IHasName
     {
         public int NumberOfParameters { get { return 2; } }
 
@@ -18,9 +18,7 @@ namespace MathObjects.Plugin.FloatingPoint
             var leftValue = objs[0].GetDouble();
             var rightValue = objs[1].GetDouble();
 
-            var op = new MultiplyObject(leftValue, rightValue);
-
-            return new MathObject((double)op.Output);
+            return new MultiplyObject(leftValue, rightValue);
         }
 
         public class Factory : IMathOperationFactory, IHasName

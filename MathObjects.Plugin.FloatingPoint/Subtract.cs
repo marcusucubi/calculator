@@ -7,28 +7,16 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         public int NumberOfParameters { get { return 2; } }
 
-        public string Name
-        {
-            get { return "-"; }
-        }
-
         public IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetDouble();
             var rightValue = objs[1].GetDouble();
 
-            var op = new SubtractObject(leftValue, rightValue);
-
-            return new MathObject((double)op.Output);
+            return new SubtractObject(leftValue, rightValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "-"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Subtract();

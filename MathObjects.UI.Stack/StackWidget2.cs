@@ -5,6 +5,7 @@ using Pango;
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.UI.Mediator;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.UI.Stack
 {
@@ -81,13 +82,7 @@ namespace MathObjects.UI.Stack
             foreach(var i in numbers)
             {
                 string s = "";
-                string s2 = "";
-
-                var hasSource2 = i as IHasName;
-                if (hasSource2 != null)
-                {
-                    s2 = hasSource2.Name;
-                }
+                string s2 = GetName(i);
 
                 var hasDisplay = i as IHasDisplayValue;
                 if (hasDisplay != null)
@@ -102,10 +97,9 @@ namespace MathObjects.UI.Stack
                     {
                         s = "" + hasOutput.Output;
 
-                        var hasSource = hasOutput.Output as IHasName;
-                        if (hasSource != null)
+                        if (s2.Length == 0)
                         {
-                            s2 = hasSource.Name;
+                            s2 = GetName(hasOutput.Output);
                         }
                     }
                     else
@@ -131,6 +125,31 @@ namespace MathObjects.UI.Stack
                     DisplayChildren(iter, children.Children);
                 }
             }
+        }
+
+        string GetName(object obj)
+        {
+            string result = "";
+
+            var test = obj.GetDescription<IHasName>() as string;
+            if (test != null)
+            {
+                result = test;
+            }
+            else
+            {
+                var output = obj as IHasOutput;
+                if (output != null)
+                {
+                    var test2 = output.Output.GetDescription<IHasName>() as string;
+                    if (test2 != null)
+                    {
+                        result = test2;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

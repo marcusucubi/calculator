@@ -72,7 +72,7 @@ namespace MathObjects.UI
 			w4.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.mathobjetswidget2 = new global::MathObjects.UI.Widgets.MathObjetsWidget ();
-			this.mathobjetswidget2.HeightRequest = 300;
+			this.mathobjetswidget2.HeightRequest = 200;
 			this.mathobjetswidget2.Events = ((global::Gdk.EventMask)(256));
 			this.mathobjetswidget2.Name = "mathobjetswidget2";
 			this.table1.Add (this.mathobjetswidget2);

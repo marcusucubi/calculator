@@ -1,9 +1,12 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Divide : IMathOperation
+    [Description(typeof(IHasName), "/")]
+    public class Divide : DecoratableObject,
+        IMathOperation, IHasName
     {
         public int NumberOfParameters { get { return 2; } }
 
@@ -17,9 +20,7 @@ namespace MathObjects.Plugin.FloatingPoint
             var leftValue = objs[0].GetDouble();
             var rightValue = objs[1].GetDouble();
 
-            var op = new DivideObject(leftValue, rightValue);
-
-            return new MathObject((double)op.Output);
+            return new DivideObject(leftValue, rightValue);
         }
 
         public class Factory : IMathOperationFactory, IHasName

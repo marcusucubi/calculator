@@ -1,9 +1,12 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class ExponentObject : IHasOutput, IMathObject
+    [Description(typeof(IHasName), "^")]
+    class ExponentObject : DecoratableObject,
+        IHasOutput, IMathObject, IHasDisplayValue
     {
         readonly double tuple1;
 
@@ -18,6 +21,16 @@ namespace MathObjects.Plugin.FloatingPoint
         public object Output
         {
             get { return (Math.Pow(tuple1, tuple2)); }
+        }
+
+        public string DisplayValue 
+        { 
+            get { return this.Output.ToString(); }
+        }
+
+        public override string ToString()
+        {
+            return DisplayValue;
         }
     }
 }
