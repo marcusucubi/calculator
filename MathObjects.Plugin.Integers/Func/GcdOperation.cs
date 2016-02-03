@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Integers.Func
 {
@@ -23,7 +24,11 @@ namespace MathObjects.Plugin.Integers.Func
             var leftValue = input[0].GetInteger();
             var rightValue = input[1].GetInteger();
 
-            return new MathObject(GCD(leftValue, rightValue));
+            var result = new MathObject(GCD(leftValue, rightValue));
+
+            result.CopyDecorations(this);
+
+            return result;
         }
     }
 }

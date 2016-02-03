@@ -10,12 +10,9 @@ namespace MathObjects.Plugin.Integers
         public IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetInteger();
-
             var rightValue = objs[1].GetInteger();
 
-            var op = new ExponentObject(leftValue, rightValue);
-
-            return new MathObject((int)op.Output);
+            return new ExponentObject(leftValue, rightValue);
         }
     }
 }

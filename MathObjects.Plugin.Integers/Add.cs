@@ -16,13 +16,8 @@ namespace MathObjects.Plugin.Integers
             return new AddObject(leftValue, rightValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "+"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Add();

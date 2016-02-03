@@ -1,9 +1,11 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Integers
 {
-    class ExponentObject : IHasOutput, IMathObject
+    [ClassDecoration("name", "^")]
+    class ExponentObject : IHasOutput, IMathObject, IHasDisplayValue
     {
         readonly int tuple1;
 
@@ -18,6 +20,16 @@ namespace MathObjects.Plugin.Integers
         public object Output
         {
             get { return (int)(Math.Pow(tuple1, tuple2)); }
+        }
+
+        public string DisplayValue 
+        { 
+            get { return this.Output.ToString(); }
+        }
+
+        public override string ToString()
+        {
+            return DisplayValue;
         }
     }
 }

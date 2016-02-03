@@ -11,18 +11,11 @@ namespace MathObjects.Plugin.Integers
         {
             var leftValue = left[0].GetInteger();
 
-            var op = new NegativeObject(leftValue);
-
-            return new MathObject((int)op.Output);
+            return new NegativeObject(leftValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "Negative"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Negative();

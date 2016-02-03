@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Integers.Func
 {
@@ -11,7 +12,11 @@ namespace MathObjects.Plugin.Integers.Func
         {
             var leftValue = input[0].GetInteger();
 
-            return new MathObject(leftValue);
+            var result = new MathObject(leftValue);
+
+            result.CopyDecorations(this);
+
+            return result;
         }
     }
 }

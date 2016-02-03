@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Integers
 {
@@ -77,6 +78,8 @@ namespace MathObjects.Plugin.Integers
             }
 
             var operation = f.Perform(functionContext);
+
+            operation.SetObjectDecoration("name", context.ID().GetText());
 
             if (stack.Size < operation.NumberOfParameters)
             {

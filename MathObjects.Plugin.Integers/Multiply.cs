@@ -13,18 +13,11 @@ namespace MathObjects.Plugin.Integers
             var leftValue = objs[0].GetInteger();
             var rightValue = objs[1].GetInteger();
 
-            var op = new MultiplyObject(leftValue, rightValue);
-
-            return new MathObject((int)op.Output);
+            return new MultiplyObject(leftValue, rightValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "*"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Multiply();
