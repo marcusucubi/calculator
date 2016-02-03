@@ -131,7 +131,7 @@ namespace MathObjects.UI.Stack
         {
             string result = "";
 
-            var test = obj.GetDescription<IHasName>() as string;
+            var test = GetDecoration(obj);
             if (test != null)
             {
                 result = test;
@@ -141,7 +141,7 @@ namespace MathObjects.UI.Stack
                 var output = obj as IHasOutput;
                 if (output != null)
                 {
-                    var test2 = output.Output.GetDescription<IHasName>() as string;
+                    var test2 = GetDecoration(output.Output);
                     if (test2 != null)
                     {
                         result = test2;
@@ -150,6 +150,23 @@ namespace MathObjects.UI.Stack
             }
 
             return result;
+        }
+
+        string GetDecoration(object obj)
+        {
+            var test = obj.GetClassDecoration<string>("name");
+            if (test != null)
+            {
+                return test;
+            }
+
+            var test2 = obj.GetObjectDecoration<string>("name");
+            if (test2 != null)
+            {
+                return test2;
+            }
+
+            return null;
         }
     }
 }

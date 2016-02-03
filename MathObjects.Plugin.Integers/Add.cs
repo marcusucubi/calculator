@@ -13,9 +13,7 @@ namespace MathObjects.Plugin.Integers
             var leftValue = objs[0].GetInteger();
             var rightValue = objs[1].GetInteger();
 
-            var op = new AddObject(leftValue, rightValue);
-
-            return new MathObject((int)op.Output);
+            return new AddObject(leftValue, rightValue);
         }
 
         public class Factory : IMathOperationFactory, IHasName

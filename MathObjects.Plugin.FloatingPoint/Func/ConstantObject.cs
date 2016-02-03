@@ -1,10 +1,11 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
     class ConstantObject : 
-        IHasOutput, IMathObject, IHasDisplayValue, IHasName 
+        DecoratableObject, IHasOutput, IMathObject, IHasDisplayValue, IHasName 
     {
         readonly double value;
 

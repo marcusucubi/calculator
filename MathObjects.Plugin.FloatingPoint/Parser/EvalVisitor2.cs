@@ -100,18 +100,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var operation = f.Perform(functionContext);
 
-            var desc = operation as DecoratableObject;
-            if (desc != null)
-            {
-                desc.ReadAttributes();
-            }
-
-            var canDecorate = operation as ICanDecorate;
-            if (canDecorate != null)
-            {
-                canDecorate.DecorationMap[typeof(IHasName)] = 
-                    context.ID().GetText();
-            }
+            operation.SetObjectDecoration("name", context.ID().GetText());
 
             if (stack.Size < operation.NumberOfParameters)
             {

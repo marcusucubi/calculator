@@ -4,7 +4,7 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    [Description(typeof(IHasName), "^")]
+    [ClassDecoration("name", "^")]
     public class ExponentOperation : DecoratableObject,
         IMathOperation
     {

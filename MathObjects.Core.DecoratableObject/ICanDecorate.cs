@@ -5,7 +5,7 @@ namespace MathObjects.Core.DecoratableObject
 {
     public interface ICanDecorate
     {
-        IDictionary<Type, object> DecorationMap { get; }
+        IDictionary<string, object> DecorationMap { get; }
 
         void CopyDecorations(ICanDecorate decorate);
     }

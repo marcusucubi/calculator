@@ -90,6 +90,10 @@
       <Project>{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D}</Project>
       <Name>MathObjects.Framework.Parser</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.DecoratableObject\MathObjects.Core.DecoratableObject.csproj">
+      <Project>{0179E565-7148-4545-B192-012CCFA83166}</Project>
+      <Name>MathObjects.Core.DecoratableObject</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Parser\" />

@@ -16,18 +16,11 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             var leftValue = left[0].GetDouble();
 
-            var op = new NegativeObject(leftValue);
-
-            return new MathObject((double)op.Output);
+            return new NegativeObject(leftValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "Negative"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Negative();

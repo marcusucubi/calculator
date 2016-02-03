@@ -1,9 +1,10 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class TopObject : IHasOutput, IMathObject, IHasDisplayValue, IHasName
+    class TopObject : DecoratableObject, IHasOutput, IMathObject, IHasDisplayValue, IHasName
     {
         readonly IMathObject top;
 

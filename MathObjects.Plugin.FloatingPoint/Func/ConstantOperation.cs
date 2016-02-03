@@ -1,9 +1,10 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class ConstantOperation : IMathOperation, IHasName 
+    class ConstantOperation : DecoratableObject, IMathOperation, IHasName 
     {
         readonly double value;
 
@@ -24,7 +25,11 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 
         public IMathObject Perform(IMathObject[] target)
         {
-            return new ConstantObject(value, this.name);
+            var result = new ConstantObject(value, this.name);
+
+            result.CopyDecorations(this);
+
+            return result;
         }
     }
 }

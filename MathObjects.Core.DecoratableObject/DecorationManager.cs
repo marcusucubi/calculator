@@ -5,33 +5,53 @@ namespace MathObjects.Core.DecoratableObject
 {
     public static class DecorationManager
     {
-        public static Dictionary<Type, object> GetAttributes(Type input)
+        public static T GetClassDecoration<T>(this object obj, string key)
         {
-            var result = new Dictionary<Type, object>();
+            return GetClassDecoration<T>(obj.GetType(), key);
+        }
+
+        public static T GetClassDecoration<T>(Type input, string key)
+        {
+            object result = null;
 
             object[] objs = input.GetCustomAttributes(false);
             foreach (var obj in objs)
             {
-                var desc = obj as DescriptionAttribute;
-                if (desc != null)
+                var desc = obj as ClassDecorationAttribute;
+                if (desc != null && desc.Key == key)
                 {
-                    result[desc.Type] = desc.Value;
+                    result = desc.Value;
+                    break;
                 }
             }
 
-            return result;
+            return (T)result;
         }
 
-        public static object GetDescription<T>(this object obj)
+        public static T GetObjectDecoration<T>(this object obj, string key)
         {
-            var map = GetAttributes(obj.GetType());
+            object result = null;
 
-            if (map.ContainsKey(typeof(T)))
+            var decoratable = obj as ICanDecorate;
+            if (decoratable != null)
             {
-                return map[typeof(T)];
+                if (decoratable.DecorationMap.ContainsKey(key))
+                {
+                    result = decoratable.DecorationMap[key];
+                }
             }
 
-            return null;
+            return (T)result;
+        }
+
+        public static void SetObjectDecoration(
+            this object target, string key, object value)
+        {
+            var decoratable = target as ICanDecorate;
+            if (decoratable != null)
+            {
+                decoratable.DecorationMap[key] = value;
+            }
         }
     }
 }

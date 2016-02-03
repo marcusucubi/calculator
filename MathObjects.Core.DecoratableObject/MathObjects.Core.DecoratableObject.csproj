@@ -34,8 +34,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ICanDecorate.cs" />
     <Compile Include="DecoratableObject.cs" />
-    <Compile Include="DescriptionAttribute.cs" />
     <Compile Include="DecorationManager.cs" />
+    <Compile Include="ClassDecorationAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
