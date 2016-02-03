@@ -14,9 +14,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         readonly AngleType angleType;
 
-        readonly string name;
-
-        public AngleObject(double value, AngleType angleType, string name)
+        public AngleObject(double value, AngleType angleType)
         {
             this.angleValue = value;
             this.angleType = angleType;
@@ -26,12 +24,6 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         {
             this.angleValue = obj.angleValue;
             this.angleType = obj.angleType;
-            this.name = obj.Name;
-        }
-
-        public string Name
-        {
-            get { return this.name; }
         }
 
         public AngleType AngleType
@@ -50,8 +42,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         {
             get 
             {
-                return Output.ToString() + 
-                    ((this.angleType==AngleType.Degrees) ? " degrees" : " radians"); 
+                return Output.ToString(); 
             }
         }
 
@@ -64,7 +55,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 result = Convert.RadiansToDegrees(this.angleValue);
             }
 
-            return new AngleObject(result, AngleType.Degrees, this.name);
+            return new AngleObject(result, AngleType.Degrees);
         }
 
         public AngleObject ConvertToRadians()
@@ -76,7 +67,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 result = Convert.DegreesToRadians(this.angleValue);
             }
 
-            return new AngleObject(result, AngleType.Radians, this.name);
+            return new AngleObject(result, AngleType.Radians);
         }
 
         public override string ToString()

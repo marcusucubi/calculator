@@ -30,7 +30,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             if (angle == null)
             {
                 angle = new AngleObject(
-                    target[0].GetDouble(), AngleType.Degrees, this.name);
+                    target[0].GetDouble(), AngleType.Degrees);
             }
 
             double value = handler(angle.ConvertToRadians().AngleValue);

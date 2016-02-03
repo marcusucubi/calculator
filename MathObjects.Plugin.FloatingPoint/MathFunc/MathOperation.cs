@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
@@ -18,24 +19,20 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         public IMathObject Perform(IMathObject[] target)
         {
-            return new MathObject(handler(target[0].GetDouble()));
+            var result = new MathObject(handler(target[0].GetDouble()));
+
+            result.CopyDecorations(this);
+
+            return result;
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            readonly string name;
-
             readonly MathHandler handler;
 
-            public Factory(string name, MathHandler handler)
+            public Factory(MathHandler handler)
             {
-                this.name = name;
                 this.handler = handler;
-            }
-
-            public string Name
-            {
-                get { return name; }
             }
 
             public IMathOperation Create(object param)

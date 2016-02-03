@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
@@ -20,7 +21,11 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         {
             double value = target[0].GetDouble();
 
-            return new AngleObject(handler(value), AngleType.Radians, this.Name);
+            var result = new AngleObject(handler(value), AngleType.Radians);
+
+            result.CopyDecorations(this);
+
+            return result;
         }
 
         public class Factory : IMathOperationFactory, IHasName
