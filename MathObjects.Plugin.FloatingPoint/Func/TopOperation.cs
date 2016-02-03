@@ -30,7 +30,7 @@ namespace MathObjects.Plugin.FloatingPoint.Func
                 return top;
             }
 
-            return new TopObject(top, this.name);
+            return new TopObject(top);
         }
     }
 }

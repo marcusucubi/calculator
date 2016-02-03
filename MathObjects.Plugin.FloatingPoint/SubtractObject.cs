@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "-")]
-    class SubtractObject : DecoratableObject, IHasOutput, IMathObject, IHasDisplayValue
+    class SubtractObject : IHasOutput, IMathObject, IHasDisplayValue
     {
         readonly double tuple1;
 

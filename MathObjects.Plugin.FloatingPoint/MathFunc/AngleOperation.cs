@@ -1,4 +1,5 @@
 ﻿using System;
+using MathObjects.Core.DecoratableObject;
 using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
@@ -34,7 +35,11 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
             double value = handler(angle.ConvertToRadians().AngleValue);
 
-            return new MathObjectWithName(value, this.name);
+            var result = new MathObjectWithName(value, this.name);
+
+            result.CopyDecorations(this);
+
+            return result;
         }
 
         public class Factory : IMathOperationFactory

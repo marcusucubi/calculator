@@ -5,15 +5,9 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "/")]
-    public class Divide : DecoratableObject,
-        IMathOperation, IHasName
+    public class Divide : IMathOperation
     {
         public int NumberOfParameters { get { return 2; } }
-
-        public string Name
-        {
-            get { return "/"; }
-        }
 
         public IMathObject Perform(IMathObject[] objs)
         {
@@ -23,13 +17,8 @@ namespace MathObjects.Plugin.FloatingPoint
             return new DivideObject(leftValue, rightValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "/"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Divide();

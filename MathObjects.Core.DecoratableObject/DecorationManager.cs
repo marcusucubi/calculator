@@ -5,6 +5,9 @@ namespace MathObjects.Core.DecoratableObject
 {
     public static class DecorationManager
     {
+        readonly static Dictionary<object, DecoratableObject> dictionary
+            = new Dictionary<object, DecoratableObject>();
+
         public static T GetClassDecoration<T>(this object obj, string key)
         {
             return GetClassDecoration<T>(obj.GetType(), key);
@@ -30,9 +33,14 @@ namespace MathObjects.Core.DecoratableObject
 
         public static T GetObjectDecoration<T>(this object obj, string key)
         {
+            if (!dictionary.ContainsKey(obj))
+            {
+                return default(T);
+            }
+
             object result = null;
 
-            var decoratable = obj as ICanDecorate;
+            var decoratable = dictionary[obj];
             if (decoratable != null)
             {
                 if (decoratable.DecorationMap.ContainsKey(key))
@@ -44,13 +52,36 @@ namespace MathObjects.Core.DecoratableObject
             return (T)result;
         }
 
-        public static void SetObjectDecoration(
-            this object target, string key, object value)
+        public static void SetObjectDecoration(this object target, string key, object value)
         {
-            var decoratable = target as ICanDecorate;
-            if (decoratable != null)
+            DecoratableObject decorable = null;
+
+            if (!dictionary.ContainsKey(target))
             {
-                decoratable.DecorationMap[key] = value;
+                decorable = new DecoratableObject(target);
+
+                dictionary[target] = decorable;
+            }
+            else
+            {
+                decorable = dictionary[target];
+            }
+
+            decorable.DecorationMap[key] = value;
+        }
+
+        public static void CopyDecorations(this object target, object source)
+        {
+            if (!dictionary.ContainsKey(source))
+            {
+                return;
+            }
+
+            var decoratable = dictionary[source];
+
+            foreach (var pair in decoratable.DecorationMap)
+            {
+                target.SetObjectDecoration(pair.Key, pair.Value);
             }
         }
     }

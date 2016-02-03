@@ -8,12 +8,9 @@ namespace MathObjects.Plugin.FloatingPoint.Func
     {
         readonly double value;
 
-        readonly string name;
-
-        public ConstantFunction(double value, string name)
+        public ConstantFunction(double value)
         {
             this.value = value;
-            this.name = name;
         }
 
         public void Init(IMathFunctionContext context)
@@ -22,24 +19,21 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 
         public IMathOperation Perform(IMathFunctionContext context)
         {
-            return new ConstantOperation(this.value, this.name);
+            return new ConstantOperation(this.value);
         }
 
         public class Factory : IMathObjectFactory
         {
             readonly double value;
 
-            readonly string name;
-
-            public Factory(double value, string name)
+            public Factory(double value)
             {
                 this.value = value;
-                this.name = name;
             }
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new ConstantFunction(this.value, this.name);
+                return new ConstantFunction(this.value);
             }
         }
     }

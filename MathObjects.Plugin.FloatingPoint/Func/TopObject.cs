@@ -4,21 +4,13 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class TopObject : DecoratableObject, IHasOutput, IMathObject, IHasDisplayValue, IHasName
+    class TopObject : IHasOutput, IMathObject, IHasDisplayValue
     {
         readonly IMathObject top;
 
-        readonly string name;
-
-        public TopObject(IMathObject top, string name)
+        public TopObject(IMathObject top)
         {
             this.top = top;
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get { return this.name; }
         }
 
         public object Output

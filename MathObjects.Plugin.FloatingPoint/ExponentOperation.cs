@@ -5,8 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "^")]
-    public class ExponentOperation : DecoratableObject,
-        IMathOperation
+    public class ExponentOperation : IMathOperation
     {
         public int NumberOfParameters { get { return 2; } }
 

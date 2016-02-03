@@ -4,28 +4,20 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class ConstantOperation : DecoratableObject, IMathOperation, IHasName 
+    class ConstantOperation : IMathOperation
     {
         readonly double value;
 
-        readonly string name;
-
         public int NumberOfParameters { get { return 0; } }
 
-        public ConstantOperation(double value, string name)
+        public ConstantOperation(double value)
         {
             this.value = value;
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get { return this.name; }
         }
 
         public IMathObject Perform(IMathObject[] target)
         {
-            var result = new ConstantObject(value, this.name);
+            var result = new ConstantObject(value);
 
             result.CopyDecorations(this);
 
