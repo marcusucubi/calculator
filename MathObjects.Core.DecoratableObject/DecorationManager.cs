@@ -31,8 +31,10 @@ namespace MathObjects.Core.DecoratableObject
             return (T)result;
         }
 
-        public static T GetObjectDecoration<T>(this object obj, string key)
+        public static T GetObjectDecoration<T>(this object target, string key)
         {
+            object obj = Unproxy(target);
+
             if (!dictionary.ContainsKey(obj))
             {
                 return default(T);
@@ -54,24 +56,29 @@ namespace MathObjects.Core.DecoratableObject
 
         public static void SetObjectDecoration(this object target, string key, object value)
         {
+            object obj = Unproxy(target);
+
             DecoratableObject decorable = null;
 
-            if (!dictionary.ContainsKey(target))
+            if (!dictionary.ContainsKey(obj))
             {
-                decorable = new DecoratableObject(target);
+                decorable = new DecoratableObject(obj);
 
-                dictionary[target] = decorable;
+                dictionary[obj] = decorable;
             }
             else
             {
-                decorable = dictionary[target];
+                decorable = dictionary[obj];
             }
 
             decorable.DecorationMap[key] = value;
         }
 
-        public static void CopyDecorations(this object target, object source)
+        public static void CopyDecorations(this object targetObj, object sourceObj)
         {
+            object source = Unproxy(sourceObj);
+            object target = Unproxy(targetObj);
+
             if (!dictionary.ContainsKey(source))
             {
                 return;
@@ -83,6 +90,19 @@ namespace MathObjects.Core.DecoratableObject
             {
                 target.SetObjectDecoration(pair.Key, pair.Value);
             }
+        }
+
+        static object Unproxy(object target)
+        {
+            object obj = target;
+
+            var proxy = target as IDecorationProxy;
+            if (proxy != null)
+            {
+                obj = proxy.DecorationTarget;
+            }
+
+            return obj;
         }
     }
 }

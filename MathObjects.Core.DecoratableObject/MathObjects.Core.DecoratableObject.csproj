@@ -36,6 +36,7 @@
     <Compile Include="DecoratableObject.cs" />
     <Compile Include="DecorationManager.cs" />
     <Compile Include="ClassDecorationAttribute.cs" />
+    <Compile Include="IDecorationProxy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

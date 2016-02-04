@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Core.DecoratableObject;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
@@ -8,19 +9,11 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
-        readonly string name;
-
         public int NumberOfParameters { get { return 1; } }
 
-        public AngleOperation(MathHandler handler, string name)
+        public AngleOperation(MathHandler handler)
         {
             this.handler = handler;
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get { return this.name; }
         }
 
         public IMathObject Perform(IMathObject[] target)
@@ -35,7 +28,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
             double value = handler(angle.ConvertToRadians().AngleValue);
 
-            var result = new MathObjectWithName(value, this.name);
+            var result = new MathObject(value);
 
             result.CopyDecorations(this);
 
@@ -44,19 +37,16 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         public class Factory : IMathOperationFactory
         {
-            readonly string name;
-
             readonly MathHandler handler;
 
-            public Factory(string name, MathHandler handler)
+            public Factory(MathHandler handler)
             {
-                this.name = name;
                 this.handler = handler;
             }
 
             public IMathOperation Create(object param)
             {
-                return new AngleOperation(handler, name);
+                return new AngleOperation(handler);
             }
         }
     }

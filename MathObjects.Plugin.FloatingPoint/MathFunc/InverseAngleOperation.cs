@@ -4,13 +4,11 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class InverseAngleOperation : IMathOperation, IHasName, ICanSetName 
+    class InverseAngleOperation : IMathOperation
     {
         readonly MathHandler handler;
 
         public int NumberOfParameters { get { return 1; } }
-
-        public string Name { get; set; }
 
         public InverseAngleOperation(MathHandler handler)
         {
@@ -28,21 +26,13 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             return result;
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            readonly string name;
-
             readonly MathHandler handler;
 
-            public Factory(string name, MathHandler handler)
+            public Factory(MathHandler handler)
             {
-                this.name = name;
                 this.handler = handler;
-            }
-
-            public string Name
-            {
-                get { return name; }
             }
 
             public IMathOperation Create(object param)

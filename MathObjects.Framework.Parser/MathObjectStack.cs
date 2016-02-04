@@ -70,8 +70,24 @@ namespace MathObjects.Framework.Parser
             ErrorHandler.ResetError(this);
         }
 
+        public void Push(CompositeOperation composite)
+        {
+            Push(composite.First);
+
+            Push(composite.Second);
+
+            FireStackChanged();
+            ErrorHandler.ResetError(this);
+        }
+
         public void Push(IMathOperation op)
         {
+            if (op is CompositeOperation)
+            {
+                Push((CompositeOperation) op);
+                return;
+            }
+
             if (this.objectStack.Count < op.NumberOfParameters)
             {
                 return;

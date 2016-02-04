@@ -1,5 +1,7 @@
 ﻿using System;
+using MathObjects.Core.DecoratableObject;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
@@ -7,12 +9,9 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
-        readonly string name;
-
-        public AngleFunction(MathHandler handler, string name)
+        public AngleFunction(MathHandler handler)
         {
             this.handler = handler;
-            this.name = name;
         }
 
         public void Init(IMathFunctionContext context)
@@ -21,24 +20,40 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         public IMathOperation Perform(IMathFunctionContext context)
         {
-            return new AngleOperation(this.handler, name);
+            // Convert to degrees if needed
+            var stack = (context as IHasMathObjectStack).Stack;
+            if (stack.Size > 0)
+            {
+                var target = stack.Top;
+
+                var angle = target.GetValue<AngleObject>();
+
+                if (angle == null)
+                {
+                    var first = new DegreesOperation();
+
+                    first.SetObjectDecoration("name", "degrees");
+
+                    return new CompositeOperation(
+                        first, new AngleOperation(this.handler));
+                }
+            }
+                
+            return new AngleOperation(this.handler);
         }
 
         public class Factory : IMathObjectFactory
         {
             readonly MathHandler handler;
 
-            readonly string name;
-
-            public Factory(MathHandler handler, string name)
+            public Factory(MathHandler handler)
             {
                 this.handler = handler;
-                this.name = name;
             }
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new AngleFunction(handler, name);
+                return new AngleFunction(handler);
             }
         }
     }
