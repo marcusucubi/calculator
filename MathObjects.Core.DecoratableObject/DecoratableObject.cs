@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MathObjects.Core.DecoratableObject
 {
-    public class DecoratableObject : ICanDecorate
+    class DecoratableObject 
     {
         readonly Dictionary<string, object> decorationMap = 
             new Dictionary<string, object>();
@@ -25,7 +25,7 @@ namespace MathObjects.Core.DecoratableObject
             get { return this.decorationMap; } 
         }
 
-        public void CopyDecorations(ICanDecorate decorate)
+        public void CopyDecorations(DecoratableObject decorate)
         {
             foreach (var pair in decorate.DecorationMap)
             {
