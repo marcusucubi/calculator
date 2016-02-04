@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.Integers
 {
     [ClassDecoration("name", "*")]
-    class MultiplyObject : IHasOutput, IMathObject
+    class MultiplyObject : IHasOutput, IMathObject, IHasValue
     {
         readonly int tuple1;
 
@@ -20,6 +20,11 @@ namespace MathObjects.Plugin.Integers
         public object Output
         {
             get { return (tuple1 * tuple2); }
+        }
+
+        public int Value
+        {
+            get { return (int)Output; }
         }
 
         public string DisplayValue 
