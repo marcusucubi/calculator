@@ -32,7 +32,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class PermutationBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IPermutationVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="PermutationParser.init"/>.
+	/// Visit a parse tree produced by <see cref="PermutationParser.Compose"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -40,7 +40,17 @@ public partial class PermutationBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitInit([NotNull] PermutationParser.InitContext context) { return VisitChildren(context); }
+	public virtual Result VisitCompose([NotNull] PermutationParser.ComposeContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PermutationParser.InitCycle"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitInitCycle([NotNull] PermutationParser.InitCycleContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PermutationParser.cycle"/>.
 	/// <para>

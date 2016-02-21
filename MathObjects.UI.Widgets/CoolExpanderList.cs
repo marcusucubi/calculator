@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Gtk;
 
-namespace TestUI
+namespace MathObjects.UI.Widgets
 {
     public class CoolExpanderList : VBox 
     {

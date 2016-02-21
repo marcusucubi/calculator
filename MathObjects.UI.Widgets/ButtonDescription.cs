@@ -1,7 +1,7 @@
 ﻿using System;
 using Gtk;
 
-namespace TestUI
+namespace MathObjects.UI.Widgets
 {
     public class ButtonDescription
     {

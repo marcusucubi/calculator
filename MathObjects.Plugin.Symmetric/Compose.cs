@@ -2,6 +2,7 @@
 using MathObjects.Framework;
 using MathObjects.Core.Matrix;
 using MathObjects.Core.Matrix.Permutation;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Symmetric
 {
@@ -48,7 +49,12 @@ namespace MathObjects.Plugin.Symmetric
 
             var result = leftValue.MultiplyBy(rightValue);
 
-            return new MathObject(new PermutationMatix(result));
+            var returnObj = new MathObject(new PermutationMatix(result));
+
+            DecorationManager.SetObjectDecoration(
+                returnObj, "name", "+");
+
+            return returnObj;
         }
 
         public class Factory : IMathOperationFactory, IHasName

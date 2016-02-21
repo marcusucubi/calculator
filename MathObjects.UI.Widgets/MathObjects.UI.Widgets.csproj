@@ -67,6 +67,13 @@
     <Compile Include="gtk-gui\MathObjects.UI.Widgets.MathObjetsWidget.cs" />
     <Compile Include="MathOperationsWidget.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.Widgets.MathOperationsWidget.cs" />
+    <Compile Include="KeyBoardWidget.cs" />
+    <Compile Include="gtk-gui\MathObjects.UI.Widgets.KeyBoardWidget.cs" />
+    <Compile Include="CoolExpander.cs" />
+    <Compile Include="ButtonDescriptionGroup.cs" />
+    <Compile Include="CoolExpanderList.cs" />
+    <Compile Include="ButtonDescription.cs" />
+    <Compile Include="SliderWidget2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -90,5 +97,11 @@
       <Project>{D9410118-5AF2-4027-907D-8845F2D2F6C4}</Project>
       <Name>MathObjects.UI.Stack</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parser\Widgets.g4" />
   </ItemGroup>
 </Project>

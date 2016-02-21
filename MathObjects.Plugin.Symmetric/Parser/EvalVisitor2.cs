@@ -5,6 +5,7 @@ using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.Matrix.Permutation;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Symmetric.Parser
 {
@@ -19,6 +20,39 @@ namespace MathObjects.Plugin.Symmetric.Parser
             IMathObjectStack stack)
         {
             this.stack = stack;
+        }
+
+        public override IMathObject VisitCompose(PermutationParser.ComposeContext context)
+        {
+            if (stack.Size < 2)
+            {
+                ErrorHandler.SendError(this, "not enough arguments");
+                return null;
+            }
+
+            stack.Push(new Compose());
+
+            return stack.Top;
+        }
+
+        public override IMathObject VisitInitCycle(PermutationParser.InitCycleContext context)
+        {
+            IMathObject result = null;
+
+            int index = 0;
+            foreach (var cycle in context.cycle().Reverse())
+            {
+                result = Visit(cycle);
+
+                if (index > 0)
+                {
+                    stack.Push(new Compose());
+                }
+
+                index++;
+            }
+
+            return result;
         }
 
         public override IMathObject VisitCycle(
@@ -42,42 +76,6 @@ namespace MathObjects.Plugin.Symmetric.Parser
             this.stack.Push(obj);
 
             return obj;
-        }
-
-        public override IMathObject VisitInit(PermutationParser.InitContext context)
-        {
-            IMathObject result = null;
-
-            int index = 0;
-            foreach (var cycle in context.cycle().Reverse())
-            {
-                result = Visit(cycle);
-
-                if (index > 0)
-                {
-                    stack.Push(new Compose());
-                }
-
-                index++;
-            }
-
-            return result;
-
-            //var result = new MathObject() as IMathObject;
-/*
-            if (this.cycleList.Count > 1)
-            {
-                var compose = new Compose();
-
-                var c1 = new MathObject(this.cycleList[0].ToMatrix());
-                var c2 = new MathObject(this.cycleList[1].ToMatrix());
-
-                result = compose.Perform(c1, c2);
-
-                this.stack.Perform(compose);
-            }
-*/
-//            return result;
         }
     }
 }

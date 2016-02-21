@@ -2,7 +2,7 @@
 using Gtk;
 using System.Collections.Generic;
 
-namespace TestUI
+namespace MathObjects.UI.Widgets
 {
     public class CoolExpander : Expander
     {

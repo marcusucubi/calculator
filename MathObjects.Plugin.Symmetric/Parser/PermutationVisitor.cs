@@ -30,11 +30,19 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IPermutationVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="PermutationParser.init"/>.
+	/// Visit a parse tree produced by the <c>Compose</c>
+	/// labeled alternative in <see cref="PermutationParser.init"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitInit([NotNull] PermutationParser.InitContext context);
+	Result VisitCompose([NotNull] PermutationParser.ComposeContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>InitCycle</c>
+	/// labeled alternative in <see cref="PermutationParser.init"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitInitCycle([NotNull] PermutationParser.InitCycleContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PermutationParser.cycle"/>.
 	/// </summary>

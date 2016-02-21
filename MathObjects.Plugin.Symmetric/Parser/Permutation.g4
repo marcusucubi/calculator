@@ -8,7 +8,8 @@ options {
 @parser::namespace{MathObjects.Core.Parser}
 
 init    :
-        cycle+
+        '+'             # Compose
+        | cycle+        # InitCycle
         ;
 
 /** A rule called init that matches comma-separated values between {...}. */

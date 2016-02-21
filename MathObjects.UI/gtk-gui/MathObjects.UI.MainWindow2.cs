@@ -14,8 +14,6 @@ namespace MathObjects.UI
 		
 		private global::MathObjects.UI.Stack.InputWidget inputwidget1;
 		
-		private global::MathObjects.UI.Widgets.MathObjetsWidget mathobjetswidget2;
-		
 		private global::MathObjects.UI.Stack.StackWidget2 stackwidget21;
 
 		protected virtual void Build ()
@@ -71,25 +69,14 @@ namespace MathObjects.UI
 			w4.BottomAttach = ((uint)(2));
 			w4.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
-			this.mathobjetswidget2 = new global::MathObjects.UI.Widgets.MathObjetsWidget ();
-			this.mathobjetswidget2.HeightRequest = 200;
-			this.mathobjetswidget2.Events = ((global::Gdk.EventMask)(256));
-			this.mathobjetswidget2.Name = "mathobjetswidget2";
-			this.table1.Add (this.mathobjetswidget2);
-			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table1 [this.mathobjetswidget2]));
-			w5.TopAttach = ((uint)(4));
-			w5.BottomAttach = ((uint)(5));
-			w5.XOptions = ((global::Gtk.AttachOptions)(4));
-			w5.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table1.Gtk.Table+TableChild
 			this.stackwidget21 = new global::MathObjects.UI.Stack.StackWidget2 ();
 			this.stackwidget21.Events = ((global::Gdk.EventMask)(256));
 			this.stackwidget21.Name = "stackwidget21";
 			this.table1.Add (this.stackwidget21);
-			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table1 [this.stackwidget21]));
-			w6.TopAttach = ((uint)(3));
-			w6.BottomAttach = ((uint)(4));
-			w6.XOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table1 [this.stackwidget21]));
+			w5.TopAttach = ((uint)(3));
+			w5.BottomAttach = ((uint)(4));
+			w5.XOptions = ((global::Gtk.AttachOptions)(4));
 			this.Add (this.table1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
