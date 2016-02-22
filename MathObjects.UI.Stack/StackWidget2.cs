@@ -20,6 +20,7 @@ namespace MathObjects.UI.Stack
         {
             this.Build();
 
+            this.treeview2.CanFocus = false;
             {
                 var column = new Gtk.TreeViewColumn ();
                 column.Title = "Value";

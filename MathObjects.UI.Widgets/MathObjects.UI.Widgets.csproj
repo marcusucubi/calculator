@@ -67,8 +67,6 @@
     <Compile Include="gtk-gui\MathObjects.UI.Widgets.MathObjetsWidget.cs" />
     <Compile Include="MathOperationsWidget.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.Widgets.MathOperationsWidget.cs" />
-    <Compile Include="KeyBoardWidget.cs" />
-    <Compile Include="gtk-gui\MathObjects.UI.Widgets.KeyBoardWidget.cs" />
     <Compile Include="CoolExpander.cs" />
     <Compile Include="ButtonDescriptionGroup.cs" />
     <Compile Include="CoolExpanderList.cs" />

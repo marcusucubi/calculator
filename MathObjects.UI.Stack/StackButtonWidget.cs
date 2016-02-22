@@ -9,6 +9,9 @@ namespace MathObjects.UI.Stack
         public StackButtonWidget()
         {
             this.Build();
+
+            this.buttonPop.CanFocus = false;
+            this.buttonClear.CanFocus = false;
         }
 
         public IMediator Mediator

@@ -33,6 +33,8 @@ namespace MathObjects.UI
         {
             this.Build();
 
+            this.combobox1.CanFocus = false;
+
             this.combobox1.ModifyFont(FontDescription.FromString("Courier 16"));
 
             this.combobox1.Changed += (sender, e) => 

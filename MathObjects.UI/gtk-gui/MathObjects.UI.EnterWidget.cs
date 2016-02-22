@@ -19,7 +19,6 @@ namespace MathObjects.UI
 			this.alignment1.Name = "alignment1";
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.button2 = new global::Gtk.Button ();
-			this.button2.CanFocus = true;
 			this.button2.Name = "button2";
 			this.button2.UseUnderline = true;
 			this.button2.Label = global::Mono.Unix.Catalog.GetString ("Enter");

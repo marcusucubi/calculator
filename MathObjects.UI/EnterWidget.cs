@@ -15,6 +15,8 @@ namespace MathObjects.UI
         {
             this.Build();
 
+            this.button2.CanFocus = false;
+
             this.button2.Clicked += (sender, e) =>
                 {
                     if (this.input.CalcDisplay.Length > 0)

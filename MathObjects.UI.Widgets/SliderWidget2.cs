@@ -53,6 +53,7 @@ namespace MathObjects.UI.Widgets
             b.CanFocus = true;
             b.UseUnderline = true;
             b.Label = label;
+            b.CanFocus = false;
             this.hbox1.Add(b);
 
             var w1 = (Box.BoxChild)(this.hbox1[b]);

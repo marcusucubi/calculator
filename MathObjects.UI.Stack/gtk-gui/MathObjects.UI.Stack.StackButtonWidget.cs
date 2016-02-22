@@ -23,7 +23,6 @@ namespace MathObjects.UI.Stack
 			this.vbox2.BorderWidth = ((uint)(5));
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.buttonPop = new global::Gtk.Button ();
-			this.buttonPop.CanFocus = true;
 			this.buttonPop.Name = "buttonPop";
 			this.buttonPop.UseUnderline = true;
 			this.buttonPop.Label = global::Mono.Unix.Catalog.GetString ("Pop");
@@ -34,7 +33,6 @@ namespace MathObjects.UI.Stack
 			w1.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.buttonClear = new global::Gtk.Button ();
-			this.buttonClear.CanFocus = true;
 			this.buttonClear.Name = "buttonClear";
 			this.buttonClear.UseUnderline = true;
 			this.buttonClear.Label = global::Mono.Unix.Catalog.GetString ("Clear");
