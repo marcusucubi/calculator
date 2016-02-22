@@ -136,5 +136,9 @@
       <Project>{0179E565-7148-4545-B192-012CCFA83166}</Project>
       <Name>MathObjects.Core.DecoratableObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Vocabulary\MathObjects.Framework.Vocabulary.csproj">
+      <Project>{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}</Project>
+      <Name>MathObjects.Framework.Vocabulary</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -5,11 +5,14 @@ using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Plugin.FloatingPoint.MathFunc;
 using MathObjects.Plugin.FloatingPoint.Func;
+using System.Collections.Generic;
+using MathObjects.Framework.Vocabulary;
+using System.Collections.ObjectModel;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit, IHasName, IHasParser
+    public class Plugin : IPlugin, IHasInit, IHasName, IHasParser, IHasVocabulary
     {
         IParser parser;
 
@@ -65,6 +68,36 @@ namespace MathObjects.Plugin.FloatingPoint
 
             MathFuncObject.Init(registry);
         }
+
+        public ReadOnlyCollection<WordGroup> WordGroups
+        {
+            get
+            {
+                var vocab = new List<WordGroup>();
+
+                {
+                    var words = new WordGroup("Standard", new string[] 
+                        { 
+                            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                            "+", "*", "-", "/", "^", "(", ")" 
+                        }
+                    );
+                    vocab.Add(words);
+                }
+                {
+                    var words = new WordGroup("Triganometry", new string[] 
+                        { 
+                            "sin()", "cos()", "tan()", "asin()", "acos()", "atan()",
+                            "pi()", "degrees()", "radians()"
+                        }
+                    );
+                    vocab.Add(words);
+                }
+
+                return vocab.AsReadOnly();
+            }
+        }
+
     }
 }
 

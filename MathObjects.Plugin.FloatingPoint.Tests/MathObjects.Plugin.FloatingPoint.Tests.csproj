@@ -56,6 +56,14 @@
       <Project>{BFFB8F5D-939D-41CD-B8F9-527241AAB31C}</Project>
       <Name>MathObjects.Plugin.FloatingPoint</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Vocabulary\MathObjects.Framework.Vocabulary.csproj">
+      <Project>{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}</Project>
+      <Name>MathObjects.Framework.Vocabulary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.DecoratableObject\MathObjects.Core.DecoratableObject.csproj">
+      <Project>{0179E565-7148-4545-B192-012CCFA83166}</Project>
+      <Name>MathObjects.Core.DecoratableObject</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParserTest.cs" />

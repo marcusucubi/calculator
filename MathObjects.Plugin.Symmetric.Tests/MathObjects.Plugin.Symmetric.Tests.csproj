@@ -69,5 +69,13 @@
       <Project>{1CE2F135-C483-44EF-B9B4-97C737B47CE9}</Project>
       <Name>MathObjects.Plugin.Symmetric</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Framework.Vocabulary\MathObjects.Framework.Vocabulary.csproj">
+      <Project>{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}</Project>
+      <Name>MathObjects.Framework.Vocabulary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.DecoratableObject\MathObjects.Core.DecoratableObject.csproj">
+      <Project>{0179E565-7148-4545-B192-012CCFA83166}</Project>
+      <Name>MathObjects.Core.DecoratableObject</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

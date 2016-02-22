@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework.Parse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework.Parser.Visitors", "MathObjects.Framework.Parser.Visitors\MathObjects.Framework.Parser.Visitors.csproj", "{ED54B810-EBC1-48E5-B088-1C29A1712263}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework.Vocabulary", "MathObjects.Framework.Vocabulary\MathObjects.Framework.Vocabulary.csproj", "{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{5C02F33B-D09D-4A41-8A8C-D2207ED77A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C02F33B-D09D-4A41-8A8C-D2207ED77A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C02F33B-D09D-4A41-8A8C-D2207ED77A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CE715BF-C2F7-4078-98D0-3B6F605B6AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -192,6 +198,7 @@ Global
 		{8CA21855-4056-4609-B146-CCB081194C35} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
 		{8B1C6103-C638-4521-B0D3-BF9F641227D4} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
 		{ED54B810-EBC1-48E5-B088-1C29A1712263} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
+		{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

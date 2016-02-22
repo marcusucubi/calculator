@@ -1,18 +1,22 @@
 ﻿using System;
-using Gtk;
-using MathObjects.Framework.Registry;
-using MathObjects.UI.Mediator;
-using MathObjects.Framework.Parser;
-using MathObjects.UI.Widgets;
-using Gdk;
 using System.Collections.Generic;
+using Gdk;
+using Gtk;
+using MathObjects.Core.Plugin;
+using MathObjects.Framework.Registry;
+using MathObjects.Framework.Vocabulary;
+using MathObjects.UI.Mediator;
 using MathObjects.UI.Stack;
+using MathObjects.UI.Widgets;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.UI
 {
     public partial class MainWindow2 : Gtk.Window
     {
         IMediator mediator;
+
+        SliderWidget2 keyboardwidget1;
 
         public MainWindow2()
             : base(Gtk.WindowType.Toplevel)
@@ -26,21 +30,17 @@ namespace MathObjects.UI
                     var registry = e.Plugin.GetRegistry();
                     var parser = e.Plugin.GetParser();
 
-                    Connect(registry, parser);
+                    Connect(registry, parser, e.Plugin);
                 };
 
             this.fieldwidget1.SelectFirst();
         }
 
-        void Connect(FactoryRegistry registry, IParser parser) 
+        void Connect(FactoryRegistry registry, IParser parser, IPlugin plugin) 
         {
             this.mediator = MediatorFactory.Create(registry, parser);
 
-            AddKeyboard(this.inputwidget1);
-
-            //this.mathobjetswidget2.Disconnect();
-            //this.mathobjetswidget2.Connect(
-            //    registry, this.inputwidget1);
+            AddKeyboard(this.inputwidget1, plugin);
 
             this.stackwidget21.Disconnect();
             this.stackwidget21.Connect(mediator, this.inputwidget1);
@@ -48,10 +48,16 @@ namespace MathObjects.UI
             this.enterwidget1.Connect(mediator, this.inputwidget1);
         }
 
-        void AddKeyboard(InputWidget input)
+        void AddKeyboard(InputWidget input, IPlugin plugin)
         {
-            var groups = CreateGroups(input);
-            var keyboardwidget1 = new SliderWidget2(groups);
+            if (keyboardwidget1 != null)
+            {
+                keyboardwidget1.Hide();
+                this.table1.Remove(keyboardwidget1);
+            }
+
+            var groups = CreateGroups(input, plugin);
+            keyboardwidget1 = new SliderWidget2(groups);
 
             keyboardwidget1.HeightRequest = 250;
             keyboardwidget1.Events = ((EventMask)(256));
@@ -67,10 +73,27 @@ namespace MathObjects.UI
             w5.YOptions = ((AttachOptions)(4));
         }
 
-        ButtonDescriptionGroup[] CreateGroups(InputWidget input)
+        ButtonDescriptionGroup[] CreateGroups(InputWidget input, IPlugin plugin)
         {
             var groups = new List<ButtonDescriptionGroup> ();
 
+            var vocab = plugin as IHasVocabulary;
+            if (vocab != null)
+            {
+                foreach (var g in vocab.WordGroups)
+                {
+                    var group = new ButtonDescriptionGroup(g.Name);
+
+                    foreach (var w in g.Words)
+                    {
+                        group.Add(new StandardButtonDescription(w.Data, this.inputwidget1));
+                    }
+
+                    groups.Add(group);
+                }
+            }
+
+            /*
             {
                 var group = new ButtonDescriptionGroup ("Standard");
 
@@ -110,6 +133,7 @@ namespace MathObjects.UI
                 group.Add (new StandardButtonDescription ("log()", this.inputwidget1) );
                 groups.Add (group);
             }
+            */
 
             return groups.ToArray ();
         }
