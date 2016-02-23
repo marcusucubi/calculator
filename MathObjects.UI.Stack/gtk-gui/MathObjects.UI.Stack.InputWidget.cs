@@ -4,6 +4,8 @@ namespace MathObjects.UI.Stack
 {
 	public partial class InputWidget
 	{
+		private global::Gtk.HBox hbox1;
+		
 		private global::Gtk.VBox vbox1;
 		
 		private global::Gtk.Frame frame1;
@@ -11,6 +13,8 @@ namespace MathObjects.UI.Stack
 		private global::Gtk.Alignment GtkAlignment;
 		
 		private global::Gtk.TextView textview1;
+		
+		private global::Gtk.Button button1;
 
 		protected virtual void Build ()
 		{
@@ -19,9 +23,13 @@ namespace MathObjects.UI.Stack
 			global::Stetic.BinContainer.Attach (this);
 			this.Name = "MathObjects.UI.Stack.InputWidget";
 			// Container child MathObjects.UI.Stack.InputWidget.Gtk.Container+ContainerChild
+			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1.Name = "hbox1";
+			this.hbox1.Spacing = 6;
+			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbox1 = new global::Gtk.VBox ();
 			this.vbox1.Name = "vbox1";
-			this.vbox1.Spacing = 6;
+			this.vbox1.Spacing = 1;
 			this.vbox1.BorderWidth = ((uint)(5));
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.frame1 = new global::Gtk.Frame ();
@@ -44,11 +52,28 @@ namespace MathObjects.UI.Stack
 			this.vbox1.Add (this.frame1);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.frame1]));
 			w3.Position = 0;
-			this.Add (this.vbox1);
+			this.hbox1.Add (this.vbox1);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox1]));
+			w4.Position = 0;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.button1 = new global::Gtk.Button ();
+			this.button1.WidthRequest = 40;
+			this.button1.CanFocus = true;
+			this.button1.Name = "button1";
+			this.button1.UseUnderline = true;
+			this.button1.BorderWidth = ((uint)(3));
+			this.button1.Label = global::Mono.Unix.Catalog.GetString ("<");
+			this.hbox1.Add (this.button1);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.button1]));
+			w5.Position = 1;
+			w5.Expand = false;
+			w5.Fill = false;
+			this.Add (this.hbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.button1.Clicked += new global::System.EventHandler (this.OnButton1Clicked);
 		}
 	}
 }

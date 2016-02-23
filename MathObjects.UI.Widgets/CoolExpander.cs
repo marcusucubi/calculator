@@ -14,6 +14,7 @@ namespace MathObjects.UI.Widgets
             : base(group.Label)
         {
             var vbox = new VBox();
+            this.Add(vbox);
             vbox.Spacing = 6;
 
             var stack = new List<ButtonDescription>(group.Descriptions);
@@ -22,7 +23,7 @@ namespace MathObjects.UI.Widgets
             {
                 var box = CreateButtonBox(vbox);
 
-                for(int x = 0; x < 3 && stack.Count > 0; x++)
+                for(int x = 0; x < 5 && stack.Count > 0; x++)
                 {
                     var desc = stack[0];
                     stack.RemoveAt (0);
@@ -43,8 +44,6 @@ namespace MathObjects.UI.Widgets
             child.Position = ++pos;
             child.Expand = false;
             child.Fill = false;
-
-            this.Add (vbox);
 
             return box;
         }
