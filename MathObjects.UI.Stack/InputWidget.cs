@@ -18,8 +18,17 @@ namespace MathObjects.UI.Stack
 
         public void CalcDisplayAdd(string input)
         {
-            this.textview1.Buffer.InsertAtCursor(input);
+            var buffer = this.textview1.Buffer;
+
+            buffer.InsertAtCursor(input);
             this.textview1.HasFocus = true;
+
+            if (input.Length > 0 && input.Substring(input.Length - 1) == ")")
+            {
+                var pos = buffer.CursorPosition - 1;
+                var iter = buffer.GetIterAtOffset(pos);
+                buffer.PlaceCursor(iter);
+            }
         }
 
         public string CalcDisplay

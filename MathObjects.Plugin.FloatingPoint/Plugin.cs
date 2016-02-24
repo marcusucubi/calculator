@@ -58,6 +58,12 @@ namespace MathObjects.Plugin.FloatingPoint
                 "sqrt", new MathFunction.Factory(((i) => Math.Sqrt(i))));
 
             registry.Put(
+                "square", new MathFunction.Factory(((i) => ( i * i ))));
+
+            registry.Put(
+                "inverse", new MathFunction.Factory(((i) => ( 1/i ))));
+
+            registry.Put(
                 "sin", new AngleFunction.Factory(((i) => Math.Sin(i))));
             
             registry.Put(
@@ -88,7 +94,8 @@ namespace MathObjects.Plugin.FloatingPoint
                     var words = new WordGroup("Standard", new string[] 
                         { 
                             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-                            "+", "*", "-", "/", "^", "(", ")", "top()", "sqrt()"
+                            "+", "*", "-", "/", "^", "(", ")",
+                            "top()", "sqrt()", "square()", "inverse()"
                         }
                     );
                     vocab.Add(words);
