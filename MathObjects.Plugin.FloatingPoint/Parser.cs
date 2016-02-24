@@ -13,11 +13,6 @@ namespace MathObjects.Plugin.FloatingPoint
 
         bool hasError;
 
-        public Parser()
-        {
-            this.registry = new FunctionRegistry();
-        }
-
         public Parser(FunctionRegistry registry)
         {
             this.registry = registry;

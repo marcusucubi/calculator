@@ -192,7 +192,7 @@ namespace MathObjects.Plugin.FloatingPoint
             else
             {
                 result = new MultiplyObject(left.GetDouble(), 1 / right.GetDouble());
-                op = new Multiply();
+                op = new Divide();
             }
 
             stack.Push(op);

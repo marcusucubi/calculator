@@ -34,6 +34,9 @@ namespace MathObjects.Plugin.FloatingPoint
                 "pi", new ConstantFunction.Factory(Math.PI));
 
             registry.Put(
+                "ee", new ConstantFunction.Factory(Math.E));
+
+            registry.Put(
                 "top", new FunctionFactory(typeof(TopFunction)));
 
             registry.Put(
@@ -42,6 +45,36 @@ namespace MathObjects.Plugin.FloatingPoint
             registry.Put(
                 "radians", new FunctionFactory(typeof(RadiansFunction)));
         
+            registry.Put(
+                "ln", new MathFunction.Factory(((i) => Math.Log(i))));
+
+            registry.Put(
+                "log", new MathFunction.Factory(((i) => Math.Log10(i))));
+            
+            registry.Put(
+                "exp", new MathFunction.Factory(((i) => Math.Exp(i))));
+
+            registry.Put(
+                "sqrt", new MathFunction.Factory(((i) => Math.Sqrt(i))));
+
+            registry.Put(
+                "sin", new AngleFunction.Factory(((i) => Math.Sin(i))));
+            
+            registry.Put(
+                "cos", new AngleFunction.Factory(((i) => Math.Cos(i))));
+            
+            registry.Put(
+                "tan", new AngleFunction.Factory(((i) => Math.Tan(i))));
+            
+            registry.Put(
+                "asin", new InverseAngleFunction.Factory(((i) => Math.Asin(i))));
+
+            registry.Put(
+                "acos", new InverseAngleFunction.Factory(((i) => Math.Acos(i))));
+
+            registry.Put(
+                "atan", new InverseAngleFunction.Factory(((i) => Math.Atan(i))));
+
             parser = new Parser(registry);
         }
 
@@ -55,7 +88,7 @@ namespace MathObjects.Plugin.FloatingPoint
                     var words = new WordGroup("Standard", new string[] 
                         { 
                             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-                            "+", "*", "-", "/", "^", "(", ")" 
+                            "+", "*", "-", "/", "^", "(", ")", "top()", "sqrt()"
                         }
                     );
                     vocab.Add(words);
@@ -65,6 +98,14 @@ namespace MathObjects.Plugin.FloatingPoint
                         { 
                             "sin()", "cos()", "tan()", "asin()", "acos()", "atan()",
                             "pi()", "degrees()", "radians()"
+                        }
+                    );
+                    vocab.Add(words);
+                }
+                {
+                    var words = new WordGroup("Log", new string[] 
+                        { 
+                            "ln()", "log()", "exp()", "e()"
                         }
                     );
                     vocab.Add(words);
