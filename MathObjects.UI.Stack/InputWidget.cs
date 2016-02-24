@@ -23,11 +23,17 @@ namespace MathObjects.UI.Stack
             buffer.InsertAtCursor(input);
             this.textview1.HasFocus = true;
 
-            if (input.Length > 0 && input.Substring(input.Length - 1) == ")")
+            if (input.Length > 1)
             {
-                var pos = buffer.CursorPosition - 1;
-                var iter = buffer.GetIterAtOffset(pos);
-                buffer.PlaceCursor(iter);
+                bool paranAtStart = input.Substring(0,1) == "(";
+                bool paranAtEnd = input.Substring(input.Length - 1) == ")";
+
+                if (!paranAtStart && paranAtEnd)
+                {
+                    var pos = buffer.CursorPosition - 1;
+                    var iter = buffer.GetIterAtOffset(pos);
+                    buffer.PlaceCursor(iter);
+                }
             }
         }
 

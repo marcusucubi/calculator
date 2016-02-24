@@ -81,8 +81,8 @@ namespace MathObjects.UI
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 498;
-			this.DefaultHeight = 568;
+			this.DefaultWidth = 611;
+			this.DefaultHeight = 626;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 			this.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnKeyPressEvent);
