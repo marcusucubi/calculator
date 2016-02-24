@@ -63,10 +63,6 @@
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MathObjetsWidget.cs" />
-    <Compile Include="gtk-gui\MathObjects.UI.Widgets.MathObjetsWidget.cs" />
-    <Compile Include="MathOperationsWidget.cs" />
-    <Compile Include="gtk-gui\MathObjects.UI.Widgets.MathOperationsWidget.cs" />
     <Compile Include="CoolExpander.cs" />
     <Compile Include="ButtonDescriptionGroup.cs" />
     <Compile Include="CoolExpanderList.cs" />

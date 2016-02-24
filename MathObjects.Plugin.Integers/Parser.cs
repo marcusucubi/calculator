@@ -8,11 +8,16 @@ namespace MathObjects.Plugin.Integers
 {
     public class Parser : IParser
     {
-        readonly FactoryRegistry registry;
+        readonly FunctionRegistry registry;
 
         bool hasError;
 
-        public Parser(FactoryRegistry registry)
+        public Parser()
+        {
+            this.registry = new FunctionRegistry();
+        }
+
+        public Parser(FunctionRegistry registry)
         {
             this.registry = registry;
         }
@@ -38,11 +43,11 @@ namespace MathObjects.Plugin.Integers
 
             if (!l.HasError)
             {
-                var init = new InitVisitor(registry, stack);
+                var init = new InitVisitor(stack, registry);
 
                 init.Visit(tree);
 
-                var eval = new EvalVisitor2(registry, stack, init);
+                var eval = new EvalVisitor2(stack, init);
 
                 eval.Visit(tree);
             }

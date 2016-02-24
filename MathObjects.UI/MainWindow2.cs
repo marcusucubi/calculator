@@ -27,18 +27,17 @@ namespace MathObjects.UI
 
             this.fieldwidget1.MathPluginChanged += (sender, e) => 
                 {
-                    var registry = e.Plugin.GetRegistry();
                     var parser = e.Plugin.GetParser();
 
-                    Connect(registry, parser, e.Plugin);
+                    Connect(parser, e.Plugin);
                 };
 
             this.fieldwidget1.SelectFirst();
         }
 
-        void Connect(FactoryRegistry registry, IParser parser, IPlugin plugin) 
+        void Connect(IParser parser, IPlugin plugin) 
         {
-            this.mediator = MediatorFactory.Create(registry, parser);
+            this.mediator = MediatorFactory.Create(parser);
 
             AddKeyboard(this.inputwidget1, plugin);
 
@@ -92,48 +91,6 @@ namespace MathObjects.UI
                     groups.Add(group);
                 }
             }
-
-            /*
-            {
-                var group = new ButtonDescriptionGroup ("Standard");
-
-                for (int i = 0; i < 9; i++) 
-                {
-                    string key = "" + (i + 1);
-                    group.Add (new StandardButtonDescription (key, this.inputwidget1) );
-                }
-
-                group.Add (new StandardButtonDescription ("+", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("*", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("-", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("/", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("^", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("(", this.inputwidget1) );
-                group.Add (new StandardButtonDescription (")", this.inputwidget1) );
-                groups.Add (group);
-            }
-
-            {
-                var group = new ButtonDescriptionGroup ("Triganometry");
-                group.Add (new StandardButtonDescription ("sin()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("cos()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("tan()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("asin()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("acos()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("atan()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("pi()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("degrees()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("radians()", this.inputwidget1) );
-                groups.Add (group);
-            }
-
-            {
-                var group = new ButtonDescriptionGroup ("Logarithm");
-                group.Add (new StandardButtonDescription ("exp()", this.inputwidget1) );
-                group.Add (new StandardButtonDescription ("log()", this.inputwidget1) );
-                groups.Add (group);
-            }
-            */
 
             return groups.ToArray ();
         }

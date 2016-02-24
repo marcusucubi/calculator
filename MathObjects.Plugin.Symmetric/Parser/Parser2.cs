@@ -4,18 +4,12 @@ using MathObjects.Framework.Registry;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using MathObjects.Plugin.Symmetric.Parser;
+using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Symmetric.Parser
 {
     public class Parser2 : IParser
     {
-        readonly FactoryRegistry registry;
-
-        public Parser2(FactoryRegistry registry)
-        {
-            this.registry = registry;
-        }
-
         public bool HasError
         {
             get { return false; }
@@ -35,7 +29,7 @@ namespace MathObjects.Plugin.Symmetric.Parser
 
             if (!l.HasError)
             {
-                var eval = new EvalVisitor2(registry, stack);
+                var eval = new EvalVisitor2(stack);
 
                 eval.Visit(tree);
             }

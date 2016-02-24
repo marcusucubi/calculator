@@ -9,16 +9,12 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
     [TestFixture()]
     public class ParserTest
     {
-        FactoryRegistry reg = new FactoryRegistry();
-
-        Plugin plugin = new Plugin();
-
         IParser parser;
 
         [SetUp]
         public void Setup()
         {
-            plugin.Init(reg);
+            var plugin = new Plugin();
 
             parser = (plugin as IHasParser).Parser;
         }

@@ -8,7 +8,7 @@ using MathObjects.Plugin.Integers.Func;
 namespace MathObjects.Plugin.Integers
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit, IHasName, IHasParser
+    public class Plugin : IPlugin, IHasName, IHasParser
     {
         IParser parser;
 
@@ -24,32 +24,9 @@ namespace MathObjects.Plugin.Integers
 
         public void Startup(IPluginLoader loader)
         {
-        }
+            var registry = new FunctionRegistry();
 
-        public void Init(FactoryRegistry registry)
-        {
-            this.parser = new Parser(registry);
-
-            registry.RegisterObjectFactory(
-                FactoryRegistry.OBJECT, 
-                new MathObject.Factory());
-
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.ADD, 
-                new Add.Factory());
-
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.MULTIPLY, 
-                new Multiplication.Factory());
-            
-            registry.RegisterFunctionFactory(
-                "gcd", new FunctionFactory(typeof(GcdFunction)));
-            
-            registry.RegisterFunctionFactory(
-                "factors", new FunctionFactory(typeof(FactorsFunction)));
-
-            registry.RegisterFunctionFactory(
-                "top", new FunctionFactory(typeof(TopFunction)));
+            parser = new Parser(registry);
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace MathObjects.Framework.Registry
 {
-    public interface IHasInit
-    {
-        void Init(FactoryRegistry registry);
-    }
+    //public interface IHasInit
+    //{
+    //    void Init(FactoryRegistry registry);
+    //}
 }
 

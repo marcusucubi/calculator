@@ -8,25 +8,14 @@ namespace MathObjects.UI.Mediator
 {
     class CalcMediator : MathObjectStack, IMediator
     {
-        readonly FactoryRegistry registry;
-
         readonly IParser parser;
 
         readonly IMathObjectFactory objectFactory;
 
         public CalcMediator(
-            FactoryRegistry registry,
             IParser parser)
         {
-            this.registry = registry;
             this.parser = parser;
-
-            objectFactory = registry.GetObjectFactory(FactoryRegistry.OBJECT);
-        }
-
-        public FactoryRegistry Registry
-        {
-            get { return this.registry; }
         }
 
         public bool Enter(string input)

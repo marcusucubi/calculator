@@ -2,6 +2,7 @@
 using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Integers.Tests
 {
@@ -9,66 +10,27 @@ namespace MathObjects.Plugin.Integers.Tests
     public class IntegerTest
     {
         [Test]
-        public void TestObjectFactory ()
-        {
-            var registry = new FactoryRegistry ();
-            new Plugin().Init(registry);
-
-            var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
-            Assert.NotNull(factory);
-
-            var context = new FactoryContext();
-            context.InitObject = 1;
-            var i = factory.Create(context);
-            Assert.NotNull (i);
-        }
-
-        [Test]
         public void TestOperationFactory ()
         {
-            var registry = new FactoryRegistry ();
-            new Plugin().Init(registry);
+            var parser = new Parser();
+            var stack = new MathObjectStack();
 
-            var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
-            Assert.NotNull(factory);
+            parser.Parse("1+1", stack);
+            var result = stack.Pop();
 
-            var addFactory = registry.GetOperationFactory (FactoryRegistry.ADD);
-            Assert.NotNull(addFactory);
-
-            var context = new FactoryContext();
-            context.InitObject = 1;
-            var i1 = factory.Create(context);
-            Assert.NotNull (i1);
-
-            var add = addFactory.Create (null);
-            Assert.NotNull (add);
-
-            var result = add.Perform (new IMathObject[] {i1, i1} ) as IHasValue;
-            Assert.AreEqual (2, result.Value);
+            Assert.AreEqual (2, result.GetInteger());
         }
 
         [Test]
         public void TestMultiplyOperationFactory ()
         {
-            var registry = new FactoryRegistry ();
-            new Plugin().Init(registry);
+            var parser = new Parser();
+            var stack = new MathObjectStack();
 
-            var factory = registry.GetObjectFactory (FactoryRegistry.OBJECT);
-            Assert.NotNull(factory);
+            parser.Parse("2*2", stack);
+            var result = stack.Pop();
 
-            var multiplyFactory = registry.GetOperationFactory (FactoryRegistry.MULTIPLY);
-            Assert.NotNull(multiplyFactory);
-
-            var context = new FactoryContext();
-            context.InitObject = 2;
-            var i1 = factory.Create(context);
-            Assert.NotNull (i1);
-
-            var multiply = multiplyFactory.Create (null);
-            Assert.NotNull (multiply);
-
-            var result = multiply.Perform (new IMathObject[]{i1, i1}) as IHasValue;
-            Assert.AreEqual (4, result.Value);
+            Assert.AreEqual (4, result.GetInteger());
         }
     }
 }

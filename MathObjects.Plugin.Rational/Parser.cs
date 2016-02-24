@@ -8,13 +8,6 @@ namespace MathObjects.Plugin.Rational
 {
     public class Parser : IParser
     {
-        readonly FactoryRegistry registry;
-
-        public Parser(FactoryRegistry registry)
-        {
-            this.registry = registry;
-        }
-
         public bool HasError
         {
             get { return false; }
@@ -34,7 +27,7 @@ namespace MathObjects.Plugin.Rational
 
             if (!l.HasError)
             {
-                var eval = new EvalVisitor2(registry, stack);
+                var eval = new EvalVisitor2(stack);
                 
                 eval.Visit(tree);
             }

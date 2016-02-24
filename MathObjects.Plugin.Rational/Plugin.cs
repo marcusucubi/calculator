@@ -7,7 +7,7 @@ using MathObjects.Framework.Parser;
 namespace MathObjects.Plugin.Rational
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit, IHasName, IHasParser
+    public class Plugin : IPlugin, IHasName, IHasParser
     {
         IParser parser;
 
@@ -23,27 +23,7 @@ namespace MathObjects.Plugin.Rational
 
         public void Startup(IPluginLoader loader)
         {
-        }
-
-        public void Init(FactoryRegistry registry)
-        {
-            this.parser = new Parser(registry);
-
-            registry.RegisterObjectFactory(
-                FactoryRegistry.OBJECT, 
-                new MathObject.Factory());
-            
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.ADD, 
-                new Add.Factory());
-            
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.MULTIPLY, 
-                new Multiply.Factory());
-
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.INVERSE, 
-                new Inverse.Factory());
+            parser = new Parser();
         }
     }
 }

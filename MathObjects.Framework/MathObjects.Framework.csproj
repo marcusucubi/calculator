@@ -47,6 +47,7 @@
     <Compile Include="IMathFunctionContext.cs" />
     <Compile Include="IMathObjectEx.cs" />
     <Compile Include="IIsError.cs" />
+    <Compile Include="FunctionRegistry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,40 +1,41 @@
 ﻿using System;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
     public static class MathFuncObject
     {
-        public static void Init(FactoryRegistry registry)
+        public static void Init(FunctionRegistry registry)
         {
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "cos", new AngleFunction.Factory(x => Math.Cos(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "sin", new AngleFunction.Factory(x => Math.Sin(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "tan", new AngleFunction.Factory(x => Math.Tan(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "acos", new InverseAngleFunction.Factory(x => Math.Acos(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "asin", new InverseAngleFunction.Factory(x => Math.Asin(x)));
 
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "atan", new InverseAngleFunction.Factory(x => Math.Atan(x)));
 
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "abs", new MathFunction.Factory(x => System.Math.Abs(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "exp", new MathFunction.Factory(x => System.Math.Exp(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "log", new MathFunction.Factory(x => System.Math.Log(x)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "sqrt", new MathFunction.Factory(x => System.Math.Sqrt(x)));
         }
     }

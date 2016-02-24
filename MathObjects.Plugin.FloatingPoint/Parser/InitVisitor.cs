@@ -10,13 +10,13 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         readonly IMathObjectStack stack;
 
-        readonly FactoryRegistry registry;
+        readonly FunctionRegistry registry;
 
         readonly IDictionary<FloatingPointParser.FuncCallContext, IMathFunction> map =
             new Dictionary<FloatingPointParser.FuncCallContext, IMathFunction>();
 
         public InitVisitor(
-            FactoryRegistry registry, 
+            FunctionRegistry registry, 
             IMathObjectStack stack)
         {
             this.registry = registry;

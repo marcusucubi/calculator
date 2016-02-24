@@ -12,18 +12,14 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         readonly IMathObjectStack stack;
 
-        readonly FactoryRegistry registry;
-
         readonly InitVisitor init;
 
         readonly IMathObject top;
 
         public EvalVisitor2(
-            FactoryRegistry registry, 
             IMathObjectStack stack,
             InitVisitor init)
         {
-            this.registry = registry;
             this.stack = stack;
             this.init = init;
             this.top = stack.Top;
@@ -191,12 +187,12 @@ namespace MathObjects.Plugin.FloatingPoint
             if (context.op.Type == FloatingPointParser.MUL)
             {
                 result = new MultiplyObject(left.GetDouble(), right.GetDouble());
-                op = registry.OperationDictionary[FactoryRegistry.MULTIPLY].Create(null);
+                op = new Multiply();
             }
             else
             {
                 result = new MultiplyObject(left.GetDouble(), 1 / right.GetDouble());
-                op = registry.OperationDictionary[FactoryRegistry.DIVIDE].Create(null);
+                op = new Multiply();
             }
 
             stack.Push(op);

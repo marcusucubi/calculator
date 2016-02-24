@@ -15,7 +15,6 @@ namespace MathObjects.Plugin.Integers
         readonly InitVisitor init;
 
         public EvalVisitor2(
-            FactoryRegistry registry, 
             IMathObjectStack stack,
             InitVisitor init)
         {

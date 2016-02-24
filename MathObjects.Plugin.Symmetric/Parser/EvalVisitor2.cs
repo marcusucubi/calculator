@@ -15,9 +15,7 @@ namespace MathObjects.Plugin.Symmetric.Parser
 
         List<CycleList> cycleList = new List<CycleList>();
 
-        public EvalVisitor2(
-            FactoryRegistry registry, 
-            IMathObjectStack stack)
+        public EvalVisitor2(IMathObjectStack stack)
         {
             this.stack = stack;
         }

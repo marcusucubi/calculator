@@ -8,24 +8,11 @@ namespace MathObjects.Framework.Registry
 {
     public class PluginRegistry
     {
-        readonly Dictionary<IPlugin, FactoryRegistry> plugins;
-
         readonly Dictionary<string, IPlugin> names;
 
         public PluginRegistry()
         {
-            plugins = new Dictionary<IPlugin, FactoryRegistry>();
             names = new Dictionary<string, IPlugin>();
-        }
-
-        public void Registry(IPlugin plugin, FactoryRegistry registry)
-        {
-            this.plugins.Add(plugin, registry);
-        }
-
-        public ReadOnlyDictionary<IPlugin, FactoryRegistry> Plugins
-        {
-            get { return new ReadOnlyDictionary<IPlugin, FactoryRegistry>(this.plugins); }
         }
 
         public ReadOnlyDictionary<string, IPlugin> Names
@@ -39,26 +26,17 @@ namespace MathObjects.Framework.Registry
 
             loader.Load(path);
 
-            var registry = new FactoryRegistry();
-
             foreach (var plugin in loader.Plugins)
             {
                 var name = path;
+
                 var hasName = plugin as IHasName;
                 if (hasName != null)
                 {
                     name = hasName.Name;
                 }
 
-                var hasInit = plugin as IHasInit;
-
-                if (hasInit != null)
-                {
-                    hasInit.Init(registry);
-
-                    this.plugins.Add(plugin, registry);
-                    this.names.Add(name, plugin);
-                }
+                this.names.Add(name, plugin);
             }
         }
     }

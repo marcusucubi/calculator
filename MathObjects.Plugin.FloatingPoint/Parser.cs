@@ -9,11 +9,16 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     public class Parser : IParser
     {
-        readonly FactoryRegistry registry;
+        readonly FunctionRegistry registry;
 
         bool hasError;
 
-        public Parser(FactoryRegistry registry)
+        public Parser()
+        {
+            this.registry = new FunctionRegistry();
+        }
+
+        public Parser(FunctionRegistry registry)
         {
             this.registry = registry;
         }
@@ -43,7 +48,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
                 init.Visit(tree);
 
-                var eval = new EvalVisitor2(registry, stack, init);
+                var eval = new EvalVisitor2(stack, init);
 
                 eval.Visit(tree);
             }

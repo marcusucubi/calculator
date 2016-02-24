@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using MathObjects.Core.Plugin;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Plugin.FloatingPoint.MathFunc;
 using MathObjects.Plugin.FloatingPoint.Func;
-using System.Collections.Generic;
 using MathObjects.Framework.Vocabulary;
-using System.Collections.ObjectModel;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasInit, IHasName, IHasParser, IHasVocabulary
+    public class Plugin : IPlugin, IHasName, IHasParser, IHasVocabulary
     {
         IParser parser;
 
@@ -28,45 +28,21 @@ namespace MathObjects.Plugin.FloatingPoint
             
         public void Startup(IPluginLoader loader)
         {
-        }
+            var registry = new FunctionRegistry();
 
-        public void Init(FactoryRegistry registry)
-        {
-            this.parser = new Parser(registry);
-
-            registry.RegisterObjectFactory(
-                FactoryRegistry.OBJECT, 
-                new MathObject.Factory());
-            
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.ADD, 
-                new Add.Factory());
-            
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.SUBTRACT, 
-                new Subtract.Factory());
-
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.MULTIPLY, 
-                new Multiply.Factory());
-            
-            registry.RegisterOperationFactory2(
-                FactoryRegistry.DIVIDE, 
-                new Divide.Factory());
-
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "pi", new ConstantFunction.Factory(Math.PI));
 
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "top", new FunctionFactory(typeof(TopFunction)));
 
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "degrees", new FunctionFactory(typeof(DegreesFunction)));
             
-            registry.RegisterFunctionFactory(
+            registry.Put(
                 "radians", new FunctionFactory(typeof(RadiansFunction)));
-
-            MathFuncObject.Init(registry);
+        
+            parser = new Parser(registry);
         }
 
         public ReadOnlyCollection<WordGroup> WordGroups

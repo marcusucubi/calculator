@@ -10,17 +10,15 @@ namespace MathObjects.Plugin.Integers
     {
         readonly IMathObjectStack stack;
 
-        readonly FactoryRegistry registry;
+        readonly FunctionRegistry registry;
 
         readonly IDictionary<IntegersParser.FuncCallContext, IMathFunction> map =
             new Dictionary<IntegersParser.FuncCallContext, IMathFunction>();
 
-        public InitVisitor(
-            FactoryRegistry registry, 
-            IMathObjectStack stack)
+        public InitVisitor(IMathObjectStack stack, FunctionRegistry registry)
         {
-            this.registry = registry;
             this.stack = stack;
+            this.registry = registry;
         }
 
         public IDictionary<IntegersParser.FuncCallContext, IMathFunction> Map 

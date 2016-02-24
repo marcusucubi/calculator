@@ -10,13 +10,9 @@ namespace MathObjects.Plugin.Rational
     {
         readonly IMathObjectStack stack;
 
-        readonly FactoryRegistry registry;
-
         public EvalVisitor2(
-            FactoryRegistry registry, 
             IMathObjectStack stack)
         {
-            this.registry = registry;
             this.stack = stack;
         }
 
@@ -74,12 +70,12 @@ namespace MathObjects.Plugin.Rational
             if (context.op.Type == RationalParser.ADD)
             {
                 result = new AddObject(left, right);
-                op = registry.OperationDictionary[FactoryRegistry.ADD].Create(null);
+                op = new Add();
             }
             else
             {
                 result = new AddObject(left, right.GetInverse());
-                op = registry.OperationDictionary[FactoryRegistry.SUBTRACT].Create(null);
+                op = new Add();
             }
 
             stack.Push(op);
@@ -100,13 +96,12 @@ namespace MathObjects.Plugin.Rational
             if (context.op.Type == RationalParser.MUL)
             {
                 result = new MultiplyObject(left, right);
-                op = registry.OperationDictionary[
-                    FactoryRegistry.MULTIPLY].Create(null);
+                op = new Multiply();
             }
             else
             {
                 result = new MultiplyObject(left, right);
-                op = registry.OperationDictionary[FactoryRegistry.DIVIDE].Create(null);
+                op = new Multiply();
             }
 
             stack.Push(op);

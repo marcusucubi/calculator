@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace MathObjects.Framework.Registry
-{
+{/*
     public class FactoryRegistry
     {
         public static readonly string OBJECT = "object";
@@ -94,5 +94,6 @@ namespace MathObjects.Framework.Registry
             return this.functionMap[name];
         }
     }
+    */
 }
 
