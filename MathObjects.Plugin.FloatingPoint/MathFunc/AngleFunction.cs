@@ -30,12 +30,26 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
                 if (angle == null)
                 {
-                    var first = new DegreesOperation();
+                    var raw = target.GetDouble() / Math.PI;
 
-                    first.SetObjectDecoration("name", "degrees");
+                    if (Math.Truncate(raw) == raw)
+                    {
+                        var first = new RadiansOperation();
 
-                    return new CompositeOperation(
-                        first, new AngleOperation(this.handler));
+                        first.SetObjectDecoration("name", "radians");
+
+                        return new CompositeOperation(
+                            first, new AngleOperation(this.handler));
+                    }
+                    else
+                    {
+                        var first = new DegreesOperation();
+
+                        first.SetObjectDecoration("name", "degrees");
+
+                        return new CompositeOperation(
+                            first, new AngleOperation(this.handler));
+                    }
                 }
             }
                 

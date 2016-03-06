@@ -3,10 +3,11 @@ using System;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using System.Diagnostics;
+using MathObjects.Core.Plugin;
 
 namespace MathObjects.Plugin.FloatingPoint.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ParserTest
     {
         IParser parser;
@@ -14,7 +15,11 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         [SetUp]
         public void Setup()
         {
-            var plugin = new Plugin();
+            var plugin = new MathObjects.Plugin.FloatingPoint.Plugin();
+
+            var loader = new PluginLoader();
+
+            plugin.Startup(loader);
 
             parser = (plugin as IHasParser).Parser;
         }

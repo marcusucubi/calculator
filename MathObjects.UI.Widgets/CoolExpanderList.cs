@@ -65,6 +65,7 @@ namespace MathObjects.UI.Widgets
                     e.Expanded = true;
                 }
             }
+
             CloseOthers (index);
         }
 

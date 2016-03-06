@@ -121,5 +121,6 @@
     <None Include="Parser\FloatingPoint.g4" />
     <None Include="Parser\FloatingPoint.tokens" />
     <None Include="Parser\FloatingPointLexer.tokens" />
+    <None Include="Parser\gen.sh" />
   </ItemGroup>
 </Project>

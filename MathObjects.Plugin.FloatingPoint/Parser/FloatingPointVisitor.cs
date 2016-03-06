@@ -37,6 +37,13 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitPrintExpr([NotNull] FloatingPointParser.PrintExprContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>assignment</c>
+	/// labeled alternative in <see cref="FloatingPointParser.stat"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAssignment([NotNull] FloatingPointParser.AssignmentContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>FuncCall</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
 	/// </summary>
@@ -57,13 +64,6 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitNegative([NotNull] FloatingPointParser.NegativeContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>TOP</c>
-	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitTOP([NotNull] FloatingPointParser.TOPContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Exponent</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
@@ -92,13 +92,6 @@ public interface IFloatingPointVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitParens([NotNull] FloatingPointParser.ParensContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>PI</c>
-	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitPI([NotNull] FloatingPointParser.PIContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Int</c>
 	/// labeled alternative in <see cref="FloatingPointParser.expr"/>.

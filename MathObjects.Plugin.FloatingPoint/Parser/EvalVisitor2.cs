@@ -25,21 +25,6 @@ namespace MathObjects.Plugin.FloatingPoint
             this.top = stack.Top;
         }
 
-        public override IMathObject VisitTOP(
-            FloatingPointParser.TOPContext context)
-        {
-            stack.Push(this.top);
-            return this.top;
-        }
-
-        public override IMathObject VisitPI(
-            FloatingPointParser.PIContext context)
-        {
-            var result = new MathObject(Math.PI);
-            stack.Push(result);
-            return result;
-        }
-
         public override IMathObject VisitNegative(
             FloatingPointParser.NegativeContext context)
         {

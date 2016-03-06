@@ -8,7 +8,8 @@ options {
 @parser::namespace{MathObjects.Core.Parser}
 
 stat     :
-         expr       # printExpr
+         expr                           # printExpr
+         |  ID '=' expr ';'             # assignment
          ;
 
 /** A rule called init that matches comma-separated values between {...}. */
@@ -20,8 +21,6 @@ expr     :
          | expr op=('+'|'-') expr       # AddSub
          | INT                          # Int
          | FLOAT                        # Float
-         | PI                           # PI
-         | TOP                          # TOP
          | '(' expr ')'                 # Parens
          ;
 
@@ -44,8 +43,6 @@ LETTER   : [a-zA-Z\u0080-\u00FF_] ;
 
 ID       : LETTER (LETTER|DIGIT)* ;
 
-PI       : 'pi' ;
-TOP      : 'top' ;
 MUL      : '*' ; // assigns token name to '*' used above in grammar
 DIV      : '/' ;
 ADD      : '+' ;

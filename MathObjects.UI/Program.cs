@@ -22,8 +22,8 @@ namespace MathObjects.UI
             MainClass.PluginRegistry = reg;
 
             reg.Load("MathObjects.Plugin.FloatingPoint.dll");
-            reg.Load("MathObjects.Plugin.Rational.dll");
-            reg.Load("MathObjects.Plugin.Integers.dll");
+            //reg.Load("MathObjects.Plugin.Rational.dll");
+            //reg.Load("MathObjects.Plugin.Integers.dll");
             reg.Load("MathObjects.Plugin.Symmetric.dll");
 
             var win = new MainWindow2();
