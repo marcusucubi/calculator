@@ -28,7 +28,7 @@ namespace MathObjects.Plugin.Integers
             set { hasError = value; }
         }
 
-        public void Parse(string data, IMathObjectStack stack)
+        public void Parse(string data, IMathObjectStack stack, IMathScope scope)
         {
             var input = new AntlrInputStream(data);
             var lexer = new IntegersLexer(input);

@@ -9,22 +9,30 @@ namespace MathObjects.Framework
             var hasOutput = obj as IHasOutput;
             if (hasOutput != null)
             {
-                var output = hasOutput.Output;
-                if (output is T)
-                {
-                    return (T)output;
-                }
+                return hasOutput.GetValue<T>();
+            }
 
-                var has2 = hasOutput.Output as IHasOutput;
-                if (has2 != null)
-                {
-                    if (has2.Output is T)
-                    {
-                        return (T)has2.Output;
-                    }
+            return default(T);
+        }
 
-                    return GetValue<T>(has2.Output as IMathObject);
-                }
+        public static T GetValue<T>(this IHasOutput obj)
+        {
+            var output = obj.Output;
+            if (output is T)
+            {
+                return (T)output;
+            }
+
+            var mobj = output as IMathObject;
+            if (mobj != null)
+            {
+                return mobj.GetValue<T>();
+            }
+
+            var hasOutput = output as IHasOutput;
+            if (hasOutput != null)
+            {
+                return hasOutput.GetValue<T>();
             }
 
             return default(T);

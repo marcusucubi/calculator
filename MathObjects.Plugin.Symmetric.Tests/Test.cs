@@ -25,7 +25,7 @@ namespace MathObjects.Plugin.Symmetric.Tests
         {
             var stack = new MathObjectStack();
 
-            parser.Parse("(1,2,3,4)", stack);
+            parser.Parse("(1,2,3,4)", stack, null);
 
             var cycle = CycleList.Create(new int[] {1,2,3,4});
             Assert.AreEqual(cycle, stack.Top.GetCycleList());
@@ -36,7 +36,7 @@ namespace MathObjects.Plugin.Symmetric.Tests
         {
             var stack = new MathObjectStack();
 
-            parser.Parse("(1,2,3)(1,2,3)(1,2,3)", stack);
+            parser.Parse("(1,2,3)(1,2,3)(1,2,3)", stack, null);
 
             var cycle = CycleList.Create(new int[] {});
             Assert.AreEqual(cycle, stack.Top.GetCycleList());
@@ -47,7 +47,7 @@ namespace MathObjects.Plugin.Symmetric.Tests
         {
             var stack = new MathObjectStack();
 
-            parser.Parse("(1,2)(1,2)", stack);
+            parser.Parse("(1,2)(1,2)", stack, null);
 
             var cycle = CycleList.Create(new int[] {});
             Assert.AreEqual(cycle, stack.Top.GetCycleList());

@@ -12,6 +12,8 @@ namespace MathObjects.UI.Mediator
 
         readonly IMathObjectFactory objectFactory;
 
+        readonly IMathScope scope = new MathScope();
+
         public CalcMediator(
             IParser parser)
         {
@@ -24,7 +26,7 @@ namespace MathObjects.UI.Mediator
 
             if (parser != null)
             {
-                parser.Parse(input, this);
+                parser.Parse(input, this, scope);
 
                 result = !parser.HasError;
             }

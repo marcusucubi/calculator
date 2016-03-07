@@ -6,6 +6,7 @@ using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.UI.Mediator;
 using MathObjects.Core.DecoratableObject;
+using System.Diagnostics;
 
 namespace MathObjects.UI.Stack
 {
@@ -82,6 +83,12 @@ namespace MathObjects.UI.Stack
         {
             foreach(var i in numbers)
             {
+                Debug.Assert(i != null);
+                if (i == null)
+                {
+                    throw new Exception();
+                }
+
                 string s = "";
                 string s2 = GetName(i);
 

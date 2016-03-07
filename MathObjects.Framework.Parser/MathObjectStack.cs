@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MathObjects.Framework.Parser
 {
@@ -58,6 +59,8 @@ namespace MathObjects.Framework.Parser
 
         public void Push(IMathObject obj)
         {
+            Debug.Assert(obj != null);
+
             if (obj is IMathOperation)
             {
                 Push((IMathOperation) obj);

@@ -1,15 +1,15 @@
 ﻿grammar FloatingPoint;
 
-options {
-    language=CSharp;
-}
- 
-@lexer::namespace{MathObjects.Core.Parser}
-@parser::namespace{MathObjects.Core.Parser}
+options { language=CSharp; }
 
+file     :
+         stat+
+         ;
+   
 stat     :
-         expr                           # printExpr
-         |  ID '=' expr ';'             # assignment
+         expr ';'                       # printExpr
+         | ID ('<-'|'=') expr ';'       # assignment
+         | ';'                          # empty
          ;
 
 /** A rule called init that matches comma-separated values between {...}. */
@@ -21,6 +21,7 @@ expr     :
          | expr op=('+'|'-') expr       # AddSub
          | INT                          # Int
          | FLOAT                        # Float
+         | ID                           # Variable
          | '(' expr ')'                 # Parens
          ;
 
@@ -38,14 +39,16 @@ FLOAT    : DIGIT+ '.' DIGIT*
          | '.' DIGIT+
          ;
 
-DIGIT    : [0-9] ;
-LETTER   : [a-zA-Z\u0080-\u00FF_] ;
+ID       : LETTER+ DIGIT* ;
 
-ID       : LETTER (LETTER|DIGIT)* ;
+DIGIT    : [0-9] ;
+LETTER   : [a-zA-Z] ;
 
 MUL      : '*' ; // assigns token name to '*' used above in grammar
 DIV      : '/' ;
 ADD      : '+' ;
 SUB      : '-' ;
+START    : '{' ;
+END      : '}' ;
 
 WS       : [ \t\r\n]+ -> skip ;

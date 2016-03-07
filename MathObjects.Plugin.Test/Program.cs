@@ -18,7 +18,16 @@ namespace MathObjects.Plugin.Test
 
             var stack = new MathObjectStack();
 
-            parser.Parse("1+2", stack);
+            var scope = new MathScope();
+
+            parser.Parse("x <-2;", stack, scope);
+
+            parser.Parse("x", stack, scope);
+
+            var top = stack.Top;
+
+            
+
         }
     }
 }

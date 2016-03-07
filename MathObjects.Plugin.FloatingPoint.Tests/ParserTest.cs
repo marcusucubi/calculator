@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Diagnostics;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
-using System.Diagnostics;
 using MathObjects.Core.Plugin;
 
 namespace MathObjects.Plugin.FloatingPoint.Tests
@@ -28,8 +28,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("1+2", stack);
+            parser.Parse("1+2", stack, scope);
 
             Assert.AreEqual(3, stack.Top.GetDouble());
         }
@@ -38,8 +39,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase2()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("1*2", stack);
+            parser.Parse("1*2", stack, scope);
 
             Assert.AreEqual(2, stack.Top.GetDouble());
         }
@@ -48,8 +50,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase3()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("(1*2)+(3*4)", stack);
+            parser.Parse("(1*2)+(3*4)", stack, scope);
 
             Assert.AreEqual(14, stack.Top.GetDouble());
         }
@@ -58,8 +61,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase4()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("1*2+3*4", stack);
+            parser.Parse("1*2+3*4", stack, scope);
 
             Assert.AreEqual(14, stack.Top.GetDouble());
         }
@@ -68,8 +72,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase5()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("pi()", stack);
+            parser.Parse("pi()", stack, scope);
 
             Assert.AreEqual(Math.PI, stack.Top.GetDouble());
         }
@@ -78,8 +83,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase6()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("cos(radians(pi()))", stack);
+            parser.Parse("cos(radians(pi()))", stack, scope);
 
             Assert.AreEqual(-1, stack.Top.GetDouble());
         }
@@ -88,8 +94,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase7()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("cos(degrees(180))", stack);
+            parser.Parse("cos(degrees(180))", stack, scope);
 
             Assert.AreEqual(-1, stack.Top.GetDouble());
         }
@@ -98,8 +105,9 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
         public void TestCase8()
         {
             var stack = new MathObjectStack();
+            var scope = new MathScope();
 
-            parser.Parse("degrees(acos(cos(degrees(60))))", stack);
+            parser.Parse("degrees(acos(cos(degrees(60))))", stack, scope);
 
             Assert.AreEqual(60, stack.Top.GetDouble());
         }

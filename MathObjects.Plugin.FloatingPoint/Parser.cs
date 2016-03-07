@@ -24,7 +24,10 @@ namespace MathObjects.Plugin.FloatingPoint
             set { hasError = value; }
         }
 
-        public void Parse(string data, IMathObjectStack stack)
+        public void Parse(
+            string data, 
+            IMathObjectStack stack, 
+            IMathScope scope)
         {
             var input = new AntlrInputStream(data);
             var lexer = new FloatingPointLexer(input);
@@ -34,18 +37,22 @@ namespace MathObjects.Plugin.FloatingPoint
             var l = new ErrorListener();
             parser.AddErrorListener(l);
 
-            var tree = parser.stat(); 
-            this.hasError = l.HasError;
+            var file = parser.file();
 
-            if (!l.HasError)
+            foreach (var stat in file.stat())
             {
-                var init = new InitVisitor(registry, stack);
+                this.hasError = l.HasError;
 
-                init.Visit(tree);
+                if (!l.HasError)
+                {
+                    var init = new InitVisitor(registry, stack);
 
-                var eval = new EvalVisitor2(stack, init);
+                    init.Visit(stat);
 
-                eval.Visit(tree);
+                    var eval = new EvalVisitor2(stack, scope, init);
+
+                    eval.Visit(stat);
+                }
             }
        }
     }

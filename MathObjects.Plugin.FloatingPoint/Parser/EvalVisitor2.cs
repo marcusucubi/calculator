@@ -12,17 +12,53 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         readonly IMathObjectStack stack;
 
-        readonly InitVisitor init;
+        readonly IMathScope scope;
 
-        readonly IMathObject top;
+        readonly InitVisitor init;
 
         public EvalVisitor2(
             IMathObjectStack stack,
+            IMathScope scope,
             InitVisitor init)
         {
             this.stack = stack;
+            this.scope = scope;
             this.init = init;
-            this.top = stack.Top;
+        }
+
+        public override IMathObject VisitPrintExpr(
+            FloatingPointParser.PrintExprContext context)
+        {
+            var expr = Visit(context.expr());
+
+            //stack.Push(expr);
+
+            return expr;
+        }
+
+        public override IMathObject VisitVariable(
+            FloatingPointParser.VariableContext context)
+        {
+            var name = context.ID().GetText();
+
+            var value = new Ref(this.scope, name);
+
+            stack.Push(value);
+
+            return value;
+        }
+
+        public override IMathObject VisitAssignment(
+            FloatingPointParser.AssignmentContext context)
+        {
+            var left = context.ID().GetText();
+            var right = Visit(context.expr());
+
+            var value = this.stack.Pop();
+
+            this.scope.Put(left, value);
+
+            return right;
         }
 
         public override IMathObject VisitNegative(

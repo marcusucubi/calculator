@@ -47,6 +47,8 @@
     <Compile Include="ParserErrorListener.cs" />
     <Compile Include="MathObjectStackEx.cs" />
     <Compile Include="CompositeOperation.cs" />
+    <Compile Include="MathScope.cs" />
+    <Compile Include="IMathScope.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
