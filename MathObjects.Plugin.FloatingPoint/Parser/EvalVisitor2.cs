@@ -5,6 +5,7 @@ using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.DecoratableObject;
+using System.Diagnostics;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -24,16 +25,25 @@ namespace MathObjects.Plugin.FloatingPoint
             this.stack = stack;
             this.scope = scope;
             this.init = init;
+
+            Debug.WriteLine("");
         }
 
         public override IMathObject VisitPrintExpr(
             FloatingPointParser.PrintExprContext context)
         {
-            var expr = Visit(context.expr());
+            Debug.WriteLine("Start VisitPrintExpr []");
 
-            //stack.Push(expr);
+            var result = Visit(context.expr());
 
-            return expr;
+            result = result.CopyByValue();
+
+            this.stack.Pop();
+            this.stack.Push(result);
+
+            Debug.WriteLine("End VisitPrintExpr []");
+
+            return result;
         }
 
         public override IMathObject VisitVariable(
@@ -41,9 +51,14 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             var name = context.ID().GetText();
 
-            var value = new Ref(this.scope, name);
+            Debug.WriteLine("Start VisitVariable [" + name + "]");
+
+            IMathObject value = new Ref(this.scope, name);
 
             stack.Push(value);
+
+            Debug.WriteLine("End VisitVariable [" + 
+                name + "=" + value.GetDouble() + "]");
 
             return value;
         }
@@ -52,11 +67,17 @@ namespace MathObjects.Plugin.FloatingPoint
             FloatingPointParser.AssignmentContext context)
         {
             var left = context.ID().GetText();
+
+            Debug.WriteLine("Start VisitAssignment [" + left + "]");
+
             var right = Visit(context.expr());
 
             var value = this.stack.Pop();
 
             this.scope.Put(left, value);
+
+            Debug.WriteLine("End VisitAssignment [" + 
+                left + "=" + value + "] ["+ left + "=" + value.GetDouble() + "]");
 
             return right;
         }
@@ -68,6 +89,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
             stack.Push(new Negative());
 
+            Debug.WriteLine("VisitNegative");
+
             return new NegativeObject(this.stack.Top.GetDouble());
         }
 
@@ -78,6 +101,8 @@ namespace MathObjects.Plugin.FloatingPoint
             var right = Visit(context.GetChild(0));
 
             stack.Push(new ExponentOperation());
+
+            Debug.WriteLine("VisitExponent []");
 
             return new ExponentObject(left.GetDouble(), right.GetDouble());
         }
@@ -93,16 +118,27 @@ namespace MathObjects.Plugin.FloatingPoint
                 list.Add(obj);
             }
 
+            Debug.WriteLine("VisitExprList []");
+
             return new ArrayObject(list.ToArray());
         }
 
         public override IMathObject VisitFuncCall(
             FloatingPointParser.FuncCallContext context)
         {
+            Debug.WriteLine("Start VisitFuncCall []");
+
             if (!this.init.Map.ContainsKey(context))
             {
-                var error = new ErrorObject("function not found: " + context.ID().GetText());
+                var error = new ErrorObject(
+                    "function not found: " + 
+                    context.ID().GetText());
+                
                 stack.Push(error);
+
+                Debug.WriteLine("End VisitFuncCall [" + 
+                    context.ID().GetText() + "]");
+
                 return error;
             }
             
@@ -130,6 +166,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
             stack.Push(operation);
 
+            Debug.WriteLine("End VisitFuncCall [" + operation + "]");
+            
             return operation.Perform(paramList.ToArray());
         }
 
@@ -140,6 +178,9 @@ namespace MathObjects.Plugin.FloatingPoint
             double.TryParse(context.FLOAT().GetText(), out temp);
             var result = new MathObject(temp);
             stack.Push(result);
+
+            Debug.WriteLine("VisitFloat [" + result + "]");
+
             return result;
         }
 
@@ -150,6 +191,9 @@ namespace MathObjects.Plugin.FloatingPoint
             double.TryParse(context.INT().GetText(), out temp);
             var result = new MathObject(temp);
             stack.Push(result);
+
+            Debug.WriteLine("VisitInt [" + result + "]");
+
             return result;
         }
 
@@ -160,18 +204,29 @@ namespace MathObjects.Plugin.FloatingPoint
             double.TryParse(context.INT().GetText(), out temp);
             var result = new MathObject(temp);
             stack.Push(result);
+
+            Debug.WriteLine("VisitValue [" + result + "]");
+
             return result;
         }
 
         public override IMathObject VisitParens(
             FloatingPointParser.ParensContext context)
         {
-            return Visit(context.expr()); 
+            Debug.WriteLine("Start VisitParens");
+
+            var result = Visit(context.expr());
+            
+            Debug.WriteLine("End VisitParens");
+
+            return result; 
         }
 
         public override IMathObject VisitAddSub(
             FloatingPointParser.AddSubContext context)
         {
+            Debug.WriteLine("Start VisitAddSub []");
+
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
@@ -192,12 +247,17 @@ namespace MathObjects.Plugin.FloatingPoint
 
             stack.Push(op);
 
+            Debug.WriteLine("End VisitAddSub [" + 
+                left + "+" + right + "] [" + result.GetDouble() + "]");
+
             return result;
         }
 
         public override IMathObject VisitMulDiv(
             FloatingPointParser.MulDivContext context)
         {
+            Debug.WriteLine("Start VisitMulDiv []");
+
             var left = Visit(context.GetChild(2));
             var right = Visit(context.GetChild(0));
 
@@ -207,16 +267,23 @@ namespace MathObjects.Plugin.FloatingPoint
 
             if (context.op.Type == FloatingPointParser.MUL)
             {
-                result = new MultiplyObject(left.GetDouble(), right.GetDouble());
+                result = new MultiplyObject(
+                    left.GetDouble(), right.GetDouble());
+                
                 op = new Multiply();
             }
             else
             {
-                result = new MultiplyObject(left.GetDouble(), 1 / right.GetDouble());
+                result = new MultiplyObject(
+                    left.GetDouble(), 1 / right.GetDouble());
+                
                 op = new Divide();
             }
 
             stack.Push(op);
+
+            Debug.WriteLine("End VisitMulDiv [" + 
+                left + "+" + right + "] [" + result.GetDouble() + "]");
 
             return result;
         }

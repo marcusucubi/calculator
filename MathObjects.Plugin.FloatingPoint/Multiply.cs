@@ -21,13 +21,8 @@ namespace MathObjects.Plugin.FloatingPoint
             return new MultiplyObject(leftValue, rightValue);
         }
 
-        public class Factory : IMathOperationFactory, IHasName
+        public class Factory : IMathOperationFactory
         {
-            public string Name
-            {
-                get { return "*"; }
-            }
-
             public IMathOperation Create(object parm)
             {
                 return new Multiply();

@@ -7,7 +7,7 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class MathObject : IMathObject, IHasOutput, IHasDisplayValue 
+    class MathObject : IMathObject, IHasOutput, IHasDisplayValue, ICanCopyByValue 
     {
         readonly double value;
 
@@ -26,30 +26,25 @@ namespace MathObjects.Plugin.FloatingPoint
             get { return this.value.ToString(); }
         }
 
+        public IMathObject CopyByValue()
+        {
+            var result = new MathObject(this.value);
+
+            result.CopyDecorations(this);
+
+            return result;
+        }
+
         public override string ToString()
         {
             return DisplayValue;
         }
 
-        public class Factory : IMathObjectFactory, IMathObjectMeta
+        public class Factory : IMathObjectFactory
         {
             public IMathObject Create(IMathObjectFactoryContext context)
             {
                 return new MathObject(0);
-            }
-
-            public string[] PossibleParameters 
-            { 
-                get 
-                { 
-                    return new string[] 
-                    {
-                        "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-                        "top()", "pi()", 
-                        "(", ")", 
-                        "^", "+", "-", "*", "/"
-                    }; 
-                } 
             }
         }
     }

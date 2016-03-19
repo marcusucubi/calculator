@@ -29,6 +29,11 @@ namespace MathObjects.Plugin.FloatingPoint
             IMathObjectStack stack, 
             IMathScope scope)
         {
+            if (!data.TrimEnd().EndsWith(";"))
+            {
+                data = data + ";";
+            }
+
             var input = new AntlrInputStream(data);
             var lexer = new FloatingPointLexer(input);
             var tokens = new CommonTokenStream(lexer);

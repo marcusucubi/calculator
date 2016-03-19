@@ -4,6 +4,20 @@ namespace MathObjects.Framework
 {
     public static class IMathObjectEx
     {
+        public static IMathObject CopyByValue(this IMathObject obj)
+        {
+            var result = obj;
+
+            var canCopy = obj as ICanCopyByValue;
+
+            if (canCopy != null)
+            {
+                result = canCopy.CopyByValue();
+            }
+
+            return result;
+        }
+
         public static T GetValue<T>(this IMathObject obj)
         {
             var hasOutput = obj as IHasOutput;

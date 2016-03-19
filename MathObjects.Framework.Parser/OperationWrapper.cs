@@ -1,11 +1,12 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Core.DecoratableObject;
+using System.Collections.Generic;
 
 namespace MathObjects.Framework.Parser
 {
     public class OperationWrapper : 
-        IMathObject, IHasChildren, IHasOutput
+        IMathObject, IHasChildren, IHasOutput, ICanCopyByValue 
     {
         readonly IMathObject[] objs;
 
@@ -27,6 +28,18 @@ namespace MathObjects.Framework.Parser
         public object Output
         {
             get { return op.Perform(Children); }
+        }
+
+        public IMathObject CopyByValue()
+        {
+            var list = new List<IMathObject>();
+
+            foreach (var obj in this.objs)
+            {
+                list.Add(obj.CopyByValue());
+            }
+
+            return new OperationWrapper(list.ToArray(), this.op);
         }
     }
 }

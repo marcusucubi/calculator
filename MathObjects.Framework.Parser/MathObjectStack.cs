@@ -51,7 +51,9 @@ namespace MathObjects.Framework.Parser
 
             for (int i = 0; i < size; i++)
             {
-                list.Add(this.objectStack.Pop());
+                var obj = this.objectStack.Pop();
+
+                list.Add(obj);
             }
 
             return list.ToArray();

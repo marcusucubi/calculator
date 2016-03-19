@@ -15,6 +15,11 @@ namespace MathObjects.Framework
 
         public IMathObjectFactory GetFunctionFactory(string name)
         {
+            if (!map.ContainsKey(name))
+            {
+                return null;
+            }
+
             return map[name];
         }
     }

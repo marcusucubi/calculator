@@ -1,10 +1,11 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Ref : IMathObject, IHasOutput, IHasDisplayValue, IHasChildren
+    public class Ref : IMathObject, IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue
     {
         readonly IMathScope scope;
 
@@ -14,6 +15,16 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             this.scope = scope;
             this.name = name;
+        }
+
+        public string Name
+        {
+            get { return this.name; }
+        }
+
+        public IMathObject MathObject
+        {
+            get { return this.scope.Get(this.name); }
         }
 
         public object Output
@@ -31,9 +42,18 @@ namespace MathObjects.Plugin.FloatingPoint
             get { return this.name; }
         }
 
+        public IMathObject CopyByValue()
+        {
+            var result = new ValueRef(this.scope, this.name);
+
+            result.CopyDecorations(this);
+
+            return result;
+        }
+
         public override string ToString()
         {
-            return DisplayValue;
+            return "ref(" + DisplayValue + ")";
         }
     }
 }

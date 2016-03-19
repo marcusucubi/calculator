@@ -49,6 +49,7 @@
     <Compile Include="CompositeOperation.cs" />
     <Compile Include="MathScope.cs" />
     <Compile Include="IMathScope.cs" />
+    <Compile Include="IHasChildrenEx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

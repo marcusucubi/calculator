@@ -48,6 +48,7 @@
     <Compile Include="IMathObjectEx.cs" />
     <Compile Include="IIsError.cs" />
     <Compile Include="FunctionRegistry.cs" />
+    <Compile Include="ICanCopyByValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
