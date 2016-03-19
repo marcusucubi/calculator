@@ -7,9 +7,13 @@ namespace MathObjects.UI.Widgets
     [ToolboxItem(true)]
     public class SliderWidget2 : Gtk.HBox 
     {
+        ButtonDescriptionGroup[] groups;
+
         CoolExpanderList cool;
 
         HBox hbox1;
+
+        Button b1, b2;
 
         public SliderWidget2(ButtonDescriptionGroup[] groups)
         {
@@ -20,10 +24,11 @@ namespace MathObjects.UI.Widgets
 
         void Setup(ButtonDescriptionGroup[] groups)
         {
+            this.groups = groups;
             this.hbox1 = this;
             this.hbox1.Spacing = 6;
 
-            var b1 = AddButton("<<", 0);
+            b1 = AddButton("<<", 0);
             b1.Clicked += (sender, e) => 
                 {
                     this.cool.CurrentIndex--;
@@ -35,15 +40,42 @@ namespace MathObjects.UI.Widgets
             var w1 = (Box.BoxChild)(this.hbox1[cool]);
             w1.Position = 1;
 
-            var b2 = AddButton(">>", 2);
+            b2 = AddButton(">>", 2);
             b2.Clicked += (sender, e) => 
                 {
                     this.cool.CurrentIndex++;
                 };
 
             this.cool.CurrentIndex = 0;
+            UpdateState();
+
+            cool.Changed += (sender, e) => 
+                {
+                    UpdateState();
+                };
 
             this.ShowAll ();
+        }
+
+        void UpdateState()
+        {
+            if (cool.CurrentIndex == 0)
+            {
+                b1.Sensitive = false;
+            }
+            else
+            {
+                b1.Sensitive = true;
+            }
+
+            if (cool.CurrentIndex == this.groups.Length - 1)
+            {
+                b2.Sensitive = false;
+            }
+            else
+            {
+                b2.Sensitive = true;
+            }
         }
 
         Button AddButton(string label, int position)

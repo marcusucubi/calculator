@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MathObjects.Core.DecoratableObject
 {
@@ -86,9 +87,16 @@ namespace MathObjects.Core.DecoratableObject
 
             var decoratable = dictionary[source].Target as DecoratableObject;
 
-            foreach (var pair in decoratable.DecorationMap)
+            if (decoratable == null)
             {
-                target.SetObjectDecoration(pair.Key, pair.Value);
+                dictionary.Remove(source);
+            }
+            else
+            {
+                foreach (var pair in decoratable.DecorationMap)
+                {
+                    target.SetObjectDecoration(pair.Key, pair.Value);
+                }
             }
         }
 

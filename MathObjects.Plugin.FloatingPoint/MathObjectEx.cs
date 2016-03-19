@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -8,6 +9,11 @@ namespace MathObjects.Plugin.FloatingPoint
         public static double GetDouble(this IMathObject obj)
         {
             var hasOutput = obj as IHasOutput;
+            if (hasOutput is ErrorObject || hasOutput == null)
+            {
+                return float.NaN;
+            }
+
             if (hasOutput != null)
             {
                 var output = hasOutput.Output;
@@ -16,13 +22,21 @@ namespace MathObjects.Plugin.FloatingPoint
                     return (double)output;
                 }
 
-                var has2 = hasOutput.Output as IHasOutput;
-                if (has2.Output is double)
+                if (output is ErrorObject)
                 {
-                    return (double)has2.Output;
+                    return float.NaN;
                 }
 
-                return GetDouble((IMathObject)has2.Output);
+                var has2 = hasOutput.Output as IHasOutput;
+                if (has2 != null)
+                {
+                    if (has2.Output is double)
+                    {
+                        return (double)has2.Output;
+                    }
+
+                    return GetDouble((IMathObject)has2.Output);
+                }
             }
 
             throw new Exception();

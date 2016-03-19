@@ -4,8 +4,12 @@ using Gtk;
 
 namespace MathObjects.UI.Widgets
 {
+    public delegate void ChangedEventHandler(object sender, EventArgs e);
+
     public class CoolExpanderList : VBox 
     {
+        public event ChangedEventHandler Changed;
+
         int pos;
 
         int currentIndex;
@@ -29,6 +33,11 @@ namespace MathObjects.UI.Widgets
                 {
                     this.currentIndex = value;
                     this.Open (this.currentIndex);
+
+                    if (Changed != null)
+                    {
+                        Changed(this, new EventArgs());
+                    }
                 }
             }
         }
@@ -38,10 +47,16 @@ namespace MathObjects.UI.Widgets
             var expander = new CoolExpander (group);
 
             expander.Activated += (sender, e) => 
-            {
-                int i = this.expanders.IndexOf(expander); 
-                this.CloseOthers(i);
-            };
+                {
+                    int i = this.expanders.IndexOf(expander); 
+                    this.CloseOthers(i);
+                    this.currentIndex = i;
+
+                    if (Changed != null)
+                    {
+                        Changed(this, new EventArgs());
+                    }
+                };
 
             this.Add (expander);
             this.expanders.Add(expander);
