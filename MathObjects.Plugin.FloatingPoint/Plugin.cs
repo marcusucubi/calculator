@@ -5,9 +5,9 @@ using MathObjects.Core.Plugin;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.Framework.Vocabulary;
 using MathObjects.Plugin.FloatingPoint.MathFunc;
 using MathObjects.Plugin.FloatingPoint.Func;
-using MathObjects.Framework.Vocabulary;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -94,7 +94,7 @@ namespace MathObjects.Plugin.FloatingPoint
                     var words = new WordGroup("Standard", new string[] 
                         { 
                             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-                            "+", "*", "-", "/", "^", "(", ")",
+                            "+", "*", "-", "/", "^", "(", ")", "=", ";",
                             "top()", "sqrt()", "square()", "inverse()"
                         }
                     );
