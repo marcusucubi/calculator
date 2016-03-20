@@ -8,11 +8,16 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
+        readonly string symbol;
+
         public int NumberOfParameters { get { return 1; } }
 
-        public InverseAngleOperation(MathHandler handler)
+        public string Symbol { get { return symbol; } }
+
+        public InverseAngleOperation(MathHandler handler, string symbol)
         {
             this.handler = handler;
+            this.symbol = symbol;
         }
 
         public IMathObject Perform(IMathObject[] target)
@@ -30,14 +35,17 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         {
             readonly MathHandler handler;
 
-            public Factory(MathHandler handler)
+            readonly string symbol;
+
+            public Factory(MathHandler handler, string symbol)
             {
                 this.handler = handler;
+                this.symbol = symbol;
             }
 
             public IMathOperation Create(object param)
             {
-                return new InverseAngleOperation(handler);
+                return new InverseAngleOperation(handler, symbol);
             }
         }
     }

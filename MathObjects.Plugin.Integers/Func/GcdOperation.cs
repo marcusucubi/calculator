@@ -9,6 +9,8 @@ namespace MathObjects.Plugin.Integers.Func
     {
         public int NumberOfParameters { get { return 2; } }
 
+        public string Symbol { get { return "gcd"; } }
+
         static public int GCD(int[] numbers)
         {
             return numbers.Aggregate(GCD);

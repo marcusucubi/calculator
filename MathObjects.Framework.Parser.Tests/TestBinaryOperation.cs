@@ -6,6 +6,8 @@ namespace MathObjects.Framework.Parser.Tests
     {
         public int NumberOfParameters { get { return 2; } }
 
+        public string Symbol { get { return "test"; } }
+
         public IMathObject Perform(IMathObject[] objs)
         {
             return new TestObject(

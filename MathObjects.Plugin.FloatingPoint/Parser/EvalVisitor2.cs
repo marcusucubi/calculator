@@ -72,18 +72,16 @@ namespace MathObjects.Plugin.FloatingPoint
 
             Debug.WriteLine("Start VisitAssignment [" + left + "]");
 
-            var right = Visit(context.expr());
+            Visit(context.expr());
 
             var value = this.stack.Pop();
 
             this.scope.Put(left, value);
 
-            IMathObject result = stack.Peek(1)[0];
-
             Debug.WriteLine("End VisitAssignment [" + 
                 left + "=" + value + "] ["+ left + "=" + value.GetDouble() + "]");
 
-            return result;
+            return value;
         }
 
         public override IMathObject VisitNegative(

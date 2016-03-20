@@ -9,9 +9,12 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
-        public AngleFunction(MathHandler handler)
+        readonly string symbol;
+
+        public AngleFunction(MathHandler handler, string symbol)
         {
             this.handler = handler;
+            this.symbol = symbol;
         }
 
         public void Init(IMathFunctionContext context)
@@ -39,7 +42,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                         first.SetObjectDecoration("name", "radians");
 
                         return new CompositeOperation(
-                            first, new AngleOperation(this.handler));
+                            first, new AngleOperation(this.handler, symbol));
                     }
                     else
                     {
@@ -48,26 +51,29 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                         first.SetObjectDecoration("name", "degrees");
 
                         return new CompositeOperation(
-                            first, new AngleOperation(this.handler));
+                            first, new AngleOperation(this.handler, this.symbol));
                     }
                 }
             }
                 
-            return new AngleOperation(this.handler);
+            return new AngleOperation(this.handler, this.symbol);
         }
 
         public class Factory : IMathObjectFactory
         {
             readonly MathHandler handler;
 
-            public Factory(MathHandler handler)
+            readonly string symbol;
+
+            public Factory(MathHandler handler, string symbol)
             {
                 this.handler = handler;
+                this.symbol = symbol;
             }
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new AngleFunction(handler);
+                return new AngleFunction(handler, symbol);
             }
         }
     }

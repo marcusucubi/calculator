@@ -10,6 +10,11 @@ namespace MathObjects.Framework.Tests
         {
             return new TestMathObject ();
         }
+
+        public string Symbol 
+        { 
+            get { return "test"; } 
+        }
     }
 }
 

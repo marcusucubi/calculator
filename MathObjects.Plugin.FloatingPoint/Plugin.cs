@@ -46,40 +46,40 @@ namespace MathObjects.Plugin.FloatingPoint
                 "radians", new FunctionFactory(typeof(RadiansFunction)));
         
             registry.Put(
-                "ln", new MathFunction.Factory(((i) => Math.Log(i))));
+                "ln", new MathFunction.Factory(((i) => Math.Log(i)), "ln"));
 
             registry.Put(
-                "log", new MathFunction.Factory(((i) => Math.Log10(i))));
+                "log", new MathFunction.Factory(((i) => Math.Log10(i)), "log"));
             
             registry.Put(
-                "exp", new MathFunction.Factory(((i) => Math.Exp(i))));
+                "exp", new MathFunction.Factory(((i) => Math.Exp(i)), "exp"));
 
             registry.Put(
-                "sqrt", new MathFunction.Factory(((i) => Math.Sqrt(i))));
+                "sqrt", new MathFunction.Factory(((i) => Math.Sqrt(i)), "sqrt"));
 
             registry.Put(
-                "square", new MathFunction.Factory(((i) => ( i * i ))));
+                "square", new MathFunction.Factory(((i) => ( i * i )), "square"));
 
             registry.Put(
-                "inverse", new MathFunction.Factory(((i) => ( 1/i ))));
+                "inverse", new MathFunction.Factory(((i) => ( 1/i )), "inverse"));
 
             registry.Put(
-                "sin", new AngleFunction.Factory(((i) => Math.Sin(i))));
+                "sin", new AngleFunction.Factory(((i) => Math.Sin(i)), "sin"));
             
             registry.Put(
-                "cos", new AngleFunction.Factory(((i) => Math.Cos(i))));
+                "cos", new AngleFunction.Factory(((i) => Math.Cos(i)), "cos"));
             
             registry.Put(
-                "tan", new AngleFunction.Factory(((i) => Math.Tan(i))));
+                "tan", new AngleFunction.Factory(((i) => Math.Tan(i)), "tan"));
             
             registry.Put(
-                "asin", new InverseAngleFunction.Factory(((i) => Math.Asin(i))));
+                "asin", new InverseAngleFunction.Factory(((i) => Math.Asin(i)), "asin"));
 
             registry.Put(
-                "acos", new InverseAngleFunction.Factory(((i) => Math.Acos(i))));
+                "acos", new InverseAngleFunction.Factory(((i) => Math.Acos(i)), "acos"));
 
             registry.Put(
-                "atan", new InverseAngleFunction.Factory(((i) => Math.Atan(i))));
+                "atan", new InverseAngleFunction.Factory(((i) => Math.Atan(i)), "atan"));
 
             parser = new Parser(registry);
         }
@@ -113,6 +113,16 @@ namespace MathObjects.Plugin.FloatingPoint
                     var words = new WordGroup("Log", new string[] 
                         { 
                             "ln()", "log()", "exp()", "e()"
+                        }
+                    );
+                    vocab.Add(words);
+                }
+                {
+                    var words = new WordGroup("Leters", new string[] 
+                        { 
+                            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+                            "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                            "u", "v", "w", "x", "y", "z"
                         }
                     );
                     vocab.Add(words);

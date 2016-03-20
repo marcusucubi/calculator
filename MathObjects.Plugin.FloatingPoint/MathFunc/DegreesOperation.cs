@@ -9,6 +9,8 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         public int NumberOfParameters { get { return 1; } }
 
+        public string Symbol { get { return "degrees"; } }
+
         public IMathObject Perform(IMathObject[] target)
         {
             var angle = target[0].GetValue<AngleObject>();

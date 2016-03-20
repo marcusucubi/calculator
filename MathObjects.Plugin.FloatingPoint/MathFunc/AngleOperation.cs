@@ -9,13 +9,18 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
+        readonly string symbol;
+
         public int NumberOfParameters { get { return 1; } }
 
-        public AngleOperation(MathHandler handler)
+        public string Symbol { get { return symbol; } }
+
+        public AngleOperation(MathHandler handler, string symbol)
         {
             this.handler = handler;
+            this.symbol = symbol;
         }
-
+            
         public IMathObject Perform(IMathObject[] target)
         {
             var angle = target[0].GetValue<AngleObject>();
@@ -39,14 +44,17 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         {
             readonly MathHandler handler;
 
-            public Factory(MathHandler handler)
+            readonly string symbol;
+
+            public Factory(MathHandler handler, string symbol)
             {
                 this.handler = handler;
+                this.symbol = symbol;
             }
 
             public IMathOperation Create(object param)
             {
-                return new AngleOperation(handler);
+                return new AngleOperation(handler, symbol);
             }
         }
     }

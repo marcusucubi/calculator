@@ -7,6 +7,8 @@ namespace MathObjects.Plugin.Integers
     {
         public int NumberOfParameters { get { return 2; } }
 
+        public string Symbol { get { return "-"; } }
+
         public IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetInteger();

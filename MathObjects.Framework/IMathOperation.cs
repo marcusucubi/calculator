@@ -7,6 +7,8 @@ namespace MathObjects.Framework
         IMathObject Perform(IMathObject[] target);
 
         int NumberOfParameters { get; }
+
+        string Symbol { get; }
     }
 }
 

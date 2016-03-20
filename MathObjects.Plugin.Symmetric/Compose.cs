@@ -10,6 +10,8 @@ namespace MathObjects.Plugin.Symmetric
     {
         public int NumberOfParameters { get { return 2; } }
 
+        public string Symbol { get { return "compose"; } }
+
         public IMathObject Perform(IMathObject[] objs)
         {
             IntegerMatrix leftValue = null;

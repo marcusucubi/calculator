@@ -42,7 +42,7 @@ FLOAT    : DIGIT+ '.' DIGIT*
 ID       : LETTER+ DIGIT* ;
 
 DIGIT    : [0-9] ;
-LETTER   : [a-zA-Z] ;
+LETTER   : [a-zA-Z_.] ;
 
 MUL      : '*' ; // assigns token name to '*' used above in grammar
 DIV      : '/' ;

@@ -7,6 +7,8 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         public int NumberOfParameters { get { return 2; } }
 
+        public string Symbol { get { return "-"; } }
+
         public IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetDouble();

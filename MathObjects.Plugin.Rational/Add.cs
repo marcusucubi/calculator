@@ -8,6 +8,8 @@ namespace MathObjects.Plugin.Rational
     {
         public int NumberOfParameters { get { return 2; } }
 
+        public string Symbol { get { return "add"; } }
+
         public IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetTuple();

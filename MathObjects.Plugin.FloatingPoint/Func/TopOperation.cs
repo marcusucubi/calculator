@@ -10,6 +10,8 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 
         public int NumberOfParameters { get { return 0; } }
 
+        public string Symbol { get { return "top"; } }
+
         public TopOperation(IMathObjectStack stack, IMathObject top)
         {
             this.top = top;

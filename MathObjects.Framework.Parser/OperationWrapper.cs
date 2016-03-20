@@ -41,6 +41,27 @@ namespace MathObjects.Framework.Parser
 
             return new OperationWrapper(list.ToArray(), this.op);
         }
+
+        public override string ToString()
+        {
+            string s = "";
+
+            bool first = true;
+
+            foreach (var obj in this.objs)
+            {
+                if (!first)
+                {
+                    s += op.Symbol;
+                }
+
+                s += obj.ToString();
+
+                first = false;
+            }
+
+            return s;
+        }
     }
 }
 

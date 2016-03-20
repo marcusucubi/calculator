@@ -9,10 +9,9 @@ namespace MathObjects.Framework.Parser.Tests
             return new TestObject("(" + target[0].GetString() + ")");
         }
 
-        public int NumberOfParameters 
-        { 
-            get { return 1; } 
-        }
+        public string Symbol { get { return "unirary"; } }
+
+        public int NumberOfParameters {  get { return 1; } }
     }
 }
 

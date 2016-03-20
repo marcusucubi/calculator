@@ -8,34 +8,39 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
-        public MathFunction(MathHandler handler)
+        readonly string symbol;
+
+        public MathFunction(MathHandler handler, string symbol)
         {
             this.handler = handler;
+            this.symbol = symbol;
         }
 
-        public void Init(
-            IMathFunctionContext context)
+        public void Init(IMathFunctionContext context)
         {
         }
 
         public IMathOperation Perform(
             IMathFunctionContext context)
         {
-            return new MathOperation(this.handler);
+            return new MathOperation(this.handler, this.symbol);
         }
 
         public class Factory : IMathObjectFactory
         {
             readonly MathHandler handler;
 
-            public Factory(MathHandler handler)
+            readonly string symbol;
+
+            public Factory(MathHandler handler, string symbol)
             {
                 this.handler = handler;
+                this.symbol = symbol;
             }
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new MathFunction(handler);
+                return new MathFunction(handler, this.symbol);
             }
         }
     }

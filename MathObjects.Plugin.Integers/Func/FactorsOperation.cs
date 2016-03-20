@@ -8,6 +8,8 @@ namespace MathObjects.Plugin.Integers.Func
     {
         public int NumberOfParameters { get { return 1; } }
 
+        public string Symbol { get { return "factors"; } }
+
         public IMathObject Perform(IMathObject[] input)
         {
             var leftValue = input[0].GetInteger();

@@ -8,6 +8,8 @@ namespace MathObjects.Plugin.Symmetric
     {
         public int NumberOfParameters { get { return 1; } }
 
+        public string Symbol { get { return "inverse"; } }
+
         public IMathObject Perform(IMathObject[] target)
         {
             var hasMatrix = target[0] as IHasMatrix;

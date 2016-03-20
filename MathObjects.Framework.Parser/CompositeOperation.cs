@@ -33,6 +33,11 @@ namespace MathObjects.Framework.Parser
             get { return this.first.NumberOfParameters; } 
         }
 
+        public string Symbol 
+        { 
+            get { return "composite"; } 
+        }
+
         public object DecorationTarget 
         { 
             get { return this.second; } 

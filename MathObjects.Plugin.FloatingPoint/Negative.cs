@@ -7,10 +7,9 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         public int NumberOfParameters { get { return 1; } }
 
-        public string Name
-        {
-            get { return "-"; }
-        }
+        public string Symbol { get { return "-"; } }
+
+        public string Name { get { return "-"; } }
 
         public IMathObject Perform(IMathObject[] left)
         {

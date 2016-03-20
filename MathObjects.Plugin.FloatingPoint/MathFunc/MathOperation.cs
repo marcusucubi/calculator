@@ -10,11 +10,16 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
     {
         readonly MathHandler handler;
 
+        readonly string symbol;
+
         public int NumberOfParameters { get { return 1; } }
 
-        public MathOperation(MathHandler handler)
+        public string Symbol { get { return symbol; } }
+
+        public MathOperation(MathHandler handler, string symbol)
         {
             this.handler = handler;
+            this.symbol = symbol;
         }
 
         public IMathObject Perform(IMathObject[] target)
@@ -26,18 +31,26 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             return result;
         }
 
+        public override string ToString()
+        {
+            return this.symbol;
+        }
+
         public class Factory : IMathOperationFactory
         {
             readonly MathHandler handler;
 
-            public Factory(MathHandler handler)
+            readonly string symbol;
+
+            public Factory(MathHandler handler, string symbol)
             {
                 this.handler = handler;
+                this.symbol = symbol;
             }
 
             public IMathOperation Create(object param)
             {
-                return new MathOperation(handler);
+                return new MathOperation(handler, this.symbol);
             }
         }
     }
