@@ -53,7 +53,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public override string ToString()
         {
-            return "ref(" + DisplayValue + ")";
+            return DisplayValue;
         }
     }
 }

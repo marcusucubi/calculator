@@ -6,7 +6,7 @@ namespace MathObjects.Framework.Parser
     {
         IMathObject Get(string name);
 
-        void Put(string namem, IMathObject obj);
+        void Put(string name, IMathObject obj);
     }
 }
 

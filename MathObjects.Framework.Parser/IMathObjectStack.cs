@@ -6,15 +6,17 @@ namespace MathObjects.Framework.Parser
     {
         event EventHandler<MathObjectStackArgs> StackChanged;
 
-        void Push(IMathObject mathObject);
+        IMathObject Push(IMathObject mathObject);
 
-        void Push(IMathOperation op);
+        IMathObject Push(IMathOperation op);
 
         IMathObject Pop();
 
         void Clear();
 
         IMathObject[] Peek(int size);
+
+        IMathObject Peek();
 
         IMathObject Top { get; }
 

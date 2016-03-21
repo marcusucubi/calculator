@@ -55,9 +55,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             IMathObject value = new Ref(this.scope, name);
 
-            stack.Push(value);
-
-            IMathObject result = stack.Peek(1)[0];
+            IMathObject result = stack.Push(value);
 
             Debug.WriteLine("End VisitVariable [" + 
                 name + "=" + value.GetDouble() + "]");
@@ -74,7 +72,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             Visit(context.expr());
 
-            var value = this.stack.Pop();
+            var value = this.stack.Peek();
 
             this.scope.Put(left, value);
 
@@ -89,9 +87,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             Visit(context.expr());
 
-            stack.Push(new Negative());
-
-            IMathObject result = stack.Peek(1)[0];
+            IMathObject result = stack.Push(new Negative());
 
             Debug.WriteLine("VisitNegative");
 
@@ -101,12 +97,10 @@ namespace MathObjects.Plugin.FloatingPoint
         public override IMathObject VisitExponent(
             FloatingPointParser.ExponentContext context)
         {
-            var left = Visit(context.GetChild(2));
-            var right = Visit(context.GetChild(0));
+            Visit(context.GetChild(2));
+            Visit(context.GetChild(0));
 
-            stack.Push(new ExponentOperation());
-
-            IMathObject result = stack.Peek(1)[0];
+            IMathObject result = stack.Push(new ExponentOperation());
 
             Debug.WriteLine("VisitExponent []");
 
@@ -168,11 +162,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 return error;
             }
 
-            var paramList = stack.Peek(operation.NumberOfParameters);
-
-            stack.Push(operation);
-
-            IMathObject result = stack.Peek(1)[0];
+            IMathObject result = stack.Push(operation);
 
             Debug.WriteLine("End VisitFuncCall [" + operation + "]");
             
@@ -249,9 +239,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 op = new Subtract();
             }
 
-            stack.Push(op);
-
-            IMathObject result = stack.Peek(1)[0];
+            IMathObject result = stack.Push(op);
 
             Debug.WriteLine("End VisitAddSub [" + 
                 left + "+" + right + "] [" + result.GetDouble() + "]");
@@ -278,9 +266,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 op = new Divide();
             }
 
-            stack.Push(op);
-
-            IMathObject result = stack.Peek(1)[0];
+            IMathObject result = stack.Push(op);
 
             Debug.WriteLine("End VisitMulDiv [" + 
                 left + "+" + right + "] [" + result.GetDouble() + "]");

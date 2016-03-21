@@ -23,7 +23,7 @@ namespace MathObjects.UI.Widgets
             {
                 var box = CreateButtonBox(vbox);
 
-                for(int x = 0; x < 5 && stack.Count > 0; x++)
+                for(int x = 0; x < 6 && stack.Count > 0; x++)
                 {
                     var desc = stack[0];
                     stack.RemoveAt (0);

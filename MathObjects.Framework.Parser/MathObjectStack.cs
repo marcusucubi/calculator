@@ -33,6 +33,11 @@ namespace MathObjects.Framework.Parser
             get { return this.objectStack; }
         }
 
+        public IMathObject Peek()
+        {
+            return this.objectStack.Peek();
+        }
+
         public IMathObject[] Peek(int size)
         {
             var list = new List<IMathObject>();
@@ -59,43 +64,45 @@ namespace MathObjects.Framework.Parser
             return list.ToArray();
         }
 
-        public void Push(IMathObject obj)
+        public IMathObject Push(IMathObject obj)
         {
             Debug.Assert(obj != null);
 
             if (obj is IMathOperation)
             {
-                Push((IMathOperation) obj);
-                return;
+                return Push((IMathOperation) obj);
             }
 
             objectStack.Push(obj);
 
             FireStackChanged();
             ErrorHandler.ResetError(this);
+
+            return obj;
         }
 
-        public void Push(CompositeOperation composite)
+        public IMathObject Push(CompositeOperation composite)
         {
             Push(composite.First);
 
-            Push(composite.Second);
+            var result = Push(composite.Second);
 
             FireStackChanged();
             ErrorHandler.ResetError(this);
+
+            return result;
         }
 
-        public void Push(IMathOperation op)
+        public IMathObject Push(IMathOperation op)
         {
             if (op is CompositeOperation)
             {
-                Push((CompositeOperation) op);
-                return;
+                return Push((CompositeOperation) op);
             }
 
             if (this.objectStack.Count < op.NumberOfParameters)
             {
-                return;
+                return null;
             }
 
             IMathObject result = null;
@@ -112,6 +119,8 @@ namespace MathObjects.Framework.Parser
             objectStack.Push(result);
 
             FireStackChanged();
+
+            return result;
         }
 
         public void Clear()
