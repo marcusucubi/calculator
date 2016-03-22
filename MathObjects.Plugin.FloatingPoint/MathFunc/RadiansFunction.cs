@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class RadiansFunction : IMathFunction
+    class RadiansFunction : AbstractMathObject, IMathFunction
     {
         public void Init(IMathFunctionContext context)
         {

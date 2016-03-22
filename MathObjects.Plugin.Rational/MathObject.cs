@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Rational
 {
-    class MathObject : IMathObject, IHasOutput, IHasDisplayValue 
+    class MathObject : AbstractMathObject, IHasOutput, IHasDisplayValue 
     {
         readonly Tuple<int, int> value;
 

@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework.Tests
 {
-    public class TestMathObject : IMathObject 
+    public class TestMathObject : AbstractMathObject 
     {
     }
 }

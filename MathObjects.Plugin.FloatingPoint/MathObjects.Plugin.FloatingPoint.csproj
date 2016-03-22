@@ -113,6 +113,10 @@
       <Project>{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F}</Project>
       <Name>MathObjects.Framework.Vocabulary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Extension\MathObjects.Core.Extension.csproj">
+      <Project>{62D67415-88CB-493D-8044-1AEBB8296681}</Project>
+      <Name>MathObjects.Core.Extension</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Parser\" />

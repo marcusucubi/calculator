@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class MathFunction : IMathFunction
+    class MathFunction : AbstractMathObject, IMathFunction
     {
         readonly MathHandler handler;
 

@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class TopFunction : IMathFunction
+    class TopFunction : AbstractMathObject, IMathFunction
     {
         IMathObject top;
 

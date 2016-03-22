@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Integers.Func
 {
-    class TopObject : IHasOutput, IMathObject, IHasDisplayValue
+    class TopObject : AbstractMathObject, IHasOutput, IHasDisplayValue
     {
         readonly IMathObject top;
 

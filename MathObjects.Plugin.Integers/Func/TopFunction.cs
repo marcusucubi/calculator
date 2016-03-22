@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Integers.Func
 {
-    class TopFunction : IMathFunction
+    class TopFunction : AbstractMathObject, IMathFunction
     {
         IMathObject top;
 

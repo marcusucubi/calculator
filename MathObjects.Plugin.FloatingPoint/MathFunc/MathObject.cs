@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class MathObject : IMathObject, IHasOutput, IHasDisplayValue
+    class MathObject : AbstractMathObject, IHasOutput, IHasDisplayValue
     {
         readonly double target;
 

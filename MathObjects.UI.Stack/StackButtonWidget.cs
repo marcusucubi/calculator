@@ -20,7 +20,7 @@ namespace MathObjects.UI.Stack
             set;
         }
 
-        public InputWidget InputWidget
+        public MathObjects.UI.Stack.InputWidget InputWidget
         {
             get;
             set;

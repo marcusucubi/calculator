@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Integers.Func
 {
-    class GcdFunction : IMathFunction
+    class GcdFunction : AbstractMathObject, IMathFunction
     {
         public void Init(IMathFunctionContext context)
         {

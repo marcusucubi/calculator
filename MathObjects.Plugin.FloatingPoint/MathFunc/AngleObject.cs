@@ -8,7 +8,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         Radians, Degrees
     }
 
-    class AngleObject : IMathObject, IHasOutput, IHasDisplayValue
+    class AngleObject : AbstractMathObject, IHasOutput, IHasDisplayValue
     {
         readonly double angleValue;
 

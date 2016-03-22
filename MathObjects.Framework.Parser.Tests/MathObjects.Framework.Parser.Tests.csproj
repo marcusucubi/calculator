@@ -55,6 +55,10 @@
       <Project>{0179E565-7148-4545-B192-012CCFA83166}</Project>
       <Name>MathObjects.Core.DecoratableObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Extension\MathObjects.Core.Extension.csproj">
+      <Project>{62D67415-88CB-493D-8044-1AEBB8296681}</Project>
+      <Name>MathObjects.Core.Extension</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

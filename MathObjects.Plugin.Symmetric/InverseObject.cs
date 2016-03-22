@@ -6,7 +6,7 @@ using MathObjects.Core.Matrix.Permutation;
 
 namespace MathObjects.Plugin.Symmetric
 {
-    class InverseObject : IMathObject, IHasMatrix, IHasDisplayValue
+    class InverseObject : AbstractMathObject, IHasMatrix, IHasDisplayValue
     {
         readonly IHasMatrix target;
 

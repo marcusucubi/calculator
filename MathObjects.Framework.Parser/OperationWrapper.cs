@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace MathObjects.Framework.Parser
 {
     public class OperationWrapper : 
-        IMathObject, IHasChildren, IHasOutput, ICanCopyByValue 
+        AbstractMathObject, IHasChildren, IHasOutput, ICanCopyByValue 
     {
         readonly IMathObject[] objs;
 

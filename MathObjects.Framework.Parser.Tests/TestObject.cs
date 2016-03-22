@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MathObjects.Framework.Parser.Tests
 {
-    public class TestObject : IMathObject, IHasOutput
+    public class TestObject : AbstractMathObject, IHasOutput
     {
         readonly string value;
 

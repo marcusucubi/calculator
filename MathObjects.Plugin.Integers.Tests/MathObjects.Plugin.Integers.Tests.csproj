@@ -59,6 +59,10 @@
       <Project>{DE8FC63B-1B2B-4A04-9A88-3AA3CD1EB456}</Project>
       <Name>MathObjects.Core.Plugin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Extension\MathObjects.Core.Extension.csproj">
+      <Project>{62D67415-88CB-493D-8044-1AEBB8296681}</Project>
+      <Name>MathObjects.Core.Extension</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IntegerTest.cs" />

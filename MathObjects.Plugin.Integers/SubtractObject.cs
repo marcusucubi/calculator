@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.Integers
 {
     [ClassDecoration("name", "-")]
-    class SubtractObject : IHasOutput, IMathObject, IHasDisplayValue
+    class SubtractObject : AbstractMathObject, IHasOutput, IHasDisplayValue
     {
         readonly int tuple1;
 

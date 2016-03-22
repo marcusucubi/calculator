@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class InverseAngleFunction : IMathFunction
+    class InverseAngleFunction : AbstractMathObject, IMathFunction
     {
         readonly MathHandler handler;
 

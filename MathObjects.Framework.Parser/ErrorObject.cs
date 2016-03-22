@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework.Parser
 {
-    public class ErrorObject : IMathObject, IHasDisplayValue, IIsError
+    public class ErrorObject : AbstractMathObject, IHasDisplayValue, IIsError
     {
         readonly string error;
 

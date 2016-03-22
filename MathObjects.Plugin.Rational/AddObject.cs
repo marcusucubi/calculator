@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Rational
 {
-    public class AddObject : IMathObject, IHasOutput 
+    public class AddObject : AbstractMathObject, IHasOutput 
     {
         readonly Tuple<int, int> tuple1;
 

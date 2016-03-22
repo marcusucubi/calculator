@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Ref : IMathObject, IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue
+    public class Ref : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue
     {
         readonly IMathScope scope;
 

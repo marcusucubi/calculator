@@ -3,11 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}</ProjectGuid>
+    <ProjectGuid>{62D67415-88CB-493D-8044-1AEBB8296681}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MathObjects.Framework</RootNamespace>
-    <AssemblyName>MathObjects.Framework</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>MathObjects.Core.Extension</RootNamespace>
+    <AssemblyName>MathObjects.Core.Extension</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,30 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IMathObject.cs" />
-    <Compile Include="IMathObjectFactory.cs" />
-    <Compile Include="IMathOperation.cs" />
-    <Compile Include="IHasDisplayValue.cs" />
-    <Compile Include="IHasOutput.cs" />
-    <Compile Include="IHasName.cs" />
-    <Compile Include="ErrorHandler.cs" />
-    <Compile Include="IMathOperationFactory.cs" />
-    <Compile Include="IMathObjectFactoryContext.cs" />
-    <Compile Include="ArrayObject.cs" />
-    <Compile Include="FactoryContext.cs" />
-    <Compile Include="IMathFunction.cs" />
-    <Compile Include="IMathFunctionContext.cs" />
-    <Compile Include="IMathObjectEx.cs" />
-    <Compile Include="IIsError.cs" />
-    <Compile Include="FunctionRegistry.cs" />
-    <Compile Include="ICanCopyByValue.cs" />
-    <Compile Include="AbstractMathObject.cs" />
+    <Compile Include="IExtension.cs" />
+    <Compile Include="ExtensionCollection.cs" />
+    <Compile Include="IExtensionableObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\MathObjects.Core.Extension\MathObjects.Core.Extension.csproj">
-      <Project>{62D67415-88CB-493D-8044-1AEBB8296681}</Project>
-      <Name>MathObjects.Core.Extension</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

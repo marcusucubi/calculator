@@ -7,7 +7,7 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class MathObject : IMathObject, IHasOutput, IHasDisplayValue, ICanCopyByValue 
+    class MathObject : AbstractMathObject, IHasOutput, IHasDisplayValue, ICanCopyByValue 
     {
         readonly double value;
 

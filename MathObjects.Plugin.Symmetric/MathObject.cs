@@ -10,9 +10,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Symmetric
 {
-    class MathObject : 
-        IMathObject, IHasMatrix, 
-        IHasDisplayValue, IHasOutput
+    class MathObject : AbstractMathObject, IHasMatrix, IHasDisplayValue, IHasOutput
     {
         PermutationMatix value;
 

@@ -4,7 +4,7 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class ConstantObject : IHasOutput, IMathObject, IHasDisplayValue
+    class ConstantObject : AbstractMathObject, IHasOutput, IHasDisplayValue
     {
         readonly double value;
 

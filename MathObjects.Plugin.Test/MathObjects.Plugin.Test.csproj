@@ -68,5 +68,9 @@
       <Project>{BFFB8F5D-939D-41CD-B8F9-527241AAB31C}</Project>
       <Name>MathObjects.Plugin.FloatingPoint</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Core.Extension\MathObjects.Core.Extension.csproj">
+      <Project>{62D67415-88CB-493D-8044-1AEBB8296681}</Project>
+      <Name>MathObjects.Core.Extension</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
