@@ -6,8 +6,8 @@ namespace MathObjects.Core.DecoratableObject
 {
     public static class DecorationManager
     {
-        readonly static Dictionary<object, WeakReference> dictionary
-            = new Dictionary<object, WeakReference>();
+        readonly static Dictionary<object, DecoratableObject> dictionary
+            = new Dictionary<object, DecoratableObject>();
 
         public static T GetClassDecoration<T>(this object obj, string key)
         {
@@ -43,7 +43,7 @@ namespace MathObjects.Core.DecoratableObject
 
             object result = null;
 
-            var decoratable = dictionary[obj].Target as DecoratableObject;
+            var decoratable = dictionary[obj];
             if (decoratable != null)
             {
                 if (decoratable.DecorationMap.ContainsKey(key))
@@ -65,11 +65,11 @@ namespace MathObjects.Core.DecoratableObject
             {
                 decorable = new DecoratableObject(obj);
 
-                dictionary[obj] = new WeakReference(decorable, false);
+                dictionary[obj] = decorable;
             }
             else
             {
-                decorable = dictionary[obj].Target as DecoratableObject;
+                decorable = dictionary[obj];
             }
 
             decorable.DecorationMap[key] = value;

@@ -39,7 +39,8 @@ namespace MathObjects.Plugin.FloatingPoint
             result = result.CopyByValue();
 
             this.stack.Pop();
-            this.stack.Push(result);
+
+            result = this.stack.Push(result);
 
             Debug.WriteLine("End VisitPrintExpr []");
 
@@ -53,9 +54,12 @@ namespace MathObjects.Plugin.FloatingPoint
 
             Debug.WriteLine("Start VisitVariable [" + name + "]");
 
-            IMathObject value = new Ref(this.scope, name);
+            var value = new Ref(this.scope, name);
 
-            IMathObject result = stack.Push(value);
+            var result = stack.Push(value);
+
+            value.SetObjectDecoration("name", name);
+            result.SetObjectDecoration("name", name);
 
             Debug.WriteLine("End VisitVariable [" + 
                 name + "=" + value.GetDouble() + "]");
@@ -76,10 +80,18 @@ namespace MathObjects.Plugin.FloatingPoint
 
             this.scope.Put(left, value);
 
+            stack.Pop();
+
+            var refer = new ValueRef(this.scope, left);
+
+            var result = stack.Push(refer);
+
+            result.SetObjectDecoration("name", left);
+
             Debug.WriteLine("End VisitAssignment [" + 
                 left + "=" + value + "] ["+ left + "=" + value.GetDouble() + "]");
 
-            return value;
+            return result;
         }
 
         public override IMathObject VisitNegative(
@@ -87,7 +99,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             Visit(context.expr());
 
-            IMathObject result = stack.Push(new Negative());
+            var result = stack.Push(new Negative());
 
             Debug.WriteLine("VisitNegative");
 
@@ -100,7 +112,7 @@ namespace MathObjects.Plugin.FloatingPoint
             Visit(context.GetChild(2));
             Visit(context.GetChild(0));
 
-            IMathObject result = stack.Push(new ExponentOperation());
+            var result = stack.Push(new ExponentOperation());
 
             Debug.WriteLine("VisitExponent []");
 
@@ -162,9 +174,11 @@ namespace MathObjects.Plugin.FloatingPoint
                 return error;
             }
 
-            IMathObject result = stack.Push(operation);
+            var result = stack.Push(operation);
 
-            Debug.WriteLine("End VisitFuncCall [" + operation + "]");
+            result.SetObjectDecoration("name", context.ID().GetText());
+
+            Debug.WriteLine("End VisitFuncCall [" + operation.Symbol + "]");
             
             return result;
         }
@@ -239,7 +253,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 op = new Subtract();
             }
 
-            IMathObject result = stack.Push(op);
+            var result = stack.Push(op);
 
             Debug.WriteLine("End VisitAddSub [" + 
                 left + "+" + right + "] [" + result.GetDouble() + "]");
@@ -266,7 +280,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 op = new Divide();
             }
 
-            IMathObject result = stack.Push(op);
+            var result = stack.Push(op);
 
             Debug.WriteLine("End VisitMulDiv [" + 
                 left + "+" + right + "] [" + result.GetDouble() + "]");
