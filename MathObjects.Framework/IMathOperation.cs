@@ -1,8 +1,9 @@
 ﻿using System;
+using MathObjects.Core.Extension;
 
 namespace MathObjects.Framework
 {
-    public interface IMathOperation
+    public interface IMathOperation : IExtensionableObject
     {
         IMathObject Perform(IMathObject[] target);
 

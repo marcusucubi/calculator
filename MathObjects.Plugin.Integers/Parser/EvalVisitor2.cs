@@ -5,6 +5,7 @@ using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.DecoratableObject;
+using MathObjects.Core.Extension;
 
 namespace MathObjects.Plugin.Integers
 {

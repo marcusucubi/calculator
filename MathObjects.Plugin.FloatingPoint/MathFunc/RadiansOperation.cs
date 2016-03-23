@@ -4,13 +4,13 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class RadiansOperation : IMathOperation
+    class RadiansOperation : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 1; } }
+        public override int NumberOfParameters { get { return 1; } }
 
-        public string Symbol { get { return "radians"; } }
+        public override string Symbol { get { return "radians"; } }
 
-        public IMathObject Perform(IMathObject[] target)
+        public override IMathObject Perform(IMathObject[] target)
         {
             var angle = target[0].GetValue<AngleObject>();
             if (angle != null)

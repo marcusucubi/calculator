@@ -4,13 +4,13 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Integers.Func
 {
-    class FactorsOperation : IMathOperation 
+    class FactorsOperation : AbstractMathOperation 
     {
-        public int NumberOfParameters { get { return 1; } }
+        public override int NumberOfParameters { get { return 1; } }
 
-        public string Symbol { get { return "factors"; } }
+        public override string Symbol { get { return "factors"; } }
 
-        public IMathObject Perform(IMathObject[] input)
+        public override IMathObject Perform(IMathObject[] input)
         {
             var leftValue = input[0].GetInteger();
 

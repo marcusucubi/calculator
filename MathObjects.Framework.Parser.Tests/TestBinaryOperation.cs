@@ -2,13 +2,13 @@
 
 namespace MathObjects.Framework.Parser.Tests
 {
-    public class TestBinaryOperation : IMathOperation
+    public class TestBinaryOperation : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 2; } }
+        public override int NumberOfParameters { get { return 2; } }
 
-        public string Symbol { get { return "test"; } }
+        public override string Symbol { get { return "test"; } }
 
-        public IMathObject Perform(IMathObject[] objs)
+        public override IMathObject Perform(IMathObject[] objs)
         {
             return new TestObject(
                 objs[0].GetValue<string>() + " " + objs[1].GetValue<string>()

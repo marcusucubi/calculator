@@ -3,15 +3,15 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Negative : IMathOperation
+    public class Negative : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 1; } }
+        public override int NumberOfParameters { get { return 1; } }
 
-        public string Symbol { get { return "-"; } }
+        public override string Symbol { get { return "-"; } }
 
         public string Name { get { return "-"; } }
 
-        public IMathObject Perform(IMathObject[] left)
+        public override IMathObject Perform(IMathObject[] left)
         {
             var leftValue = left[0].GetDouble();
 

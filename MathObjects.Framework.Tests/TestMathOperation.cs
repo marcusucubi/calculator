@@ -2,16 +2,16 @@
 
 namespace MathObjects.Framework.Tests
 {
-    public class TestMathOperation : IMathOperation
+    public class TestMathOperation : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 0; } }
+        public override int NumberOfParameters { get { return 0; } }
 
-        public IMathObject Perform(IMathObject[] objs)
+        public override IMathObject Perform(IMathObject[] objs)
         {
             return new TestMathObject ();
         }
 
-        public string Symbol 
+        public override string Symbol 
         { 
             get { return "test"; } 
         }

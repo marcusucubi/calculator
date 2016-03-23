@@ -7,6 +7,7 @@ using MathObjects.Framework.Parser;
 using MathObjects.UI.Mediator;
 using MathObjects.Core.DecoratableObject;
 using System.Diagnostics;
+using MathObjects.Core.Extension;
 
 namespace MathObjects.UI.Stack
 {
@@ -168,10 +169,14 @@ namespace MathObjects.UI.Stack
                 return test;
             }
 
-            var test2 = obj.GetObjectDecoration<string>("name");
-            if (test2 != null)
+            var ext = obj as IExtensionableObject;
+            if (ext != null)
             {
-                return test2;
+                var test2 = ext.GetObjectDecoration<string>("name");
+                if (test2 != null)
+                {
+                    return test2;
+                }
             }
 
             return null;

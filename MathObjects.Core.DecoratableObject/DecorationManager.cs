@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using MathObjects.Core.Extension;
 
 namespace MathObjects.Core.DecoratableObject
 {
     public static class DecorationManager
     {
-        readonly static Dictionary<object, DecoratableObject> dictionary
-            = new Dictionary<object, DecoratableObject>();
+        readonly static string className = typeof(DecoratableExtension).Name;
 
         public static T GetClassDecoration<T>(this object obj, string key)
         {
@@ -32,85 +32,60 @@ namespace MathObjects.Core.DecoratableObject
             return (T)result;
         }
 
-        public static T GetObjectDecoration<T>(this object target, string key)
+        public static T GetObjectDecoration<T>(this IExtensionableObject target, string key)
         {
-            object obj = Unproxy(target);
+            var ext = GetExtension(target);
 
-            if (!dictionary.ContainsKey(obj))
+            if (!ext.Map.ContainsKey(key))
             {
                 return default(T);
             }
 
-            object result = null;
-
-            var decoratable = dictionary[obj];
-            if (decoratable != null)
-            {
-                if (decoratable.DecorationMap.ContainsKey(key))
-                {
-                    result = decoratable.DecorationMap[key];
-                }
-            }
-
-            return (T)result;
+            return (T)ext.Map[key];
         }
 
-        public static void SetObjectDecoration(this object target, string key, object value)
+        public static void SetObjectDecoration(this IExtensionableObject target, 
+            string key, object value)
         {
-            object obj = Unproxy(target);
+            var ext = GetExtension(target);
 
-            DecoratableObject decorable = null;
+            ext.Map[key] = value;
+        }
 
-            if (!dictionary.ContainsKey(obj))
+        public static void CopyDecorations(this IExtensionableObject targetObj, 
+            IExtensionableObject sourceObj)
+        {
+            var sourceExt = GetExtension(sourceObj);
+            var targetExt = GetExtension(targetObj);
+
+            foreach (var pair in sourceExt.Map)
             {
-                decorable = new DecoratableObject(obj);
+                targetExt.Map[pair.Key] = pair.Value;
+            }
+        }
 
-                dictionary[obj] = decorable;
+        static DecoratableExtension GetExtension(object target)
+        {
+            var obj = target as IExtensionableObject;
+
+            if (obj == null)
+            {
+                return new DecoratableExtension();
+            }
+
+            DecoratableExtension ext = null;
+
+            if (obj.ExtensionCollection.ContainsKey(className))
+            {
+                ext = obj.ExtensionCollection[className] as DecoratableExtension;
             }
             else
             {
-                decorable = dictionary[obj];
+                ext = new DecoratableExtension();
+                obj.ExtensionCollection[className] = ext;
             }
 
-            decorable.DecorationMap[key] = value;
-        }
-
-        public static void CopyDecorations(this object targetObj, object sourceObj)
-        {
-            object source = Unproxy(sourceObj);
-            object target = Unproxy(targetObj);
-
-            if (!dictionary.ContainsKey(source))
-            {
-                return;
-            }
-
-            var decoratable = dictionary[source].Target as DecoratableObject;
-
-            if (decoratable == null)
-            {
-                dictionary.Remove(source);
-            }
-            else
-            {
-                foreach (var pair in decoratable.DecorationMap)
-                {
-                    target.SetObjectDecoration(pair.Key, pair.Value);
-                }
-            }
-        }
-
-        static object Unproxy(object target)
-        {
-            object obj = target;
-
-            var proxy = target as IDecorationProxy;
-            if (proxy != null)
-            {
-                obj = proxy.DecorationTarget;
-            }
-
-            return obj;
+            return ext;
         }
     }
 }

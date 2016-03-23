@@ -4,13 +4,13 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Rational
 {
-    class Add : IMathOperation
+    class Add : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 2; } }
+        public override int NumberOfParameters { get { return 2; } }
 
-        public string Symbol { get { return "add"; } }
+        public override string Symbol { get { return "add"; } }
 
-        public IMathObject Perform(IMathObject[] objs)
+        public override IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetTuple();
             var rightValue = objs[1].GetTuple();

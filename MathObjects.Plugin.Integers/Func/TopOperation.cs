@@ -4,20 +4,20 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Integers.Func
 {
-    class TopOperation : IMathOperation
+    class TopOperation : AbstractMathOperation
     {
         readonly IMathObject top;
 
-        public int NumberOfParameters { get { return 0; } }
+        public override int NumberOfParameters { get { return 0; } }
 
-        public string Symbol { get { return "top"; } }
+        public override string Symbol { get { return "top"; } }
 
         public TopOperation(IMathObjectStack stack, IMathObject top)
         {
             this.top = top;
         }
 
-        public IMathObject Perform(IMathObject[] target)
+        public override IMathObject Perform(IMathObject[] target)
         {
             return new TopObject(top);
         }

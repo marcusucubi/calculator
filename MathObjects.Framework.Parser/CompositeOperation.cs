@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
 using MathObjects.Core.DecoratableObject;
+using MathObjects.Core.Extension;
 
 namespace MathObjects.Framework.Parser
 {
     public class CompositeOperation : IMathOperation, IDecorationProxy
     {
+        readonly ExtensionCollection collection = new ExtensionCollection();
+
         readonly IMathOperation first;
 
         readonly IMathOperation second;
@@ -16,6 +19,11 @@ namespace MathObjects.Framework.Parser
         {
             this.first = first;
             this.second = second;
+        }
+
+        public ExtensionCollection ExtensionCollection
+        {
+            get { return collection; }
         }
 
         public IMathOperation First

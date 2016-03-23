@@ -4,15 +4,15 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Multiply : IMathOperation, IHasName
+    public class Multiply : AbstractMathOperation, IHasName
     {
-        public int NumberOfParameters { get { return 2; } }
+        public override int NumberOfParameters { get { return 2; } }
 
-        public string Symbol { get { return "*"; } }
+        public override string Symbol { get { return "*"; } }
 
         public string Name { get { return "*"; } }
 
-        public IMathObject Perform(IMathObject[] objs)
+        public override IMathObject Perform(IMathObject[] objs)
         {
             var leftValue = objs[0].GetDouble();
             var rightValue = objs[1].GetDouble();

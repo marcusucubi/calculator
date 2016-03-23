@@ -5,11 +5,11 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Integers.Func
 {
-    class GcdOperation : IMathOperation 
+    class GcdOperation : AbstractMathOperation 
     {
-        public int NumberOfParameters { get { return 2; } }
+        public override int NumberOfParameters { get { return 2; } }
 
-        public string Symbol { get { return "gcd"; } }
+        public override string Symbol { get { return "gcd"; } }
 
         static public int GCD(int[] numbers)
         {
@@ -21,7 +21,7 @@ namespace MathObjects.Plugin.Integers.Func
             return b == 0 ? a : GCD(b, a % b);
         }
 
-        public IMathObject Perform(IMathObject[] input)
+        public override IMathObject Perform(IMathObject[] input)
         {
             var leftValue = input[0].GetInteger();
             var rightValue = input[1].GetInteger();

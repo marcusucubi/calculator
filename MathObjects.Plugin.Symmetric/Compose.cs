@@ -6,13 +6,13 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.Symmetric
 {
-    class Compose : IMathOperation
+    class Compose : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 2; } }
+        public override int NumberOfParameters { get { return 2; } }
 
-        public string Symbol { get { return "compose"; } }
+        public override string Symbol { get { return "compose"; } }
 
-        public IMathObject Perform(IMathObject[] objs)
+        public override IMathObject Perform(IMathObject[] objs)
         {
             IntegerMatrix leftValue = null;
             IntegerMatrix rightValue = null;

@@ -1,4 +1,6 @@
 ﻿using System;
+using MathObjects.Core.DecoratableObject;
+using MathObjects.Core.Extension;
 
 namespace MathObjects.Framework
 {
@@ -13,6 +15,8 @@ namespace MathObjects.Framework
             if (canCopy != null)
             {
                 result = canCopy.CopyByValue();
+
+                DecorationManager.CopyDecorations(result, canCopy as IExtensionableObject);
             }
 
             return result;

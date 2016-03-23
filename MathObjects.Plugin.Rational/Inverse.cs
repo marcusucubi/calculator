@@ -4,13 +4,13 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Rational
 {
-    class Inverse : IMathOperation
+    class Inverse : AbstractMathOperation
     {
-        public int NumberOfParameters { get { return 1; } }
+        public override int NumberOfParameters { get { return 1; } }
 
-        public string Symbol { get { return "inverse"; } }
+        public override string Symbol { get { return "inverse"; } }
 
-        public IMathObject Perform(IMathObject[] target)
+        public override IMathObject Perform(IMathObject[] target)
         {
             var tuple = target[0].GetTuple();
             if (tuple != null)

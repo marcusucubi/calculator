@@ -6,15 +6,15 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
     delegate double MathHandler(double input);
 
-    class MathOperation : IMathOperation
+    class MathOperation : AbstractMathOperation
     {
         readonly MathHandler handler;
 
         readonly string symbol;
 
-        public int NumberOfParameters { get { return 1; } }
+        public override int NumberOfParameters { get { return 1; } }
 
-        public string Symbol { get { return symbol; } }
+        public override string Symbol { get { return symbol; } }
 
         public MathOperation(MathHandler handler, string symbol)
         {
@@ -22,7 +22,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.symbol = symbol;
         }
 
-        public IMathObject Perform(IMathObject[] target)
+        public override IMathObject Perform(IMathObject[] target)
         {
             var result = new MathObject(handler(target[0].GetDouble()));
 

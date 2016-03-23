@@ -5,15 +5,15 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class AngleOperation : IMathOperation
+    class AngleOperation : AbstractMathOperation
     {
         readonly MathHandler handler;
 
         readonly string symbol;
 
-        public int NumberOfParameters { get { return 1; } }
+        public override int NumberOfParameters { get { return 1; } }
 
-        public string Symbol { get { return symbol; } }
+        public override string Symbol { get { return symbol; } }
 
         public AngleOperation(MathHandler handler, string symbol)
         {
@@ -21,7 +21,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.symbol = symbol;
         }
             
-        public IMathObject Perform(IMathObject[] target)
+        public override IMathObject Perform(IMathObject[] target)
         {
             var angle = target[0].GetValue<AngleObject>();
 
