@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Integers
 {
-    abstract class Function : AbstractMathObject, IMathFunction 
+    abstract class Function : AbstractMathObject, IMathOperationFactory2 
     {
         public virtual void Init(IMathFunctionContext context)
         {

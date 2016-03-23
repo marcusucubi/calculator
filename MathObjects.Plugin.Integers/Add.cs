@@ -17,14 +17,6 @@ namespace MathObjects.Plugin.Integers
 
             return new AddObject(leftValue, rightValue);
         }
-
-        public class Factory : IMathOperationFactory
-        {
-            public IMathOperation Create(object parm)
-            {
-                return new Add();
-            }
-        }
     }
 }
 

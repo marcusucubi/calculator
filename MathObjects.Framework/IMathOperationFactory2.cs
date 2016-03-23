@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework
 {
-    public interface IMathFunction : IMathObject
+    public interface IMathOperationFactory2 : IMathObject
     {
         void Init(IMathFunctionContext context);
 

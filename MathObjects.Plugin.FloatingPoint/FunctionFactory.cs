@@ -16,7 +16,7 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             var c = functionClass.GetConstructor(new Type[]{ });
 
-            return c.Invoke(new object[]{ }) as IMathFunction;
+            return c.Invoke(new object[]{ }) as IMathOperationFactory2;
         }
     }
 }

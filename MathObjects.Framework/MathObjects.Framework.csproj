@@ -43,7 +43,6 @@
     <Compile Include="IMathObjectFactoryContext.cs" />
     <Compile Include="ArrayObject.cs" />
     <Compile Include="FactoryContext.cs" />
-    <Compile Include="IMathFunction.cs" />
     <Compile Include="IMathFunctionContext.cs" />
     <Compile Include="IMathObjectEx.cs" />
     <Compile Include="IIsError.cs" />
@@ -51,6 +50,7 @@
     <Compile Include="ICanCopyByValue.cs" />
     <Compile Include="AbstractMathObject.cs" />
     <Compile Include="AbstractMathOperation.cs" />
+    <Compile Include="IMathOperationFactory2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

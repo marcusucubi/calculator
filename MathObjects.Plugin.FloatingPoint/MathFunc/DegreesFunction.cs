@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class DegreesFunction : AbstractMathObject, IMathFunction
+    class DegreesFunction : AbstractMathObject, IMathOperationFactory2
     {
         public void Init(IMathFunctionContext context)
         {

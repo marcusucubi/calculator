@@ -5,7 +5,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class AngleFunction : AbstractMathObject, IMathFunction
+    class AngleFunction : AbstractMathObject, IMathOperationFactory2
     {
         readonly MathHandler handler;
 

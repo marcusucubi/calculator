@@ -32,10 +32,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DecoratableObject.cs" />
     <Compile Include="DecorationManager.cs" />
     <Compile Include="ClassDecorationAttribute.cs" />
-    <Compile Include="IDecorationProxy.cs" />
     <Compile Include="DecoratableExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

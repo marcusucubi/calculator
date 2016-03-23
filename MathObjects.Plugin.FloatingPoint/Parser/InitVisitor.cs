@@ -12,8 +12,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
         readonly FunctionRegistry registry;
 
-        readonly IDictionary<FloatingPointParser.FuncCallContext, IMathFunction> map =
-            new Dictionary<FloatingPointParser.FuncCallContext, IMathFunction>();
+        readonly IDictionary<FloatingPointParser.FuncCallContext, IMathOperationFactory2> map =
+            new Dictionary<FloatingPointParser.FuncCallContext, IMathOperationFactory2>();
 
         public InitVisitor(
             FunctionRegistry registry, 
@@ -23,7 +23,7 @@ namespace MathObjects.Plugin.FloatingPoint
             this.stack = stack;
         }
 
-        public IDictionary<FloatingPointParser.FuncCallContext, IMathFunction> Map 
+        public IDictionary<FloatingPointParser.FuncCallContext, IMathOperationFactory2> Map 
         {
             get { return this.map; }
         }
@@ -47,7 +47,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 return false;
             }
 
-            var f = factory.Create(factoryContext) as IMathFunction;
+            var f = factory.Create(factoryContext) as IMathOperationFactory2;
 
             f.Init(new FunctionContext(this.stack));
 

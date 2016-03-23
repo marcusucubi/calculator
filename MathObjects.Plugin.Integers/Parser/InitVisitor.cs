@@ -12,8 +12,8 @@ namespace MathObjects.Plugin.Integers
 
         readonly FunctionRegistry registry;
 
-        readonly IDictionary<IntegersParser.FuncCallContext, IMathFunction> map =
-            new Dictionary<IntegersParser.FuncCallContext, IMathFunction>();
+        readonly IDictionary<IntegersParser.FuncCallContext, IMathOperationFactory2> map =
+            new Dictionary<IntegersParser.FuncCallContext, IMathOperationFactory2>();
 
         public InitVisitor(IMathObjectStack stack, FunctionRegistry registry)
         {
@@ -21,7 +21,7 @@ namespace MathObjects.Plugin.Integers
             this.registry = registry;
         }
 
-        public IDictionary<IntegersParser.FuncCallContext, IMathFunction> Map 
+        public IDictionary<IntegersParser.FuncCallContext, IMathOperationFactory2> Map 
         {
             get { return this.map; }
         }
@@ -45,7 +45,7 @@ namespace MathObjects.Plugin.Integers
                 return false;
             }
 
-            var f = factory.Create(factoryContext) as IMathFunction;
+            var f = factory.Create(factoryContext) as IMathOperationFactory2;
 
             f.Init(new FunctionContext(this.stack));
 

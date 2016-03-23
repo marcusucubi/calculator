@@ -5,7 +5,7 @@ using MathObjects.Core.Extension;
 
 namespace MathObjects.Framework.Parser
 {
-    public class CompositeOperation : IMathOperation, IDecorationProxy
+    public class CompositeOperation : IMathOperation
     {
         readonly ExtensionCollection collection = new ExtensionCollection();
 

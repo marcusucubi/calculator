@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class ConstantFunction : AbstractMathObject, IMathFunction
+    class ConstantFunction : AbstractMathObject, IMathOperationFactory2
     {
         readonly double value;
 
