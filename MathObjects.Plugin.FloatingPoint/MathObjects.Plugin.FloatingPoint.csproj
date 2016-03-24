@@ -86,6 +86,7 @@
     <Compile Include="MathFunc\RadiansOperation.cs" />
     <Compile Include="Ref.cs" />
     <Compile Include="ValueRef.cs" />
+    <Compile Include="HasChildrenEx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
