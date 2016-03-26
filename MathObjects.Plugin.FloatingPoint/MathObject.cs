@@ -1,13 +1,13 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using MathObjects.Core.DecoratableObject;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
-using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class MathObject : AbstractMathObject, IHasOutput, IHasDisplayValue, ICanCopyByValue 
+    class MathObject : AbstractMathObject, IHasDisplayValue, ICanCopyByValue, IHasValue 
     {
         readonly double value;
 
@@ -16,14 +16,14 @@ namespace MathObjects.Plugin.FloatingPoint
             value = param;
         }
 
-        public object Output
-        {
-            get { return this.value; }
-        }
-
         public string DisplayValue 
         { 
             get { return this.value.ToString(); }
+        }
+
+        public IMathValue Value
+        {
+            get { return new MathValue(this.value); }
         }
 
         public IMathObject CopyByValue()

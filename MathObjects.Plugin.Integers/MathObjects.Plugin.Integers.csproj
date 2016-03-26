@@ -71,6 +71,7 @@
     <Compile Include="Func\GcdOperation.cs" />
     <Compile Include="Func\FactorsFunction.cs" />
     <Compile Include="Func\FactorsOperation.cs" />
+    <Compile Include="MathValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

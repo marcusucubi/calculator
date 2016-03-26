@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace MathObjects.Framework.Parser
 {
     public class OperationWrapper : 
-        AbstractMathObject, IHasChildren, IHasOutput, ICanCopyByValue 
+        AbstractMathObject, IHasChildren, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue
     {
         readonly IMathObject[] objs;
 
@@ -25,9 +25,28 @@ namespace MathObjects.Framework.Parser
             get { return this.objs; }
         }
 
-        public object Output
+        public IMathObject Output
         {
             get { return op.Perform(Children); }
+        }
+
+        public IMathValue Value 
+        { 
+            get 
+            { 
+                var hasValue = Output as IHasValue;
+                if (hasValue is IHasValue)
+                {
+                    return hasValue.Value;
+                }
+
+                return null;
+            } 
+        }
+
+        public string DisplayValue 
+        { 
+            get { return "" + this.Output; } 
         }
 
         public IMathObject CopyByValue()

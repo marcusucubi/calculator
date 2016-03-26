@@ -15,7 +15,7 @@ namespace MathObjects.Plugin.Rational
             this.tuple2 = tuple2;
         }
 
-        public object Output
+        public IMathObject Output
         {
             get
             {
@@ -26,7 +26,7 @@ namespace MathObjects.Plugin.Rational
 
                 var temp = new Tuple<int, int>(value1, value2);
 
-                return new TupleReduce(temp).Output;
+                return new MathObject(new TupleReduce(temp).Output);
             }
         }
     }

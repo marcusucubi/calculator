@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "-")]
-    class SubtractObject : AbstractMathObject, IHasOutput, IHasDisplayValue
+    class SubtractObject : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasValue
     {
         readonly double tuple1;
 
@@ -17,9 +17,14 @@ namespace MathObjects.Plugin.FloatingPoint
             this.tuple2 = tuple2;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return (tuple1 - tuple2); }
+            get { return new MathObject(tuple1 - tuple2); }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue(tuple1 - tuple2); } 
         }
 
         public string DisplayValue 

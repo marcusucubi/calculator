@@ -13,7 +13,7 @@ namespace MathObjects.Plugin.FloatingPoint.Func
             this.value = value;
         }
 
-        public object Output
+        public IMathObject Output
         {
             get { return new MathObject(value); }
         }

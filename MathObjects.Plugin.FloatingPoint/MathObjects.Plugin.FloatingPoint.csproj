@@ -70,7 +70,6 @@
     <Compile Include="Func\ConstantObject.cs" />
     <Compile Include="Func\ConstantOperation.cs" />
     <Compile Include="MathFunc\MathFunction.cs" />
-    <Compile Include="MathFunc\MathObject.cs" />
     <Compile Include="MathFunc\MathOperation.cs" />
     <Compile Include="MathFunc\MathFuncObject.cs" />
     <Compile Include="MathFunc\AngleFunction.cs" />
@@ -87,6 +86,7 @@
     <Compile Include="Ref.cs" />
     <Compile Include="ValueRef.cs" />
     <Compile Include="HasChildrenEx.cs" />
+    <Compile Include="MathValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

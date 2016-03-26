@@ -8,7 +8,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         Radians, Degrees
     }
 
-    class AngleObject : AbstractMathObject, IHasOutput, IHasDisplayValue
+    class AngleObject : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasValue 
     {
         readonly double angleValue;
 
@@ -36,7 +36,15 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             get { return this.angleValue; }
         }
 
-        public object Output { get { return this.angleValue; } }
+        public IMathValue Value 
+        { 
+            get { return new MathValue(this.angleValue); } 
+        }
+
+        public IMathObject Output 
+        { 
+            get { return new MathObject(this.angleValue); } 
+        }
 
         public string DisplayValue
         {

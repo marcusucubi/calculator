@@ -5,7 +5,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Framework
 {
-    public class ArrayObject : AbstractMathObject, IHasOutput, IHasDisplayValue 
+    public class ArrayObject : AbstractMathObject, IHasDisplayValue //, IHasOutput 
     {
         readonly List<IMathObject> list = new List<IMathObject>();
 
@@ -24,10 +24,10 @@ namespace MathObjects.Framework
             set { list[i] = value; }
         }
 
-        public object Output
-        {
-            get { return this.list.ToArray(); }
-        }
+//        public IMathObject Output
+//        {
+//            get { return this.list.ToArray(); }
+//        }
 
         public IMathObject[] Array
         {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Gtk;
 using Pango;
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.UI.Mediator;
 using MathObjects.Core.DecoratableObject;
-using System.Diagnostics;
 using MathObjects.Core.Extension;
 
 namespace MathObjects.UI.Stack
@@ -100,15 +100,15 @@ namespace MathObjects.UI.Stack
                 }
                 else
                 {
-                    var hasOutput = i as IHasOutput;
+                    var hasValue = i as IHasValue;
 
-                    if (hasOutput != null)
+                    if (hasValue != null)
                     {
-                        s = "" + hasOutput.Output;
+                        s = "" + hasValue.Value;
 
                         if (s2.Length == 0)
                         {
-                            s2 = GetName(hasOutput.Output);
+                            s2 = GetName(hasValue.Value);
                         }
                     }
                     else

@@ -51,6 +51,9 @@
     <Compile Include="AbstractMathObject.cs" />
     <Compile Include="AbstractMathOperation.cs" />
     <Compile Include="IMathOperationFactory2.cs" />
+    <Compile Include="IMathValue.cs" />
+    <Compile Include="MathValueArray.cs" />
+    <Compile Include="IHasValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

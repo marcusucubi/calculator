@@ -18,9 +18,9 @@ namespace MathObjects.Plugin.Rational
             this.target = value;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return this.target; }
+            get { return new MathObject(this.target); }
         }
 
         public string DisplayValue

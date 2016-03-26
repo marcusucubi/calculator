@@ -31,12 +31,9 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             get { return this.angleObj; }
         }
 
-        public object Output 
+        public IMathObject Output 
         { 
-            get 
-            { 
-                return this.handler(this.angleObj.AngleValue); 
-            } 
+            get { return new MathObject(this.handler(this.angleObj.AngleValue)); } 
         }
 
         public string DisplayValue

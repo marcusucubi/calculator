@@ -12,7 +12,7 @@ namespace MathObjects.Plugin.FloatingPoint
             this.result = result;
         }
 
-        public object Output
+        public IMathObject Output
         {
             get { return result; }
         }

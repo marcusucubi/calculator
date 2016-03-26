@@ -14,9 +14,9 @@ namespace MathObjects.Plugin.Integers
             this.tuple1 = tuple1;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return (-tuple1); }
+            get { return new MathObject(-tuple1); }
         }
 
         public string DisplayValue 

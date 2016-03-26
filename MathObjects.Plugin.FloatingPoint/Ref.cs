@@ -27,7 +27,7 @@ namespace MathObjects.Plugin.FloatingPoint
             get { return this.scope.Get(this.name); }
         }
 
-        public object Output
+        public IMathObject Output
         {
             get { return this.scope.Get(this.name); }
         }

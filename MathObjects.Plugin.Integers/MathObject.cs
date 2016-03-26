@@ -18,9 +18,9 @@ namespace MathObjects.Plugin.Integers
             get { return this.value; }
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return this.value; }
+            get { return new MathValue(this.value); }
         }
 
         public override string ToString()

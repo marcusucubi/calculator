@@ -4,7 +4,7 @@ namespace MathObjects.Framework
 {
     public interface IHasOutput
     {
-        object Output { get; }
+        IMathObject Output { get; }
     }
 }
 

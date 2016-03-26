@@ -17,14 +17,14 @@ namespace MathObjects.Plugin.Integers
             this.tuple2 = tuple2;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return (tuple1 + tuple2); }
+            get { return new MathObject(tuple1 + tuple2); }
         }
 
         public int Value
         {
-            get { return (int)Output; }
+            get { return (tuple1 + tuple2); }
         }
 
         public string DisplayValue 

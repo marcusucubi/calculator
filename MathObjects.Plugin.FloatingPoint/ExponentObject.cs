@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "^")]
-    class ExponentObject : AbstractMathObject, IHasOutput, IHasDisplayValue
+    class ExponentObject : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasValue 
     {
         readonly double tuple1;
 
@@ -17,9 +17,14 @@ namespace MathObjects.Plugin.FloatingPoint
             this.tuple2 = tuple2;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return (Math.Pow(tuple1, tuple2)); }
+            get { return new MathObject(Math.Pow(tuple1, tuple2)); }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue(Math.Pow(tuple1, tuple2)); } 
         }
 
         public string DisplayValue 

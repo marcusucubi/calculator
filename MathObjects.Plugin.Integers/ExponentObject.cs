@@ -17,9 +17,9 @@ namespace MathObjects.Plugin.Integers
             this.tuple2 = tuple2;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return (int)(Math.Pow(tuple1, tuple2)); }
+            get { return new MathObject((int)(Math.Pow(tuple1, tuple2))); }
         }
 
         public string DisplayValue 

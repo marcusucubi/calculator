@@ -8,38 +8,28 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         public static double GetDouble(this IMathObject obj)
         {
+            return obj.GetValue<double>();
+            /*
             var hasOutput = obj as IHasOutput;
-            if (hasOutput is ErrorObject || hasOutput == null)
-            {
-                return float.NaN;
-            }
-
             if (hasOutput != null)
             {
-                var output = hasOutput.Output;
-                if (output is double)
+                var hasValue = hasOutput.Output as IHasValue;
+                if (hasValue != null)
                 {
-                    return (double)output;
+                    return ((MathValue)hasValue.Value).DoubleValue;
                 }
-
-                if (output is ErrorObject)
+            }
+            else
+            {
+                var hasValue = obj as IHasValue;
+                if (hasValue != null)
                 {
-                    return float.NaN;
-                }
-
-                var has2 = hasOutput.Output as IHasOutput;
-                if (has2 != null)
-                {
-                    if (has2.Output is double)
-                    {
-                        return (double)has2.Output;
-                    }
-
-                    return GetDouble((IMathObject)has2.Output);
+                    return ((MathValue)hasValue.Value).DoubleValue;
                 }
             }
 
-            throw new Exception();
+            return double.NaN;
+            */
         }
     }
 }

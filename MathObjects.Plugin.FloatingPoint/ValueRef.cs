@@ -5,7 +5,8 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class ValueRef : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue
+    public class ValueRef : AbstractMathObject, 
+        IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue
     {
         readonly string name;
 
@@ -32,7 +33,7 @@ namespace MathObjects.Plugin.FloatingPoint
             get { return this.obj; }
         }
 
-        public object Output
+        public IMathObject Output
         {
             get { return this.obj; }
         }

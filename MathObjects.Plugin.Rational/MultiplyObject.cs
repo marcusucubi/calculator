@@ -18,9 +18,9 @@ namespace MathObjects.Plugin.Rational
             result = new TupleReduce(result).Output;
         }
 
-        public object Output
+        public IMathObject Output
         {
-            get { return result; }
+            get { return new MathObject(result); }
         }
     }
 }
