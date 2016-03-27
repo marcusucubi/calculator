@@ -4,6 +4,7 @@ using System.Diagnostics;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.Plugin;
+using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.Tests
 {
@@ -121,6 +122,100 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
             parser.Parse("a=1;b=2;c=-3;delta=b^2-4*a*c", stack, scope);
 
             Assert.AreEqual(16, stack.Top.GetDouble());
+        }
+
+        [Test]
+        public void TestCase10()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a=1;b=2;c=-3;delta=b^2-4*a*c", stack, scope);
+
+            parser.Parse("q1=((-b+sqrt(delta))/(2*a))", stack, scope);
+
+            Assert.AreEqual(1, stack.Top.GetDouble());
+
+            parser.Parse("q2=((-b-sqrt(delta))/(2*a))", stack, scope);
+
+            Assert.AreEqual(-3, stack.Top.GetDouble());
+        }
+
+        [Test]
+        public void TestCase11()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a", stack, scope);
+
+            var top = stack.Pop();
+
+            var hasOutput = top as IHasOutput;
+
+            var canDefine = hasOutput.Output as ICanBeDefined;
+
+            Assert.IsFalse(canDefine.IsDefinded);
+        }
+
+        [Test]
+        public void TestCase12()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a=1", stack, scope);
+
+            parser.Parse("sum=a+b", stack, scope);
+
+            var canDefine = (stack.Top as IHasValue).Value as ICanBeDefined;
+
+            Assert.IsFalse(canDefine.IsDefinded);
+        }
+
+        [Test]
+        public void TestCase13()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a=1", stack, scope);
+
+            parser.Parse("sum=a-b", stack, scope);
+
+            var canDefine = (stack.Top as IHasValue).Value as ICanBeDefined;
+
+            Assert.IsFalse(canDefine.IsDefinded);
+        }
+
+        [Test]
+        public void TestCase14()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a=1", stack, scope);
+
+            parser.Parse("sum=a/b", stack, scope);
+
+            var canDefine = (stack.Top as IHasValue).Value as ICanBeDefined;
+
+            Assert.IsFalse(canDefine.IsDefinded);
+        }
+
+        [Test]
+        public void TestCase15()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a=1", stack, scope);
+
+            parser.Parse("sum=a/b", stack, scope);
+
+            var canDefine = (stack.Top as IHasValue).Value as ICanBeDefined;
+
+            Assert.IsFalse(canDefine.IsDefinded);
         }
     }
 }

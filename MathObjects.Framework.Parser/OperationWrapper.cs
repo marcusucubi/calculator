@@ -34,7 +34,9 @@ namespace MathObjects.Framework.Parser
         { 
             get 
             { 
-                var hasValue = Output as IHasValue;
+                var output = Output;
+
+                var hasValue = output as IHasValue;
                 if (hasValue != null)
                 {
                     return hasValue.Value;

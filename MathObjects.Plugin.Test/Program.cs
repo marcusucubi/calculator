@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.Plugin;
+using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Test
 {
@@ -20,13 +21,13 @@ namespace MathObjects.Plugin.Test
 
             var scope = new MathScope();
 
-            parser.Parse("x <-2;", stack, scope);
+            parser.Parse("a=1", stack, scope);
 
-            parser.Parse("x", stack, scope);
+            parser.Parse("sum=a+b", stack, scope);
 
-            var top = stack.Top;
+            var canDefine = ((stack.Top as IHasOutput).Output as IHasOutput).Output as ICanBeDefined;
 
-            
+            var canDefine2 = (stack.Top as IHasValue).Value as ICanBeDefined;
 
         }
     }
