@@ -63,8 +63,6 @@
     <Compile Include="Negative.cs" />
     <Compile Include="ExponentObject.cs" />
     <Compile Include="ExponentOperation.cs" />
-    <Compile Include="Func\TopObject.cs" />
-    <Compile Include="Func\TopOperation.cs" />
     <Compile Include="Func\ConstantObject.cs" />
     <Compile Include="Func\ConstantOperation.cs" />
     <Compile Include="MathFunc\MathOperation.cs" />
@@ -80,7 +78,6 @@
     <Compile Include="ValueRef.cs" />
     <Compile Include="HasChildrenEx.cs" />
     <Compile Include="MathValue.cs" />
-    <Compile Include="Func\TopOperationFactory.cs" />
     <Compile Include="Func\ConstantOperationFactory.cs" />
     <Compile Include="MathFunc\AngleOperationFactory.cs" />
     <Compile Include="MathFunc\DegreesOperationFactory.cs" />

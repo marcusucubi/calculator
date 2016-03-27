@@ -34,10 +34,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 "pi", new ConstantOperationFactory.Factory(Math.PI));
 
             registry.Put(
-                "ee", new ConstantOperationFactory.Factory(Math.E));
-
-            registry.Put(
-                "top", new FunctionFactory(typeof(TopOperationFactory)));
+                "e", new ConstantOperationFactory.Factory(Math.E));
 
             registry.Put(
                 "degrees", new FunctionFactory(typeof(DegreesOperationFactory)));
@@ -95,7 +92,7 @@ namespace MathObjects.Plugin.FloatingPoint
                         { 
                             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
                             "+", "*", "-", "/", "^", "(", ")", "=", ";",
-                            "top()", "sqrt()", "square()", "inverse()"
+                            "sqrt()", "square()", "inverse()"
                         }
                     );
                     vocab.Add(words);
