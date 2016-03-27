@@ -5,13 +5,13 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class AngleFunction : AbstractMathObject, IMathOperationFactory2
+    class AngleOperationFactory : AbstractMathObject, IMathOperationFactory2
     {
         readonly MathHandler handler;
 
         readonly string symbol;
 
-        public AngleFunction(MathHandler handler, string symbol)
+        public AngleOperationFactory(MathHandler handler, string symbol)
         {
             this.handler = handler;
             this.symbol = symbol;
@@ -73,7 +73,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new AngleFunction(handler, symbol);
+                return new AngleOperationFactory(handler, symbol);
             }
         }
     }

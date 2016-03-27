@@ -3,13 +3,13 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class InverseAngleFunction : AbstractMathObject, IMathOperationFactory2
+    class InverseAngleOperationFactory : AbstractMathObject, IMathOperationFactory2
     {
         readonly MathHandler handler;
 
         readonly string symbol;
 
-        public InverseAngleFunction(MathHandler handler, string symbol)
+        public InverseAngleOperationFactory(MathHandler handler, string symbol)
         {
             this.handler = handler;
             this.symbol = symbol;
@@ -38,7 +38,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new InverseAngleFunction(handler, symbol);
+                return new InverseAngleOperationFactory(handler, symbol);
             }
         }
     }

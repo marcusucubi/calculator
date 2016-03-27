@@ -4,11 +4,11 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
-    class ConstantFunction : AbstractMathObject, IMathOperationFactory2
+    class ConstantOperationFactory : AbstractMathObject, IMathOperationFactory2
     {
         readonly double value;
 
-        public ConstantFunction(double value)
+        public ConstantOperationFactory(double value)
         {
             this.value = value;
         }
@@ -33,7 +33,7 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new ConstantFunction(this.value);
+                return new ConstantOperationFactory(this.value);
             }
         }
     }

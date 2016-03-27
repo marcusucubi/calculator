@@ -4,13 +4,13 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
-    class MathFunction : AbstractMathObject, IMathOperationFactory2
+    class MathOperationFactory : AbstractMathObject, IMathOperationFactory2
     {
         readonly MathHandler handler;
 
         readonly string symbol;
 
-        public MathFunction(MathHandler handler, string symbol)
+        public MathOperationFactory(MathHandler handler, string symbol)
         {
             this.handler = handler;
             this.symbol = symbol;
@@ -40,7 +40,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
             public IMathObject Create(IMathObjectFactoryContext context)
             {
-                return new MathFunction(handler, this.symbol);
+                return new MathOperationFactory(handler, this.symbol);
             }
         }
     }

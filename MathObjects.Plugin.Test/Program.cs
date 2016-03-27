@@ -25,9 +25,9 @@ namespace MathObjects.Plugin.Test
 
             parser.Parse("sum=a+b", stack, scope);
 
-            var canDefine = ((stack.Top as IHasOutput).Output as IHasOutput).Output as ICanBeDefined;
+            //var canDefine = ((stack.Top as IHasOutput).Output as IHasOutput).Output as ICanBeDefined;
 
-            var canDefine2 = (stack.Top as IHasValue).Value as ICanBeDefined;
+            //var canDefine2 = (stack.Top as IHasValue).Value as ICanBeDefined;
 
         }
     }

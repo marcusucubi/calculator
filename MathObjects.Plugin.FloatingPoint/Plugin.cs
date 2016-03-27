@@ -31,55 +31,55 @@ namespace MathObjects.Plugin.FloatingPoint
             var registry = new FunctionRegistry();
 
             registry.Put(
-                "pi", new ConstantFunction.Factory(Math.PI));
+                "pi", new ConstantOperationFactory.Factory(Math.PI));
 
             registry.Put(
-                "ee", new ConstantFunction.Factory(Math.E));
+                "ee", new ConstantOperationFactory.Factory(Math.E));
 
             registry.Put(
-                "top", new FunctionFactory(typeof(TopFunction)));
+                "top", new FunctionFactory(typeof(TopOperationFactory)));
 
             registry.Put(
-                "degrees", new FunctionFactory(typeof(DegreesFunction)));
+                "degrees", new FunctionFactory(typeof(DegreesOperationFactory)));
             
             registry.Put(
-                "radians", new FunctionFactory(typeof(RadiansFunction)));
+                "radians", new FunctionFactory(typeof(RadiansOperationFactory)));
         
             registry.Put(
-                "ln", new MathFunction.Factory(((i) => Math.Log(i)), "ln"));
+                "ln", new MathOperationFactory.Factory(((i) => Math.Log(i)), "ln"));
 
             registry.Put(
-                "log", new MathFunction.Factory(((i) => Math.Log10(i)), "log"));
+                "log", new MathOperationFactory.Factory(((i) => Math.Log10(i)), "log"));
             
             registry.Put(
-                "exp", new MathFunction.Factory(((i) => Math.Exp(i)), "exp"));
+                "exp", new MathOperationFactory.Factory(((i) => Math.Exp(i)), "exp"));
 
             registry.Put(
-                "sqrt", new MathFunction.Factory(((i) => Math.Sqrt(i)), "sqrt"));
+                "sqrt", new MathOperationFactory.Factory(((i) => Math.Sqrt(i)), "sqrt"));
 
             registry.Put(
-                "square", new MathFunction.Factory(((i) => ( i * i )), "square"));
+                "square", new MathOperationFactory.Factory(((i) => ( i * i )), "square"));
 
             registry.Put(
-                "inverse", new MathFunction.Factory(((i) => ( 1/i )), "inverse"));
+                "inverse", new MathOperationFactory.Factory(((i) => ( 1/i )), "inverse"));
 
             registry.Put(
-                "sin", new AngleFunction.Factory(((i) => Math.Sin(i)), "sin"));
+                "sin", new AngleOperationFactory.Factory(((i) => Math.Sin(i)), "sin"));
             
             registry.Put(
-                "cos", new AngleFunction.Factory(((i) => Math.Cos(i)), "cos"));
+                "cos", new AngleOperationFactory.Factory(((i) => Math.Cos(i)), "cos"));
             
             registry.Put(
-                "tan", new AngleFunction.Factory(((i) => Math.Tan(i)), "tan"));
+                "tan", new AngleOperationFactory.Factory(((i) => Math.Tan(i)), "tan"));
             
             registry.Put(
-                "asin", new InverseAngleFunction.Factory(((i) => Math.Asin(i)), "asin"));
+                "asin", new InverseAngleOperationFactory.Factory(((i) => Math.Asin(i)), "asin"));
 
             registry.Put(
-                "acos", new InverseAngleFunction.Factory(((i) => Math.Acos(i)), "acos"));
+                "acos", new InverseAngleOperationFactory.Factory(((i) => Math.Acos(i)), "acos"));
 
             registry.Put(
-                "atan", new InverseAngleFunction.Factory(((i) => Math.Atan(i)), "atan"));
+                "atan", new InverseAngleOperationFactory.Factory(((i) => Math.Atan(i)), "atan"));
 
             parser = new Parser(registry);
         }

@@ -9,34 +9,34 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
         public static void Init(FunctionRegistry registry)
         {
             registry.Put(
-                "cos", new AngleFunction.Factory(x => Math.Cos(x), "cos"));
+                "cos", new AngleOperationFactory.Factory(x => Math.Cos(x), "cos"));
             
             registry.Put(
-                "sin", new AngleFunction.Factory(x => Math.Sin(x), "sin"));
+                "sin", new AngleOperationFactory.Factory(x => Math.Sin(x), "sin"));
             
             registry.Put(
-                "tan", new AngleFunction.Factory(x => Math.Tan(x), "tan"));
+                "tan", new AngleOperationFactory.Factory(x => Math.Tan(x), "tan"));
             
             registry.Put(
-                "acos", new InverseAngleFunction.Factory(x => Math.Acos(x), "acos"));
+                "acos", new InverseAngleOperationFactory.Factory(x => Math.Acos(x), "acos"));
             
             registry.Put(
-                "asin", new InverseAngleFunction.Factory(x => Math.Asin(x), "asin"));
+                "asin", new InverseAngleOperationFactory.Factory(x => Math.Asin(x), "asin"));
 
             registry.Put(
-                "atan", new InverseAngleFunction.Factory(x => Math.Atan(x), "atan"));
+                "atan", new InverseAngleOperationFactory.Factory(x => Math.Atan(x), "atan"));
 
             registry.Put(
-                "abs", new MathFunction.Factory(x => System.Math.Abs(x), "abs"));
+                "abs", new MathOperationFactory.Factory(x => System.Math.Abs(x), "abs"));
             
             registry.Put(
-                "exp", new MathFunction.Factory(x => System.Math.Exp(x), "exp"));
+                "exp", new MathOperationFactory.Factory(x => System.Math.Exp(x), "exp"));
             
             registry.Put(
-                "log", new MathFunction.Factory(x => System.Math.Log(x), "log"));
+                "log", new MathOperationFactory.Factory(x => System.Math.Log(x), "log"));
             
             registry.Put(
-                "sqrt", new MathFunction.Factory(x => System.Math.Sqrt(x), "sqrt"));
+                "sqrt", new MathOperationFactory.Factory(x => System.Math.Sqrt(x), "sqrt"));
         }
     }
 }
