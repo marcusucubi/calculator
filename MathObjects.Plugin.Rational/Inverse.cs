@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Rational
 {
@@ -12,6 +13,11 @@ namespace MathObjects.Plugin.Rational
 
         public override IMathObject Perform(IMathObject[] target)
         {
+            if (!target[0].IsDefined())
+            {
+                return new UndefinedObject();
+            }
+
             var tuple = target[0].GetTuple();
             if (tuple != null)
             {

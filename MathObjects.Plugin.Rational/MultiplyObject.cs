@@ -3,7 +3,7 @@ using MathObjects.Framework;
 
 namespace MathObjects.Plugin.Rational
 {
-    class MultiplyObject : AbstractMathObject, IHasOutput
+    class MultiplyObject : AbstractMathObject, IHasOutput, IHasValue
     {
         readonly Tuple<int, int> result;
 
@@ -21,6 +21,11 @@ namespace MathObjects.Plugin.Rational
         public IMathObject Output
         {
             get { return new MathObject(result); }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue(result); }
         }
     }
 }

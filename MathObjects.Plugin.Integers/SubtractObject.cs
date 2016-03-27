@@ -5,7 +5,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.Integers
 {
     [ClassDecoration("name", "-")]
-    class SubtractObject : AbstractMathObject, IHasOutput, IHasDisplayValue
+    class SubtractObject : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasValue 
     {
         readonly int tuple1;
 
@@ -20,6 +20,11 @@ namespace MathObjects.Plugin.Integers
         public IMathObject Output
         {
             get { return new MathObject(tuple1 - tuple2); }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue(tuple1 - tuple2); } 
         }
 
         public string DisplayValue 

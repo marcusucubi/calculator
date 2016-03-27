@@ -54,6 +54,7 @@
     <Compile Include="Parser\EvalVisitor2.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="ErrorListener.cs" />
+    <Compile Include="MathValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

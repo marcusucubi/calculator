@@ -5,7 +5,8 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.Integers
 {
     [ClassDecoration("name", "^")]
-    class ExponentObject : AbstractMathObject, IHasOutput, IHasDisplayValue
+    class ExponentObject : AbstractMathObject, 
+        IHasOutput, IHasDisplayValue, IHasValue 
     {
         readonly int tuple1;
 
@@ -20,6 +21,11 @@ namespace MathObjects.Plugin.Integers
         public IMathObject Output
         {
             get { return new MathObject((int)(Math.Pow(tuple1, tuple2))); }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue((int)(Math.Pow(tuple1, tuple2))); } 
         }
 
         public string DisplayValue 

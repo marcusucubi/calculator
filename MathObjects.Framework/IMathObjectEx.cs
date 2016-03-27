@@ -48,16 +48,18 @@ namespace MathObjects.Framework
         public static T GetValue<T>(this IMathObject obj)
         {
             var hasValue = obj as IHasValue;
-            if (hasValue != null && typeof(T).IsAssignableFrom(hasValue.GetType()) )
+            if (hasValue != null)
             {
-                return (T)hasValue;
-            }
+                if (typeof(T).IsAssignableFrom(hasValue.GetType()) )
+                {
+                    return (T)hasValue;
+                }
 
-            var hasValue2 = obj as IHasValue;
-            if (hasValue2 != null && hasValue2.Value != null &&
-                typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
-            {
-                return (T)hasValue2.Value.Value;
+                if (hasValue.Value != null && hasValue.Value.Value != null &&
+                    typeof(T).IsAssignableFrom(hasValue.Value.Value.GetType()) )
+                {
+                    return (T)hasValue.Value.Value;
+                }
             }
 
             var hasOutput = obj as IHasOutput;
@@ -80,7 +82,7 @@ namespace MathObjects.Framework
             }
 
             var hasValue2 = output as IHasValue;
-            if (hasValue2 != null && hasValue2.Value != null &&
+            if (hasValue2 != null && hasValue2.Value.Value != null &&
                 typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
             {
                 return (T)hasValue2.Value.Value;

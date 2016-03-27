@@ -13,9 +13,9 @@ namespace MathObjects.Plugin.Integers
             value = param;
         }
 
-        public int Value
-        {
-            get { return this.value; }
+        public IMathValue Value 
+        { 
+            get { return new MathValue(value); } 
         }
 
         public IMathObject Output

@@ -111,6 +111,17 @@ namespace MathObjects.Plugin.FloatingPoint.Tests
 
             Assert.AreEqual(60, stack.Top.GetDouble());
         }
+
+        [Test]
+        public void TestCase9()
+        {
+            var stack = new MathObjectStack();
+            var scope = new MathScope();
+
+            parser.Parse("a=1;b=2;c=-3;delta=b^2-4*a*c", stack, scope);
+
+            Assert.AreEqual(16, stack.Top.GetDouble());
+        }
     }
 }
 

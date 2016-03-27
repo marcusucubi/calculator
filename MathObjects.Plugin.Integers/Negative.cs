@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Integers
 {
@@ -11,6 +12,11 @@ namespace MathObjects.Plugin.Integers
 
         public override IMathObject Perform(IMathObject[] left)
         {
+            if (!left[0].IsDefined())
+            {
+                return new UndefinedObject();
+            }
+
             var leftValue = left[0].GetInteger();
 
             return new NegativeObject(leftValue);

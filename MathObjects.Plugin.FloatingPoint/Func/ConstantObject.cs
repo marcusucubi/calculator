@@ -22,6 +22,11 @@ namespace MathObjects.Plugin.FloatingPoint.Func
         { 
             get { return "" + this.value; } 
         }
+
+        public override string ToString()
+        {
+            return "constant object(" + DisplayValue + ")";
+        }
     }
 }
 

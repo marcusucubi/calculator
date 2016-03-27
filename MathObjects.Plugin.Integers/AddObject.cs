@@ -22,9 +22,9 @@ namespace MathObjects.Plugin.Integers
             get { return new MathObject(tuple1 + tuple2); }
         }
 
-        public int Value
-        {
-            get { return (tuple1 + tuple2); }
+        public IMathValue Value 
+        { 
+            get { return new MathValue(tuple1 + tuple2); } 
         }
 
         public string DisplayValue 

@@ -4,7 +4,7 @@ using MathObjects.Framework.Registry;
 
 namespace MathObjects.Plugin.Rational
 {
-    class MathObject : AbstractMathObject, IHasOutput, IHasDisplayValue 
+    class MathObject : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasValue
     {
         readonly Tuple<int, int> value;
 
@@ -13,9 +13,19 @@ namespace MathObjects.Plugin.Rational
             value = param;
         }
 
+        public MathObject(MathValue value)
+        {
+            this.value = value.Tuple;
+        }
+
         public IMathObject Output
         {
-            get { return new MathObject(this.value); }
+            get { return this; }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue(this.value); } 
         }
 
         public string DisplayValue 

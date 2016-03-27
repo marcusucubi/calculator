@@ -40,6 +40,7 @@
     <Compile Include="TestBinaryOperation.cs" />
     <Compile Include="TestObjectEx.cs" />
     <Compile Include="TestUniraryOperation.cs" />
+    <Compile Include="TestValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

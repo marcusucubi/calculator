@@ -61,6 +61,11 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             var copy = this.obj as ICanCopyByValue;
 
+            if (copy == null)
+            {
+                return new ErrorObject();
+            }
+
             var result = copy.CopyByValue();
 
             result.CopyDecorations(this);

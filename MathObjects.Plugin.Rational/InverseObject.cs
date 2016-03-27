@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace MathObjects.Plugin.Rational
 {
-    class InverseObject : AbstractMathObject, IHasOutput, IHasDisplayValue
+    class InverseObject : AbstractMathObject, IHasOutput, IHasDisplayValue, IHasValue
     {
         readonly Tuple<int, int> target;
 
@@ -21,6 +21,11 @@ namespace MathObjects.Plugin.Rational
         public IMathObject Output
         {
             get { return new MathObject(this.target); }
+        }
+
+        public IMathValue Value 
+        { 
+            get { return new MathValue(this.target); }
         }
 
         public string DisplayValue

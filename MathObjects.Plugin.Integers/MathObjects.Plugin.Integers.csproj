@@ -40,7 +40,6 @@
     <Compile Include="MathObject.cs" />
     <Compile Include="Multiplication.cs" />
     <Compile Include="Plugin.cs" />
-    <Compile Include="IHasValue.cs" />
     <Compile Include="MathObjectEx.cs" />
     <Compile Include="Parser\IntegersBaseVisitor.cs" />
     <Compile Include="Parser\IntegersVisitor.cs" />

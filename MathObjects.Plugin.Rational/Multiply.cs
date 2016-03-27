@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Rational
 {
@@ -12,12 +13,15 @@ namespace MathObjects.Plugin.Rational
 
         public override IMathObject Perform(IMathObject[] objs)
         {
+            if (!objs[0].IsDefined() || !objs[1].IsDefined())
+            {
+                return new UndefinedObject();
+            }
+
             var leftValue = objs[0].GetTuple();
             var rightValue = objs[1].GetTuple();
 
-            var op = new MultiplyObject(leftValue, rightValue);
-
-            return new MathObject(op.Output as Tuple<int, int>);
+            return new MultiplyObject(leftValue, rightValue);
         }
 
         public class Factory : IMathOperationFactory, IHasName

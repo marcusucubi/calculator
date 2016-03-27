@@ -1,13 +1,12 @@
 ﻿using System;
-using MathObjects.Framework;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser.Tests
 {
-    public class MathValue : AbstractMathObject, IMathValue
+    public class TestValue : AbstractMathObject, IMathValue
     {
-        readonly double value;
+        readonly string value;
 
-        public MathValue(double value)
+        public TestValue(string value)
         {
             this.value = value;
         }

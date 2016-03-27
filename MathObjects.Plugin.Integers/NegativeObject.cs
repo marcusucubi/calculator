@@ -19,6 +19,11 @@ namespace MathObjects.Plugin.Integers
             get { return new MathObject(-tuple1); }
         }
 
+        public IMathValue Value 
+        { 
+            get { return new MathValue(-tuple1); } 
+        }
+
         public string DisplayValue 
         { 
             get { return this.Output.ToString(); }

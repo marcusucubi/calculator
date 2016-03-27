@@ -16,6 +16,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var stack = new MathObjectStack();
 
             parser.Parse("1+1", stack, null);
+
             var result = stack.Pop();
 
             Assert.AreEqual (2, result.GetTuple().Item1);
@@ -28,6 +29,7 @@ namespace MathObjects.Plugin.Rational.Tests
             var stack = new MathObjectStack();
 
             parser.Parse("2 * 2", stack, null);
+
             var result = stack.Pop();
 
             Assert.AreEqual (4, result.GetTuple().Item1);
