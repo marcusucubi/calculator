@@ -22,6 +22,11 @@ namespace MathObjects.Plugin.FloatingPoint
             get { return this.value; }
         }
 
+        public bool IsDefinded 
+        { 
+            get { return true; } 
+        }
+
         public override string ToString()
         {
             return "" + value;

@@ -1,5 +1,6 @@
 ﻿using System;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -13,6 +14,11 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public override IMathObject Perform(IMathObject[] left)
         {
+            if (!left[0].IsDefined())
+            {
+                return new UndefinedObject();
+            }
+
             var leftValue = left[0].GetDouble();
 
             return new NegativeObject(leftValue);

@@ -11,7 +11,7 @@ namespace MathObjects.Framework.Parser
         {
             if (!map.ContainsKey(name))
             {
-                return new ErrorObject();
+                return new UndefinedObject();
             }
 
             return map[name];

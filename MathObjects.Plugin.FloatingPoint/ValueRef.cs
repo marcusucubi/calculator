@@ -45,7 +45,16 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public string DisplayValue 
         { 
-            get { return "" + this.obj.GetDouble(); }
+            get 
+            { 
+                var hasDisplay = obj as IHasDisplayValue;
+                if (hasDisplay != null)
+                {
+                    return hasDisplay.DisplayValue;
+                }
+
+                return "" + this.obj.GetDouble(); 
+            }
         }
 
         public IMathObject CopyByValue()

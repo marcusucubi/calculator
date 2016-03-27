@@ -22,6 +22,29 @@ namespace MathObjects.Framework
             return result;
         }
 
+        public static bool IsDefined(this IMathObject obj)
+        {
+            var defined = obj as ICanBeDefined;
+            if (defined != null)
+            {
+                return defined.IsDefinded;
+            }
+
+            var hasOutput = obj as IHasOutput;
+            if (hasOutput != null)
+            {
+                var output = hasOutput.Output;
+
+                var defined2 = output as ICanBeDefined;
+                if (defined2 != null)
+                {
+                    return defined2.IsDefinded;
+                }
+            }
+
+            return true;
+        }
+
         public static T GetValue<T>(this IMathObject obj)
         {
             var hasValue = obj as IHasValue;
@@ -31,7 +54,8 @@ namespace MathObjects.Framework
             }
 
             var hasValue2 = obj as IHasValue;
-            if (hasValue2 != null && typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
+            if (hasValue2 != null && hasValue2.Value != null &&
+                typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
             {
                 return (T)hasValue2.Value.Value;
             }
@@ -56,7 +80,8 @@ namespace MathObjects.Framework
             }
 
             var hasValue2 = output as IHasValue;
-            if (hasValue2 != null && typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
+            if (hasValue2 != null && hasValue2.Value != null &&
+                typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
             {
                 return (T)hasValue2.Value.Value;
             }

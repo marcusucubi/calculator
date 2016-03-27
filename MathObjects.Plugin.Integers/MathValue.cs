@@ -16,6 +16,11 @@ namespace MathObjects.Plugin.Integers
         {
             get { return this.value; }
         }
+
+        public bool IsDefinded 
+        { 
+            get { return true; } 
+        }
     }
 }
 

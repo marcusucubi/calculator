@@ -54,6 +54,7 @@
     <Compile Include="IMathValue.cs" />
     <Compile Include="MathValueArray.cs" />
     <Compile Include="IHasValue.cs" />
+    <Compile Include="ICanBeDefined.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

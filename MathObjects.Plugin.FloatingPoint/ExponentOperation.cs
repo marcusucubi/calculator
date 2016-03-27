@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Core.DecoratableObject;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -13,8 +14,12 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public override IMathObject Perform(IMathObject[] objs)
         {
-            var leftValue = objs[0].GetDouble();
+            if (!objs[0].IsDefined() || !objs[1].IsDefined())
+            {
+                return new UndefinedObject();
+            }
 
+            var leftValue = objs[0].GetDouble();
             var rightValue = objs[1].GetDouble();
 
             return new ExponentObject(leftValue, rightValue);

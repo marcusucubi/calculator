@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace MathObjects.Framework.Parser
 {
-    public class OperationWrapper : 
-        AbstractMathObject, IHasChildren, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue
+    public class OperationWrapper : AbstractMathObject, 
+        IHasChildren, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue
     {
         readonly IMathObject[] objs;
 
@@ -35,7 +35,7 @@ namespace MathObjects.Framework.Parser
             get 
             { 
                 var hasValue = Output as IHasValue;
-                if (hasValue is IHasValue)
+                if (hasValue != null)
                 {
                     return hasValue.Value;
                 }
@@ -46,7 +46,18 @@ namespace MathObjects.Framework.Parser
 
         public string DisplayValue 
         { 
-            get { return "" + this.Output; } 
+            get 
+            { 
+                var output = this.Output;
+
+                var hasDisplay = output as IHasDisplayValue;
+                if (hasDisplay != null)
+                {
+                    return hasDisplay.DisplayValue;
+                }
+
+                return "" + output; 
+            } 
         }
 
         public IMathObject CopyByValue()
