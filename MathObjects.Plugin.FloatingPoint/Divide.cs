@@ -5,7 +5,6 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    [ClassDecoration("name", "/")]
     public class Divide : AbstractMathOperation
     {
         public override int NumberOfParameters { get { return 2; } }
@@ -16,7 +15,11 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             if (!objs[0].IsDefined() || !objs[1].IsDefined())
             {
-                return new UndefinedObject();
+                var result = new UndefinedObject();
+
+                DecorationManager.SetObjectDecoration(result, "name", "/");
+
+                return result;
             }
 
             var leftValue = objs[0].GetDouble();

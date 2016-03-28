@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Core.DecoratableObject;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
@@ -22,6 +23,15 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         public override IMathObject Perform(IMathObject[] target)
         {
+            if (!target[0].IsDefined())
+            {
+                var undef = new UndefinedObject();
+
+                DecorationManager.SetObjectDecoration(undef, "name", this.Symbol);
+
+                return undef;
+            }
+
             double value = target[0].GetDouble();
 
             var result = new AngleObject(handler(value), AngleType.Radians);

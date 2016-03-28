@@ -2,6 +2,7 @@
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -17,7 +18,14 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             if (!objs[0].IsDefined() || !objs[1].IsDefined())
             {
-                return new UndefinedObject();
+                if (!objs[0].IsDefined() || !objs[1].IsDefined())
+                {
+                    var result = new UndefinedObject();
+
+                    DecorationManager.SetObjectDecoration(result, "name", "*");
+
+                    return result;
+                }
             }
 
             var leftValue = objs[0].GetDouble();

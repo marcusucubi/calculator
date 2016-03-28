@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Core.DecoratableObject;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint.MathFunc
 {
@@ -24,6 +25,15 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
         public override IMathObject Perform(IMathObject[] target)
         {
+            if (!target[0].IsDefined())
+            {
+                var undef = new UndefinedObject();
+
+                DecorationManager.SetObjectDecoration(undef, "name", this.symbol);
+
+                return undef;
+            }
+
             var result = new MathObject(handler(target[0].GetDouble()));
 
             result.CopyDecorations(this);

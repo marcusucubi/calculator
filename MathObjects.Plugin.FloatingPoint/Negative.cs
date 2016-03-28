@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -16,7 +17,14 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             if (!left[0].IsDefined())
             {
-                return new UndefinedObject();
+                if (!left[0].IsDefined())
+                {
+                    var result = new UndefinedObject();
+
+                    DecorationManager.SetObjectDecoration(result, "name", "^");
+
+                    return result;
+                }
             }
 
             var leftValue = left[0].GetDouble();

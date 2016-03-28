@@ -16,7 +16,11 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             if (!objs[0].IsDefined() || !objs[1].IsDefined())
             {
-                return new UndefinedObject();
+                var result = new UndefinedObject();
+
+                DecorationManager.SetObjectDecoration(result, "name", "+");
+
+                return result;
             }
 
             var leftValue = objs[0].GetDouble();
