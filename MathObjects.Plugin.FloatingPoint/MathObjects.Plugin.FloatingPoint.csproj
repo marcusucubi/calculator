@@ -84,6 +84,9 @@
     <Compile Include="MathFunc\InverseAngleOperationFactory.cs" />
     <Compile Include="MathFunc\MathOperationFactory.cs" />
     <Compile Include="MathFunc\RadiansOperationFactory.cs" />
+    <Compile Include="Func\TopObject.cs" />
+    <Compile Include="Func\TopOperationFactory.cs" />
+    <Compile Include="Func\TopOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

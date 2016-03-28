@@ -36,9 +36,9 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var result = Visit(context.expr());
 
-            result = result.CopyByValue();
-
             this.stack.Pop();
+
+            result = result.CopyByValue();
 
             result = this.stack.Push(result);
 
