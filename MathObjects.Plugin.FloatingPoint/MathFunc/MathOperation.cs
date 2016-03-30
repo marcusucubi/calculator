@@ -29,7 +29,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             {
                 var undef = new UndefinedObject();
 
-                DecorationManager.SetObjectDecoration(undef, "name", this.symbol);
+                NameManager.SetObjectName(undef, this.symbol);
 
                 return undef;
             }

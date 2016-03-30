@@ -6,25 +6,22 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 {
     class TopOperation : AbstractMathOperation
     {
-        readonly IMathObject top;
-
         readonly IMathObjectStack stack;
 
         public override int NumberOfParameters { get { return 0; } }
 
         public override string Symbol { get { return "top"; } }
 
-        public TopOperation(IMathObjectStack stack, IMathObject top)
+        public TopOperation(IMathObjectStack stack)
         {
-            this.top = top;
             this.stack = stack;
         }
 
         public override IMathObject Perform(IMathObject[] target)
         {
-            if (top is IIsError)
+            if (stack.Top is IIsError)
             {
-                return top;
+                return stack.Top;
             }
 
             return new TopObject(this.stack);

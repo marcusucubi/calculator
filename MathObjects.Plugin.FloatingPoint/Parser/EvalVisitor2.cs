@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.DecoratableObject;
-using System.Diagnostics;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -58,8 +58,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var result = stack.Push(value);
 
-            value.SetObjectDecoration("name", name);
-            result.SetObjectDecoration("name", name);
+            value.SetObjectName(name);
+            result.SetObjectName(name);
 
             Debug.WriteLine("End VisitVariable [" + 
                 name + "=" + value.GetDouble() + "]");
@@ -86,7 +86,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var result = stack.Push(refer);
 
-            result.SetObjectDecoration("name", left);
+            result.SetObjectName(left);
 
             Debug.WriteLine("End VisitAssignment [" + 
                 left + "=" + value + "] ["+ left + "=" + value.GetDouble() + "]");
@@ -165,18 +165,18 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var operation = f.Perform(functionContext);
 
-            operation.SetObjectDecoration("name", context.ID().GetText());
+            operation.SetObjectName(context.ID().GetText());
 
-            if (stack.Size < operation.NumberOfParameters)
-            {
-                var error = new ErrorObject("not enough parameters");
-                stack.Push(error);
-                return error;
-            }
+//            if (stack.Size < operation.NumberOfParameters)
+//            {
+//                var error = new ErrorObject("not enough parameters");
+//                stack.Push(error);
+//                return error;
+//            }
 
             var result = stack.Push(operation);
 
-            result.SetObjectDecoration("name", context.ID().GetText());
+            result.SetObjectName(context.ID().GetText());
 
             Debug.WriteLine("End VisitFuncCall [" + operation.Symbol + "]");
             

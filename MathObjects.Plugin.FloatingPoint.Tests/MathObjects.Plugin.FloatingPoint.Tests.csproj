@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ParserTest.cs" />
+    <Compile Include="TopTest.cs" />
+    <Compile Include="ConstantTest.cs" />
+    <Compile Include="TrigTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -6,11 +6,13 @@ using System.Collections.Generic;
 namespace MathObjects.Framework.Parser
 {
     public class OperationWrapper : AbstractMathObject, 
-        IHasChildren, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue
+        IHasChildren, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue, ICanBeDefined
     {
         readonly IMathObject[] objs;
 
         readonly IMathOperation op;
+
+        readonly IMathObject output;
 
         public OperationWrapper(
             IMathObject[] objs, 
@@ -18,6 +20,7 @@ namespace MathObjects.Framework.Parser
         {
             this.objs = objs;
             this.op = op;
+            this.output = op.Perform(objs);
         }
 
         public IMathObject[] Children
@@ -25,17 +28,39 @@ namespace MathObjects.Framework.Parser
             get { return this.objs; }
         }
 
+        public bool IsDefinded 
+        { 
+            get 
+            {
+                var defined = output as ICanBeDefined;
+                if (defined != null)
+                {
+                    return defined.IsDefinded;
+                }
+
+                var hasOutput = output as IHasOutput;
+                if (hasOutput != null)
+                {
+                    var defined2 = hasOutput.Output as ICanBeDefined;
+                    if (defined2 != null)
+                    {
+                        return defined2.IsDefinded;
+                    }
+                }
+
+                return true;
+            }
+        }
+
         public IMathObject Output
         {
-            get { return op.Perform(Children); }
+            get { return this.output; }
         }
 
         public IMathValue Value 
         { 
             get 
             { 
-                var output = Output;
-
                 var hasValue = output as IHasValue;
                 if (hasValue != null)
                 {
@@ -50,8 +75,6 @@ namespace MathObjects.Framework.Parser
         { 
             get 
             { 
-                var output = this.Output;
-
                 var hasDisplay = output as IHasDisplayValue;
                 if (hasDisplay != null)
                 {

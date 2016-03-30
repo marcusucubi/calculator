@@ -56,7 +56,16 @@ namespace MathObjects.Framework.Parser
 
             for (int i = 0; i < size; i++)
             {
-                var obj = this.objectStack.Pop();
+                IMathObject obj;
+
+                if (this.objectStack.Count > 0)
+                {
+                    obj = this.objectStack.Pop();
+                }
+                else
+                {
+                    obj = new UndefinedObject();
+                }
 
                 list.Add(obj);
             }
@@ -100,10 +109,10 @@ namespace MathObjects.Framework.Parser
                 return Push((CompositeOperation) op);
             }
 
-            if (this.objectStack.Count < op.NumberOfParameters)
-            {
-                return null;
-            }
+//            if (this.objectStack.Count < op.NumberOfParameters)
+//            {
+//                return null;
+//            }
 
             IMathObject result = null;
             if (op.NumberOfParameters >= 1)

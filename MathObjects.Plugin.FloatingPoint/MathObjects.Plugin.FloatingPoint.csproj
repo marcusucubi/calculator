@@ -87,6 +87,9 @@
     <Compile Include="Func\TopObject.cs" />
     <Compile Include="Func\TopOperationFactory.cs" />
     <Compile Include="Func\TopOperation.cs" />
+    <Compile Include="Func\PopObject.cs" />
+    <Compile Include="Func\PopOperationFactory.cs" />
+    <Compile Include="Func\PopOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

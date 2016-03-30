@@ -15,6 +15,11 @@ namespace MathObjects.UI.Widgets
 
         Button b1, b2;
 
+        public SliderWidget2()
+        {
+            this.SetSizeRequest (300, 150);
+        }
+
         public SliderWidget2(ButtonDescriptionGroup[] groups)
         {
             Setup(groups);

@@ -2,20 +2,18 @@
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 
-namespace MathObjects.Plugin.FloatingPoint.Func
+namespace MathObjects.Plugin.FloatingPoint
 {
-    class TopOperationFactory : AbstractMathObject, IMathOperationFactory2
+    class PopOperationFactory : AbstractMathObject, IMathOperationFactory2
     {
-        IMathObjectStack stack;
-
         public void Init(IMathFunctionContext context)
         {
-            stack = (context as IHasMathObjectStack).Stack;
         }
 
         public IMathOperation Perform(IMathFunctionContext context)
         {
-            return new TopOperation(stack);
+            return new PopOperation();
         }
     }
 }
+
