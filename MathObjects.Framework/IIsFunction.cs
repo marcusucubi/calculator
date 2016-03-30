@@ -2,7 +2,7 @@
 
 namespace MathObjects.Framework
 {
-    public interface IMathFunctionContext
+    public interface IIsFunction
     {
     }
 }

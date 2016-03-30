@@ -14,6 +14,18 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             return new PopObject(target[0]);
         }
+
+        public class Factory : AbstractMathObject, IMathOperationFactory2
+        {
+            public void Init(IMathOperationFactoryContext context)
+            {
+            }
+
+            public IMathOperation Perform(IMathOperationFactoryContext context)
+            {
+                return new PopOperation();
+            }
+        }
     }
 }
 

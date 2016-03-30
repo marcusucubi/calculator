@@ -43,7 +43,6 @@
     <Compile Include="IMathObjectFactoryContext.cs" />
     <Compile Include="ArrayObject.cs" />
     <Compile Include="FactoryContext.cs" />
-    <Compile Include="IMathFunctionContext.cs" />
     <Compile Include="IMathObjectEx.cs" />
     <Compile Include="IIsError.cs" />
     <Compile Include="FunctionRegistry.cs" />
@@ -52,10 +51,11 @@
     <Compile Include="AbstractMathOperation.cs" />
     <Compile Include="IMathOperationFactory2.cs" />
     <Compile Include="IMathValue.cs" />
-    <Compile Include="MathValueArray.cs" />
     <Compile Include="IHasValue.cs" />
     <Compile Include="ICanBeDefined.cs" />
     <Compile Include="NameManager.cs" />
+    <Compile Include="IMathOperationFactoryContext.cs" />
+    <Compile Include="IIsFunction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

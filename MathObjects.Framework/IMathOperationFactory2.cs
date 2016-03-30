@@ -4,9 +4,9 @@ namespace MathObjects.Framework
 {
     public interface IMathOperationFactory2 : IMathObject
     {
-        void Init(IMathFunctionContext context);
+        void Init(IMathOperationFactoryContext context);
 
-        IMathOperation Perform(IMathFunctionContext context);
+        IMathOperation Perform(IMathOperationFactoryContext context);
     }
 }
 

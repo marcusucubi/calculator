@@ -16,12 +16,12 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.symbol = symbol;
         }
 
-        public void Init(IMathFunctionContext context)
+        public void Init(IMathOperationFactoryContext context)
         {
         }
 
         public IMathOperation Perform(
-            IMathFunctionContext context)
+            IMathOperationFactoryContext context)
         {
             return new MathOperation(this.handler, this.symbol);
         }

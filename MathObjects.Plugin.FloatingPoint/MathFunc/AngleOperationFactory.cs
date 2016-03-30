@@ -17,11 +17,11 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             this.symbol = symbol;
         }
 
-        public void Init(IMathFunctionContext context)
+        public void Init(IMathOperationFactoryContext context)
         {
         }
 
-        public IMathOperation Perform(IMathFunctionContext context)
+        public IMathOperation Perform(IMathOperationFactoryContext context)
         {
             // Convert to degrees if needed
             var stack = (context as IHasMathObjectStack).Stack;

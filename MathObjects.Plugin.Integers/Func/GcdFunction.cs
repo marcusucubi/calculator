@@ -6,11 +6,11 @@ namespace MathObjects.Plugin.Integers.Func
 {
     class GcdFunction : AbstractMathObject, IMathOperationFactory2
     {
-        public void Init(IMathFunctionContext context)
+        public void Init(IMathOperationFactoryContext context)
         {
         }
 
-        public IMathOperation Perform(IMathFunctionContext context)
+        public IMathOperation Perform(IMathOperationFactoryContext context)
         {
             return new GcdOperation();
         }

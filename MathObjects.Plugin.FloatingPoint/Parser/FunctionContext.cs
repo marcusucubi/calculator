@@ -4,7 +4,7 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class FunctionContext : IMathFunctionContext, IHasMathObjectStack
+    public class FunctionContext : IMathOperationFactoryContext, IHasMathObjectStack
     {
         readonly IMathObjectStack stack;
 

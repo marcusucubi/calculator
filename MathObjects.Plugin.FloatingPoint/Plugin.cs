@@ -31,16 +31,16 @@ namespace MathObjects.Plugin.FloatingPoint
             var registry = new FunctionRegistry();
 
             registry.Put(
-                "pi", new ConstantOperationFactory.Factory(Math.PI));
+                "pi", new ConstantOperation.Factory.Factory2(Math.PI));
 
             registry.Put(
-                "e", new ConstantOperationFactory.Factory(Math.E));
+                "e", new ConstantOperation.Factory.Factory2(Math.E));
 
             registry.Put(
-                "top", new FunctionFactory(typeof(TopOperationFactory)));
+                "top", new FunctionFactory(typeof(TopOperation.Factory)));
 
             registry.Put(
-                "pop", new FunctionFactory(typeof(PopOperationFactory)));
+                "pop", new FunctionFactory(typeof(PopOperation.Factory)));
             
             registry.Put(
                 "degrees", new FunctionFactory(typeof(DegreesOperationFactory)));

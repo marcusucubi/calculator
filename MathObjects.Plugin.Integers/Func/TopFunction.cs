@@ -10,13 +10,13 @@ namespace MathObjects.Plugin.Integers.Func
 
         IMathObjectStack stack;
 
-        public void Init(IMathFunctionContext context)
+        public void Init(IMathOperationFactoryContext context)
         {
             stack = (context as IHasMathObjectStack).Stack;
             top = stack.Top;
         }
 
-        public IMathOperation Perform(IMathFunctionContext context)
+        public IMathOperation Perform(IMathOperationFactoryContext context)
         {
             return new TopOperation(stack, top);
         }

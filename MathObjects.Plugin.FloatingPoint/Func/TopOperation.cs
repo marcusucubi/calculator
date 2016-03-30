@@ -26,5 +26,20 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 
             return new TopObject(this.stack);
         }
+
+        public class Factory : AbstractMathObject, IMathOperationFactory2
+        {
+            IMathObjectStack stack;
+
+            public void Init(IMathOperationFactoryContext context)
+            {
+                stack = (context as IHasMathObjectStack).Stack;
+            }
+
+            public IMathOperation Perform(IMathOperationFactoryContext context)
+            {
+                return new TopOperation(stack);
+            }
+        }
     }
 }
