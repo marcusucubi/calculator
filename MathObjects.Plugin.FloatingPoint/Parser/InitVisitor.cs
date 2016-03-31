@@ -49,7 +49,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var f = factory.Create(factoryContext) as IMathOperationFactory2;
 
-            f.Init(new FunctionContext(this.stack));
+            f.Init(new OperationFactoryContext(this.stack));
 
             map[context] = f;
 

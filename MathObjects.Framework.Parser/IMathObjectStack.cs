@@ -14,6 +14,8 @@ namespace MathObjects.Framework.Parser
 
         void Clear();
 
+        IMathObjectStack Clone();
+
         IMathObject[] Peek(int size);
 
         IMathObject Peek();

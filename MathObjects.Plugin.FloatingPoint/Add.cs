@@ -18,7 +18,7 @@ namespace MathObjects.Plugin.FloatingPoint
             {
                 var result = new UndefinedObject();
 
-                DecorationManager.SetObjectDecoration(result, "name", "+");
+                result.SetObjectName("+");
 
                 return result;
             }
@@ -26,7 +26,12 @@ namespace MathObjects.Plugin.FloatingPoint
             var leftValue = objs[0].GetDouble();
             var rightValue = objs[1].GetDouble();
 
-            return new AddObject(leftValue, rightValue);
+            var addObj = new AddObject(leftValue, rightValue);
+
+            addObj.CopyDecorations(objs[0]);
+            addObj.CopyDecorations(objs[1]);
+
+            return addObj;
         }
 
         public class Factory : IMathOperationFactory

@@ -8,7 +8,17 @@ namespace MathObjects.Framework.Parser
     {
         public event EventHandler<MathObjectStackArgs> StackChanged;
 
-        readonly Stack<IMathObject> objectStack = new Stack<IMathObject>();
+        readonly Stack<IMathObject> objectStack;
+
+        public MathObjectStack()
+        {
+            objectStack = new Stack<IMathObject>();
+        }
+
+        public MathObjectStack(Stack<IMathObject> objectStack)
+        {
+            this.objectStack = objectStack;
+        }
 
         public int Size
         {
@@ -31,6 +41,11 @@ namespace MathObjects.Framework.Parser
         public Stack<IMathObject> ObjectStack
         {
             get { return this.objectStack; }
+        }
+
+        public IMathObjectStack Clone()
+        {
+            return new MathObjectStack(new Stack<IMathObject>(this.objectStack)); 
         }
 
         public IMathObject Peek()

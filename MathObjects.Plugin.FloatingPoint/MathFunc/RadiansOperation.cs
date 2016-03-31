@@ -17,7 +17,7 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
             {
                 var undef = new UndefinedObject();
 
-                DecorationManager.SetObjectDecoration(undef, "name", this.Symbol);
+                undef.SetObjectName(this.Symbol);
 
                 return undef;
             }
@@ -29,6 +29,8 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
 
                 result.CopyDecorations(this);
 
+                result.SetObjectUnit("radians");
+
                 return result;
             }
 
@@ -36,6 +38,8 @@ namespace MathObjects.Plugin.FloatingPoint.MathFunc
                 target[0].GetDouble(), AngleType.Radians);
 
             result2.CopyDecorations(this);
+
+            result2.SetObjectUnit("radians");
 
             return result2;
         }

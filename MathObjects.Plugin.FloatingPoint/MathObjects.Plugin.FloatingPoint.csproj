@@ -54,7 +54,6 @@
     <Compile Include="Parser.cs" />
     <Compile Include="Subtract.cs" />
     <Compile Include="SubtractObject.cs" />
-    <Compile Include="Parser\FunctionContext.cs" />
     <Compile Include="FunctionFactory.cs" />
     <Compile Include="Parser\InitVisitor.cs" />
     <Compile Include="NegativeObject.cs" />
@@ -64,7 +63,6 @@
     <Compile Include="Func\ConstantObject.cs" />
     <Compile Include="Func\ConstantOperation.cs" />
     <Compile Include="MathFunc\MathOperation.cs" />
-    <Compile Include="MathFunc\MathFuncObject.cs" />
     <Compile Include="MathFunc\AngleObject.cs" />
     <Compile Include="MathFunc\AngleOperation.cs" />
     <Compile Include="MathFunc\Convert.cs" />
@@ -85,6 +83,7 @@
     <Compile Include="Func\TopOperation.cs" />
     <Compile Include="Func\PopObject.cs" />
     <Compile Include="Func\PopOperation.cs" />
+    <Compile Include="Parser\OperationFactoryContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

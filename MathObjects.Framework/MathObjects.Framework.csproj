@@ -56,6 +56,7 @@
     <Compile Include="NameManager.cs" />
     <Compile Include="IMathOperationFactoryContext.cs" />
     <Compile Include="IIsFunction.cs" />
+    <Compile Include="UnitManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

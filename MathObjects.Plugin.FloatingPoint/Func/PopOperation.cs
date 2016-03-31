@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -12,7 +13,11 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public override IMathObject Perform(IMathObject[] target)
         {
-            return new PopObject(target[0]);
+            var result = new PopObject(target[0]);
+
+            result.CopyDecorations(target[0]);
+
+            return result;
         }
 
         public class Factory : AbstractMathObject, IMathOperationFactory2

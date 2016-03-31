@@ -15,7 +15,7 @@ namespace MathObjects.UI.Widgets
         {
             var vbox = new VBox();
             this.Add(vbox);
-            vbox.Spacing = 6;
+            vbox.Spacing = 2;
 
             var stack = new List<ButtonDescription>(group.Descriptions);
 

@@ -4,11 +4,11 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class FunctionContext : IMathOperationFactoryContext, IHasMathObjectStack
+    public class OperationFactoryContext : IMathOperationFactoryContext, IHasMathObjectStack
     {
         readonly IMathObjectStack stack;
 
-        public FunctionContext(IMathObjectStack stack)
+        public OperationFactoryContext(IMathObjectStack stack)
         {
             this.stack = stack;
         }

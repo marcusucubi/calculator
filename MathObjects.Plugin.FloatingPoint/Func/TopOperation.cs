@@ -1,6 +1,7 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
+using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint.Func
 {
@@ -19,12 +20,16 @@ namespace MathObjects.Plugin.FloatingPoint.Func
 
         public override IMathObject Perform(IMathObject[] target)
         {
-            if (stack.Top is IIsError)
+            if (this.stack.Size == 0)
             {
-                return stack.Top;
+                return new UndefinedObject();
             }
 
-            return new TopObject(this.stack);
+            var result = new TopObject(this.stack);
+
+            result.CopyDecorations(this.stack.Top);
+
+            return result;
         }
 
         public class Factory : AbstractMathObject, IMathOperationFactory2

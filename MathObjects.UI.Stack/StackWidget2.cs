@@ -41,10 +41,19 @@ namespace MathObjects.UI.Stack
                 column.AddAttribute(cell, "text", 1);
                 this.treeview2.AppendColumn(column);
             }
+            {
+                var column = new Gtk.TreeViewColumn ();
+                column.Title = "Units";
+
+                var cell = new CellRendererText();
+                column.PackStart(cell, true);
+                column.AddAttribute(cell, "text", 2);
+                this.treeview2.AppendColumn(column);
+            }
 
             this.treeview2.HeadersVisible = true;
 
-            store = new Gtk.TreeStore (typeof(string), typeof(string));
+            store = new Gtk.TreeStore (typeof(string), typeof(string), typeof(string));
 
             this.treeview2.Model = store;
 
@@ -92,6 +101,7 @@ namespace MathObjects.UI.Stack
 
                 string s = "";
                 string s2 = GetName(i);
+                string s3 = GetUnit(i);
 
                 var hasDisplay = i as IHasDisplayValue;
                 if (hasDisplay != null)
@@ -110,6 +120,11 @@ namespace MathObjects.UI.Stack
                         {
                             s2 = GetName(hasValue.Value);
                         }
+
+                        if (s3.Length == 0)
+                        {
+                            s3 = GetUnit(hasValue.Value);
+                        }
                     }
                     else
                     {
@@ -121,11 +136,11 @@ namespace MathObjects.UI.Stack
 
                 if (parent != null)
                 {
-                    iter = store.AppendValues(parent.Value, s, s2);
+                    iter = store.AppendValues(parent.Value, s, s2, s3);
                 }
                 else
                 {
-                    iter = store.AppendValues(s, s2);
+                    iter = store.AppendValues(s, s2, s3);
                 }
 
                 var children = i as IHasChildren;
@@ -140,7 +155,7 @@ namespace MathObjects.UI.Stack
         {
             string result = "";
 
-            var test = GetDecoration(obj);
+            var test = GetDecorationName(obj);
             if (test != null)
             {
                 result = test;
@@ -150,7 +165,7 @@ namespace MathObjects.UI.Stack
                 var output = obj as IHasOutput;
                 if (output != null)
                 {
-                    var test2 = GetDecoration(output.Output);
+                    var test2 = GetDecorationName(output.Output);
                     if (test2 != null)
                     {
                         result = test2;
@@ -161,7 +176,7 @@ namespace MathObjects.UI.Stack
             return result;
         }
 
-        string GetDecoration(object obj)
+        string GetDecorationName(object obj)
         {
             var test = obj.GetClassDecoration<string>("name");
             if (test != null)
@@ -173,6 +188,52 @@ namespace MathObjects.UI.Stack
             if (ext != null)
             {
                 var test2 = ext.GetObjectDecoration<string>("name");
+                if (test2 != null)
+                {
+                    return test2;
+                }
+            }
+
+            return null;
+        }
+
+        string GetUnit(object obj)
+        {
+            string result = "";
+
+            var test = GetDecorationUnit(obj);
+            if (test != null)
+            {
+                result = test;
+            }
+            else
+            {
+                var output = obj as IHasOutput;
+                if (output != null)
+                {
+                    var test2 = GetDecorationUnit(output.Output);
+                    if (test2 != null)
+                    {
+                        result = test2;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        string GetDecorationUnit(object obj)
+        {
+            var test = obj.GetClassDecoration<string>("unit");
+            if (test != null)
+            {
+                return test;
+            }
+
+            var ext = obj as IExtensionableObject;
+            if (ext != null)
+            {
+                var test2 = ext.GetObjectDecoration<string>("unit");
                 if (test2 != null)
                 {
                     return test2;

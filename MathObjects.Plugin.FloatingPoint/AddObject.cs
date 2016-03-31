@@ -5,7 +5,8 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "+")]
-    class AddObject : AbstractMathObject, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue 
+    class AddObject : AbstractMathObject, 
+        IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue 
     {
         readonly double tuple1;
 

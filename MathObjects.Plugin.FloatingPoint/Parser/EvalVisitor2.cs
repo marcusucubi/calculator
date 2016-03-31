@@ -13,6 +13,8 @@ namespace MathObjects.Plugin.FloatingPoint
     {
         readonly IMathObjectStack stack;
 
+        readonly IMathObjectStack stackClone;
+
         readonly IMathScope scope;
 
         readonly InitVisitor init;
@@ -23,6 +25,7 @@ namespace MathObjects.Plugin.FloatingPoint
             InitVisitor init)
         {
             this.stack = stack;
+            this.stackClone = stack.Clone();
             this.scope = scope;
             this.init = init;
 
@@ -140,23 +143,22 @@ namespace MathObjects.Plugin.FloatingPoint
         {
             Debug.WriteLine("Start VisitFuncCall []");
 
+            var id = context.ID().GetText();
+
             if (!this.init.Map.ContainsKey(context))
             {
-                var error = new ErrorObject(
-                    "function not found: " + 
-                    context.ID().GetText());
+                var error = new UndefinedObject();
                 
                 stack.Push(error);
 
-                Debug.WriteLine("End VisitFuncCall [" + 
-                    context.ID().GetText() + "]");
+                Debug.WriteLine("End VisitFuncCall [" + id + "]");
 
                 return error;
             }
             
             var f = this.init.Map[context];
 
-            var functionContext = new FunctionContext(this.stack);
+            var functionContext = new OperationFactoryContext(this.stackClone);
 
             if (context.exprList() != null)
             {
@@ -165,18 +167,11 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var operation = f.Perform(functionContext);
 
-            operation.SetObjectName(context.ID().GetText());
-
-//            if (stack.Size < operation.NumberOfParameters)
-//            {
-//                var error = new ErrorObject("not enough parameters");
-//                stack.Push(error);
-//                return error;
-//            }
+            operation.SetObjectName(id);
 
             var result = stack.Push(operation);
 
-            result.SetObjectName(context.ID().GetText());
+            result.SetObjectName(id);
 
             Debug.WriteLine("End VisitFuncCall [" + operation.Symbol + "]");
             
