@@ -24,7 +24,7 @@ namespace MathObjects.Plugin.Symmetric.Parser
         {
             if (stack.Size < 2)
             {
-                ErrorHandler.SendError(this, "not enough arguments");
+                //ErrorHandler.SendError(this, "not enough arguments");
                 return null;
             }
 

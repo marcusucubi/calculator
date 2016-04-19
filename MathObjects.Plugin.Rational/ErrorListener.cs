@@ -55,9 +55,9 @@ namespace MathObjects.Plugin.Rational
             string msg, 
             RecognitionException e)
         {
-            var s = "line "+line+":"+charPositionInLine+" at "+
-                offendingSymbol+": "+msg;
-            ErrorHandler.SendError(this, s);
+            //var s = "line "+line+":"+charPositionInLine+" at "+
+            //    offendingSymbol+": "+msg;
+            //ErrorHandler.SendError(this, s);
 
             this.HasError = true;
         }

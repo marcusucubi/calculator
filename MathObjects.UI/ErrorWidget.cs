@@ -10,15 +10,15 @@ namespace MathObjects.UI
         {
             this.Build();
 
-            ErrorHandler.ErrorEvent += (sender, e) =>
-                { 
-                    this.label1.LabelProp = e.Message;
-                };
+            //ErrorHandler.ErrorEvent += (sender, e) =>
+            //    { 
+            //        this.label1.LabelProp = e.Message;
+            //    };
             
-            ErrorHandler.ErrorReset += (sender, e) =>
-                { 
-                    this.label1.LabelProp = "";
-                };
+            //ErrorHandler.ErrorReset += (sender, e) =>
+            //    { 
+            //        this.label1.LabelProp = "";
+            //    };
         }
     }
 }

@@ -175,14 +175,4 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="MathObjects.UI.ScrapWindow" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">ScrapWindow</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <widget class="MathObjects.UI.Widgets.SliderWidget2" id="sliderwidget21">
-        <property name="MemberName" />
-      </widget>
-    </child>
-  </widget>
 </stetic-interface>

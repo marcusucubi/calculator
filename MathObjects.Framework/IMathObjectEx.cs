@@ -82,7 +82,8 @@ namespace MathObjects.Framework
             }
 
             var hasValue2 = output as IHasValue;
-            if (hasValue2 != null && hasValue2.Value.Value != null &&
+			if (hasValue2 != null && hasValue2.Value != null && 
+				hasValue2.Value.Value != null &&
                 typeof(T).IsAssignableFrom(hasValue2.Value.Value.GetType()) )
             {
                 return (T)hasValue2.Value.Value;

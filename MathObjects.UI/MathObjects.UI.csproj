@@ -77,7 +77,6 @@
     <Compile Include="EnterWidget.cs" />
     <Compile Include="gtk-gui\MathObjects.UI.EnterWidget.cs" />
     <Compile Include="StandardButtonDescription.cs" />
-    <Compile Include="gtk-gui\MathObjects.UI.ScrapWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

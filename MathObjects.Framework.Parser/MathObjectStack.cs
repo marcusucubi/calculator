@@ -100,7 +100,7 @@ namespace MathObjects.Framework.Parser
             objectStack.Push(obj);
 
             FireStackChanged();
-            ErrorHandler.ResetError(this);
+            //ErrorHandler.ResetError(this);
 
             return obj;
         }
@@ -112,7 +112,7 @@ namespace MathObjects.Framework.Parser
             var result = Push(composite.Second);
 
             FireStackChanged();
-            ErrorHandler.ResetError(this);
+            //ErrorHandler.ResetError(this);
 
             return result;
         }

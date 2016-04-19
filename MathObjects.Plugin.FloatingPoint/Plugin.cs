@@ -37,7 +37,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 "e", new ConstantOperation.Factory.Factory2(Math.E));
 
             registry.Put(
-                "top", new FunctionFactory(typeof(TopOperation.Factory)));
+                "random", new RandomOperation.Factory.Factory2());
 
             registry.Put(
                 "pop", new FunctionFactory(typeof(PopOperation.Factory)));

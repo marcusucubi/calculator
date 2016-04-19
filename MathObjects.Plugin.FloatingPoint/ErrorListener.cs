@@ -55,9 +55,9 @@ namespace MathObjects.Plugin.FoatingPoint
             string msg, 
             RecognitionException e)
         {
-            var s = "line " + line + " at " +
-                offendingSymbol+": "+msg;
-            ErrorHandler.SendError(this, s);
+            //var s = "line " + line + " at " +
+            //    offendingSymbol+": "+msg;
+            //ErrorHandler.SendError(this, s);
 
             this.HasError = true;
         }
