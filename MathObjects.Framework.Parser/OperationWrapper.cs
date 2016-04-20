@@ -23,6 +23,16 @@ namespace MathObjects.Framework.Parser
             this.output = op.Perform(objs);
         }
 
+        public OperationWrapper(
+            IMathObject[] objs, 
+            IMathOperation op,
+            IMathObject output)
+        {
+            this.objs = objs;
+            this.op = op;
+            this.output = output;
+        }
+
         public IMathObject[] Children
         {
             get { return this.objs; }
@@ -94,7 +104,7 @@ namespace MathObjects.Framework.Parser
                 list.Add(obj.CopyByValue());
             }
 
-            return new OperationWrapper(list.ToArray(), this.op);
+            return new OperationWrapper(list.ToArray(), this.op, this.output);
         }
 
         public override string ToString()
