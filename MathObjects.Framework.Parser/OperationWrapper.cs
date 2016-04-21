@@ -120,7 +120,15 @@ namespace MathObjects.Framework.Parser
                     s += op.Symbol;
                 }
 
-                s += obj.ToString();
+                var hasDisplay = obj as IHasDisplayValue;
+				if (hasDisplay != null)
+				{
+					s += hasDisplay.DisplayValue;
+				}
+				else
+				{
+					s += obj.ToString();
+				}
 
                 first = false;
             }

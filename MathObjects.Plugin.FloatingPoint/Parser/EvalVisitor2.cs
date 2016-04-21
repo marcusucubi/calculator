@@ -92,7 +92,8 @@ namespace MathObjects.Plugin.FloatingPoint
             result.SetObjectName(left);
 
             Debug.WriteLine("End VisitAssignment [" + 
-                left + "=" + value + "] ["+ left + "=" + value.GetDouble() + "]");
+                left + "=" + value + "] ["+ 
+                left + "=" + value.GetDouble() + "]");
 
             return result;
         }

@@ -59,6 +59,11 @@ namespace MathObjects.Plugin.FloatingPoint
                     eval.Visit(stat);
                 }
             }
+
+            if (l.HasError)
+            {
+                throw new ParserException(l.Descriptions);
+            }
        }
     }
 }

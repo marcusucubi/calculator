@@ -19,7 +19,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public string DisplayValue 
         { 
-            get { return "" + this.value; } 
+			get { return "random object(" + this.value + ")"; } 
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Antlr4.Runtime.Dfa;
@@ -10,10 +11,16 @@ namespace MathObjects.Plugin.FoatingPoint
 {
     public class ErrorListener : BaseErrorListener
     {
+        readonly List<Description> list = new List<Description>();
+
+        public List<Description> Descriptions
+        {
+            get { return this.list; }
+        }
+
         public bool HasError
         {
-            get;
-            protected set;
+            get { return this.list.Count > 0; }
         }
 
         public override void ReportAmbiguity(
@@ -55,11 +62,25 @@ namespace MathObjects.Plugin.FoatingPoint
             string msg, 
             RecognitionException e)
         {
-            //var s = "line " + line + " at " +
-            //    offendingSymbol+": "+msg;
-            //ErrorHandler.SendError(this, s);
+            var desc = new Description();
+            desc.CharPositionInLine = charPositionInLine;
+            desc.Line = line;
+            desc.Msg = msg;
+            desc.OffendingSymbol = offendingSymbol;
+            this.list.Add(desc);
+        }
 
-            this.HasError = true;
+        public class Description
+        {
+            public IToken OffendingSymbol { get; set; }
+            public int Line { get; set; }
+            public int CharPositionInLine { get; set; }
+            public string Msg { get; set; } 
+
+            public override string ToString()
+            {
+                return "'" + Msg + "' at " + CharPositionInLine + " in " + Line;
+            }
         }
     }
 }
