@@ -84,7 +84,6 @@
     <Compile Include="Parser\OperationFactoryContext.cs" />
     <Compile Include="Func\RandomObject.cs" />
     <Compile Include="Func\RandomOperation.cs" />
-    <Compile Include="ParserException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

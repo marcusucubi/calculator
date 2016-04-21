@@ -51,6 +51,7 @@
     <Compile Include="IMathScope.cs" />
     <Compile Include="IHasChildrenEx.cs" />
     <Compile Include="UndefinedObject.cs" />
+    <Compile Include="ParserException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

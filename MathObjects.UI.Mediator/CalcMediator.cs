@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
+using Gtk;
 
 namespace MathObjects.UI.Mediator
 {
@@ -24,21 +25,37 @@ namespace MathObjects.UI.Mediator
         {
             bool result = true;
 
-            if (parser != null)
+            try
             {
-                parser.Parse(input, this, scope);
-
-                result = !parser.HasError;
-            }
-            else
-            {
-                var context = new FactoryContext();
-                context.InitObject = input;
-                var obj = this.objectFactory.Create(context);
-                if (obj != null)
+                if (parser != null)
                 {
-                    Push(obj);
+                    parser.Parse(input, this, scope);
+
+                    result = !parser.HasError;
                 }
+                else
+                {
+                    var context = new FactoryContext();
+                    context.InitObject = input;
+                    var obj = this.objectFactory.Create(context);
+                    if (obj != null)
+                    {
+                        Push(obj);
+                    }
+                }
+            }
+            catch (ParserException e)
+            {
+                var msg = e.Descriptions[0].ToString();
+
+                var dlg = new MessageDialog(
+                    null, DialogFlags.DestroyWithParent, MessageType.Error, 
+                    ButtonsType.Close, "{0}", msg);
+
+                dlg.Run();
+                dlg.Destroy();
+
+                result = false;
             }
 
             return result;

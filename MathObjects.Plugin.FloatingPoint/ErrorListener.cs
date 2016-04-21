@@ -6,14 +6,15 @@ using Antlr4.Runtime.Dfa;
 using Antlr4.Runtime.Sharpen;
 using Antlr4.Runtime.Atn;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FoatingPoint
 {
     public class ErrorListener : BaseErrorListener
     {
-        readonly List<Description> list = new List<Description>();
+        readonly List<ParserException.Description> list = new List<ParserException.Description>();
 
-        public List<Description> Descriptions
+        public List<ParserException.Description> Descriptions
         {
             get { return this.list; }
         }
@@ -62,7 +63,7 @@ namespace MathObjects.Plugin.FoatingPoint
             string msg, 
             RecognitionException e)
         {
-            var desc = new Description();
+            var desc = new ParserException.Description();
             desc.CharPositionInLine = charPositionInLine;
             desc.Line = line;
             desc.Msg = msg;
@@ -70,18 +71,6 @@ namespace MathObjects.Plugin.FoatingPoint
             this.list.Add(desc);
         }
 
-        public class Description
-        {
-            public IToken OffendingSymbol { get; set; }
-            public int Line { get; set; }
-            public int CharPositionInLine { get; set; }
-            public string Msg { get; set; } 
-
-            public override string ToString()
-            {
-                return "'" + Msg + "' at " + CharPositionInLine + " in " + Line;
-            }
-        }
     }
 }
 
