@@ -145,4 +145,14 @@
       <Name>MathObjects.Core.Extension</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="calculator.desktop">
+      <DeployService-TargetDirectoryId>Linux.DesktopApplications</DeployService-TargetDirectoryId>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tetrahedron-3-3D-balls.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

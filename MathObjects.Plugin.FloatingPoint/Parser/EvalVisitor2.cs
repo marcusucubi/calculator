@@ -123,62 +123,6 @@ namespace MathObjects.Plugin.FloatingPoint
             return result;
         }
 
-        public override IMathObject VisitExprList(
-            FloatingPointParser.ExprListContext context)
-        {
-            var list = new List<IMathObject>();
-
-            foreach (var e in context.expr())
-            {
-                var obj = Visit(e);
-                list.Add(obj);
-            }
-
-            Debug.WriteLine("VisitExprList []");
-
-            return new ArrayObject(list.ToArray());
-        }
-
-        public override IMathObject VisitFuncCall(
-            FloatingPointParser.FuncCallContext context)
-        {
-            Debug.WriteLine("Start VisitFuncCall []");
-
-            var id = context.ID().GetText();
-
-            if (!this.init.Map.ContainsKey(context))
-            {
-                var error = new UndefinedObject();
-                
-                stack.Push(error);
-
-                Debug.WriteLine("End VisitFuncCall [" + id + "]");
-
-                return error;
-            }
-            
-            var f = this.init.Map[context];
-
-            var functionContext = new OperationFactoryContext(this.stackClone);
-
-            if (context.exprList() != null)
-            {
-                VisitExprList(context.exprList());
-            }
-
-            var operation = f.Perform(functionContext);
-
-            operation.SetObjectName(id);
-
-            var result = stack.Push(operation);
-
-            result.SetObjectName(id);
-
-            Debug.WriteLine("End VisitFuncCall [" + operation.Symbol + "]");
-            
-            return result;
-        }
-
         public override IMathObject VisitFloat(
             FloatingPointParser.FloatContext context)
         {
@@ -281,6 +225,94 @@ namespace MathObjects.Plugin.FloatingPoint
             Debug.WriteLine("End VisitMulDiv [" + 
                 left + "+" + right + "] [" + result.GetDouble() + "]");
 
+            return result;
+        }
+
+        public override IMathObject VisitExprList(
+            FloatingPointParser.ExprListContext context)
+        {
+            var list = new List<IMathObject>();
+
+            foreach (var e in context.expr())
+            {
+                var obj = Visit(e);
+                list.Add(obj);
+            }
+
+            Debug.WriteLine("VisitExprList []");
+
+            return new ArrayObject(list.ToArray());
+        }
+
+        public override IMathObject VisitFuncCall(
+            FloatingPointParser.FuncCallContext context)
+        {
+            Debug.WriteLine("Start VisitFuncCall []");
+
+            var id = context.ID().GetText();
+
+            if (!this.init.Map.ContainsKey(context))
+            {
+                var error = new UndefinedObject();
+
+                stack.Push(error);
+
+                Debug.WriteLine("End VisitFuncCall [" + id + "]");
+
+                return error;
+            }
+
+            var f = this.init.Map[context];
+
+            var functionContext = new OperationFactoryContext(this.stackClone);
+
+            if (context.exprList() != null)
+            {
+                VisitExprList(context.exprList());
+            }
+
+            var operation = f.Perform(functionContext);
+
+            operation.SetObjectName(id);
+
+            var result = stack.Push(operation);
+
+            result.SetObjectName(id);
+
+            Debug.WriteLine("End VisitFuncCall [" + operation.Symbol + "]");
+
+            return result;
+        }
+
+        public override IMathObject VisitStackParam(
+            FloatingPointParser.StackParamContext context)
+        {
+            Debug.WriteLine("Start VisitStackParam []");
+
+            string id = context.STACK_PARAM().GetText();
+            string s = id.Trim('%');
+
+            int temp;
+            int.TryParse(s, out temp);
+
+            var a = stackClone.ToArray();
+
+            IMathObject obj = new UndefinedObject();
+            if (temp < a.Length)
+            {
+                obj = new StackParamObject(a[temp]);
+            }
+
+            var operation = new StackParamOperation(obj);
+
+            operation.SetObjectName(id);
+
+            var result = stack.Push(operation);
+
+            result.SetObjectName(id);
+
+            Debug.WriteLine("End VisitStackParam [" + result + "]");
+            
             return result;
         }
     }

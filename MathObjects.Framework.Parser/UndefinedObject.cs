@@ -20,6 +20,11 @@ namespace MathObjects.Framework.Parser
             get { return new ValueObject(); }
         }
 
+        public override string ToString()
+        {
+            return "Undefined";
+        }
+
         class ValueObject : AbstractMathObject, IMathValue 
         {
             public object Value 

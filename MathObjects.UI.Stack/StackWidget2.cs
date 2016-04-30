@@ -134,6 +134,10 @@ namespace MathObjects.UI.Stack
 
                 TreeIter? iter;
 
+                Debug.Assert(s != null);
+                Debug.Assert(s2 != null);
+                Debug.Assert(s3 != null);
+
                 if (parent != null)
                 {
                     iter = store.AppendValues(parent.Value, s, s2, s3);
@@ -194,7 +198,7 @@ namespace MathObjects.UI.Stack
                 }
             }
 
-            return null;
+            return "";
         }
 
         string GetUnit(object obj)
@@ -240,7 +244,7 @@ namespace MathObjects.UI.Stack
                 }
             }
 
-            return null;
+            return "";
         }
     }
 }

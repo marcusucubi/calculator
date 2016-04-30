@@ -40,9 +40,6 @@ namespace MathObjects.Plugin.FloatingPoint
                 "random", new RandomOperation.Factory.Factory2());
 
             registry.Put(
-                "pop", new FunctionFactory(typeof(PopOperation.Factory)));
-            
-            registry.Put(
                 "degrees", new FunctionFactory(typeof(DegreesOperationFactory)));
             
             registry.Put(
@@ -98,7 +95,7 @@ namespace MathObjects.Plugin.FloatingPoint
                         { 
                             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
                             "+", "*", "-", "/", "^", "(", ")", "=", ";",
-                            "top()", "pop()", "sqrt()", "square()", "inverse()"
+                            "random(10)", "sqrt()", "square()", "inverse()"
                         }
                     );
                     vocab.Add(words);

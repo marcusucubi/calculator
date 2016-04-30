@@ -79,11 +79,11 @@
     <Compile Include="MathFunc\InverseAngleOperationFactory.cs" />
     <Compile Include="MathFunc\MathOperationFactory.cs" />
     <Compile Include="MathFunc\RadiansOperationFactory.cs" />
-    <Compile Include="Func\PopObject.cs" />
-    <Compile Include="Func\PopOperation.cs" />
     <Compile Include="Parser\OperationFactoryContext.cs" />
     <Compile Include="Func\RandomObject.cs" />
     <Compile Include="Func\RandomOperation.cs" />
+    <Compile Include="Func\StackParamObject.cs" />
+    <Compile Include="Func\StackParamOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

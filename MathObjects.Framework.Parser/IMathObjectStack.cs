@@ -23,6 +23,8 @@ namespace MathObjects.Framework.Parser
         IMathObject Top { get; }
 
         int Size { get; }
+
+        IMathObject[] ToArray();
     }
 }
 

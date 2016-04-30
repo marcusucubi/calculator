@@ -15,7 +15,8 @@ namespace MathObjects.UI.Widgets
         {
             var vbox = new VBox();
             this.Add(vbox);
-            vbox.Spacing = 2;
+            vbox.Spacing = 0;
+            vbox.Homogeneous = false;
 
             var stack = new List<ButtonDescription>(group.Descriptions);
 
@@ -23,7 +24,7 @@ namespace MathObjects.UI.Widgets
             {
                 var box = CreateButtonBox(vbox);
 
-                for(int x = 0; x < 6 && stack.Count > 0; x++)
+                for(int x = 0; x < 5 && stack.Count > 0; x++)
                 {
                     var desc = stack[0];
                     stack.RemoveAt (0);
@@ -38,6 +39,7 @@ namespace MathObjects.UI.Widgets
         HButtonBox CreateButtonBox(VBox vbox)
         {
             var box = new HButtonBox ();
+            box.Homogeneous = false;
 
             vbox.Add(box);
             var child = (Box.BoxChild) vbox[box];

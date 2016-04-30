@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=calculator
+Exec=mathobjects.ui
+Terminal=false
+
+Icon=Tetrahedron-3-3D-balls.png

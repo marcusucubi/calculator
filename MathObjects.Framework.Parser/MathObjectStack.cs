@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -100,7 +101,6 @@ namespace MathObjects.Framework.Parser
             objectStack.Push(obj);
 
             FireStackChanged();
-            //ErrorHandler.ResetError(this);
 
             return obj;
         }
@@ -112,7 +112,6 @@ namespace MathObjects.Framework.Parser
             var result = Push(composite.Second);
 
             FireStackChanged();
-            //ErrorHandler.ResetError(this);
 
             return result;
         }
@@ -123,11 +122,6 @@ namespace MathObjects.Framework.Parser
             {
                 return Push((CompositeOperation) op);
             }
-
-//            if (this.objectStack.Count < op.NumberOfParameters)
-//            {
-//                return null;
-//            }
 
             IMathObject result = null;
             if (op.NumberOfParameters >= 1)
@@ -166,6 +160,11 @@ namespace MathObjects.Framework.Parser
             }
 
             return result;
+        }
+
+        public IMathObject[] ToArray()
+        {
+            return this.objectStack.ToArray().Reverse().ToArray();
         }
 
         void FireStackChanged()

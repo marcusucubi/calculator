@@ -23,6 +23,7 @@ namespace MathObjects.UI
 			this.Events = ((global::Gdk.EventMask)(1024));
 			this.Name = "MathObjects.UI.MainWindow2";
 			this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow2");
+			this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-properties", global::Gtk.IconSize.Menu);
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child MathObjects.UI.MainWindow2.Gtk.Container+ContainerChild
 			this.table1 = new global::Gtk.Table (((uint)(6)), ((uint)(1)), false);
