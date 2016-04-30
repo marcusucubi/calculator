@@ -52,9 +52,9 @@ namespace MathObjects.Plugin.FloatingPoint
                 {
                     var init = new InitVisitor(registry, stack);
 
-                    init.Visit(stat);
-
                     var eval = new EvalVisitor2(stack, scope, init);
+
+                    init.Visit(stat);
 
                     eval.Visit(stat);
                 }
