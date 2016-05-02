@@ -95,7 +95,7 @@ namespace MathObjects.Plugin.FloatingPoint
                         { 
                             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
                             "+", "*", "-", "/", "^", "(", ")", "=", ";",
-                            "random(10)", "sqrt()", "square()", "inverse()"
+                            "random()", "sqrt()", "square()", "inverse()"
                         }
                     );
                     vocab.Add(words);

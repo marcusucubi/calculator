@@ -28,8 +28,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var addObj = new AddObject(leftValue, rightValue);
 
-            addObj.CopyDecorations(objs[0]);
-            addObj.CopyDecorations(objs[1]);
+            //addObj.CopyDecorations(objs[0]);
+            //addObj.CopyDecorations(objs[1]);
 
             return addObj;
         }

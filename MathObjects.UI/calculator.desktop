@@ -6,4 +6,4 @@ Name=calculator
 Exec=mathobjects.ui
 Terminal=false
 
-Icon=Tetrahedron-3-3D-balls.png
+Icon=calc.png

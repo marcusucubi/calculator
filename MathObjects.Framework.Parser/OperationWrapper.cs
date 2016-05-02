@@ -21,6 +21,8 @@ namespace MathObjects.Framework.Parser
             this.objs = objs;
             this.op = op;
             this.output = op.Perform(objs);
+
+            this.CopyDecorations(this.output);
         }
 
         public OperationWrapper(
@@ -31,6 +33,8 @@ namespace MathObjects.Framework.Parser
             this.objs = objs;
             this.op = op;
             this.output = output;
+
+            this.CopyDecorations(this.output);
         }
 
         public IMathObject[] Children
@@ -121,14 +125,14 @@ namespace MathObjects.Framework.Parser
                 }
 
                 var hasDisplay = obj as IHasDisplayValue;
-				if (hasDisplay != null)
-				{
-					s += hasDisplay.DisplayValue;
-				}
-				else
-				{
-					s += obj.ToString();
-				}
+                if (hasDisplay != null)
+                {
+                    s += hasDisplay.DisplayValue;
+                }
+                else
+                {
+                    s += obj.ToString();
+                }
 
                 first = false;
             }
