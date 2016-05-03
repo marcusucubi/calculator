@@ -3,6 +3,7 @@ using MathObjects.Framework;
 using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
 using System.Collections.Generic;
+using Antlr4.Runtime;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -12,8 +13,8 @@ namespace MathObjects.Plugin.FloatingPoint
 
         readonly FunctionRegistry registry;
 
-        readonly IDictionary<FloatingPointParser.FuncCallContext, IMathOperationFactory2> map =
-            new Dictionary<FloatingPointParser.FuncCallContext, IMathOperationFactory2>();
+        readonly IDictionary<ParserRuleContext, IMathOperationFactory2> map =
+            new Dictionary<ParserRuleContext, IMathOperationFactory2>();
 
         public InitVisitor(
             FunctionRegistry registry, 
@@ -23,7 +24,7 @@ namespace MathObjects.Plugin.FloatingPoint
             this.stack = stack;
         }
 
-        public IDictionary<FloatingPointParser.FuncCallContext, IMathOperationFactory2> Map 
+        public IDictionary<ParserRuleContext, IMathOperationFactory2> Map 
         {
             get { return this.map; }
         }
