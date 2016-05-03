@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Decoratabl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.Extension", "MathObjects.Core.Extension\MathObjects.Core.Extension.csproj", "{62D67415-88CB-493D-8044-1AEBB8296681}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Core.DecoratableObject.Tests", "MathObjects.Core.DecoratableObject.Tests\MathObjects.Core.DecoratableObject.Tests.csproj", "{3F727A9F-B4EA-4A9C-8B92-F306FF873D5B}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{6198F818-2B13-4D8C-85AD-D8DF18D49367}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathObjects.Framework", "MathObjects.Framework\MathObjects.Framework.csproj", "{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24}"
@@ -91,6 +93,10 @@ Global
 		{1F6180CD-5C6F-4752-A806-A6453151C7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6180CD-5C6F-4752-A806-A6453151C7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6180CD-5C6F-4752-A806-A6453151C7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F727A9F-B4EA-4A9C-8B92-F306FF873D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F727A9F-B4EA-4A9C-8B92-F306FF873D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F727A9F-B4EA-4A9C-8B92-F306FF873D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F727A9F-B4EA-4A9C-8B92-F306FF873D5B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{40690EE5-99DD-4119-9F51-F9F17ED747ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40690EE5-99DD-4119-9F51-F9F17ED747ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40690EE5-99DD-4119-9F51-F9F17ED747ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -206,6 +212,7 @@ Global
 		{A6755EFE-01C7-42EB-A6C0-E1E9DA94B1C2} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
 		{0179E565-7148-4545-B192-012CCFA83166} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
 		{62D67415-88CB-493D-8044-1AEBB8296681} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
+		{3F727A9F-B4EA-4A9C-8B92-F306FF873D5B} = {5B32A6B6-8B51-4B4F-A7A0-C81BFEBDF172}
 		{C46253F0-D62A-4FFA-9384-1F8BBDE4EB24} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
 		{5A8DC1C0-6298-49DD-9B02-36EBB0F6C70D} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
 		{F0D702FD-2C0C-4F45-82CE-B52B87F8737D} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
@@ -215,7 +222,6 @@ Global
 		{5E17A1B1-A904-46C7-8893-2C7DC4CDF65F} = {6198F818-2B13-4D8C-85AD-D8DF18D49367}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MathObjects.UI\MathObjects.UI.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.inheritsSet = VisualStudio
@@ -385,5 +391,6 @@ Global
 		$28.NamingStyle = PascalCase
 		$28.IncludeInstanceMembers = True
 		$28.IncludeStaticEntities = True
+		StartupItem = MathObjects.UI\MathObjects.UI.csproj
 	EndGlobalSection
 EndGlobal
