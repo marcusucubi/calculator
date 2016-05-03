@@ -54,9 +54,14 @@ namespace MathObjects.Plugin.FloatingPoint
 
                     var eval = new EvalVisitor2(stack, scope, init);
 
+                    var processor = new GenericDefaultProcessor(
+                        eval, stack, scope, this.registry);
+
+                    var test = new GenericVisitor(processor);
+
                     init.Visit(stat);
 
-                    eval.Visit(stat);
+                    test.Visit(stat);
                 }
             }
 

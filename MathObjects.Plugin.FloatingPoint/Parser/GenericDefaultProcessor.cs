@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Diagnostics;
-using MathObjects.Framework;
-using MathObjects.Framework.Parser;
-using System.Collections.Generic;
-using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using MathObjects.Framework.Parser;
+using MathObjects.Framework;
+using System.Diagnostics;
+using Antlr4.Runtime;
+using System.Collections.Generic;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class EvalProcessor1 
+    public class GenericDefaultProcessor
     {
         readonly AbstractParseTreeVisitor<IMathObject> visitor;
 
@@ -18,29 +18,29 @@ namespace MathObjects.Plugin.FloatingPoint
 
         readonly IMathScope scope;
 
-        readonly InitVisitor init;
+        readonly FunctionRegistry registry;
 
-        public EvalProcessor1(
+        public GenericDefaultProcessor(
             AbstractParseTreeVisitor<IMathObject> visitor,
             IMathObjectStack stack,
             IMathScope scope,
-            InitVisitor init)
+            FunctionRegistry registry)
         {
             this.visitor = visitor;
             this.stack = stack;
             this.stackClone = stack.Clone();
             this.scope = scope;
-            this.init = init;
+            this.registry = registry;
 
             Debug.WriteLine("");
         }
 
         public IMathObject VisitPrintExpr(
-            ParserRuleContext context)
+            IRuleNode node)
         {
             Debug.WriteLine("Start VisitPrintExpr []");
 
-            var result = visitor.Visit(context.GetChild(0));
+            var result = visitor.Visit(node.RuleContext.GetChild(0));
 
             this.stack.Pop();
 
@@ -54,9 +54,9 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitVariable(
-            ParserRuleContext context)
+            IRuleNode node)
         {
-            var name = context.GetChild(0).GetText();
+            var name = node.RuleContext.GetChild(0).GetText();
 
             Debug.WriteLine("Start VisitVariable [" + name + "]");
 
@@ -74,13 +74,13 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitAssignment(
-            ParserRuleContext context)
+            IRuleNode node)
         {
-            var left = context.GetChild(0).GetText();
+            var left = node.RuleContext.GetChild(0).GetText();
 
             Debug.WriteLine("Start VisitAssignment [" + left + "]");
 
-            visitor.Visit(context.GetChild(2));
+            visitor.Visit(node.RuleContext.GetChild(2));
 
             var value = this.stack.Peek();
 
@@ -102,10 +102,10 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitExponent(
-            ParserRuleContext context)
+            IRuleNode node)
         {
-            visitor.Visit(context.GetChild(2));
-            visitor.Visit(context.GetChild(0));
+            visitor.Visit(node.RuleContext.GetChild(2));
+            visitor.Visit(node.RuleContext.GetChild(0));
 
             var result = stack.Push(new ExponentOperation());
 
@@ -115,11 +115,11 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitParens(
-            ParserRuleContext context)
+            IRuleNode node)
         {
             Debug.WriteLine("Start VisitParens");
 
-            var result = visitor.Visit(context.GetChild(1));
+            var result = visitor.Visit(node.RuleContext.GetChild(1));
 
             Debug.WriteLine("End VisitParens");
 
@@ -127,16 +127,16 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitMulDiv(
-            ParserRuleContext context)
+            IRuleNode node)
         {
             Debug.WriteLine("Start VisitMulDiv []");
 
-            var left = visitor.Visit(context.GetChild(2));
-            var right = visitor.Visit(context.GetChild(0));
+            var left = visitor.Visit(node.RuleContext.GetChild(2));
+            var right = visitor.Visit(node.RuleContext.GetChild(0));
 
             IMathOperation op = null;
 
-            if (context.GetChild(1).GetText() == "*")
+            if (node.RuleContext.GetChild(1).GetText() == "*")
             {
                 op = new Multiply();
             }
@@ -154,12 +154,14 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitExprList(
-            ParserRuleContext context)
+            IRuleNode node)
         {
             var list = new List<IMathObject>();
 
-            foreach (var e in context.children)
+            for(int i = 0; i < node.RuleContext.ChildCount; i++)
             {
+                var e = node.RuleContext.GetChild(i);
+
                 var obj = visitor.Visit(e);
                 list.Add(obj);
             }
@@ -170,28 +172,28 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitFuncCall(
-            ParserRuleContext context)
+            IRuleNode node)
         {
             Debug.WriteLine("Start VisitFuncCall []");
 
-            var id = context.GetChild(0).GetText();
+            var id = node.RuleContext.GetChild(0).GetText();
 
-            if (!this.init.Map.ContainsKey(context))
+            var factory = this.registry.GetFunctionFactory(id);
+
+            if (factory == null)
             {
-                var error = new UndefinedObject();
-
-                stack.Push(error);
-
-                Debug.WriteLine("End VisitFuncCall [" + id + "]");
-
-                return error;
+                return new UndefinedObject();
             }
 
-            var f = this.init.Map[context];
+            var factoryContext = new FactoryContext();
+
+            var f = factory.Create(factoryContext) as IMathOperationFactory2;
+
+            f.Init(new OperationFactoryContext(this.stack));
 
             var functionContext = new OperationFactoryContext(this.stackClone);
 
-            var list = context.GetChild(2) as ParserRuleContext;
+            var list = node.RuleContext.GetChild(2) as ParserRuleContext;
 
             if (list != null)
             {
@@ -212,11 +214,11 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitStackParam(
-            ParserRuleContext context)
+            IRuleNode node)
         {
             Debug.WriteLine("Start VisitStackParam []");
 
-            string id = context.GetChild(0).GetText();
+            string id = node.RuleContext.GetChild(0).GetText();
             string s = id.Trim('%');
 
             int temp;

@@ -1,25 +1,22 @@
 ﻿using System;
-using MathObjects.Framework;
-using MathObjects.Framework.Registry;
-using MathObjects.Framework.Parser;
 using System.Collections.Generic;
+using MathObjects.Framework;
 using Antlr4.Runtime;
+using MathObjects.Framework.Parser;
+using Antlr4.Runtime.Tree;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class InitVisitor : FloatingPointBaseVisitor<bool>
+    public class GenericDefaultPreprocessor
     {
         readonly IMathObjectStack stack;
 
         readonly FunctionRegistry registry;
 
-        readonly IDictionary<ParserRuleContext, IMathOperationFactory2> map =
-            new Dictionary<ParserRuleContext, IMathOperationFactory2>();
-
         readonly IDictionary<RuleContext, IMathOperationFactory2> map2 =
             new Dictionary<RuleContext, IMathOperationFactory2>();
 
-        public InitVisitor(
+        public GenericDefaultPreprocessor(
             FunctionRegistry registry, 
             IMathObjectStack stack)
         {
@@ -27,27 +24,17 @@ namespace MathObjects.Plugin.FloatingPoint
             this.stack = stack;
         }
 
-        public IDictionary<ParserRuleContext, IMathOperationFactory2> Map 
-        {
-            get { return this.map; }
-        }
-
         public IDictionary<RuleContext, IMathOperationFactory2> Map2 
         {
             get { return this.map2; }
         }
 
-        public override bool VisitFuncCall(
-            FloatingPointParser.FuncCallContext context)
+        public bool VisitFuncCall(
+            IRuleNode node)
         {
-            if (context.exprList() != null)
-            {
-                VisitExprList(context.exprList());
-            }
-
             var factoryContext = new FactoryContext();
-             
-            string name = context.ID().GetText();
+
+            var name = node.RuleContext.GetChild(0).GetText();
 
             var factory = this.registry.GetFunctionFactory(name);
 
@@ -60,7 +47,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             f.Init(new OperationFactoryContext(this.stack));
 
-            map[context] = f;
+            //map2[node] = f;
 
             return true;
         }

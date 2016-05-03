@@ -9,14 +9,36 @@ using MathObjects.Core.DecoratableObject;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class EvalVisitor2 : EvalVisitor1
+    public class EvalVisitor2  : FloatingPointBaseVisitor<IMathObject>
     {
+        readonly IMathObjectStack stack;
+
+        readonly IMathObjectStack stackClone;
+
+        readonly IMathScope scope;
+
         public EvalVisitor2(
             IMathObjectStack stack,
-            IMathScope scope,
-            InitVisitor init)
-            : base(stack,scope,init)
+            IMathScope scope)
         {
+            this.stack = stack;
+            this.stackClone = stack.Clone();
+            this.scope = scope;
+        }
+
+        public IMathObjectStack Stack
+        {
+            get { return this.stack; }
+        }
+
+        public IMathObjectStack StackClone
+        {
+            get { return this.stackClone; }
+        }
+
+        public IMathScope Scope
+        {
+            get { return this.scope; }
         }
 
         public override IMathObject VisitNegative(

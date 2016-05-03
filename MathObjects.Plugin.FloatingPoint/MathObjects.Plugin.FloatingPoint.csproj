@@ -87,6 +87,9 @@
     <Compile Include="Parser\EvalVisitor1.cs" />
     <Compile Include="EvalProcessor1.cs" />
     <Compile Include="Parser\EvalVisitor1Save.cs" />
+    <Compile Include="Parser\GenericVisitor.cs" />
+    <Compile Include="Parser\GenericDefaultProcessor.cs" />
+    <Compile Include="Parser\GenericDefaultPreprocessor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

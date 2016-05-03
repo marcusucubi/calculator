@@ -1,8 +1,8 @@
 ﻿using System;
-using MathObjects.Framework;
-using MathObjects.Framework.Parser;
 using System.Diagnostics;
 using System.Collections.Generic;
+using MathObjects.Framework;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
@@ -48,8 +48,6 @@ namespace MathObjects.Plugin.FloatingPoint
             this.scope = scope;
             this.init = init;
             processor = new EvalProcessor1(this, stack, scope, init);
-
-            Debug.WriteLine("");
         }
 
         public override IMathObject VisitPrintExpr(
