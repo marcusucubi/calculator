@@ -10,8 +10,6 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     public class GenericDefaultProcessor
     {
-        readonly AbstractParseTreeVisitor<IMathObject> visitor;
-
         readonly IMathObjectStack stack;
 
         readonly IMathObjectStack stackClone;
@@ -21,12 +19,10 @@ namespace MathObjects.Plugin.FloatingPoint
         readonly FunctionRegistry registry;
 
         public GenericDefaultProcessor(
-            AbstractParseTreeVisitor<IMathObject> visitor,
             IMathObjectStack stack,
             IMathScope scope,
             FunctionRegistry registry)
         {
-            this.visitor = visitor;
             this.stack = stack;
             this.stackClone = stack.Clone();
             this.scope = scope;
@@ -36,7 +32,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitPrintExpr(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             Debug.WriteLine("Start VisitPrintExpr []");
 
@@ -54,7 +50,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitVariable(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             var name = node.RuleContext.GetChild(0).GetText();
 
@@ -74,7 +70,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitAssignment(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             var left = node.RuleContext.GetChild(0).GetText();
 
@@ -102,7 +98,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitExponent(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             visitor.Visit(node.RuleContext.GetChild(2));
             visitor.Visit(node.RuleContext.GetChild(0));
@@ -115,7 +111,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitParens(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             Debug.WriteLine("Start VisitParens");
 
@@ -127,7 +123,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitMulDiv(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             Debug.WriteLine("Start VisitMulDiv []");
 
@@ -154,7 +150,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitExprList(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             var list = new List<IMathObject>();
 
@@ -172,7 +168,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitFuncCall(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             Debug.WriteLine("Start VisitFuncCall []");
 
@@ -197,7 +193,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             if (list != null)
             {
-                VisitExprList(list);
+                VisitExprList(list, visitor);
             }
 
             var operation = f.Perform(functionContext);
@@ -214,7 +210,7 @@ namespace MathObjects.Plugin.FloatingPoint
         }
 
         public IMathObject VisitStackParam(
-            IRuleNode node)
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             Debug.WriteLine("Start VisitStackParam []");
 

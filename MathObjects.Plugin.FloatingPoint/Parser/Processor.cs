@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using MathObjects.Framework;
-using MathObjects.Framework.Registry;
 using MathObjects.Framework.Parser;
-using MathObjects.Core.DecoratableObject;
+using MathObjects.Framework;
+using Antlr4.Runtime.Tree;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class EvalVisitor2  : FloatingPointBaseVisitor<IMathObject>
+    public class Processor
     {
         readonly IMathObjectStack stack;
 
@@ -17,7 +14,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
         readonly IMathScope scope;
 
-        public EvalVisitor2(
+        public Processor(
             IMathObjectStack stack,
             IMathScope scope)
         {
@@ -41,10 +38,10 @@ namespace MathObjects.Plugin.FloatingPoint
             get { return this.scope; }
         }
 
-        public override IMathObject VisitNegative(
-            FloatingPointParser.NegativeContext context)
+        public IMathObject VisitNegative(
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
-            Visit(context.expr());
+            visitor.Visit(node.RuleContext.GetChild(1));
 
             var result = this.Stack.Push(new Negative());
 
@@ -53,11 +50,11 @@ namespace MathObjects.Plugin.FloatingPoint
             return result;
         }
 
-        public override IMathObject VisitFloat(
-            FloatingPointParser.FloatContext context)
+        public IMathObject VisitFloat(
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             double temp;
-            double.TryParse(context.FLOAT().GetText(), out temp);
+            double.TryParse(node.GetChild(0).GetText(), out temp);
             var result = new MathObject(temp);
             Stack.Push(result);
 
@@ -66,11 +63,11 @@ namespace MathObjects.Plugin.FloatingPoint
             return result;
         }
 
-        public override IMathObject VisitInt(
-            FloatingPointParser.IntContext context)
+        public IMathObject VisitInt(
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             double temp;
-            double.TryParse(context.INT().GetText(), out temp);
+            double.TryParse(node.GetChild(0).GetText(), out temp);
             var result = new MathObject(temp);
             Stack.Push(result);
 
@@ -79,11 +76,11 @@ namespace MathObjects.Plugin.FloatingPoint
             return result;
         }
 
-        public override IMathObject VisitValue(
-            FloatingPointParser.ValueContext context)
+        public IMathObject VisitValue(
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             double temp;
-            double.TryParse(context.INT().GetText(), out temp);
+            double.TryParse(node.GetChild(0).GetText(), out temp);
             var result = new MathObject(temp);
             Stack.Push(result);
 
@@ -92,17 +89,17 @@ namespace MathObjects.Plugin.FloatingPoint
             return result;
         }
 
-        public override IMathObject VisitAddSub(
-            FloatingPointParser.AddSubContext context)
+        public IMathObject VisitAddSub(
+            IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
         {
             Debug.WriteLine("Start VisitAddSub []");
 
-            var left = Visit(context.GetChild(2));
-            var right = Visit(context.GetChild(0));
+            var left = visitor.Visit(node.GetChild(2));
+            var right = visitor.Visit(node.GetChild(0));
 
             IMathOperation op = null;
 
-            if (context.op.Type == FloatingPointParser.ADD)
+            if (node.GetChild(1).GetText() == "+")
             {
                 op = new Add();
             }

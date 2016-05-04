@@ -50,7 +50,6 @@
     <Compile Include="ErrorListener.cs" />
     <Compile Include="Parser\FloatingPointVisitor.cs" />
     <Compile Include="Parser\FloatingPointBaseVisitor.cs" />
-    <Compile Include="Parser\EvalVisitor2.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Subtract.cs" />
     <Compile Include="SubtractObject.cs" />
@@ -84,12 +83,10 @@
     <Compile Include="Func\RandomOperation.cs" />
     <Compile Include="Func\StackParamObject.cs" />
     <Compile Include="Func\StackParamOperation.cs" />
-    <Compile Include="Parser\EvalVisitor1.cs" />
-    <Compile Include="EvalProcessor1.cs" />
-    <Compile Include="Parser\EvalVisitor1Save.cs" />
     <Compile Include="Parser\GenericVisitor.cs" />
     <Compile Include="Parser\GenericDefaultProcessor.cs" />
     <Compile Include="Parser\GenericDefaultPreprocessor.cs" />
+    <Compile Include="Parser\Processor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
