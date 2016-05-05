@@ -6,7 +6,7 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     public class Ref : AbstractMathObject, 
-        IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue
+        IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue, ICanEvaluate
     {
         readonly IMathScope scope;
 
@@ -25,7 +25,18 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public IMathObject MathObject
         {
-            get { return this.scope.Get(this.name); }
+            get 
+            {
+                var result = this.scope.Get(this.name);
+
+                var eval = result as ICanEvaluate;
+                if (eval != null)
+                {
+                    result = eval.ReEvaluate();
+                }
+
+                return result;
+            }
         }
 
         public IMathObject Output
@@ -50,6 +61,17 @@ namespace MathObjects.Plugin.FloatingPoint
             result.CopyDecorations(this);
 
             return result;
+        }
+
+        public IMathObject ReEvaluate()
+        {
+            var result = new ValueRef(this.scope, this.name);
+
+            var result2 = result.ReEvaluate();
+
+            result2.CopyDecorations(this);
+
+            return result2;
         }
 
         public override string ToString()

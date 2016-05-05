@@ -6,11 +6,14 @@ using MathObjects.Core.DecoratableObject;
 namespace MathObjects.Plugin.FloatingPoint
 {
     public class ValueRef : AbstractMathObject, 
-        IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue, IHasValue
+        IHasOutput, IHasDisplayValue, IHasChildren, 
+        ICanEvaluate, ICanCopyByValue, IHasValue
     {
         readonly string name;
 
         readonly IMathObject obj;
+
+        readonly IMathScope scope;
 
         public ValueRef(IMathScope scope, string name)
         {
@@ -18,9 +21,9 @@ namespace MathObjects.Plugin.FloatingPoint
 
             this.name = referance.Name;
             this.obj = referance.MathObject.CopyByValue();
+            this.scope = scope;
 
-            DecorationManager.SetObjectDecoration(
-                this, "name", name);
+            this.SetObjectName(name);
         }
 
         public string Name
@@ -77,12 +80,25 @@ namespace MathObjects.Plugin.FloatingPoint
 
             if (copy == null)
             {
-                return new ErrorObject();
+                return this.obj;
             }
 
             var result = copy.CopyByValue();
 
             result.CopyDecorations(this);
+
+            return result;
+        }
+
+        public IMathObject ReEvaluate()
+        {
+            var result = new ValueRef(this.scope, this.name);
+
+            var eval = result.MathObject as ICanEvaluate;
+            if (eval != null)
+            {
+                return eval.ReEvaluate();
+            }
 
             return result;
         }

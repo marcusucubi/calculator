@@ -54,7 +54,6 @@
     <Compile Include="Subtract.cs" />
     <Compile Include="SubtractObject.cs" />
     <Compile Include="FunctionFactory.cs" />
-    <Compile Include="Parser\InitVisitor.cs" />
     <Compile Include="NegativeObject.cs" />
     <Compile Include="Negative.cs" />
     <Compile Include="ExponentObject.cs" />
@@ -70,7 +69,9 @@
     <Compile Include="MathFunc\DegreesOperation.cs" />
     <Compile Include="MathFunc\RadiansOperation.cs" />
     <Compile Include="Ref.cs" />
-    <Compile Include="ValueRef.cs" />
+    <Compile Include="ValueRef.cs">
+      <DeployService-Deploy>True</DeployService-Deploy>
+    </Compile>
     <Compile Include="HasChildrenEx.cs" />
     <Compile Include="MathValue.cs" />
     <Compile Include="MathFunc\AngleOperationFactory.cs" />

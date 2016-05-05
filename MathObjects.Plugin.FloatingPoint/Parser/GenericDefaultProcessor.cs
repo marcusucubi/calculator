@@ -40,7 +40,16 @@ namespace MathObjects.Plugin.FloatingPoint
 
             this.stack.Pop();
 
-            result = result.CopyByValue();
+            var eval = result as ICanEvaluate;
+
+            if (eval != null)
+            {
+                result = eval.ReEvaluate();
+            }
+            else
+            {
+                result = result.CopyByValue();
+            }
 
             result = this.stack.Push(result);
 
@@ -58,15 +67,17 @@ namespace MathObjects.Plugin.FloatingPoint
 
             var value = new Ref(this.scope, name);
 
-            var result = stack.Push(value);
+            var copy = value.CopyByValue();
 
-            value.SetObjectName(name);
+            var result = stack.Push(copy);
+
             result.SetObjectName(name);
+            value.SetObjectName(name);
 
             Debug.WriteLine("End VisitVariable [" + 
                 name + "=" + value.GetDouble() + "]");
 
-            return result;
+            return value;
         }
 
         public IMathObject VisitAssignment(
@@ -79,6 +90,8 @@ namespace MathObjects.Plugin.FloatingPoint
             visitor.Visit(node.RuleContext.GetChild(2));
 
             var value = this.stack.Peek();
+
+            //value = value.CopyByValue();
 
             this.scope.Put(left, value);
 

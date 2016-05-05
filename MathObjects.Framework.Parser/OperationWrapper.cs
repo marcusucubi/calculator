@@ -6,7 +6,8 @@ using System.Collections.Generic;
 namespace MathObjects.Framework.Parser
 {
     public class OperationWrapper : AbstractMathObject, 
-        IHasChildren, IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue, ICanBeDefined
+        IHasChildren, IHasOutput, IHasDisplayValue, 
+        ICanCopyByValue, IHasValue, ICanBeDefined, ICanEvaluate
     {
         readonly IMathObject[] objs;
 
@@ -108,7 +109,21 @@ namespace MathObjects.Framework.Parser
                 list.Add(obj.CopyByValue());
             }
 
-            return new OperationWrapper(list.ToArray(), this.op, this.output);
+            return new OperationWrapper(
+                list.ToArray(), this.op, this.output);
+        }
+
+        public IMathObject ReEvaluate()
+        {
+            var list = new List<IMathObject>();
+
+            foreach (var obj in this.objs)
+            {
+                list.Add(obj.ReEvaluate());
+            }
+
+            return new OperationWrapper(
+                list.ToArray(), this.op, this.op.Perform(list.ToArray()));
         }
 
         public override string ToString()

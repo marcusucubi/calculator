@@ -1,31 +1,51 @@
 ﻿using System;
 using MathObjects.Framework;
 using MathObjects.Core.DecoratableObject;
+using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "+")]
     class AddObject : AbstractMathObject, 
-        IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue 
+        IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue, ICanEvaluate  
     {
-        readonly double tuple1;
+        readonly IMathObject[] objs;
 
-        readonly double tuple2;
+        readonly double leftValue;
 
-        public AddObject(double tuple1, double tuple2)
+        readonly double rightValue;
+
+        public AddObject(IMathObject[] objs)
         {
-            this.tuple1 = tuple1;
-            this.tuple2 = tuple2;
+            this.objs = objs;
+
+            if (objs[0].IsDefined() && objs[1].IsDefined())
+            {
+                this.leftValue = objs[0].GetDouble();
+                this.rightValue = objs[1].GetDouble();
+            }
         }
 
         public IMathObject Output
         {
-            get { return new MathObject(tuple1 + tuple2); }
+            get
+            {
+                if (!objs[0].IsDefined() || !objs[1].IsDefined())
+                {
+                    var result = new UndefinedObject();
+
+                    result.SetObjectName("+");
+
+                    return result;
+                }
+
+                return new MathObject(leftValue + rightValue); 
+            }
         }
 
         public IMathValue Value 
         { 
-            get { return new MathValue(tuple1 + tuple2); } 
+            get { return new MathValue(leftValue + rightValue); } 
         }
 
         public string DisplayValue 
@@ -36,6 +56,11 @@ namespace MathObjects.Plugin.FloatingPoint
         public IMathObject CopyByValue()
         {
             return this;
+        }
+
+        public IMathObject ReEvaluate()
+        {
+            return new AddObject(this.objs);
         }
 
         public override string ToString()

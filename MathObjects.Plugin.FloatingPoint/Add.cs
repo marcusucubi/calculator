@@ -14,6 +14,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public override IMathObject Perform(IMathObject[] objs)
         {
+            /*
             if (!objs[0].IsDefined() || !objs[1].IsDefined())
             {
                 var result = new UndefinedObject();
@@ -22,16 +23,12 @@ namespace MathObjects.Plugin.FloatingPoint
 
                 return result;
             }
+            */
 
-            var leftValue = objs[0].GetDouble();
-            var rightValue = objs[1].GetDouble();
+            //var leftValue = objs[0].GetDouble();
+            //var rightValue = objs[1].GetDouble();
 
-            var addObj = new AddObject(leftValue, rightValue);
-
-            //addObj.CopyDecorations(objs[0]);
-            //addObj.CopyDecorations(objs[1]);
-
-            return addObj;
+            return new AddObject(objs);
         }
 
         public class Factory : IMathOperationFactory

@@ -16,7 +16,23 @@ namespace MathObjects.Framework
             {
                 result = canCopy.CopyByValue();
 
-                DecorationManager.CopyDecorations(result, canCopy as IExtensionableObject);
+                result.CopyDecorations(canCopy as IExtensionableObject);
+            }
+
+            return result;
+        }
+
+        public static IMathObject ReEvaluate(this IMathObject obj)
+        {
+            var result = obj;
+
+            var canEval = obj as ICanEvaluate;
+
+            if (canEval != null)
+            {
+                result = canEval.ReEvaluate();
+
+                result.CopyDecorations(canEval as IExtensionableObject);
             }
 
             return result;
