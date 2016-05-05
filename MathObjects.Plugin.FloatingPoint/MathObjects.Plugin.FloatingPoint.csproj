@@ -88,7 +88,6 @@
     <Compile Include="Parser\GenericDefaultProcessor.cs" />
     <Compile Include="Parser\GenericDefaultPreprocessor.cs" />
     <Compile Include="Parser\Processor.cs" />
-    <Compile Include="UndefinedValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -7,72 +7,31 @@ namespace MathObjects.Plugin.FloatingPoint
 {
     [ClassDecoration("name", "+")]
     class AddObject : AbstractMathObject, 
-        IHasOutput, IHasDisplayValue, ICanCopyByValue, IHasValue, ICanEvaluate  
+        IHasOutput, IHasDisplayValue, IHasValue
     {
-        readonly IMathObject[] objs;
+        readonly double tuple1;
 
-        readonly double leftValue;
+        readonly double tuple2;
 
-        readonly double rightValue;
-
-        public AddObject(IMathObject[] objs)
+        public AddObject(double tuple1, double tuple2)
         {
-            this.objs = objs;
-
-            if (objs[0].IsDefined() && objs[1].IsDefined())
-            {
-                this.leftValue = objs[0].GetDouble();
-                this.rightValue = objs[1].GetDouble();
-            }
+            this.tuple1 = tuple1;
+            this.tuple2 = tuple2;
         }
 
         public IMathObject Output
         {
-            get
-            {
-                if (!objs[0].IsDefined() || !objs[1].IsDefined())
-                {
-                    var result = new UndefinedObject();
-
-                    result.SetObjectName("+");
-
-                    return result;
-                }
-
-                return new MathObject(leftValue + rightValue); 
-            }
+            get { return new MathObject(tuple1 + tuple2); }
         }
 
         public IMathValue Value 
         { 
-            get 
-            { 
-                if (!objs[0].IsDefined() || !objs[1].IsDefined())
-                {
-                    var result = new UndefinedValue();
-
-                    result.SetObjectName("+");
-
-                    return result;
-                }
-
-                return new MathValue(leftValue + rightValue); 
-            } 
+            get { return new MathValue(tuple1 + tuple2); } 
         }
 
         public string DisplayValue 
         { 
             get { return this.Output.ToString(); }
-        }
-
-        public IMathObject CopyByValue()
-        {
-            return this;
-        }
-
-        public IMathObject ReEvaluate()
-        {
-            return new AddObject(this.objs);
         }
 
         public override string ToString()

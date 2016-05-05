@@ -12,7 +12,7 @@ namespace MathObjects.Framework.Parser
 
         public string DisplayValue 
         { 
-            get { return "Undefined"; } 
+            get { return "Undef"; } 
         }
 
         public IMathValue Value
@@ -22,10 +22,10 @@ namespace MathObjects.Framework.Parser
 
         public override string ToString()
         {
-            return "Undefined";
+            return "Undef";
         }
 
-        class ValueObject : AbstractMathObject, IMathValue 
+        public class ValueObject : AbstractMathObject, IMathValue 
         {
             public object Value 
             { 

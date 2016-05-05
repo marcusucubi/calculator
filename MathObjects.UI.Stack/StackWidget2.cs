@@ -53,11 +53,13 @@ namespace MathObjects.UI.Stack
 
             this.treeview2.HeadersVisible = true;
 
-            store = new Gtk.TreeStore (typeof(string), typeof(string), typeof(string));
+            store = new Gtk.TreeStore (
+                typeof(string), typeof(string), typeof(string));
 
             this.treeview2.Model = store;
 
-            this.treeview2.ModifyFont(FontDescription.FromString("Courier 16"));
+            this.treeview2.ModifyFont(
+                FontDescription.FromString("Courier 12"));
         }
 
         public void Connect(

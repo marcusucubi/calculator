@@ -6,29 +6,32 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    class Add : AbstractMathOperation
+    public class Add : AbstractMathOperation, IHasName
     {
         public override int NumberOfParameters { get { return 2; } }
 
-        public override string Symbol { get { return "+"; } }
+        public override string Symbol { get { return "*"; } }
+
+        public string Name { get { return "*"; } }
 
         public override IMathObject Perform(IMathObject[] objs)
         {
-            /*
             if (!objs[0].IsDefined() || !objs[1].IsDefined())
             {
-                var result = new UndefinedObject();
+                if (!objs[0].IsDefined() || !objs[1].IsDefined())
+                {
+                    var result = new UndefinedObject();
 
-                result.SetObjectName("+");
+                    result.SetObjectName("*");
 
-                return result;
+                    return result;
+                }
             }
-            */
 
-            //var leftValue = objs[0].GetDouble();
-            //var rightValue = objs[1].GetDouble();
+            var leftValue = objs[0].GetDouble();
+            var rightValue = objs[1].GetDouble();
 
-            return new AddObject(objs);
+            return new AddObject(leftValue, rightValue);
         }
 
         public class Factory : IMathOperationFactory

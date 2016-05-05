@@ -22,7 +22,7 @@ namespace MathObjects.Plugin.FloatingPoint
                 {
                     var result = new UndefinedObject();
 
-                    result.SetObjectName("^");
+                    result.SetObjectName("*");
 
                     return result;
                 }
