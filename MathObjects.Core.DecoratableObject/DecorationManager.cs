@@ -76,6 +76,11 @@ namespace MathObjects.Core.DecoratableObject
             var sourceExt = GetExtension(sourceObj);
             var targetExt = GetExtension(targetObj);
 
+            if (sourceExt == targetExt)
+            {
+                return;
+            }
+
             foreach (var pair in sourceExt.Map)
             {
                 targetExt.Map[pair.Key] = pair.Value;
