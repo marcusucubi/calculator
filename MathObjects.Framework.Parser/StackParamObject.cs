@@ -2,7 +2,7 @@
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser
 {
     class StackParamObject : AbstractMathObject, 
         IHasOutput, IHasDisplayValue
@@ -38,4 +38,5 @@ namespace MathObjects.Plugin.FloatingPoint
         }
     }
 }
+
 

@@ -68,10 +68,6 @@
     <Compile Include="MathFunc\InverseAngleOperation.cs" />
     <Compile Include="MathFunc\DegreesOperation.cs" />
     <Compile Include="MathFunc\RadiansOperation.cs" />
-    <Compile Include="Ref.cs" />
-    <Compile Include="ValueRef.cs">
-      <DeployService-Deploy>True</DeployService-Deploy>
-    </Compile>
     <Compile Include="HasChildrenEx.cs" />
     <Compile Include="MathValue.cs" />
     <Compile Include="MathFunc\AngleOperationFactory.cs" />
@@ -79,14 +75,8 @@
     <Compile Include="MathFunc\InverseAngleOperationFactory.cs" />
     <Compile Include="MathFunc\MathOperationFactory.cs" />
     <Compile Include="MathFunc\RadiansOperationFactory.cs" />
-    <Compile Include="Parser\OperationFactoryContext.cs" />
     <Compile Include="Func\RandomObject.cs" />
     <Compile Include="Func\RandomOperation.cs" />
-    <Compile Include="Func\StackParamObject.cs" />
-    <Compile Include="Func\StackParamOperation.cs" />
-    <Compile Include="Parser\GenericVisitor.cs" />
-    <Compile Include="Parser\GenericDefaultProcessor.cs" />
-    <Compile Include="Parser\GenericDefaultPreprocessor.cs" />
     <Compile Include="Parser\Processor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

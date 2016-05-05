@@ -6,7 +6,7 @@ using Antlr4.Runtime.Tree;
 
 namespace MathObjects.Plugin.FloatingPoint
 {
-    public class Processor
+    public class Processor : GenericDefaultProcessor
     {
         readonly IMathObjectStack stack;
 
@@ -16,11 +16,28 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public Processor(
             IMathObjectStack stack,
-            IMathScope scope)
+            IMathScope scope,
+            FunctionRegistry registry)
+            : base(stack, scope, registry)
         {
             this.stack = stack;
             this.stackClone = stack.Clone();
             this.scope = scope;
+        }
+
+        protected override IMathOperation Divide()
+        {
+            return new Divide();
+        }
+
+        protected override IMathOperation Multiply()
+        {
+            return new Multiply();
+        }
+
+        protected override IMathOperation ExponentOperation()
+        {
+            return new ExponentOperation();
         }
 
         public IMathObjectStack Stack

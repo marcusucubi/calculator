@@ -1,9 +1,8 @@
-﻿using System;
-using MathObjects.Framework;
+﻿using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.DecoratableObject;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser
 {
     public class ValueRef : AbstractMathObject, 
         IHasOutput, IHasDisplayValue, IHasChildren, 
@@ -70,7 +69,7 @@ namespace MathObjects.Plugin.FloatingPoint
                     return hasDisplay.DisplayValue;
                 }
 
-                return "" + this.obj.GetDouble(); 
+                return "" + this.obj; 
             }
         }
 
@@ -109,4 +108,5 @@ namespace MathObjects.Plugin.FloatingPoint
         }
     }
 }
+
 

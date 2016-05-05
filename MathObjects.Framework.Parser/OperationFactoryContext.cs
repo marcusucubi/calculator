@@ -2,9 +2,10 @@
 using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser
 {
-    public class OperationFactoryContext : IMathOperationFactoryContext, IHasMathObjectStack
+    public class OperationFactoryContext : 
+        IMathOperationFactoryContext, IHasMathObjectStack
     {
         readonly IMathObjectStack stack;
 
@@ -19,4 +20,5 @@ namespace MathObjects.Plugin.FloatingPoint
         }
     }
 }
+
 

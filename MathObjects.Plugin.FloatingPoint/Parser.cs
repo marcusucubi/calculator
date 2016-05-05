@@ -50,14 +50,14 @@ namespace MathObjects.Plugin.FloatingPoint
 
                 if (!l.HasError)
                 {
-                    var processor = new GenericDefaultProcessor(
+                    var processor = new Processor(
                         stack, scope, this.registry);
 
-                    var processor2 = new Processor(
-                        stack, scope);
+//                    var processor2 = new Processor(
+//                        stack, scope);
                     
                     var test = new GenericVisitor<IMathObject>(
-                        processor, processor2);
+                        processor);
 
                     test.Visit(stat);
                 }

@@ -3,10 +3,11 @@ using MathObjects.Framework;
 using MathObjects.Framework.Parser;
 using MathObjects.Core.DecoratableObject;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser
 {
     public class Ref : AbstractMathObject, 
-        IHasOutput, IHasDisplayValue, IHasChildren, ICanCopyByValue, ICanEvaluate
+        IHasOutput, IHasDisplayValue, IHasChildren, 
+        ICanCopyByValue, ICanEvaluate
     {
         readonly IMathScope scope;
 
@@ -80,4 +81,5 @@ namespace MathObjects.Plugin.FloatingPoint
         }
     }
 }
+
 

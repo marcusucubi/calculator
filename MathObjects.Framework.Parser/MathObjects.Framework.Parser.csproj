@@ -52,6 +52,13 @@
     <Compile Include="IHasChildrenEx.cs" />
     <Compile Include="UndefinedObject.cs" />
     <Compile Include="ParserException.cs" />
+    <Compile Include="GenericVisitor.cs" />
+    <Compile Include="GenericDefaultProcessor.cs" />
+    <Compile Include="Ref.cs" />
+    <Compile Include="ValueRef.cs" />
+    <Compile Include="OperationFactoryContext.cs" />
+    <Compile Include="StackParamObject.cs" />
+    <Compile Include="StackParamOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

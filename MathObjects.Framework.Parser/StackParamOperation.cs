@@ -2,7 +2,7 @@
 using MathObjects.Framework;
 using MathObjects.Core.DecoratableObject;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser
 {
     class StackParamOperation : AbstractMathOperation
     {

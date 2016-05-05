@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Collections.Generic;
 using Antlr4.Runtime.Tree;
+using Antlr4.Runtime;
 using MathObjects.Framework.Parser;
 using MathObjects.Framework;
-using System.Diagnostics;
-using Antlr4.Runtime;
-using System.Collections.Generic;
 
-namespace MathObjects.Plugin.FloatingPoint
+namespace MathObjects.Framework.Parser
 {
-    public class GenericDefaultProcessor
+    public abstract class GenericDefaultProcessor
     {
         readonly IMathObjectStack stack;
 
@@ -30,6 +30,12 @@ namespace MathObjects.Plugin.FloatingPoint
 
             Debug.WriteLine("");
         }
+
+        protected abstract IMathOperation ExponentOperation();
+
+        protected abstract IMathOperation Multiply();
+
+        protected abstract IMathOperation Divide();
 
         public IMathObject VisitPrintExpr(
             IRuleNode node, IParseTreeVisitor<IMathObject> visitor)
@@ -75,7 +81,7 @@ namespace MathObjects.Plugin.FloatingPoint
             value.SetObjectName(name);
 
             Debug.WriteLine("End VisitVariable [" + 
-                name + "=" + value.GetDouble() + "]");
+                name + "=" + value + "]");
 
             return value;
         }
@@ -105,7 +111,7 @@ namespace MathObjects.Plugin.FloatingPoint
 
             Debug.WriteLine("End VisitAssignment [" + 
                 left + "=" + value + "] ["+ 
-                left + "=" + value.GetDouble() + "]");
+                left + "=" + value + "]");
 
             return result;
         }
@@ -116,7 +122,7 @@ namespace MathObjects.Plugin.FloatingPoint
             visitor.Visit(node.RuleContext.GetChild(2));
             visitor.Visit(node.RuleContext.GetChild(0));
 
-            var result = stack.Push(new ExponentOperation());
+            var result = stack.Push(ExponentOperation());
 
             Debug.WriteLine("VisitExponent []");
 
@@ -147,17 +153,17 @@ namespace MathObjects.Plugin.FloatingPoint
 
             if (node.RuleContext.GetChild(1).GetText() == "*")
             {
-                op = new Multiply();
+                op = Multiply();
             }
             else
             {
-                op = new Divide();
+                op = Divide();
             }
 
             var result = stack.Push(op);
 
             Debug.WriteLine("End VisitMulDiv [" + 
-                left + "+" + right + "] [" + result.GetDouble() + "]");
+                left + "+" + right + "] [" + result + "]");
 
             return result;
         }
