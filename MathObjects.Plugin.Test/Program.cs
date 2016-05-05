@@ -27,7 +27,7 @@ namespace MathObjects.Plugin.Test
 
             //var canDefine = ((stack.Top as IHasOutput).Output as IHasOutput).Output as ICanBeDefined;
 
-            //var canDefine2 = (stack.Top as IHasValue).Value as ICanBeDefined;
+            var canDefine2 = (stack.Top as IHasValue).Value as ICanBeDefined;
 
         }
     }

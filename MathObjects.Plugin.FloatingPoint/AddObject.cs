@@ -45,7 +45,19 @@ namespace MathObjects.Plugin.FloatingPoint
 
         public IMathValue Value 
         { 
-            get { return new MathValue(leftValue + rightValue); } 
+            get 
+            { 
+                if (!objs[0].IsDefined() || !objs[1].IsDefined())
+                {
+                    var result = new UndefinedValue();
+
+                    result.SetObjectName("+");
+
+                    return result;
+                }
+
+                return new MathValue(leftValue + rightValue); 
+            } 
         }
 
         public string DisplayValue 

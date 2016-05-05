@@ -74,6 +74,7 @@
     <Compile Include="ConstantTest.cs" />
     <Compile Include="TrigTest.cs" />
     <Compile Include="StackParamTest.cs" />
+    <Compile Include="VariableTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
