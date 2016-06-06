@@ -52,9 +52,6 @@ namespace MathObjects.Plugin.FloatingPoint
                 {
                     var processor = new Processor(
                         stack, scope, this.registry);
-
-//                    var processor2 = new Processor(
-//                        stack, scope);
                     
                     var test = new GenericVisitor<IMathObject>(
                         processor);

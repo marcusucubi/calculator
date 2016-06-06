@@ -10,13 +10,31 @@ namespace MathObjects.Plugin.Symmetric.Parser
 {
     public class Parser2 : IParser
     {
-        public bool HasError
+        readonly FunctionRegistry registry;
+
+        bool hasError;
+
+        public Parser2(FunctionRegistry registry)
         {
-            get { return false; }
+            this.registry = registry;
         }
 
-        public void Parse(string data, IMathObjectStack stack, IMathScope scope)
+        public bool HasError
+        { 
+            get { return hasError; } 
+            set { hasError = value; }
+        }
+
+        public void Parse(
+            string data, 
+            IMathObjectStack stack, 
+            IMathScope scope)
         {
+            if (!data.TrimEnd().EndsWith(";"))
+            {
+                data = data + ";";
+            }
+
             var input = new AntlrInputStream(data);
             var lexer = new PermutationLexer(input);
             var tokens = new CommonTokenStream(lexer);
@@ -25,15 +43,28 @@ namespace MathObjects.Plugin.Symmetric.Parser
             var l = new ErrorListener();
             parser.AddErrorListener(l);
 
-            var tree = parser.init(); 
+            var file = parser.file();
 
-            if (!l.HasError)
+            foreach (var stat in file.init())
             {
-                var eval = new EvalVisitor2(stack);
+                this.hasError = l.HasError;
 
-                eval.Visit(tree);
+                if (!l.HasError)
+                {
+                    var processor = new Processor(
+                        stack, scope, this.registry);
+
+                    var test = new GenericVisitor<IMathObject>(
+                        processor);
+
+                    test.Visit(stat);
+                }
             }
 
+            if (l.HasError)
+            {
+                throw new ParserException(l.Descriptions);
+            }
         }
     }
 }

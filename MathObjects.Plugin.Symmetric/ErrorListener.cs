@@ -5,15 +5,23 @@ using Antlr4.Runtime.Dfa;
 using Antlr4.Runtime.Sharpen;
 using Antlr4.Runtime.Atn;
 using MathObjects.Framework;
+using MathObjects.Framework.Parser;
+using System.Collections.Generic;
 
 namespace MathObjects.Plugin.Symmetric
 {
     public class ErrorListener : BaseErrorListener
     {
+        readonly List<ParserException.Description> list = new List<ParserException.Description>();
+
+        public List<ParserException.Description> Descriptions
+        {
+            get { return this.list; }
+        }
+
         public bool HasError
         {
-            get;
-            protected set;
+            get { return this.list.Count > 0; }
         }
 
         public override void ReportAmbiguity(
@@ -55,12 +63,14 @@ namespace MathObjects.Plugin.Symmetric
             string msg, 
             RecognitionException e)
         {
-            //var s = "line "+line+":"+charPositionInLine+" at "+
-            //    offendingSymbol+": "+msg;
-            //ErrorHandler.SendError(this, s);
-
-            this.HasError = true;
+            var desc = new ParserException.Description();
+            desc.CharPositionInLine = charPositionInLine;
+            desc.Line = line;
+            desc.Msg = msg;
+            desc.OffendingSymbol = offendingSymbol;
+            this.list.Add(desc);
         }
+
     }
 }
 

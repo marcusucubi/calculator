@@ -57,6 +57,7 @@
     <Compile Include="Parser\EvalVisitor2.cs" />
     <Compile Include="Parser\Parser2.cs" />
     <Compile Include="MathObjectEx.cs" />
+    <Compile Include="Parser\Processor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

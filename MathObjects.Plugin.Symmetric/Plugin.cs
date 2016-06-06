@@ -12,13 +12,16 @@ using MathObjects.Plugin.Symmetric.Parser;
 namespace MathObjects.Plugin.Symmetric
 {
     [Plugin]
-    public class Plugin : IPlugin, IHasName, IHasParser, IHasVocabulary
+    public class Plugin : 
+        IPlugin, IHasName, IHasParser, IHasVocabulary
     {
         IParser parser;
 
         public Plugin()
         {
-            this.parser = new Parser2();
+            var registry = new FunctionRegistry();
+
+            parser = new Parser2(registry);
         }
 
         public IParser Parser

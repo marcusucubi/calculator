@@ -7,9 +7,15 @@ options {
 @lexer::namespace{MathObjects.Core.Parser}
 @parser::namespace{MathObjects.Core.Parser}
 
+file    :
+        init+
+        ;
+
 init    :
-        '+'             # Compose
-        | cycle+        # InitCycle
+        '+'                            # Compose
+        | cycle+                       # InitCycle
+        |<assoc=right> cycle '^' INT   # Exponent
+        | '(' init ')'                 # Parens
         ;
 
 /** A rule called init that matches comma-separated values between {...}. */
