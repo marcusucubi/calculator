@@ -21,6 +21,7 @@ namespace MathObjects.UI
             var reg = new PluginRegistry();
             MainClass.PluginRegistry = reg;
 
+            reg.Load("MathObjects.Plugin.FloatingPoint2.dll");
             reg.Load("MathObjects.Plugin.FloatingPoint.dll");
             //reg.Load("MathObjects.Plugin.Rational.dll");
             //reg.Load("MathObjects.Plugin.Integers.dll");

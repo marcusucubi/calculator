@@ -3,10 +3,14 @@ using System.Collections.Generic;
 
 namespace MathObjects.Framework
 {
-    public class FunctionRegistry
+    public class FunctionRegistry : IFunctionRegistry
     {
         readonly IDictionary<string, IMathObjectFactory> map = 
             new Dictionary<string, IMathObjectFactory>();
+
+        public FunctionRegistry()
+        {
+        }
 
         public void Put(string name, IMathObjectFactory factory)
         {

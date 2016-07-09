@@ -57,6 +57,7 @@
     <Compile Include="IIsFunction.cs" />
     <Compile Include="UnitManager.cs" />
     <Compile Include="ICanEvaluate.cs" />
+    <Compile Include="IFunctionRegistry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

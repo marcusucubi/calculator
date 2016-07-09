@@ -16,12 +16,12 @@ namespace MathObjects.Framework.Parser
 
         readonly IMathScope scope;
 
-        readonly FunctionRegistry registry;
+        readonly IFunctionRegistry registry;
 
         public GenericDefaultProcessor(
             IMathObjectStack stack,
             IMathScope scope,
-            FunctionRegistry registry)
+            IFunctionRegistry registry)
         {
             this.stack = stack;
             this.stackClone = stack.Clone();

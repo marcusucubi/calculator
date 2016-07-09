@@ -147,6 +147,10 @@
       <Project>{62D67415-88CB-493D-8044-1AEBB8296681}</Project>
       <Name>MathObjects.Core.Extension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MathObjects.Plugin.FloatingPoint2\MathObjects.Plugin.FloatingPoint2.csproj">
+      <Project>{65A52E04-0959-4CFC-A50A-0BE82C478D22}</Project>
+      <Name>MathObjects.Plugin.FloatingPoint2</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="calculator.desktop">

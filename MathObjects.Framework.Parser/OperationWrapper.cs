@@ -123,7 +123,8 @@ namespace MathObjects.Framework.Parser
             }
 
             return new OperationWrapper(
-                list.ToArray(), this.op, this.op.Perform(list.ToArray()));
+                list.ToArray(), this.op, 
+                this.op.Perform(list.ToArray()));
         }
 
         public override string ToString()

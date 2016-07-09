@@ -4,7 +4,8 @@ using MathObjects.Framework.Parser;
 
 namespace MathObjects.Plugin.Integers
 {
-    public class FunctionContext : IMathOperationFactoryContext, IHasMathObjectStack
+    public class FunctionContext : 
+        IMathOperationFactoryContext, IHasMathObjectStack
     {
         readonly IMathObjectStack stack;
 
